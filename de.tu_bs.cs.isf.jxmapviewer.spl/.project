@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>JxMapNavigationSPL</name>
+	<name>de.tu_bs.cs.isf.jxmapviewer.spl</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>de.tu_bs.cs.isf.deltaj.resource.deltaj.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -12,6 +17,7 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>de.tu_bs.cs.isf.deltaj.resource.deltaj.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 </projectDescription>
