@@ -1,0 +1,5 @@
+- When did you notice the inconsistency in the product (i.e., different behavior)?
+
+- Why did this inconsistency occur?
+
+- How did you repair this inconsistency?

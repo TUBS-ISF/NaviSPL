@@ -1,0 +1,7 @@
+- Did your feature model or context evolution lead to inconsistent context-sensitivity (i.e., wrong configurations for certain contexts)?
+
+- What was the wrong behavior?
+
+- Why did it happen?
+
+- How did you repair it?
