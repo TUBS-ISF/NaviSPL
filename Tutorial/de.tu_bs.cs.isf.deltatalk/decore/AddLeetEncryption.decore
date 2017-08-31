@@ -1,0 +1,26 @@
+ configuration delta "AddLeetEncryption"
+	dialect <http://www.emftext.org/java>
+		modifies <../src/de/tu_bs/cs/isf/deltatalk/ChatWindow.java>
+		{
+	addField(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "encryptButton");
+	addModifier(<field:de.tu_bs.cs.isf.deltatalk.ChatWindow.encryptButton>, "private");
+	setClassifierTypeReference(<field:de.tu_bs.cs.isf.deltatalk.ChatWindow.encryptButton>, <class:javax.swing.JButton>);
+	addClassMethod(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "setupButtons$AddLeetEncryption");
+	addOrdinaryParameter(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$AddLeetEncryption()>, "c");
+	setClassifierTypeReference(<parameter:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$AddLeetEncryption(void);c>, <class:java.awt.GridBagConstraints>);
+	addModifier(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$AddLeetEncryption(GridBagConstraints)>, "private");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$AddLeetEncryption(GridBagConstraints)>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$AddLeetEncryption(GridBagConstraints)>, "class WrapClass {private void setupButtons$AddLeetEncryption(GridBagConstraints c) {sendButton = new JButton();sendButton.setVisible(true);sendButton.setText(\"Send\");sendButton.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {sendMessage();}});c.gridwidth = 1;c.gridx = 0;c.gridy = 2;this.getContentPane().add(sendButton, c);}}", 0);
+	replaceStatementsInStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons(GridBagConstraints)>, "class WrapClass {private void setupButtons(GridBagConstraints c) {setupButtons$AddLeetEncryption(c);encryptButton = new javax.swing.JButton();encryptButton.setVisible(Boolean.TRUE);encryptButton.setText(\"Send Leet-Encrypted\");encryptButton.addActionListener(new java.awt.event.ActionListener() {public void actionPerformed(java.awt.event.ActionEvent e) {sendMessageEncrypted(); }});c.gridwidth = 1;c.gridx = 1;c.gridy = 2;getContentPane().add(encryptButton, c);}}");
+	addClassMethod(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "sendMessageEncrypted");
+	addModifier(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.sendMessageEncrypted>, "private");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.sendMessageEncrypted>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.sendMessageEncrypted>, "class WrapClass { private void sendMessageEncrypted() {if(inputTextPane.getText().equals(\"\"))return; outputTextPane.setText(outputTextPane.getText() + leetEncryption(inputTextPane.getText()) + \"\n\");inputTextPane.setText(\"\");}}", 0);
+	addClassMethod(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "leetEncryption");
+	addOrdinaryParameter(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.leetEncryption()>, "raw");
+	setClassifierTypeReference(<parameter:de.tu_bs.cs.isf.deltatalk.ChatWindow.leetEncryption(void);raw>, <class:java.lang.String>);
+	addModifier(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.leetEncryption(String)>, "private");
+	setClassifierTypeReference(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.leetEncryption(String)>, <class:java.lang.String>);
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.leetEncryption(String)>, "class WrapClass { private String leetEncryption(String raw) {char[] rawArray = raw.toCharArray();char[] encrypt = new char[rawArray.length];for(int i = 0; i<rawArray.length; i++) {if(rawArray[i] == \"e\".toCharArray()[0] || rawArray[i] == \"E\".toCharArray()[0]) {encrypt[i] = \"3\".toCharArray()[0];} else if(rawArray[i] == \"l\".toCharArray()[0] || rawArray[i] == \"L\".toCharArray()[0]) {encrypt[i] = \"1\".toCharArray()[0];} else if(rawArray[i] == \"o\".toCharArray()[0] || rawArray[i] == \"O\".toCharArray()[0]) {encrypt[i] = \"0\".toCharArray()[0];} else if(rawArray[i] == \"t\".toCharArray()[0] || rawArray[i] == \"T\".toCharArray()[0]) {encrypt[i] = \"7\".toCharArray()[0];} else if(rawArray[i] == \"a\".toCharArray()[0] || rawArray[i] == \"A\".toCharArray()[0]) {encrypt[i] = \"4\".toCharArray()[0];} else if(rawArray[i] == \"g\".toCharArray()[0] || rawArray[i] == \"G\".toCharArray()[0]) {encrypt[i] = \"9\".toCharArray()[0];} else if(rawArray[i] == \"h\".toCharArray()[0] || rawArray[i] == \"H\".toCharArray()[0]) {encrypt[i] = \"#\".toCharArray()[0];} else if(rawArray[i] == \"s\".toCharArray()[0] || rawArray[i] == \"S\".toCharArray()[0]) {encrypt[i] = \"5\".toCharArray()[0];} else {encrypt[i] = rawArray[i];}}return new String(encrypt);}}", 0);
+	}
+	

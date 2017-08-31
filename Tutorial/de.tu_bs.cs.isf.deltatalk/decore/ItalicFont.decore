@@ -1,0 +1,23 @@
+ configuration delta "ItalicFont"
+	dialect <http://www.emftext.org/java>
+		modifies <../src/de/tu_bs/cs/isf/deltatalk/ChatWindow.java>
+		{
+	addField(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "isItalic");
+	addModifier(<field:de.tu_bs.cs.isf.deltatalk.ChatWindow.isItalic>, "private");
+	setPrimitiveTypeReference(<field:de.tu_bs.cs.isf.deltatalk.ChatWindow.isItalic>, "boolean");
+	addField(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "italicButton");
+	addModifier(<field:de.tu_bs.cs.isf.deltatalk.ChatWindow.italicButton>, "private");
+	setClassifierTypeReference(<field:de.tu_bs.cs.isf.deltatalk.ChatWindow.italicButton>, <class:javax.swing.JButton>);
+	addClassMethod(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "setupButtons$ItalicFont");
+	addOrdinaryParameter(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$ItalicFont()>, "c");
+	setClassifierTypeReference(<parameter:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$ItalicFont(void);c>, <class:java.awt.GridBagConstraints>);
+	addModifier(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$ItalicFont(GridBagConstraints)>, "private");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$ItalicFont(GridBagConstraints)>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons$ItalicFont(GridBagConstraints)>, "class WrapClass {private void setupButtons$ItalicFont(GridBagConstraints c) {sendButton = new JButton();sendButton.setVisible(true);sendButton.setText(\"Send\");sendButton.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent e) {sendMessage();}});c.gridwidth = 1;c.gridx = 0;c.gridy = 2;this.getContentPane().add(sendButton, c);}}", 0);
+	replaceStatementsInStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.setupButtons(GridBagConstraints)>, "class WrapClass {private void setupButtons(GridBagConstraints c) {setupButtons$ItalicFont(c);italicButton = new javax.swing.JButton();italicButton.setVisible(Boolean.TRUE);italicButton.setText(\"Make Italic\");italicButton.addActionListener(new java.awt.event.ActionListener() {public void actionPerformed(java.awt.event.ActionEvent e) {switchItalicFont(); }});c.gridwidth = 1;c.gridx = 2;c.gridy = 2;getContentPane().add(italicButton, c);}}");
+	addClassMethod(<class:de.tu_bs.cs.isf.deltatalk.ChatWindow>, "switchItalicFont");
+	addModifier(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.switchItalicFont>, "private");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.switchItalicFont>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.deltatalk.ChatWindow.switchItalicFont>, "class WrapClass { private void switchItalicFont() {this.isItalic = !this.isItalic;if(this.isItalic) {java.awt.Font textFont = new java.awt.Font(inputTextPane.getFont().getName(),2, inputTextPane.getFont().getSize());inputTextPane.setFont(textFont);outputTextPane.setFont(textFont);}else {java.awt.Font textFont = new java.awt.Font(inputTextPane.getFont().getName(),0, inputTextPane.getFont().getSize());inputTextPane.setFont(textFont);outputTextPane.setFont(textFont);}}}", 0);
+	}
+	
