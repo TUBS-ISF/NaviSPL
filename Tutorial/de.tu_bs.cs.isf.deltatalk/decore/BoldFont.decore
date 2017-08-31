@@ -1,5 +1,0 @@
- configuration delta "BoldFont"
-	dialect <http://www.emftext.org/java>
-		{
-	}
-	
