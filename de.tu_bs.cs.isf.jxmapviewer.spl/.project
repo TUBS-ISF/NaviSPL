@@ -15,9 +15,15 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>eu.hyvar.feature.mapping.resource.hymapping.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>de.tu_bs.cs.isf.deltaj.resource.deltaj.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>eu.hyvar.feature.mapping.resource.hymapping.nature</nature>
 	</natures>
 </projectDescription>
