@@ -9,7 +9,8 @@
   </features>
   <features id="_3f698f03-5d38-4a94-83cc-b524b4f613be" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _e729e7bb-304f-4c30-a197-3da172c4aa08 _31e2e233-1bc5-47b1-a607-3ba649b85cd6">
     <names id="_65eca7d5-ea6a-4f7d-99c6-daaa66d964d8" name="Localization"/>
-    <types id="_e6e815e5-345c-4f7a-bb9b-c553893c0bb6" type="MANDATORY"/>
+    <types validUntil="2017-09-11T13:42:20.657+0200" id="_e6e815e5-345c-4f7a-bb9b-c553893c0bb6" supersedingElement="_e4415105-78f6-4271-bc23-736bb161bf68" type="MANDATORY"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_e4415105-78f6-4271-bc23-736bb161bf68" supersededElement="_e6e815e5-345c-4f7a-bb9b-c553893c0bb6"/>
   </features>
   <features id="_e79baf5d-817e-4682-9dbd-eb8a8b7e0a71" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _e729e7bb-304f-4c30-a197-3da172c4aa08 _38481ce4-c680-4431-a629-8bb6ce094c65">
     <names id="_f71a3d19-2cf8-48f6-a1d3-f8853b171692" name="Routecalculation"/>
@@ -38,7 +39,7 @@
   <features validSince="2017-09-11T13:42:20.657+0200" id="_7a6d8a3b-a81f-423f-943a-5cf107240607" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08">
     <names validSince="2017-09-11T13:42:20.657+0200" id="_239457f1-6624-480c-b9c3-8b35f3884ff7" name="Map"/>
     <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_ce2a79a2-280f-4f1b-ad78-bdedb985def4" childGroup="_b6c7f4f4-f0a8-4008-b30f-9662aec9d231"/>
-    <types validSince="2017-09-11T13:42:20.657+0200" id="_1ee83c81-4151-495b-8c90-9f05666a921b" supersededElement="_f693d4eb-86a6-4a1f-bdab-7402310ea47d" type="MANDATORY"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_f6061576-e395-4fe4-81a7-2639f8f6c34d" supersededElement="_1ee83c81-4151-495b-8c90-9f05666a921b"/>
   </features>
   <features validSince="2017-09-11T13:42:20.657+0200" id="_e9b72d6a-4be9-46b0-a573-18800875c92d" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08">
     <names validSince="2017-09-11T13:42:20.657+0200" id="_2e88c3e1-c367-403e-8d20-eac681158b2c" name="Route"/>
