@@ -82,6 +82,55 @@ public class NavigationScene extends Application {
 		return swingNode;
 	}
 
+	/*
+	 * Workaround for multiple Deltas modifying same Method
+	 * see Whiteboard for Delta to Method Mapping
+	 */
+	private void setUpMenu1() {
+		
+	}
+	
+	private void setUpMenu2() {
+		
+	}
+	
+	private void setUpMenu3() {
+		
+	}
+	
+	private void setUpMenu4() {
+		
+	}
+	
+	private void setUpMenu5() {
+		
+	}
+	
+	private void setUpMenu6() {
+		
+	}
+	
+	private void setUpMenu7() {
+		
+	}
+	
+	private void setUpMenu8() {
+		
+	}
+	
+	private void setUpMenu9() {
+		
+	}
+	
+	private void setUpMenu10() {
+		
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * Adds the panes for menus Should be extended by deltas when adding gui elements 
 	 * Requires: Adding TiltedPanes to titledPanes list before Super()
@@ -89,7 +138,27 @@ public class NavigationScene extends Application {
 	 * @return
 	 */
 	private Parent setUpMenu() {
+		
+		/*
+		 * Workaround for multiple Deltas modifying same Method
+		 */
+		
+		setUpMenu1();
+		setUpMenu2();
+		setUpMenu3();
+		setUpMenu4();
+		setUpMenu5();
+		setUpMenu6();
+		setUpMenu7();
+		setUpMenu8();
+		setUpMenu9();
+		setUpMenu10();
+		
+		
+		
+		
 		final Accordion accordion = new Accordion();
+		
 		accordion.setPrefWidth(width/4);
 		accordion.getPanes().addAll(titledPanes);
 
