@@ -1,0 +1,10 @@
+- How did you evolve the feature model?
+- Why did you evolve the feature model (in this way)?
+
+
+- Initializing feature model
+- Renaming Root Feature to Core, because naming conventions
+- Adding Localization as mandatory feature as its a basic functionality needed by almost all functions
+- Adding Orientation as optional
+- Adding Routecalculation as optional
+- Adding Favorites as optional

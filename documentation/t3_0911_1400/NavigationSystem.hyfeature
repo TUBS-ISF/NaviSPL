@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feature:HyFeatureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feature="http://hyvar-project.eu/feature/1.0">
+  <rootFeature id="_b4d547f8-9586-47dc-8417-54ef3b3d44dd" feature="_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  <features id="_2f66d385-3a83-4cd9-813a-2312d9b97051">
+    <names validUntil="2017-09-11T13:42:20.657+0200" id="_ff4ca4dd-365b-4069-869c-edce647927b0" name="Core"/>
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_e6ff5e4a-8047-486d-9bf6-5c2fcf0c23bf" name="Core"/>
+    <parentOf id="_974f692a-8151-4bda-8cb6-7648925d35da" childGroup="_02f749ce-b4c0-4982-9509-f84dda355f95"/>
+    <types id="_49ae597c-3349-42be-b81a-527743180d63" type="MANDATORY"/>
+  </features>
+  <features id="_3f698f03-5d38-4a94-83cc-b524b4f613be" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _e729e7bb-304f-4c30-a197-3da172c4aa08 _31e2e233-1bc5-47b1-a607-3ba649b85cd6">
+    <names id="_65eca7d5-ea6a-4f7d-99c6-daaa66d964d8" name="Localization"/>
+    <types id="_e6e815e5-345c-4f7a-bb9b-c553893c0bb6" type="MANDATORY"/>
+  </features>
+  <features id="_e79baf5d-817e-4682-9dbd-eb8a8b7e0a71" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _e729e7bb-304f-4c30-a197-3da172c4aa08 _38481ce4-c680-4431-a629-8bb6ce094c65">
+    <names id="_f71a3d19-2cf8-48f6-a1d3-f8853b171692" name="Routecalculation"/>
+    <types id="_b5d91677-a7ef-444f-b038-a71b09cc4395"/>
+  </features>
+  <features id="_5bde071f-4082-4a07-a362-676a93467b14" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _e729e7bb-304f-4c30-a197-3da172c4aa08 _31e2e233-1bc5-47b1-a607-3ba649b85cd6">
+    <names id="_75095d7f-6ea9-4c75-aebd-89a1d29569c7" name="Orientation"/>
+    <types id="_100078f5-f544-4546-b5da-5d917670f394"/>
+  </features>
+  <features id="_0f9b4294-2f53-4ec2-96f9-3f2053399f21" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _e729e7bb-304f-4c30-a197-3da172c4aa08 _38481ce4-c680-4431-a629-8bb6ce094c65">
+    <names id="_0cb53634-998a-4161-b06c-273688a05765" name="Favorites"/>
+    <types id="_cc9a5f8c-06af-46e6-8ed6-fc62538695a9"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08 _c42d4ac7-2fee-4c2e-a19f-abd277dbbe31">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_fb18d846-c4ec-4f71-99f9-840458491219" name="Weather"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_9c7c4339-db29-454c-bd36-6f60613b7257"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08 _c42d4ac7-2fee-4c2e-a19f-abd277dbbe31">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_dacac242-9447-40a4-900c-69a40df208d8" name="POI"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_899ed280-2309-4f96-adec-eb87176fc484"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08 _c42d4ac7-2fee-4c2e-a19f-abd277dbbe31">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_291817b0-4d98-409e-8c76-8ad66217f1dc" name="LocationImages"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_e2b1f03b-289f-47ab-ac35-fc0ad4928fa6"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_7a6d8a3b-a81f-423f-943a-5cf107240607" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_239457f1-6624-480c-b9c3-8b35f3884ff7" name="Map"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_ce2a79a2-280f-4f1b-ad78-bdedb985def4" childGroup="_b6c7f4f4-f0a8-4008-b30f-9662aec9d231"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_1ee83c81-4151-495b-8c90-9f05666a921b" supersededElement="_f693d4eb-86a6-4a1f-bdab-7402310ea47d" type="MANDATORY"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_e9b72d6a-4be9-46b0-a573-18800875c92d" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_2e88c3e1-c367-403e-8d20-eac681158b2c" name="Route"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_149cece5-45a5-4fb3-9c8d-9b6ba2e456f2" childGroup="_fbd9a167-0e71-43fb-916f-1be6cb8a4fbc"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_1a43e06e-4eb3-4ba6-ab0a-ad1d85438009"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_e52334b8-c162-4965-927d-051da5e24e9f" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_a3c45e81-20f4-472c-92ae-9833fc9215f8" name="Information"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_7a08a5c4-529c-4645-9944-4459423c279c" childGroup="_5cd1bdb8-213b-4f0e-b9f4-be8e7eda0295"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_a0823250-8a27-4b24-be01-3931356a48e3"/>
+  </features>
+  <groups id="_02f749ce-b4c0-4982-9509-f84dda355f95" childOf="_974f692a-8151-4bda-8cb6-7648925d35da">
+    <parentOf validUntil="2017-09-11T13:42:20.657+0200" id="_b15744ae-8d9f-423a-80e6-f0e86930d108" supersedingElement="_e729e7bb-304f-4c30-a197-3da172c4aa08" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _5bde071f-4082-4a07-a362-676a93467b14 _0f9b4294-2f53-4ec2-96f9-3f2053399f21"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_e729e7bb-304f-4c30-a197-3da172c4aa08" supersededElement="_b15744ae-8d9f-423a-80e6-f0e86930d108" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _5bde071f-4082-4a07-a362-676a93467b14 _0f9b4294-2f53-4ec2-96f9-3f2053399f21 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _7a6d8a3b-a81f-423f-943a-5cf107240607 _e9b72d6a-4be9-46b0-a573-18800875c92d _e52334b8-c162-4965-927d-051da5e24e9f"/>
+    <types id="_4664f16b-13c3-4110-a7f0-7b1684753fe0"/>
+  </groups>
+  <groups validSince="2017-09-11T13:42:20.657+0200" id="_b6c7f4f4-f0a8-4008-b30f-9662aec9d231" childOf="_ce2a79a2-280f-4f1b-ad78-bdedb985def4">
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_31e2e233-1bc5-47b1-a607-3ba649b85cd6" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _5bde071f-4082-4a07-a362-676a93467b14"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_28a704a6-2157-49f6-b40d-3fecba5ec8b3"/>
+  </groups>
+  <groups validSince="2017-09-11T13:42:20.657+0200" id="_fbd9a167-0e71-43fb-916f-1be6cb8a4fbc" childOf="_149cece5-45a5-4fb3-9c8d-9b6ba2e456f2">
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_38481ce4-c680-4431-a629-8bb6ce094c65" features="_0f9b4294-2f53-4ec2-96f9-3f2053399f21 _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_bb3c35a3-9fb0-4185-af9f-194b0e59ffd7"/>
+  </groups>
+  <groups validSince="2017-09-11T13:42:20.657+0200" id="_5cd1bdb8-213b-4f0e-b9f4-be8e7eda0295" childOf="_7a08a5c4-529c-4645-9944-4459423c279c">
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_39cf381b-3324-4b65-9dc5-e732ca03b2fa"/>
+  </groups>
+</feature:HyFeatureModel>

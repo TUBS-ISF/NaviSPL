@@ -1,0 +1,9 @@
+- How did you evolve the feature model?
+- Why did you evolve the feature model (in this way)?
+
+Adding the features Map, Route, Information as new parent features for better structure
+Adding Weather, POI, LocationImages as optional because of new requirements
+
+
+
+
