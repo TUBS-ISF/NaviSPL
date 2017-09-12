@@ -101,8 +101,7 @@ public class NaviApp extends JFrame {
 		for (String featureName : menuPanelList.keySet()) {
 			menuPanel.add(new SidebarSection(menuPanel,featureName , menuPanelList.get(featureName)));
 		}
-		
-		menuPanel.add(new SidebarSection(menuPanel, "Test",new JLabel("Test")));
+	
 	}
 
 	public void addMenu1() {}
