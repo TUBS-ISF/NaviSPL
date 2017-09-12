@@ -29,7 +29,6 @@ delta Favorite {
 		 * a Vector with list entries.
 		 */
 		public Favorite() {
-			JLabel topLabel = new JLabel("Favorites");
 			content = new Vector<String>(loadFavList());
 			list = new JList<String>(content);
 			scrollPane = new JScrollPane(list);
@@ -107,9 +106,9 @@ delta Favorite {
 		
 			modifies addMenu3() {
 				de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();
-				menuPanelList.add(fav);
+				menuPanelList.put("Favorites", fav);
 			}
-		
+
 		}
 
 }

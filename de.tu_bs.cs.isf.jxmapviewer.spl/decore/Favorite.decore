@@ -28,7 +28,7 @@
 	setClassifierTypeReference(<field:de.tu_bs.cs.isf.navi.gui.Favorite.scrollPane>, <class:javax.swing.JScrollPane>);
 	addConstructor(<class:de.tu_bs.cs.isf.navi.gui.Favorite>);
 	addModifier(<constructor:de.tu_bs.cs.isf.navi.gui.Favorite.Favorite>, "public");
-	extendStatementListContainer(<constructor:de.tu_bs.cs.isf.navi.gui.Favorite.Favorite>, "class WrapClass {/** * Constructor for a new favorite list element. Creates a JPanel with a scrollable list that contains * a Vector with list entries. */public Favorite() {JLabel topLabel = new JLabel(\"Favorites\");content = new Vector<String>(loadFavList());list = new JList<String>(content);scrollPane = new JScrollPane(list);BorderLayout borderLayout = new BorderLayout();this.setLayout(borderLayout);    this.add(topLabel, BorderLayout.NORTH);this.add(scrollPane, BorderLayout.CENTER);}}", 0);
+	extendStatementListContainer(<constructor:de.tu_bs.cs.isf.navi.gui.Favorite.Favorite>, "class WrapClass {/** * Constructor for a new favorite list element. Creates a JPanel with a scrollable list that contains * a Vector with list entries. */public Favorite() {content = new Vector<String>(loadFavList());list = new JList<String>(content);scrollPane = new JScrollPane(list);BorderLayout borderLayout = new BorderLayout();this.setLayout(borderLayout);    this.add(topLabel, BorderLayout.NORTH);this.add(scrollPane, BorderLayout.CENTER);}}", 0);
 	addClassMethod(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "loadFavList");
 	addModifier(<method:de.tu_bs.cs.isf.navi.gui.Favorite.loadFavList>, "private");
 	setClassifierTypeReference(<method:de.tu_bs.cs.isf.navi.gui.Favorite.loadFavList>, <class:java.util.Vector>);
@@ -49,6 +49,6 @@
 	addModifier(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(String)>, "public");
 	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(String)>, "void");
 	extendStatementListContainer(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(String)>, "class WrapClass {/** * Removes the specified element from the content list and then calls the saveFavList method. *  * @param e */public void removeFavElement(String e) {this.content.removeElement(e);saveFavList();/*this.repaint();*/}}", 0);
-	replaceStatementsInStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu3>, "class WrapClass {public void addMenu3() {de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();menuPanelList.add(fav);}}");
+	replaceStatementsInStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu3>, "class WrapClass {public void addMenu3() {de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();menuPanelList.put(\"Favorites\", fav);}}");
 	}
 	
