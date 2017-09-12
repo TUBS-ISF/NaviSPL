@@ -1,0 +1,113 @@
+delta Localization {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
+		adds private javax.swing.JTextField GPSlat;
+		adds private javax.swing.JTextField GPSlon;
+		
+		adds private org.openstreetmap.gui.jmapviewer.MapMarkerDot GPSselect;
+		
+		modifies addMenu2() {
+			menuPanelList.put("GPS", addGPS());
+		}
+		
+		adds private javax.swing.JPanel addGPS() {			
+			javax.swing.JPanel gpsMenu = new javax.swing.JPanel();
+			gpsMenu.setLayout(new java.awt.GridBagLayout());
+			
+			java.awt.GridBagConstraints bagCon = new java.awt.GridBagConstraints();
+			
+			javax.swing.JLabel latLab = new javax.swing.JLabel("Lat: ");
+			bagCon.fill = 2;
+			bagCon.gridx = 0;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			gpsMenu.add(latLab, bagCon);
+			
+			GPSlat = new javax.swing.JTextField();
+			bagCon.fill = 2;
+			bagCon.gridx = 1;
+			bagCon.gridy = 0;
+			bagCon.weightx = 3;
+			gpsMenu.add(GPSlat, bagCon);
+			
+			javax.swing.JLabel lonLab = new javax.swing.JLabel("Lon: ");
+			bagCon.fill = 2;
+			bagCon.gridx = 0;
+			bagCon.gridy = 1;
+			bagCon.weightx = 1;
+			gpsMenu.add(lonLab, bagCon);		
+			
+			GPSlon = new javax.swing.JTextField();
+			bagCon.fill = 2;
+			bagCon.gridx = 1;
+			bagCon.gridy = 1;
+			bagCon.weightx = 3;
+			gpsMenu.add(GPSlon, bagCon);
+						
+			javax.swing.JButton gpsButton = new javax.swing.JButton();
+			gpsButton.setText("Go To Location");
+			bagCon.fill = 2;
+			bagCon.gridx = 1;
+			bagCon.gridy = 2;
+			bagCon.weightx = 2;
+			gpsMenu.add(gpsButton, bagCon);
+			
+			gpsButton.addMouseListener(new java.awt.event.MouseListener() {
+	
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+					try {
+				    	double lat = Double.valueOf(GPSlat.getText());
+				    	double lon = Double.valueOf(GPSlon.getText());
+				    	org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(lat, lon);
+				        mapViewer.setDisplayPosition(co, 3);
+			    	} catch (NumberFormatException e1) {
+			    		
+			    	}
+				}
+	
+				public void mousePressed(java.awt.event.MouseEvent e) { }
+	
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				public void mouseEntered(java.awt.event.MouseEvent e) { }
+	
+				public void mouseExited(java.awt.event.MouseEvent e) { }
+				
+			});
+			
+			mapViewer.addMouseListener(new java.awt.event.MouseListener() {	
+				
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+			        
+			        java.awt.Point point = e.getPoint();
+			        org.openstreetmap.gui.jmapviewer.Coordinate co = (org.openstreetmap.gui.jmapviewer.Coordinate) mapViewer.getPosition(point);
+	
+					GPSlat.setText(String.valueOf(co.getLat()));
+					GPSlon.setText(String.valueOf(co.getLon()));
+				
+					if (GPSselect == null) {
+						GPSselect = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(co);
+						mapViewer.addMapMarker(GPSselect);
+					} else {
+						GPSselect.setLat(co.getLat());
+						GPSselect.setLon(co.getLon());
+						mapViewer.repaint();
+					}
+				}	
+				
+				public void mousePressed(java.awt.event.MouseEvent e) {	}
+	
+				
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				
+				public void mouseEntered(java.awt.event.MouseEvent e) {	 }
+	
+				
+				public void mouseExited(java.awt.event.MouseEvent e) {	 }
+	        });
+			
+			return gpsMenu;
+		}
+	}
+}
