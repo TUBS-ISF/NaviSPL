@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 
-import test.WindowTest;
-
 public class NaviApp extends JFrame {
 
 	private static final long serialVersionUID = 7703210673451235840L;
