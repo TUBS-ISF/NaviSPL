@@ -18,13 +18,13 @@ import com.gg.slider.SideBar.SideBarMode;
 @SuppressWarnings("serial")
 public class NaviApp extends JFrame {
 
-	private JMapViewer mapViewer;
+	protected JMapViewer mapViewer;
 	
 	private SideBar menuPanel;
 	
 	private JSplitPane splitPane;
 	
-	private HashMap<String, JComponent> menuPanelList;
+	protected HashMap<String, JComponent> menuPanelList;
 
 	private int width = 1200;
 
