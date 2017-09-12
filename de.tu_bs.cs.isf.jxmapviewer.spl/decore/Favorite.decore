@@ -1,0 +1,54 @@
+ configuration delta "Favorite"
+	dialect <http://www.emftext.org/java>
+		creates <de/tu_bs/cs/isf/navi/gui/Favorite.java>
+		modifies <../src/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClass(<resource:de/tu_bs/cs/isf/navi/gui/Favorite.java>, "de.tu_bs.cs.isf.navi.gui.Favorite");
+	setPackage(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "de.tu_bs.cs.isf.navi.gui");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.awt.BorderLayout>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.io.FileInputStream>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.io.FileOutputStream>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.io.IOException>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:null>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.io.ObjectOutputStream>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.io.Serializable>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:java.util.Vector>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:javax.swing.JLabel>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:javax.swing.JList>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:javax.swing.JPanel>);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <import:javax.swing.JScrollPane>);
+	addModifier(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "public");
+	setClassExtend(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <class:javax.swing.JPanel>);
+	addImplement(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, <interface:java.io.Serializable>);
+	addField(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "content");
+	setClassifierTypeReference(<field:de.tu_bs.cs.isf.navi.gui.Favorite.content>, <class:java.util.Vector>);
+	addField(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "list");
+	setClassifierTypeReference(<field:de.tu_bs.cs.isf.navi.gui.Favorite.list>, <class:javax.swing.JList>);
+	addField(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "scrollPane");
+	setClassifierTypeReference(<field:de.tu_bs.cs.isf.navi.gui.Favorite.scrollPane>, <class:javax.swing.JScrollPane>);
+	addConstructor(<class:de.tu_bs.cs.isf.navi.gui.Favorite>);
+	addModifier(<constructor:de.tu_bs.cs.isf.navi.gui.Favorite.Favorite>, "public");
+	extendStatementListContainer(<constructor:de.tu_bs.cs.isf.navi.gui.Favorite.Favorite>, "class WrapClass {/** * Constructor for a new favorite list element. Creates a JPanel with a scrollable list that contains * a Vector with list entries. */public Favorite() {JLabel topLabel = new JLabel(\"Favorites\");content = new Vector<String>(loadFavList());list = new JList<String>(content);scrollPane = new JScrollPane(list);BorderLayout borderLayout = new BorderLayout();this.setLayout(borderLayout);    this.add(topLabel, BorderLayout.NORTH);this.add(scrollPane, BorderLayout.CENTER);}}", 0);
+	addClassMethod(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "loadFavList");
+	addModifier(<method:de.tu_bs.cs.isf.navi.gui.Favorite.loadFavList>, "private");
+	setClassifierTypeReference(<method:de.tu_bs.cs.isf.navi.gui.Favorite.loadFavList>, <class:java.util.Vector>);
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.navi.gui.Favorite.loadFavList>, "class WrapClass {/** * Loads the saved favorite list from file. *  * @return Vector<String> loaded favorite list */private Vector<String> loadFavList() {try {FileInputStream inputStream = new FileInputStream(\"src/de/tu_bs/cs/isf/navi/gui/favList.txt\");ObjectInputStream objectInput = new ObjectInputStream(inputStream);Vector<String> loadedList = (Vector<String>) (objectInput.readObject());inputStream.close();objectInput.close();return loadedList;} catch (IOException e) {e.printStackTrace();} catch (ClassNotFoundException e) {e.printStackTrace();}return new Vector<String>();}}", 0);
+	addClassMethod(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "saveFavList");
+	addModifier(<method:de.tu_bs.cs.isf.navi.gui.Favorite.saveFavList>, "private");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.navi.gui.Favorite.saveFavList>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.navi.gui.Favorite.saveFavList>, "class WrapClass {/** * Saves the contents of the current list to file. */private void saveFavList() {try {FileOutputStream fileOutput = new FileOutputStream(\"src/de/tu_bs/cs/isf/navi/gui/favList.txt\");ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);Vector<String> tempList = new Vector<String>(content);objectOutput.writeObject(tempList);fileOutput.close();objectOutput.close();} catch(IOException e) {e.printStackTrace();}}}", 0);
+	addClassMethod(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "addFavElement");
+	addOrdinaryParameter(<method:de.tu_bs.cs.isf.navi.gui.Favorite.addFavElement()>, "e");
+	setClassifierTypeReference(<parameter:de.tu_bs.cs.isf.navi.gui.Favorite.addFavElement(void);e>, <class:java.lang.String>);
+	addModifier(<method:de.tu_bs.cs.isf.navi.gui.Favorite.addFavElement(String)>, "public");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.navi.gui.Favorite.addFavElement(String)>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.navi.gui.Favorite.addFavElement(String)>, "class WrapClass {/** * Adds a new element to the content list and then calls the saveFavList method *  * @param e */public void addFavElement(String e) {this.content.add(e);saveFavList();/*this.repaint();*/}}", 0);
+	addClassMethod(<class:de.tu_bs.cs.isf.navi.gui.Favorite>, "removeFavElement");
+	addOrdinaryParameter(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement()>, "e");
+	setClassifierTypeReference(<parameter:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(void);e>, <class:java.lang.String>);
+	addModifier(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(String)>, "public");
+	setPrimitiveTypeReference(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(String)>, "void");
+	extendStatementListContainer(<method:de.tu_bs.cs.isf.navi.gui.Favorite.removeFavElement(String)>, "class WrapClass {/** * Removes the specified element from the content list and then calls the saveFavList method. *  * @param e */public void removeFavElement(String e) {this.content.removeElement(e);saveFavList();/*this.repaint();*/}}", 0);
+	replaceStatementsInStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu3>, "class WrapClass {public void addMenu3() {de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();menuPanelList.add(fav);}}");
+	}
+	

@@ -1,0 +1,115 @@
+delta Favorite {
+
+	
+	adds {
+	package de.tu_bs.cs.isf.navi.gui;
+	import java.awt.BorderLayout;
+	import java.io.FileInputStream;
+	import java.io.FileOutputStream;
+	import java.io.IOException;
+	import java.io.ObjectInputStream;
+	import java.io.ObjectOutputStream;
+	import java.io.Serializable;
+	import java.util.Vector;
+	
+	import javax.swing.JLabel;
+	import javax.swing.JList;
+	import javax.swing.JPanel;
+	import javax.swing.JScrollPane;
+	
+	public class Favorite extends javax.swing.JPanel implements java.io.Serializable{
+		
+		
+		Vector<String> content;
+		JList<String> list;
+		JScrollPane scrollPane;
+		
+		/**
+		 * Constructor for a new favorite list element. Creates a JPanel with a scrollable list that contains
+		 * a Vector with list entries.
+		 */
+		public Favorite() {
+			JLabel topLabel = new JLabel("Favorites");
+			content = new Vector<String>(loadFavList());
+			list = new JList<String>(content);
+			scrollPane = new JScrollPane(list);
+			
+			BorderLayout borderLayout = new BorderLayout();
+			this.setLayout(borderLayout);
+		    
+			this.add(topLabel, BorderLayout.NORTH);
+			this.add(scrollPane, BorderLayout.CENTER);
+		}
+		
+		/**
+		 * Loads the saved favorite list from file.
+		 * 
+		 * @return Vector<String> loaded favorite list
+		 */
+		private Vector<String> loadFavList() {
+			try {
+				FileInputStream inputStream = new FileInputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");			
+				ObjectInputStream objectInput = new ObjectInputStream(inputStream);
+				Vector<String> loadedList = (Vector<String>) (objectInput.readObject());
+				inputStream.close();
+				objectInput.close();
+				return loadedList;
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+				return new Vector<String>();
+			}
+		
+		/**
+		 * Saves the contents of the current list to file.
+		 */
+		private void saveFavList() {
+			try {
+				FileOutputStream fileOutput = new FileOutputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+				ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+				Vector<String> tempList = new Vector<String>(content);
+				objectOutput.writeObject(tempList);
+				fileOutput.close();
+				objectOutput.close();
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/**
+		 * Adds a new element to the content list and then calls the saveFavList method
+		 * 
+		 * @param e
+		 */
+		public void addFavElement(String e) {
+			this.content.add(e);
+			saveFavList();
+	/*		this.repaint();*/
+		}
+		
+		/**
+		 * Removes the specified element from the content list and then calls the saveFavList method.
+		 * 
+		 * @param e
+		 */
+		public void removeFavElement(String e) {
+			this.content.removeElement(e);
+			saveFavList();
+	/*		this.repaint();*/
+		}
+	
+	}
+}
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp{
+		
+			modifies addMenu3() {
+				de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();
+				menuPanelList.add(fav);
+			}
+		
+		}
+
+}
