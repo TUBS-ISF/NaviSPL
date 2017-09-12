@@ -59,7 +59,7 @@ delta Localization {
 				    	double lat = Double.valueOf(GPSlat.getText());
 				    	double lon = Double.valueOf(GPSlon.getText());
 				    	org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(lat, lon);
-				        mapViewer.setDisplayPosition(co, 3);
+				        mapViewer.setDisplayPosition(co, mapViewer.getZoom());
 			    	} catch (NumberFormatException e1) {
 			    		
 			    	}
