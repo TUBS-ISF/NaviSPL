@@ -1,2 +1,5 @@
 "Localization":
-<decore/newDelta.decore>
+<decore/Localization.decore>
+
+"Favorites":
+<decore/Favorite.decore>
