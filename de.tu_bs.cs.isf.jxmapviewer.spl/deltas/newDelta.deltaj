@@ -1,7 +1,0 @@
-delta newDelta {
-	modifies org.openstreetmap.gui.jmapviewer.Demo {
-		modifies setMySize() {
-			setSize(800, 800);
-		}
-	}
-}
