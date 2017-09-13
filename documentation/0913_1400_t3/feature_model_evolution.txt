@@ -1,0 +1,7 @@
+- How did you evolve the feature model?
+1.Added two children (24Hours, 12Hours) as alternative group to Time.
+
+
+
+- Why did you evolve the feature model (in this way)?
+1. Context requires two different time formats.
