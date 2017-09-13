@@ -3,28 +3,42 @@ package de.tu_bs.cs.isf.navi;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
+import org.openstreetmap.gui.jmapviewer.Layer;
 
 import com.gg.slider.SideBar;
 import com.gg.slider.SidebarSection;
 
+
+
+
+/* ROUTING */
+import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
+import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
+import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
+
 import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
+import de.tu_bs.cs.isf.navi.routing.RoutingCoordinate;
 import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Insets;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
+import javax.swing.JPanel;
+
+
 
 import com.gg.slider.SideBar.SideBarMode;
 
@@ -52,7 +66,7 @@ public class NaviApp extends JFrame {
 
 	public NaviApp() {
 		super("Navigation System " + VERSION);
-
+		
 		setupWindow();
 		setupGUI();
 
@@ -99,7 +113,7 @@ public class NaviApp extends JFrame {
 
 		menuPanelList = new HashMap<String, JComponent>();
 
-		// Call menu functions
+		// Call menu functionsconSartCoordBtn
 		addMenu1();
 		addMenu2();
 		addMenu3();
@@ -124,21 +138,44 @@ public class NaviApp extends JFrame {
 	public void addMenu1() {
 		int q = 25;
 		Insets i = new Insets(q, q, q, q);
+
 		
 		final JTextField startLatitude = new JTextField();
-		startLatitude.setText("8.34234");
+		startLatitude.setText("52.280817");
 		final JTextField startLongitude = new JTextField();
-		startLongitude.setText("48.23424");		
+		startLongitude.setText("10.518804");
+		JButton getStartCoords = new JButton("GetStart");
+		getStartCoords.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+//				MapMarkerDot m = GPSselect;
+//				startLatitude.setText(String.valueOf(m.getLat()));
+//				startLongitude.setText(String.valueOf(m.getLon()));
+			}
+			
+		});
+				
 		final JTextField endLatitude = new JTextField();
-		endLatitude.setText("8.34423");
+		endLatitude.setText("52.248309");
 		final JTextField endLongitude = new JTextField();
-		endLongitude.setText("48.26424");
+		endLongitude.setText("10.531181");
+		JButton getEndCoords = new JButton("GetEnd");
+		getEndCoords.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+//				MapMarkerDot m = GPSselect;
+//				endLatitude.setText(String.valueOf(m.getLat()));
+//				endLongitude.setText(String.valueOf(m.getLon()));
+			}
+			
+		});
+		
 		
 		String[] test = {"Test", "Scroll"};
-		final JList<String> list = new JList<String>(test);
-		list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		list.setLayoutOrientation(JList.VERTICAL);
-		list.setVisibleRowCount(-1);
+		final JList<String> routingList = new JList<String>(test);
+		routingList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		routingList.setLayoutOrientation(JList.VERTICAL);
+		routingList.setVisibleRowCount(-1);
 
 		JButton startBtn = new JButton("Start Routing");
 		startBtn.setMargin(i);
@@ -149,15 +186,18 @@ public class NaviApp extends JFrame {
 						endLatitude.getText(), endLongitude.getText());
 				routingInformation = calc.calculateRoute();
 				if(routingInformation != null) {
-					list.clearSelection();
-					list.setListData(routingInformation.getRouteInstructions());
+					routingList.clearSelection();
+					routingList.setListData(routingInformation.getRouteInstructions());
 					paintRoute();
+				} else {
+					String[] gehtNicht = new String[] {"Route kann nicht berechnet werden"};
+					routingList.setListData(gehtNicht);
 				}
 			}
 
 		});
 
-		 JScrollPane listScroller = new JScrollPane(list);
+		 JScrollPane listScroller = new JScrollPane(routingList);
 		 listScroller.setPreferredSize(new Dimension(250, 250));
 
 		// Layout
@@ -195,24 +235,51 @@ public class NaviApp extends JFrame {
 		panel.add(endLongitude, conEndLong);
 
 		GridBagConstraints conStartBtn = new GridBagConstraints();
-		conStartBtn.gridwidth = 2;
+		conStartBtn.gridwidth = 3;
 		conStartBtn.fill = GridBagConstraints.HORIZONTAL;
 		conStartBtn.gridx = 0;
 		conStartBtn.gridy = 2;
 		panel.add(startBtn, conStartBtn);
 
 		GridBagConstraints conList = new GridBagConstraints();
-		conList.gridwidth = 2;
+		conList.gridwidth = 3;
 		conList.fill = GridBagConstraints.HORIZONTAL;
 		conList.gridx = 0;
 		conList.gridy = 3;
 		panel.add(listScroller, conList);
-
+		
+		GridBagConstraints conSartCoordBtn = new GridBagConstraints();
+		conSartCoordBtn.fill = GridBagConstraints.HORIZONTAL;
+		conSartCoordBtn.gridx = 2;
+		conSartCoordBtn.gridy = 0;
+		panel.add(getStartCoords, conSartCoordBtn);
+		
+		GridBagConstraints conEndCoordBtn = new GridBagConstraints();
+		conEndCoordBtn.fill = GridBagConstraints.HORIZONTAL;
+		conEndCoordBtn.gridx = 2;
+		conEndCoordBtn.gridy = 1;
+		panel.add(getEndCoords, conEndCoordBtn);
+		
 		menuPanelList.put("Routing", panel);
 	}
 	
-	private void paintRoute() {
-		// TODO
+	private MapPolygon readyPolygon;
+	private void paintRoute() {		
+		if (routingInformation.getRoutingInformation().size() <= 1)
+			return;
+		List<double[]> polygon = routingInformation.getPolygonPoints();
+		RoutingCoordinate[] way = new RoutingCoordinate[polygon.size() * 2];
+		for (int i = 0; i < polygon.size(); i++) {
+			way[i] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
+		}
+		for (int i = polygon.size() - 1; i >= 0; i--) {
+			way[polygon.size() * 2 - i - 1] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
+		}
+		
+		mapViewer.removeMapPolygon(readyPolygon);
+		readyPolygon = new MapPolygonImpl(way);
+		mapViewer.addMapPolygon(readyPolygon);
+		mapViewer.repaint();
 	}
 
 	public void addMenu2() {
