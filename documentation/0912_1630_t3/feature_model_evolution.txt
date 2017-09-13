@@ -1,0 +1,10 @@
+- How did you evolve the feature model?
+
+1. Added the new feature time.
+2. Changed the features below Information to an or-group
+
+
+- Why did you evolve the feature model (in this way)?
+
+1. A new feature from the customer requires an update in the feature model.
+2. Without an or-group selecting Information would be pointless.

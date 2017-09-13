@@ -59,7 +59,15 @@ delta Localization {
 				    	double lat = Double.valueOf(GPSlat.getText());
 				    	double lon = Double.valueOf(GPSlon.getText());
 				    	org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(lat, lon);
-				        mapViewer.setDisplayPosition(co, 3);
+				        mapViewer.setDisplayPosition(co, mapViewer.getZoom());				
+						if (GPSselect == null) {
+							GPSselect = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(co);
+							mapViewer.addMapMarker(GPSselect);
+						} else {
+							GPSselect.setLat(co.getLat());
+							GPSselect.setLon(co.getLon());
+							mapViewer.repaint();
+						}
 			    	} catch (NumberFormatException e1) {
 			    		
 			    	}
