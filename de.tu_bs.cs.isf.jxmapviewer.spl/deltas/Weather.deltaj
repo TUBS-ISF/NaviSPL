@@ -34,10 +34,10 @@ delta Weather {
 			weatherPane.setLayout(new BoxLayout(weatherPane, BoxLayout.PAGE_AXIS));
 			
 			
-			JLabel temperature = new JLabel(); /*getWeather(GPSlat.getText(), GPSlon.getText()).getMainInstance().getTemperature()*/
+			final JLabel temperature = new JLabel();
 			temperature.setFont(temperature.getFont().deriveFont(15.0f));
 		
-			JLabel weather = new JLabel();
+			final JLabel weather = new JLabel();
 			weather.setFont(weather.getFont().deriveFont(15.0f));
 			
 
