@@ -23,7 +23,7 @@ delta Weather {
 				e.printStackTrace();
 			}
 			return null; 
-		} 
+		}
 		
 		modifies addMenu5() {
 			menuPanelList.put("Wetter", addWeather());
@@ -35,10 +35,10 @@ delta Weather {
 			
 			
 			JLabel temperature = new JLabel(); /*getWeather(GPSlat.getText(), GPSlon.getText()).getMainInstance().getTemperature()*/
-			temperature.setFont(temperature.getFont().deriveFont(50.0f));
+			temperature.setFont(temperature.getFont().deriveFont(15.0f));
 		
 			JLabel weather = new JLabel();
-			weather.setFont(weather.getFont().deriveFont(50.0f));
+			weather.setFont(weather.getFont().deriveFont(15.0f));
 			
 
 			weatherPane.add(temperature);
