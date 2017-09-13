@@ -7,9 +7,11 @@ public class RoutingInformation {
 	
 	private List<RoutingStepInformation> steps;
 	public static RoutingInformation currentRoute;
+	private List<double[]> polygonPoints;
 	
 	public RoutingInformation() {
 		steps = new ArrayList<RoutingStepInformation>();
+		polygonPoints = new ArrayList<double[]>();
 	}
 	
 	public void addStep(RoutingStepInformation o) {
@@ -27,5 +29,14 @@ public class RoutingInformation {
 		}
 		
 		return output;
+	}
+	
+	public void addPolygonPoint(double latitude, double longitude) {
+		double[] add = {latitude, longitude};
+		polygonPoints.add(add);
+	}
+	
+	public List<double[]> getPolygonPoints() {
+		return polygonPoints;
 	}
  }
