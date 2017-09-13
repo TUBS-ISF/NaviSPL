@@ -15,7 +15,6 @@ public class JMapViewerRotation extends JMapViewer {
 	public double rotAngle = 45;
 	
     public void paint(Graphics g) {
-
 		Graphics2D g2d = (Graphics2D) g;
         AffineTransform transform = g2d.getTransform();
         transform.rotate(Math.toRadians(rotAngle), g2d.getClipBounds().getCenterX(), g2d.getClipBounds().getCenterX());
@@ -24,8 +23,7 @@ public class JMapViewerRotation extends JMapViewer {
         super.paintComponent(g);
     }
     
-    public void moveMap(int x, int y) {
-    	
+    public void moveMap(int x, int y) {    	
     	Point p = new Point(x, y);    	
     	p = rotatePoint(p, rotAngle);
     	
@@ -37,12 +35,12 @@ public class JMapViewerRotation extends JMapViewer {
         int y = center.y + mapPointY - getHeight() / 2;
 
         Point p = new Point(x, y);
-		p = JMapViewerRotation.rotatePoint(p, rotAngle, center);
+		p = rotatePoint(p, rotAngle, center);
         
         return tileSource.xyToLatLon(p.x, p.y, zoom);
     }
     
-    public static Point rotatePoint(Point p, double rot) {    	
+    public Point rotatePoint(Point p, double rot) {    	
     	Point r = new Point();
     	r.x = (int) (p.x * Math.cos(Math.toRadians(-rot)) - p.y * Math.sin(Math.toRadians(-rot)));
     	r.y = (int) (p.x * Math.sin(Math.toRadians(-rot)) + p.y * Math.cos(Math.toRadians(-rot))); 
@@ -50,21 +48,11 @@ public class JMapViewerRotation extends JMapViewer {
     	return r;
     }
     
-    public static Coordinate rotateCoordinate(Coordinate c, double rot) {    	
-    	Coordinate r = new Coordinate(0, 0);
-    	r.setLat(c.getLat() * Math.cos(Math.toRadians(-rot)) - c.getLon() * Math.sin(Math.toRadians(-rot)));
-    	r.setLon(c.getLat() * Math.sin(Math.toRadians(-rot)) + c.getLon() * Math.cos(Math.toRadians(-rot)));
-    	    	
-    	return r;
-    }
-    
-    public static Point rotatePoint(Point p, double rot, Point o) {
-    	
+    public Point rotatePoint(Point p, double rot, Point o) {    	
     	Point r = new Point();    	
     	r.x = (int) (((p.x - o.x) * Math.cos(Math.toRadians(-rot)) - (p.y - o.y) * Math.sin(Math.toRadians(-rot))) + o.x);
     	r.y = (int) (((p.x - o.x) * Math.sin(Math.toRadians(-rot)) + (p.y - o.y) * Math.cos(Math.toRadians(-rot))) + o.y);
-		
-    	
+		    	
     	return r;
 		
     }
@@ -73,7 +61,7 @@ public class JMapViewerRotation extends JMapViewer {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        // In delta, recalculate the visible border by multiplying by 2
+        // In delta, recalculate the visible border ( * 2 )
         /*
          int xMin = -tilesize * 2;
          int yMin = -tilesize * 2;
