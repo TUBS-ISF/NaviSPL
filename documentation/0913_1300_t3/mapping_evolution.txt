@@ -1,0 +1,8 @@
+- How did you evolve the mapping?
+1. Mapped feature Weather to his data.
+2. Added mapping dates for Weather.
+
+
+- Why did you evolve the mapping (in this way)?
+1. Implementation of a feature requires a delta mapping.
+2. A Mapping should have valid Dates.

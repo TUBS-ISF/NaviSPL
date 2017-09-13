@@ -1,5 +1,12 @@
 "Localization":
+<<<<<<< HEAD
 <decore/Localization.decore>
 
 "Favorites":
 <decore/Favorite.decore>
+=======
+<decore/Localization.decore> [2017/09/11 - eternity]
+
+"Weather":
+<decore/Weather.decore> [2017/09/12 - eternity]
+>>>>>>> refs/heads/develop
