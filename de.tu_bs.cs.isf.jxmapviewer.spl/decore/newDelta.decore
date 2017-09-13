@@ -1,7 +1,0 @@
- configuration delta "newDelta"
-	dialect <http://www.emftext.org/java>
-		modifies <../src/org/openstreetmap/gui/jmapviewer/Demo.java>
-		{
-	replaceStatementsInStatementListContainer(<method:org.openstreetmap.gui.jmapviewer.Demo.setMySize>, "class WrapClass {        private void setMySize() {setSize(800,800);    }}");
-	}
-	
