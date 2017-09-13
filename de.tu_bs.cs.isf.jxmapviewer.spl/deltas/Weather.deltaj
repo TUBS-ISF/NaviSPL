@@ -1,0 +1,85 @@
+
+delta Weather {
+
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import org.json.JSONException;
+		adds import net.aksingh.owmjapis.CurrentWeather;
+		adds import net.aksingh.owmjapis.OpenWeatherMap;
+		adds import net.aksingh.owmjapis.OpenWeatherMap.Units;
+		adds import javax.swing.BorderFactory;
+		adds import javax.swing.BoxLayout;
+		adds import javax.swing.JPanel;
+		adds import java.awt.Font;
+	
+		adds public net.aksingh.owmjapis.CurrentWeather getWeather(double latitude, double longitude) {
+			OpenWeatherMap openWeatherMap = new OpenWeatherMap(Units.METRIC, "e6d53f6128339f0b361aa69105feecea");
+
+			try {
+				CurrentWeather currentWeather = openWeatherMap.currentWeatherByCoordinates((float)latitude,(float) longitude);
+				return currentWeather;		
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			return null; 
+		}
+		
+		modifies addMenu5() {
+			menuPanelList.put("Wetter", addWeather());
+		}
+		
+		adds private javax.swing.JPanel addWeather() {		
+			JPanel weatherPane = new JPanel();
+			weatherPane.setLayout(new BoxLayout(weatherPane, BoxLayout.PAGE_AXIS));
+			
+			
+			JLabel temperature = new JLabel(); /*getWeather(GPSlat.getText(), GPSlon.getText()).getMainInstance().getTemperature()*/
+			temperature.setFont(temperature.getFont().deriveFont(15.0f));
+		
+			JLabel weather = new JLabel();
+			weather.setFont(weather.getFont().deriveFont(15.0f));
+			
+
+			weatherPane.add(temperature);
+		
+			weatherPane.add(weather);
+			weatherPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+			
+			
+			
+			
+			mapViewer.addMouseListener(new java.awt.event.MouseListener() {
+				
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+			        
+			        java.awt.Point point = e.getPoint();
+			        org.openstreetmap.gui.jmapviewer.Coordinate co = (org.openstreetmap.gui.jmapviewer.Coordinate) mapViewer.getPosition(point);
+					CurrentWeather currentweather = getWeather(co.getLat(), co.getLon());
+					temperature.setText(String.valueOf(currentweather.getMainInstance().getTemperature()));
+					weather.setText(currentweather.getWeatherInstance(0).getWeatherDescription());
+					
+				}	
+				
+				public void mousePressed(java.awt.event.MouseEvent e) {	}
+	
+				
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				
+				public void mouseEntered(java.awt.event.MouseEvent e) {	 }
+	
+				
+				public void mouseExited(java.awt.event.MouseEvent e) {	 }
+	        });
+			return weatherPane;
+		
+		}
+	 
+	
+	}
+
+
+
+
+}
