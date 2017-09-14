@@ -88,7 +88,7 @@ delta Favorite requires Localization{
 					    java.nio.file.Files.createFile(path);
 					}
 					FileInputStream inputStream = new FileInputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
-					if (inputStream.read() != -1) {	
+					if (inputStream.available() > 0) {	
 						java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(inputStream);
 						Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadedList = (Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement>) (objectInput
 								.readObject());
