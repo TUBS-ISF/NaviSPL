@@ -176,9 +176,7 @@ delta Routing {
 		import org.json.JSONObject;
 		import org.json.JSONTokener;
 		
-		
-		
-		
+
 		public class RoutingCalculator {
 		
 			private String coordinates = new String();
@@ -247,8 +245,6 @@ delta Routing {
 								JSONArray polygonpoints = (JSONArray) polygon.get(i);
 								route.addPolygonPoint((Double) polygonpoints.get(1), (Double) polygonpoints.get(0));
 							}
-						
-							
 		
 							JSONArray segementsArray = (JSONArray) routes.get("segments");
 							JSONObject segments = (JSONObject) segementsArray.get(0);
@@ -292,8 +288,6 @@ delta Routing {
 				return route;
 			}
 		}
-
-				
 	}
 	
 	adds {
@@ -372,7 +366,6 @@ delta Routing {
 				return polygonPoints;
 			}
 		 }
-
 	}
 	
 	adds {
@@ -436,6 +429,5 @@ delta Routing {
 				this.type = type;
 			}
 		}
-
 	}
 }
