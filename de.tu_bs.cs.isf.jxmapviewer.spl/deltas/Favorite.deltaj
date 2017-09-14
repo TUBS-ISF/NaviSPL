@@ -88,11 +88,14 @@ delta Favorite requires Localization{
 					    java.nio.file.Files.createFile(path);
 					}
 					FileInputStream inputStream = new FileInputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
-					java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(inputStream);
-					Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadedList = (Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement>) (objectInput.readObject());
-					inputStream.close();
-					objectInput.close();
-					return loadedList;
+					if (inputStream.read() != -1) {	
+						java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(inputStream);
+						Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadedList = (Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement>) (objectInput
+								.readObject());
+						inputStream.close();
+						objectInput.close();
+						return loadedList;
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				} catch (ClassNotFoundException e) {
