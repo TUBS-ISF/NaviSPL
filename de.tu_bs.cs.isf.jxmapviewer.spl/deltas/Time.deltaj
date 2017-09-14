@@ -1,0 +1,67 @@
+delta Time {
+
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import javax.swing.BorderFactory;
+		adds import javax.swing.BoxLayout;
+		adds import javax.swing.JPanel;
+		adds import java.awt.Font;
+	
+		adds public String getTime(double latitude, double longitude) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat();
+			dateFormat.setTimeZone(TimeZone.getTimeZone(TimezoneMapper.latLngToTimezoneString(latitude, longitude)));
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE, 0);
+
+			if (is24Hours) {
+				dateFormat.applyLocalizedPattern("H:mm");
+			} else {
+				dateFormat.applyLocalizedPattern("h:mm a");
+			}
+
+			return dateFormat.format(cal.getTime());
+		}
+		
+		modifies addMenu8() {
+			menuPanelList.put("Time", addTime());
+		}
+		
+		adds private javax.swing.JPanel addTime() {		
+			JPanel timePane = new JPanel();
+			timePane.setLayout(new BoxLayout(timePane, BoxLayout.PAGE_AXIS));
+			
+			
+			JLabel time = new JLabel();
+			time.setFont(temperature.getFont().deriveFont(15.0f));
+			timePane.add(time);
+
+			timePane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+			
+			mapViewer.addMouseListener(new java.awt.event.MouseListener() {
+				
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+			        
+			        java.awt.Point point = e.getPoint();
+			        org.openstreetmap.gui.jmapviewer.Coordinate co = (org.openstreetmap.gui.jmapviewer.Coordinate) mapViewer.getPosition(point);
+				time.setText(getTime(co.getLat(),co.getLon()));
+					
+				}	
+				
+				public void mousePressed(java.awt.event.MouseEvent e) {	}
+	
+				
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				
+				public void mouseEntered(java.awt.event.MouseEvent e) {	 }
+	
+				
+				public void mouseExited(java.awt.event.MouseEvent e) {	 }
+	        });
+			return timePane;
+		
+		}
+	 
+	
+	}
+}
