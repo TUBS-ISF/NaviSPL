@@ -1,0 +1,7 @@
+configuration <tempDeltaEcoreModel.defeaturemodel>{
+	"Core",
+"Favorites",
+"Route",
+"Localization",
+"Map"
+}
