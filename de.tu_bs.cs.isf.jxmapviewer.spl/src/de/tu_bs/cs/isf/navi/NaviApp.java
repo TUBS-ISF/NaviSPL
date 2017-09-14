@@ -21,9 +21,7 @@ import com.gg.slider.SidebarSection;
 
 
 /* ROUTING */
-import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
-import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 
 import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
