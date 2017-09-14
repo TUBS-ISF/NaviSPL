@@ -2,7 +2,7 @@ delta Routing {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		adds import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
-		//adds import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
+		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
 		adds import java.awt.event.ActionEvent;
@@ -176,24 +176,27 @@ delta Routing {
 		import org.json.JSONObject;
 		import org.json.JSONTokener;
 		
+		
+		
+		
 		public class RoutingCalculator {
 		
 			private String coordinates = new String();
 			private String apiUrl = "https://api.openrouteservice.org/directions?";
 			private String api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
 			private String profileUrl = "profile=driving-car";
-			private RoutingInformation route;
+			private de.tu_bs.cs.isf.navi.routing.RoutingInformation route;
 			private String request = new String();
 			
 			public RoutingCalculator(long latitudeStart, long longitudeStart, long latitudeEnd, long longitudeEnd) {
 				addCoordinates(latitudeStart, longitudeStart);
-				addCoordinates(latitudeEnd, latitudeEnd);
+				addCoordinates(latitudeEnd, longitudeEnd);
 			}
 			
-			public RoutingCalculator(String latitudeStart, String longitudeStart, String latitudeEnd, String longitudeEnd) {
+			public RoutingCalcuator(String latitudeStart, String longitudeStart, String latitudeEnd, String longitudeEnd) {
 				try {
 					addCoordinates(Double.parseDouble(latitudeStart), Double.parseDouble(longitudeStart));
-					addCoordinates(Double.parseDouble(latitudeEnd), Double.parseDouble(latitudeEnd));
+					addCoordinates(Double.parseDouble(latitudeEnd), Double.parseDouble(longitudeEnd));
 				} catch(NumberFormatException e) {
 					e.printStackTrace();
 				}
@@ -201,47 +204,59 @@ delta Routing {
 			
 			private void addCoordinates(double longitude, double latitude) {
 				if (coordinates.length() == 0)
-					coordinates += "coordinates=" + String.valueOf(longitude) + "," + String.valueOf(latitude);
+					coordinates += "coordinates=" + String.valueOf(latitude) + "," + String.valueOf(longitude);
 				else
-					coordinates += "|" + String.valueOf(longitude) + "," + String.valueOf(latitude);
+					coordinates += "|" + String.valueOf(latitude) + "," + String.valueOf(longitude);
+				
 			}
 		
-			public RoutingInformation calculateRoute() {
+			public de.tu_bs.cs.isf.navi.routing.RoutingInformation calculateRoute() {
 				try {
 					route = new RoutingInformation();
 					request = apiUrl + api_keyUrl + "&" + profileUrl + "&" + coordinates;
-					URL url = new URL(request);
+					URL url = new URL(request + "&geometry_format=polyline");
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 					conn.setRequestMethod("GET");
 					conn.setRequestProperty("accept", "application/json");
-		
 					if (conn.getResponseCode() != 200) {
-						return null;
+						
+						throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+		//				return null;
 					}
 		
 					BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 					String output;
-					System.out.println("Output from Server .... \n");
+		
 					while ((output = br.readLine()) != null) {
-						
-						
-						
-						
-						JSONParser p = new JSONParser();
 		
 						try {
-							JSONObject parsed = (JSONObject) p.parse(output);
+							JSONTokener t = new JSONTokener(output);
+							
+							JSONObject parsed = (JSONObject) t.nextValue();
+							
+							
 		
 							JSONArray routesArray = (JSONArray) parsed.get("routes");
 							JSONObject routes = (JSONObject) routesArray.get(0);
+							
+							
+							JSONArray polygon = (JSONArray) routes.get("geometry");
+							
+							
+							for (int i = 0; i < polygon.length(); i++) {
+								JSONArray polygonpoints = (JSONArray) polygon.get(i);
+								route.addPolygonPoint((Double) polygonpoints.get(1), (Double) polygonpoints.get(0));
+							}
+						
+							
 		
 							JSONArray segementsArray = (JSONArray) routes.get("segments");
 							JSONObject segments = (JSONObject) segementsArray.get(0);
 		
 							JSONArray stepsArray = (JSONArray) segments.get("steps");
-		
-							for (Object step : stepsArray) {
-								JSONObject JSONstep = (JSONObject) step;
+							
+							for(int i = 0; i < stepsArray.length(); i++) {
+								JSONObject JSONstep = (JSONObject) stepsArray.get(i);
 		
 								Number duration = (Number) JSONstep.get("duration");
 								Number distance = (Number) JSONstep.get("distance");
@@ -257,11 +272,11 @@ delta Routing {
 										instruction, name, type, wayPointX, wayPointY);
 								route.addStep(newInformation);
 							}
-						} catch (ParseException e) {
-							e.printStackTrace();
 						} catch (ClassCastException e) {
 							e.printStackTrace();
 						} catch (NullPointerException e) {
+							e.printStackTrace();
+						} catch (JSONException e) {
 							e.printStackTrace();
 						}
 					}
@@ -277,6 +292,7 @@ delta Routing {
 				return route;
 			}
 		}
+
 				
 	}
 	
@@ -310,32 +326,31 @@ delta Routing {
 			public void setLon(double lon) {
 				this.longi = lon;
 			}
-	
-		}	
+		}
 	}
 	
 	adds {
 		package de.tu_bs.cs.isf.navi.routing;
-		
+
 		import java.util.ArrayList;
 		import java.util.List;
 		
 		public class RoutingInformation {
 			
-			private List<RoutingStepInformation> steps;
+			private List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> steps;
 			public static RoutingInformation currentRoute;
 			private List<double[]> polygonPoints;
 			
 			public RoutingInformation() {
-				steps = new ArrayList<RoutingStepInformation>();
+				steps = new ArrayList<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation>();
 				polygonPoints = new ArrayList<double[]>();
 			}
 			
-			public void addStep(RoutingStepInformation o) {
+			public void addStep(de.tu_bs.cs.isf.navi.routing.RoutingStepInformation o) {
 				steps.add(o);
 			}
 			
-			public List<RoutingStepInformation> getRoutingInformation() {
+			public List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> getRoutingInformation() {
 				return steps;
 			}
 		
@@ -357,11 +372,12 @@ delta Routing {
 				return polygonPoints;
 			}
 		 }
+
 	}
 	
 	adds {
 		package de.tu_bs.cs.isf.navi.routing;
-		
+
 		public class RoutingStepInformation {
 			private Number duration;
 			private Number distance;
@@ -420,5 +436,6 @@ delta Routing {
 				this.type = type;
 			}
 		}
+
 	}
 }
