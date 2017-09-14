@@ -138,6 +138,12 @@ delta Favorite requires Localization{
 				this.content.removeElement(e);
 				saveFavList();
 				list.updateUI();
+				list.clearSelection();
+				try {
+					list.clearSelection();
+				} catch(Exception exept) {
+					exept.printStackTrace();
+				}
 			}
 		
 		    
@@ -165,24 +171,24 @@ delta Favorite requires Localization{
 			
 			modifies addMenu3() {
 				final de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();
-				fav.addSaveFavButton(createFavoriteButton(fav));
-				fav.list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-	
-					public void valueChanged(javax.swing.event.ListSelectionEvent e) {
-						org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(fav.list.getSelectedValue().getLat(),
-						fav.list.getSelectedValue().getLongi());
-						mapViewer.setDisplayPosition(co, 3);
-						if (GPSselect == null) {
-							GPSselect = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(co);
-							mapViewer.addMapMarker(GPSselect);
-						}
-						GPSselect.setLat(co.getLat());
-						GPSselect.setLon(co.getLon());
-						GPSlat.setText(""+co.getLat());
-						GPSlon.setText(""+co.getLon());
+					fav.addSaveFavButton(createFavoriteButton(fav));
+					fav.list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+						public void valueChanged(javax.swing.event.ListSelectionEvent e) {
+							if (fav.list.getSelectedValue() != null) {
+								org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(
+											fav.list.getSelectedValue().getLat(), fav.list.getSelectedValue().getLongi());
+								mapViewer.setDisplayPosition(co, 3);
+								if (GPSselect == null) {
+									GPSselect = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(co);
+									mapViewer.addMapMarker(GPSselect);
+								}
+								GPSselect.setLat(co.getLat());
+								GPSselect.setLon(co.getLon());
+								GPSlat.setText("" + co.getLat());
+								GPSlon.setText("" + co.getLon());
+							}
 						}
 					});
-			
 					menuPanelList.put("Favorites", fav);
 					repaint();
 				}
