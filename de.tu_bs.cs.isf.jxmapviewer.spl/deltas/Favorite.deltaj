@@ -82,6 +82,11 @@ delta Favorite requires Localization{
 			 */
 			private Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadFavList() {
 				try {
+					java.io.File f = new java.io.File("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+					if(!f.exists() && !f.isDirectory()) { 
+						java.nio.file.Path path = java.nio.file.Paths.get("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+					    java.nio.file.Files.createFile(path);
+					}
 					FileInputStream inputStream = new FileInputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
 					java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(inputStream);
 					Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadedList = (Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement>) (objectInput.readObject());
@@ -173,6 +178,8 @@ delta Favorite requires Localization{
 						}
 						GPSselect.setLat(co.getLat());
 						GPSselect.setLon(co.getLon());
+						GPSlat.setText(""+co.getLat());
+						GPSlon.setText(""+co.getLon());
 						}
 					});
 			
