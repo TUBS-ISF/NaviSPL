@@ -7,22 +7,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+
+
 
 public class RoutingCalculator {
 
 	private String coordinates = new String();
 	private String apiUrl = "https://api.openrouteservice.org/directions?";
 	private String api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
-//	private String apiUrl = "https://maps.googleapis.com/maps/api/directions/json?";
-//	private String api_keyUrl = "api_key=AIzaSyAHhxxUk--1qvRZcF6oDnZCupCauygMziE";
 	private String profileUrl = "profile=driving-car";
 	private RoutingInformation route;
 	private String request = new String();
-//	https://maps.googleapis.com/maps/api/directions/json?origin=Toronto&destination=Montreal&key=
 	
 	/**
 	 * Constructor
@@ -61,7 +61,6 @@ public class RoutingCalculator {
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("accept", "application/json");
-			System.out.println(request);
 			if (conn.getResponseCode() != 200) {
 				
 				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
@@ -72,13 +71,11 @@ public class RoutingCalculator {
 			String output;
 
 			while ((output = br.readLine()) != null) {
-				
-				JSONParser p = new JSONParser();
 
 				try {
-					JSONObject parsed = (JSONObject) p.parse(output);
+					JSONTokener t = new JSONTokener(output);
 					
-					
+					JSONObject parsed = (JSONObject) t.nextValue();
 					
 					
 
@@ -87,21 +84,22 @@ public class RoutingCalculator {
 					
 					
 					JSONArray polygon = (JSONArray) routes.get("geometry");
-					for (int i = 0; i < polygon.size(); i++) {
+					
+					
+					for (int i = 0; i < polygon.length(); i++) {
 						JSONArray polygonpoints = (JSONArray) polygon.get(i);
 						route.addPolygonPoint((Double) polygonpoints.get(1), (Double) polygonpoints.get(0));
 					}
-					
-					
+				
 					
 
 					JSONArray segementsArray = (JSONArray) routes.get("segments");
 					JSONObject segments = (JSONObject) segementsArray.get(0);
 
 					JSONArray stepsArray = (JSONArray) segments.get("steps");
-
-					for (Object step : stepsArray) {
-						JSONObject JSONstep = (JSONObject) step;
+					
+					for(int i = 0; i < stepsArray.length(); i++) {
+						JSONObject JSONstep = (JSONObject) stepsArray.get(i);
 
 						Number duration = (Number) JSONstep.get("duration");
 						Number distance = (Number) JSONstep.get("distance");
@@ -117,11 +115,11 @@ public class RoutingCalculator {
 								instruction, name, type, wayPointX, wayPointY);
 						route.addStep(newInformation);
 					}
-				} catch (ParseException e) {
-					e.printStackTrace();
 				} catch (ClassCastException e) {
 					e.printStackTrace();
 				} catch (NullPointerException e) {
+					e.printStackTrace();
+				} catch (JSONException e) {
 					e.printStackTrace();
 				}
 			}

@@ -1,7 +1,8 @@
 delta Routing {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		adds import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
+		//adds import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
 		adds import java.awt.event.ActionEvent;
@@ -89,9 +90,9 @@ delta Routing {
 	
 			});
 	
-			 JScrollPane listScroller = new JScrollPane(routingList);
-			 listScroller.setPreferredSize(new Dimension(250, 250));
-	
+			JScrollPane listScroller = new JScrollPane(routingList);
+			listScroller.setPreferredSize(new Dimension(250, 250));
+
 			// Layout
 			JPanel panel = new JPanel();
 			GridBagLayout grid = new GridBagLayout();
@@ -159,16 +160,7 @@ delta Routing {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	adds {
 		package de.tu_bs.cs.isf.navi.routing;
 
@@ -179,10 +171,10 @@ delta Routing {
 		import java.net.MalformedURLException;
 		import java.net.URL;
 		
-		import org.json.simple.JSONArray;
-		import org.json.simple.JSONObject;
-		import org.json.simple.parser.JSONParser;
-		import org.json.simple.parser.ParseException;
+		import org.json.JSONArray;
+		import org.json.JSONException;
+		import org.json.JSONObject;
+		import org.json.JSONTokener;
 		
 		public class RoutingCalculator {
 		
@@ -193,13 +185,6 @@ delta Routing {
 			private RoutingInformation route;
 			private String request = new String();
 			
-			/**
-			 * Constructor
-			 * @param latitudeStart
-			 * @param longitudeStart
-			 * @param latitudeEnd
-			 * @param longitudeEnd
-			 */
 			public RoutingCalculator(long latitudeStart, long longitudeStart, long latitudeEnd, long longitudeEnd) {
 				addCoordinates(latitudeStart, longitudeStart);
 				addCoordinates(latitudeEnd, latitudeEnd);
@@ -231,8 +216,6 @@ delta Routing {
 					conn.setRequestProperty("accept", "application/json");
 		
 					if (conn.getResponseCode() != 200) {
-		//				System.out.println(request);
-		//				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 						return null;
 					}
 		
@@ -295,5 +278,147 @@ delta Routing {
 			}
 		}
 				
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+
+		import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
+		
+		public class RoutingCoordinate implements ICoordinate {
+			
+			private double lat;
+			private double longi;
+			
+			public RoutingCoordinate(double lat, double longi) {
+				this.setLat(lat);
+				this.setLon(longi);
+			}
+			
+			public double getLat() {
+				return lat;
+			}
+		
+			public void setLat(double lat) {
+				this.lat = lat;
+			}
+		
+			public double getLon() {
+				return longi;
+			}
+		
+			public void setLon(double lon) {
+				this.longi = lon;
+			}
+	
+		}	
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+		
+		import java.util.ArrayList;
+		import java.util.List;
+		
+		public class RoutingInformation {
+			
+			private List<RoutingStepInformation> steps;
+			public static RoutingInformation currentRoute;
+			private List<double[]> polygonPoints;
+			
+			public RoutingInformation() {
+				steps = new ArrayList<RoutingStepInformation>();
+				polygonPoints = new ArrayList<double[]>();
+			}
+			
+			public void addStep(RoutingStepInformation o) {
+				steps.add(o);
+			}
+			
+			public List<RoutingStepInformation> getRoutingInformation() {
+				return steps;
+			}
+		
+			public String[] getRouteInstructions() {
+				String[] output = new String[steps.size()];
+				for(int i=0; i<output.length; i++) {
+					output[i] = steps.get(i).getInstruction();
+				}
+				
+				return output;
+			}
+			
+			public void addPolygonPoint(double latitude, double longitude) {
+				double[] add = {latitude, longitude};
+				polygonPoints.add(add);
+			}
+			
+			public List<double[]> getPolygonPoints() {
+				return polygonPoints;
+			}
+		 }
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+		
+		public class RoutingStepInformation {
+			private Number duration;
+			private Number distance;
+			private String instruction;
+			private String name;
+			private Number type;
+			private Number[] wayPoint = new Number[2];
+			
+			public RoutingStepInformation(Number duration, Number distance, String instruction, String name, Number type, Number wayPointX, Number wayPointY) {
+				this.setDuration(duration);
+				this.setDistance(distance);
+				this.setInstruction(instruction);
+				this.setName(name);
+				this.setType(type);
+				this.wayPoint[0] = wayPointX;
+				this.wayPoint[1] = wayPointY;
+			}
+		
+			public Number getDuration() {
+				return duration;
+			}
+		
+			public void setDuration(Number duration) {
+				this.duration = duration;
+			}
+		
+			public Number getDistance() {
+				return distance;
+			}
+		
+			public void setDistance(Number distance) {
+				this.distance = distance;
+			}
+		
+			public String getInstruction() {
+				return instruction;
+			}
+		
+			public void setInstruction(String instruction) {
+				this.instruction = instruction;
+			}
+		
+			public String getName() {
+				return name;
+			}
+		
+			public void setName(String name) {
+				this.name = name;
+			}
+		
+			public Number getType() {
+				return type;
+			}
+		
+			public void setType(Number type) {
+				this.type = type;
+			}
+		}
 	}
 }
