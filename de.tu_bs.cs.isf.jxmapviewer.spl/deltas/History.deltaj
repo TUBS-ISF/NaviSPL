@@ -1,7 +1,7 @@
-delta History{
+delta History requires Localization{
 	
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import java.awt.event.ActionEvent;
+		adds import java.awt.event.ActionEvent; 
 		adds import java.awt.event.ActionListener;
 		adds import java.awt.event.MouseEvent;
 		adds import java.awt.event.MouseListener;
@@ -9,37 +9,33 @@ delta History{
 		adds import java.io.FileInputStream;
 		adds import java.io.FileOutputStream;
 		adds import java.io.IOException;
-		adds import java.io.ObjectInputStream;
 		adds import java.io.ObjectOutputStream;
-		adds import java.nio.file.Files;
+	
+	
 		adds import java.nio.file.Path;
-		adds import java.nio.file.Paths;
 		adds import java.util.Vector;
 		adds import javax.swing.JButton;
 		adds import javax.swing.JList;
 		adds import javax.swing.JPanel;
-		adds import javax.swing.JScrollPane;
-		adds import javax.swing.ListSelectionModel;
-		adds import javax.swing.SwingUtilities;
+		adds import javax.swing.JScrollPane;  
 		adds import javax.swing.event.ListSelectionEvent;
 		adds import javax.swing.event.ListSelectionListener;
-
-		adds import org.openstreetmap.gui.jmapviewer.Coordinate;
+ 
 		adds import historyTest.HistoryObject;
 		
-		adds Vector<HistoryObject> historyList;
-		adds JList<HistoryObject> jListHistory;
+		adds java.util.Vector<HistoryObject> historyList;
+		adds javax.swing.JList<HistoryObject> jListHistory;
 		adds private String historyListTxtPath = "src/de/tu_bs/cs/isf/navi/History.txt";
 		
 		modifies addMenu9() {
 			jListHistory = new JList<HistoryObject>();
-			jListHistory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(-1);
 			jListHistory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 	
 				public void valueChanged(ListSelectionEvent e) {
 					if (jListHistory.getSelectedValue() != null) {
-						Coordinate co = new Coordinate(jListHistory.getSelectedValue().getStartlatitude(),
+						org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(jListHistory.getSelectedValue().getStartlatitude(),
 								jListHistory.getSelectedValue().getStartlongitude());
 	
 						mapViewer.setDisplayPosition(co, mapViewer.getZoom());
@@ -78,7 +74,7 @@ delta History{
 				}
 	
 				public void mousePressed(MouseEvent e) {
-					if (SwingUtilities.isRightMouseButton(e)) {
+					if (javax.swing.SwingUtilities.isRightMouseButton(e)) {
 						jListHistory.clearSelection();
 					}
 					
@@ -124,38 +120,26 @@ delta History{
 		
 		adds public void addLocationToHistory(double longitude, double latitude) {
 
-			HistoryObject obj = new HistoryObject(longitude, latitude);
+			HistoryObject obj = new HistoryObject(latitude, longitude);
 			historyList.add(obj);
 	
 			putHistoryItemsInList();
 			saveHistory();
 		}
-
-		adds public void addRouteToHistory(double startlongitude, double startlatitude, double endlongitude,
-			double endlatitude) {
-
-			HistoryObject obj = new HistoryObject(startlatitude, startlongitude, endlatitude, endlongitude);
-	
-			if (historyList == null)
-				historyList = new Vector<HistoryObject>();
-			historyList.add(obj);
-			saveHistory();
-		}
-
 		
 		adds private void loadHistory() {
 			try {
 				File f = new File(historyListTxtPath);
 	
 				if (!f.exists() && !f.isDirectory()) {
-					Path path = Paths.get(this.historyListTxtPath);
-					Files.createFile(path);
+					Path path = java.nio.file.Paths.get(this.historyListTxtPath);
+					java.nio.file.Files.createFile(path);
 				}
 	
 				FileInputStream is = new FileInputStream(f);
 	
 				if (is.available() > 0) {
-					ObjectInputStream objectInput = new ObjectInputStream(is);
+					java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(is);
 	
 					Vector<HistoryObject> loadedList = (Vector<HistoryObject>) (objectInput.readObject());
 					is.close();
@@ -263,13 +247,8 @@ delta History{
 			}
 		
 			public String toString() {
-				if (endlatitude == 0 || endlongitude == 0)
-					return "<html>" + timestamp.toString() + "<br>" + " Lat: " + String.valueOf(startlatitude) + " Long: "
-							+ String.valueOf(startlongitude) + "</html>";
-				else
-					return "<html>" + timestamp.toString() + "<br>" + " Startlat: " + String.valueOf(startlatitude)
-							+ " Startlong: " + String.valueOf(startlongitude) + " Endlat: " + String.valueOf(endlatitude)
-							+ " Endlong: " + String.valueOf(endlongitude) + "</html>";
+				return "<html>" + timestamp.toString() + "<br>" + " Lat: " + String.valueOf(startlatitude) + " Long: "
+							+ String.valueOf(startlongitude) + "</html>";	
 			}
 		
 		}

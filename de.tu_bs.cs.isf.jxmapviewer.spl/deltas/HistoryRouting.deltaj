@@ -1,0 +1,35 @@
+delta HistoryRouting requires History, Routing{
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		
+		adds public void addRouteToHistory(double startlongitude, double startlatitude, double endlongitude,
+		double endlatitude) {
+
+			HistoryObject obj = new HistoryObject(startlatitude, startlongitude, endlatitude, endlongitude);
+	
+			if (historyList == null)
+				historyList = new Vector<HistoryObject>();
+			historyList.add(obj);
+			saveHistory();
+		}
+		
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.HistoryObject {
+		
+		if(this.endlatitude != 0 && this.endlongitude != 0) {
+			return "<html>" + timestamp.toString() + "<br>" + " Startlat: " + String.valueOf(startlatitude)
+						+ " Startlong: " + String.valueOf(startlongitude) + " Endlat: " + String.valueOf(endlatitude)
+						+ " Endlong: " + String.valueOf(endlongitude) + "</html>";
+		}
+		original();
+
+			
+	}
+
+ 
+
+
+	
+}

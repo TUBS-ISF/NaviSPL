@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feature:DEFeatureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feature="http://deltaecore.org/feature/1.0">
+  <rootFeature minCardinality="1" maxCardinality="1" name="Core">
+    <groups minCardinality="1" maxCardinality="3">
+      <features minCardinality="1" maxCardinality="1" name="Map">
+        <groups minCardinality="1" maxCardinality="2">
+          <features minCardinality="1" maxCardinality="1" name="Localization"/>
+          <features maxCardinality="1" name="Orientation"/>
+        </groups>
+      </features>
+      <features maxCardinality="1" name="Route">
+        <groups maxCardinality="3">
+          <features maxCardinality="1" name="Favorites"/>
+          <features maxCardinality="1" name="Routecalculation"/>
+          <features maxCardinality="1" name="History"/>
+        </groups>
+      </features>
+      <features maxCardinality="1" name="Information">
+        <groups minCardinality="1" maxCardinality="5">
+          <features maxCardinality="1" name="POI">
+            <groups maxCardinality="1">
+              <features maxCardinality="1" name="LocationImages"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="Weather"/>
+          <features maxCardinality="1" name="Time"/>
+          <features maxCardinality="1" name="Speedlimit"/>
+          <features maxCardinality="1" name="Carpooling"/>
+        </groups>
+      </features>
+    </groups>
+  </rootFeature>
+</feature:DEFeatureModel>
