@@ -23,15 +23,16 @@
     <names id="_0cb53634-998a-4161-b06c-273688a05765" name="Favorites"/>
     <types id="_cc9a5f8c-06af-46e6-8ed6-fc62538695a9"/>
   </features>
-  <features validSince="2017-09-11T13:42:20.657+0200" id="_5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba">
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54">
     <names validSince="2017-09-11T13:42:20.657+0200" id="_fb18d846-c4ec-4f71-99f9-840458491219" name="Weather"/>
     <types validSince="2017-09-11T13:42:20.657+0200" id="_9c7c4339-db29-454c-bd36-6f60613b7257"/>
   </features>
-  <features validSince="2017-09-11T13:42:20.657+0200" id="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba">
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54">
     <names validSince="2017-09-11T13:42:20.657+0200" id="_dacac242-9447-40a4-900c-69a40df208d8" name="POI"/>
+    <parentOf validSince="2017-09-15T09:09:07.273+0200" id="_dc85dad9-ce07-45f0-b2cd-7b0a3c5d8dc9" childGroup="_988a93da-cc66-4d42-96ae-20a4eaaeed1c"/>
     <types validSince="2017-09-11T13:42:20.657+0200" id="_899ed280-2309-4f96-adec-eb87176fc484"/>
   </features>
-  <features validSince="2017-09-11T13:42:20.657+0200" id="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba">
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _672470f8-b035-4c15-9c19-f7a2b269038e">
     <names validSince="2017-09-11T13:42:20.657+0200" id="_291817b0-4d98-409e-8c76-8ad66217f1dc" name="LocationImages"/>
     <types validSince="2017-09-11T13:42:20.657+0200" id="_e2b1f03b-289f-47ab-ac35-fc0ad4928fa6"/>
   </features>
@@ -50,7 +51,7 @@
     <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_7a08a5c4-529c-4645-9944-4459423c279c" childGroup="_5cd1bdb8-213b-4f0e-b9f4-be8e7eda0295"/>
     <types validSince="2017-09-11T13:42:20.657+0200" id="_a0823250-8a27-4b24-be01-3931356a48e3"/>
   </features>
-  <features validSince="2017-09-12T12:00:00.000+0200" id="_14d7f285-3578-46a7-bd88-57a0ba790e40" groupMembership="_9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba">
+  <features validSince="2017-09-12T12:00:00.000+0200" id="_14d7f285-3578-46a7-bd88-57a0ba790e40" groupMembership="_9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54">
     <names validSince="2017-09-12T12:00:00.000+0200" id="_bf3775f4-af69-4310-bba0-2f2749acc94e" name="Time"/>
     <types validSince="2017-09-12T12:00:00.000+0200" id="_49ba2086-7489-4f29-bd2a-76eb59b9fef7"/>
   </features>
@@ -66,11 +67,11 @@
     <names validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_ba5a466e-9de2-4896-ad8b-78726a443284" name="Speedlimit"/>
     <types validSince="2017-09-14T12:56:23.307+0200" id="_db8da7f8-ca4e-4f49-9f25-9789326b7096"/>
   </features>
-  <features validSince="2017-09-14T12:56:23.307+0200" id="_64f311cf-bdff-4ebf-b4ec-8bc518fc36a7" groupMembership="_4371056c-dc36-4221-9f0e-6653924fc5ba">
+  <features validSince="2017-09-14T12:56:23.307+0200" id="_64f311cf-bdff-4ebf-b4ec-8bc518fc36a7" groupMembership="_4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54">
     <names validSince="2017-09-14T12:56:23.307+0200" id="_9cb33717-ee24-420d-af24-ba48d8131e1b" name="Speedlimit"/>
     <types validSince="2017-09-14T12:56:23.307+0200" id="_2902dcf0-fdf2-4b21-aacc-b4010bab10a8"/>
   </features>
-  <features validSince="2017-09-14T12:56:23.307+0200" id="_991c8f20-2a82-4b03-a35c-fc4f741e1c2d" groupMembership="_4371056c-dc36-4221-9f0e-6653924fc5ba">
+  <features validSince="2017-09-14T12:56:23.307+0200" id="_991c8f20-2a82-4b03-a35c-fc4f741e1c2d" groupMembership="_4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54">
     <names validSince="2017-09-14T12:56:23.307+0200" id="_810e0c70-d5af-4098-af3a-3bb5f9bad821" name="Carpooling"/>
     <types validSince="2017-09-14T12:56:23.307+0200" id="_47d312fb-ac79-4c3f-8e0a-91601bf33226"/>
   </features>
@@ -103,9 +104,14 @@
   <groups validSince="2017-09-11T13:42:20.657+0200" id="_5cd1bdb8-213b-4f0e-b9f4-be8e7eda0295" childOf="_7a08a5c4-529c-4645-9944-4459423c279c">
     <parentOf validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-12T12:00:00.000+0200" id="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31" supersedingElement="_9572ca4c-d321-4517-9f72-12141819c5bd" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5"/>
     <parentOf validSince="2017-09-12T12:00:00.000+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_9572ca4c-d321-4517-9f72-12141819c5bd" supersedingElement="_4371056c-dc36-4221-9f0e-6653924fc5ba" supersededElement="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40"/>
-    <parentOf validSince="2017-09-14T12:56:23.307+0200" id="_4371056c-dc36-4221-9f0e-6653924fc5ba" supersededElement="_9572ca4c-d321-4517-9f72-12141819c5bd" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40 _64f311cf-bdff-4ebf-b4ec-8bc518fc36a7 _991c8f20-2a82-4b03-a35c-fc4f741e1c2d"/>
+    <parentOf validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-15T09:09:07.273+0200" id="_4371056c-dc36-4221-9f0e-6653924fc5ba" supersedingElement="_aefe8613-6e32-4189-bb89-497c13695d54" supersededElement="_9572ca4c-d321-4517-9f72-12141819c5bd" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40 _64f311cf-bdff-4ebf-b4ec-8bc518fc36a7 _991c8f20-2a82-4b03-a35c-fc4f741e1c2d"/>
+    <parentOf validSince="2017-09-15T09:09:07.273+0200" id="_aefe8613-6e32-4189-bb89-497c13695d54" supersededElement="_4371056c-dc36-4221-9f0e-6653924fc5ba" features="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40 _64f311cf-bdff-4ebf-b4ec-8bc518fc36a7 _991c8f20-2a82-4b03-a35c-fc4f741e1c2d"/>
     <types validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-12T12:00:00.000+0200" id="_39cf381b-3324-4b65-9dc5-e732ca03b2fa"/>
     <types validSince="2017-09-12T12:00:00.000+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_525f53f6-e9ec-47c1-bc35-e1a186155174" type="OR"/>
     <types validSince="2017-09-14T12:56:23.307+0200" id="_e97fc235-625a-4da4-90c6-abdd9a79f12e" type="OR"/>
+  </groups>
+  <groups validSince="2017-09-15T09:09:07.273+0200" id="_988a93da-cc66-4d42-96ae-20a4eaaeed1c" childOf="_dc85dad9-ce07-45f0-b2cd-7b0a3c5d8dc9">
+    <parentOf validSince="2017-09-15T09:09:07.273+0200" id="_672470f8-b035-4c15-9c19-f7a2b269038e" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a"/>
+    <types validSince="2017-09-15T09:09:07.273+0200" id="_456ff069-af47-4638-8e90-ec924ebcd171"/>
   </groups>
 </feature:HyFeatureModel>
