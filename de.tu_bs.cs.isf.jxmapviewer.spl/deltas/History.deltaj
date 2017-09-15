@@ -120,7 +120,7 @@ delta History{
 	
 			menuPanelList.put("History", panel);
 			
-		}
+		} 
 		
 		adds public void addLocationToHistory(double longitude, double latitude) {
 
