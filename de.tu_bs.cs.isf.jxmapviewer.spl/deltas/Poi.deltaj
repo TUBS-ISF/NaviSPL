@@ -142,9 +142,12 @@ delta Poi requires Localization {
 				
 				org.json.JSONTokener t = new org.json.JSONTokener(all);									
 				org.json.JSONObject parsed = (org.json.JSONObject) t.nextValue();
-				
+					
 				String status =  parsed.getString("status");
-				System.out.println("POI Status: " + status);
+				
+				if (!(status.equals("OK"))){ 
+					System.out.println("POI Status: " + status);			
+				}
 				
 				org.json.JSONArray resultArray = (org.json.JSONArray) parsed.get("results");
 				
