@@ -1,0 +1,9 @@
+delta SpeedLimit{
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		modifies addMenu10() {
+			menuPanelList.put("Speedlimit", new SpeedLimit());
+		}
+		
+}
