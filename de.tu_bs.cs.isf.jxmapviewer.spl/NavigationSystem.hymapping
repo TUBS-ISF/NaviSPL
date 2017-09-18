@@ -1,6 +1,9 @@
 "Localization":
 <decore/Localization.decore> [2017/09/11 - eternity]
 
+"Routecalculation":
+<decore/Routing.decore> [2017/09/11 - eternity]
+
 "Favorites":
 <decore/Favorite.decore> [2017/09/11 - eternity]
 
@@ -9,3 +12,4 @@
 
 "POI":
 <decore/Poi.decore>  [2017/09/12 - eternity]
+
