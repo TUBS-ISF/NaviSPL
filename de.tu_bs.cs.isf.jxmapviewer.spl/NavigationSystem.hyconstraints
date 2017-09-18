@@ -1,3 +1,3 @@
-context:Location = enum:LocationEnum.Germany -> "24Hours"
-context:Location = enum:LocationEnum.France -> "24Hours"
-context:Location = enum:LocationEnum.GB -> "12Hours"
+context:Location = enum:LocationEnum.Germany -> H24 [2017/09/13 - eternity]
+context:Location = enum:LocationEnum.France -> H24 [2017/09/13 - eternity]
+context:Location = enum:LocationEnum.GB -> H12 [2017/09/13 - eternity]

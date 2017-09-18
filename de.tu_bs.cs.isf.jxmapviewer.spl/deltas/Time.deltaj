@@ -1,4 +1,4 @@
-delta Time {
+delta Time requires Localization {
 
 	
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
@@ -6,6 +6,10 @@ delta Time {
 		adds import javax.swing.BoxLayout;
 		adds import javax.swing.JPanel;
 		adds import java.awt.Font;
+		adds import java.text.SimpleDateFormat;
+		adds import java.util.Calendar;
+		adds import com.skedgo.converter.TimezoneMapper;
+		adds import java.util.TimeZone;
 	
 		adds public String getTime(double latitude, double longitude) {
 			SimpleDateFormat dateFormat = new SimpleDateFormat();
@@ -13,12 +17,7 @@ delta Time {
 			Calendar cal = Calendar.getInstance();
 			cal.add(Calendar.DATE, 0);
 
-			if (is24Hours) {
-				dateFormat.applyLocalizedPattern("H:mm");
-			} else {
-				dateFormat.applyLocalizedPattern("h:mm a");
-			}
-
+			setLocalizedPattern(dateFormat);
 			return dateFormat.format(cal.getTime());
 		}
 		
@@ -31,8 +30,8 @@ delta Time {
 			timePane.setLayout(new BoxLayout(timePane, BoxLayout.PAGE_AXIS));
 			
 			
-			JLabel time = new JLabel();
-			time.setFont(temperature.getFont().deriveFont(15.0f));
+			final JLabel time = new JLabel();
+			time.setFont(time.getFont().deriveFont(15.0f));
 			timePane.add(time);
 
 			timePane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
@@ -43,7 +42,7 @@ delta Time {
 			        
 			        java.awt.Point point = e.getPoint();
 			        org.openstreetmap.gui.jmapviewer.Coordinate co = (org.openstreetmap.gui.jmapviewer.Coordinate) mapViewer.getPosition(point);
-				time.setText(getTime(co.getLat(),co.getLon()));
+					time.setText(getTime(co.getLat(),co.getLon()));
 					
 				}	
 				
@@ -62,6 +61,8 @@ delta Time {
 		
 		}
 	 
-	
+	 	adds private void setLocalizedPattern(java.text.SimpleDateFormat dateFormat) {
+		
+		}
 	}
 }
