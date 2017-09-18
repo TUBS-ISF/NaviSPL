@@ -1,5 +1,5 @@
 
-delta Weather {
+delta Weather requires Localization {
 
 	
 	modifies de.tu_bs.cs.isf.navi.NaviApp {

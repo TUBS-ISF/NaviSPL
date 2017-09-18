@@ -1,0 +1,10 @@
+- How did you evolve the feature model?
+	Added following features to the model: Navigation, Suggestions, Routedistance, RemainingDistance, TravelTime, RemainingTravelTime, Wind, 
+	H12, H24
+
+- Why did you evolve the feature model (in this way)?
+	1. Use of contextual restraints is encouraged. 
+	The actual restraints will be added later, when the feature is done, because without 
+	the feature they block the generation of the Variant.
+	
+	2. Route is an abstract feature. 
