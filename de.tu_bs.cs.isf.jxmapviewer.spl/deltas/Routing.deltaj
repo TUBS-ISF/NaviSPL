@@ -1,4 +1,4 @@
-delta Routing {
+delta Routing requires Localization {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		adds import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
@@ -19,6 +19,9 @@ delta Routing {
 		adds import java.awt.GridBagLayout;
 		adds import java.awt.Insets;
 		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		
+		adds import java.awt.BasicStroke;
+		adds import java.awt.Color;
 		
 		
 	
@@ -42,6 +45,12 @@ delta Routing {
 			
 			mapViewer.removeMapPolygon(readyPolygon);
 			readyPolygon = new MapPolygonImpl(way);
+						
+			float dash1[] = {10.0f};
+			BasicStroke asd = new BasicStroke(10.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1, 0.0f);
+			
+			readyPolygon.getStyle().setStroke(asd);
+			
 			mapViewer.addMapPolygon(readyPolygon);
 			mapViewer.repaint();
 		}
