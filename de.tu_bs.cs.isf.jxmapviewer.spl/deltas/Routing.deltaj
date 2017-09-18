@@ -5,6 +5,7 @@ delta Routing {
 		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
+		adds import de.tu_bs.cs.isf.navi.routing.RoutingCoordinate;
 		adds import java.awt.event.ActionEvent;
 		adds import java.awt.event.ActionListener;
 		adds import java.awt.Insets;
@@ -12,18 +13,37 @@ delta Routing {
 		adds import javax.swing.JScrollPane;
 		adds import javax.swing.ListSelectionModel;
 		adds import javax.swing.JTextField;
+		adds import javax.swing.JButton;
 		adds import javax.swing.JPanel;
+		adds import java.awt.GridBagConstraints;
+		adds import java.awt.GridBagLayout;
+		adds import java.awt.Insets;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		
+		
+	
+		
 	
 		adds private de.tu_bs.cs.isf.navi.routing.RoutingInformation routingInformation;
+		adds private org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon readyPolygon;
+		
 		
 		adds private void paintRoute() {
 			if (routingInformation.getRoutingInformation().size() <= 1)
 				return;
+			List<double[]> polygon = routingInformation.getPolygonPoints();
+			RoutingCoordinate[] way = new RoutingCoordinate[polygon.size() * 2];
+			for (int i = 0; i < polygon.size(); i++) {
+				way[i] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
+			}
+			for (int i = polygon.size() - 1; i >= 0; i--) {
+				way[polygon.size() * 2 - i - 1] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
+			}
 			
-			MapMarkerDot m1 = new MapMarkerDot(8.34234, 48.23424);
-			mapViewer.addMapMarker(m1);
-			MapMarkerDot m2 = new MapMarkerDot(8.34423, 48.26424);
-			mapViewer.addMapMarker(m2);
+			mapViewer.removeMapPolygon(readyPolygon);
+			readyPolygon = new MapPolygonImpl(way);
+			mapViewer.addMapPolygon(readyPolygon);
+			mapViewer.repaint();
 		}
 		
 		modifies addMenu1() {
@@ -33,18 +53,20 @@ delta Routing {
 			
 			final JTextField startLatitude = new JTextField();
 			startLatitude.setText("52.27111");
-			final JTextField startLongitude = new JTextField();
+			final javax.swing.JTextField startLongitude = new javax.swing.JTextField();
 			startLongitude.setText("10.53111");
 			JButton getStartCoords = new JButton("GetStart");
 			getStartCoords.addActionListener(new ActionListener() {
 	
 				public void actionPerformed(ActionEvent e) {
-					MapMarkerDot m = GPSselect;
+					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = GPSselect;
 					startLatitude.setText(String.valueOf(m.getLat()));
 					startLongitude.setText(String.valueOf(m.getLon()));
 				}
 				
+				
 			});
+			
 			
 			
 			
@@ -56,7 +78,7 @@ delta Routing {
 			getEndCoords.addActionListener(new ActionListener() {
 	
 				public void actionPerformed(ActionEvent e) {
-					MapMarkerDot m = GPSselect;
+					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = GPSselect;
 					endLatitude.setText(String.valueOf(m.getLat()));
 					endLongitude.setText(String.valueOf(m.getLon()));
 				}
@@ -64,8 +86,7 @@ delta Routing {
 			});
 			
 			
-			String[] test = {"Test", "Scroll"};
-			final JList<String> routingList = new JList<String>(test);
+			final JList<String> routingList = new JList<String>();
 			routingList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 			routingList.setLayoutOrientation(JList.VERTICAL);
 			routingList.setVisibleRowCount(-1);
@@ -83,7 +104,7 @@ delta Routing {
 						routingList.setListData(routingInformation.getRouteInstructions());
 						paintRoute();
 					} else {
-						String[] gehtNicht = new String[] {"Route kann nicht berechnet werden"};
+						String[] gehtNicht = new String[] {"Route can not be calculated"};
 						routingList.setListData(gehtNicht);
 					}
 				}
@@ -93,7 +114,7 @@ delta Routing {
 			JScrollPane listScroller = new JScrollPane(routingList);
 			listScroller.setPreferredSize(new Dimension(250, 250));
 
-			// Layout
+			
 			JPanel panel = new JPanel();
 			GridBagLayout grid = new GridBagLayout();
 	
@@ -179,20 +200,30 @@ delta Routing {
 
 		public class RoutingCalculator {
 		
-			private String coordinates = new String();
-			private String apiUrl = "https://api.openrouteservice.org/directions?";
-			private String api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
-			private String profileUrl = "profile=driving-car";
+			private String coordinates;
+			private String apiUrl;
+			private String api_keyUrl;
+			private String profileUrl;
 			private de.tu_bs.cs.isf.navi.routing.RoutingInformation route;
-			private String request = new String();
+			private String request;
 			
 			public RoutingCalculator(long latitudeStart, long longitudeStart, long latitudeEnd, long longitudeEnd) {
+				coordinates = new String();
+				apiUrl = "https://api.openrouteservice.org/directions?";
+				api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
+				profileUrl = "profile=driving-car";
+				request = new String();
 				addCoordinates(latitudeStart, longitudeStart);
 				addCoordinates(latitudeEnd, longitudeEnd);
 			}
 			
-			public RoutingCalcuator(String latitudeStart, String longitudeStart, String latitudeEnd, String longitudeEnd) {
+			public RoutingCalculator(String latitudeStart, String longitudeStart, String latitudeEnd, String longitudeEnd) {
 				try {
+					coordinates = new String();
+					apiUrl = "https://api.openrouteservice.org/directions?";
+					api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
+					profileUrl = "profile=driving-car";
+					request = new String();
 					addCoordinates(Double.parseDouble(latitudeStart), Double.parseDouble(longitudeStart));
 					addCoordinates(Double.parseDouble(latitudeEnd), Double.parseDouble(longitudeEnd));
 				} catch(NumberFormatException e) {
@@ -210,7 +241,7 @@ delta Routing {
 		
 			public de.tu_bs.cs.isf.navi.routing.RoutingInformation calculateRoute() {
 				try {
-					route = new RoutingInformation();
+					route = new de.tu_bs.cs.isf.navi.routing.RoutingInformation();
 					request = apiUrl + api_keyUrl + "&" + profileUrl + "&" + coordinates;
 					URL url = new URL(request + "&geometry_format=polyline");
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -219,7 +250,6 @@ delta Routing {
 					if (conn.getResponseCode() != 200) {
 						
 						throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-		//				return null;
 					}
 		
 					BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
@@ -264,7 +294,7 @@ delta Routing {
 								Number wayPointX = (Number) wayPointArray.get(0);
 								Number wayPointY = (Number) wayPointArray.get(1);
 		
-								RoutingStepInformation newInformation = new RoutingStepInformation(duration, distance,
+								de.tu_bs.cs.isf.navi.routing.RoutingStepInformation newInformation = new de.tu_bs.cs.isf.navi.routing.RoutingStepInformation(duration, distance,
 										instruction, name, type, wayPointX, wayPointY);
 								route.addStep(newInformation);
 							}
@@ -377,9 +407,10 @@ delta Routing {
 			private String instruction;
 			private String name;
 			private Number type;
-			private Number[] wayPoint = new Number[2];
+			private Number[] wayPoint;
 			
 			public RoutingStepInformation(Number duration, Number distance, String instruction, String name, Number type, Number wayPointX, Number wayPointY) {
+				wayPoint = new Number[2];
 				this.setDuration(duration);
 				this.setDistance(distance);
 				this.setInstruction(instruction);
