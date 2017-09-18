@@ -53,6 +53,7 @@
   </features>
   <features validSince="2017-09-12T12:00:00.000+0200" id="_14d7f285-3578-46a7-bd88-57a0ba790e40" groupMembership="_9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54">
     <names validSince="2017-09-12T12:00:00.000+0200" id="_bf3775f4-af69-4310-bba0-2f2749acc94e" name="Time"/>
+    <parentOf validSince="2017-09-13T13:56:33.064+0200" id="_bdb00163-30b7-4b2c-b483-077819418cb8" childGroup="_fab63205-bd5f-492e-8ab4-b9b3d9315f01"/>
     <types validSince="2017-09-12T12:00:00.000+0200" id="_49ba2086-7489-4f29-bd2a-76eb59b9fef7"/>
   </features>
   <features validSince="2017-09-14T12:56:23.307+0200" id="_91939f32-64e6-468c-863b-bfe426c58ff1" groupMembership="_4de45860-14c4-41da-a69c-1363881f4ff1">
@@ -135,5 +136,9 @@
   <groups validSince="2017-09-18T10:26:22.406+0200" id="_61382a45-b077-42ba-bcaa-ecb06da0dca5" childOf="_29f0a0a9-ecc0-47c2-8d07-dad4d86050f3">
     <parentOf validSince="2017-09-18T10:26:22.406+0200" id="_5eb64968-83e9-4789-9413-59a59127d34c" features="_db435b50-fdd4-49c3-a23f-ca34c4ddfe69 _920453d7-8714-4be9-b3b4-7b41ff5ee81b _900acd67-d557-498d-8993-0832126359ed"/>
     <types validSince="2017-09-18T10:26:22.406+0200" id="_7f12eefe-28eb-43fd-9457-283ec403f244" type="ALTERNATIVE"/>
+  </groups>
+  <groups validSince="2017-09-13T13:56:33.064+0200" id="_fab63205-bd5f-492e-8ab4-b9b3d9315f01" childOf="_bdb00163-30b7-4b2c-b483-077819418cb8">
+    <parentOf validSince="2017-09-13T13:56:33.064+0200" id="_62d5f878-83cb-44ac-9ef6-9f82266e2fb4" features="_4eafaf0e-dc01-47a3-a2f1-f59149852c6d _6b55e78a-58a7-4622-aa23-e0535c8fb7e2"/>
+    <types validSince="2017-09-13T13:56:33.064+0200" id="_0ec46bd7-1cc9-4905-9310-a61aed83eef3" type="ALTERNATIVE"/>
   </groups>
 </feature:HyFeatureModel>
