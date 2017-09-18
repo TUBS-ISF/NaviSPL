@@ -1,0 +1,7 @@
+- How did you evolve the feature model?
+Added new Features History, Speedlimit and Carpooling.
+
+
+- Why did you evolve the feature model (in this way)?
+History is most usefull when combined with Routes.
+Speedlimit and Carpooling offer additional Informations. 
