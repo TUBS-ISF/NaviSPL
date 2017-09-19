@@ -30,6 +30,7 @@ delta BusStopsNearby requires Localization {
 		adds protected javax.swing.JSlider busSlider;
 		
 		modifies addMenu12() {
+		original();
 			busStopList = new ArrayList<BusElement>();
 			createBusMenu();
 			mapViewer.addMouseListener(new MouseListener() {

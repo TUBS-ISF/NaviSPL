@@ -1,4 +1,4 @@
-delta PedestrianZoom {
+delta GreaterZoom {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		modifies setupMap() {
 			mapViewer = new JMapViewer();
