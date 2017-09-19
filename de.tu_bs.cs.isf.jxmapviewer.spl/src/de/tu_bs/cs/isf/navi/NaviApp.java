@@ -4,41 +4,14 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.HashMap;
-import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
-
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
-import org.openstreetmap.gui.jmapviewer.Layer;
-import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 
 import com.gg.slider.SideBar;
 import com.gg.slider.SidebarSection;
-
-
-
-
-/* ROUTING */
-import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
-import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
-
-import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
-import de.tu_bs.cs.isf.navi.routing.RoutingCoordinate;
-import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.Insets;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.JTextField;
-import javax.swing.JPanel;
-
-
-
 import com.gg.slider.SideBar.SideBarMode;
 
 @SuppressWarnings("serial")
@@ -60,7 +33,7 @@ public class NaviApp extends JFrame {
 
 	public NaviApp() {
 		super("Navigation System " + VERSION);
-		
+
 		setupWindow();
 		setupGUI();
 
@@ -131,7 +104,6 @@ public class NaviApp extends JFrame {
 
 	public void addMenu1() {
 	}
-	
 
 	public void addMenu2() {
 	}

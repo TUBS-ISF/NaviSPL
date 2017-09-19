@@ -5,6 +5,7 @@ delta Time requires Localization {
 		adds import javax.swing.BorderFactory;
 		adds import javax.swing.BoxLayout;
 		adds import javax.swing.JPanel;
+		adds import javax.swing.JLabel;
 		adds import java.awt.Font;
 		adds import java.text.SimpleDateFormat;
 		adds import java.util.Calendar;
@@ -30,7 +31,7 @@ delta Time requires Localization {
 			timePane.setLayout(new BoxLayout(timePane, BoxLayout.PAGE_AXIS));
 			
 			
-			final JLabel time = new JLabel();
+			final javax.swing.JLabel time = new javax.swing.JLabel();
 			time.setFont(time.getFont().deriveFont(15.0f));
 			timePane.add(time);
 

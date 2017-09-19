@@ -1,0 +1,49 @@
+delta Taxi requires Localization {
+modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import org.json.JSONException;
+		adds import net.aksingh.owmjapis.CurrentWeather;
+		adds import net.aksingh.owmjapis.OpenWeatherMap;
+		adds import net.aksingh.owmjapis.OpenWeatherMap.Units;
+		adds import javax.swing.BorderFactory;
+		adds import javax.swing.BoxLayout;
+		adds import javax.swing.JPanel;
+		adds import java.awt.Font;
+		adds import javax.swing.JButton;
+		adds import javax.swing.JOptionPane;
+
+		modifies addMenu12() {
+			menuPanelList.put("Taxi", addTaxi());
+		}
+		
+		adds private javax.swing.JPanel addTaxi() {		
+			JPanel taxiPane = new JPanel();
+			taxiPane.setLayout(new BoxLayout(taxiPane, BoxLayout.PAGE_AXIS));
+			
+			final JButton callTaxi = new JButton("Call Taxi");
+			callTaxi.setFont(callTaxi.getFont().deriveFont(15.0f));
+			callTaxi.addActionListener(new java.awt.event.ActionListener() {
+		
+					public void actionPerformed(java.awt.event.ActionEvent e) {
+						Object[] options = {"Yes, please",
+				                    "No, thanks"};
+						JOptionPane.showOptionDialog(NaviApp.this,
+				    		"Do you really want to do this?",
+				   			"MyTaxi24.de",
+				    		JOptionPane.YES_NO_OPTION,
+				    		JOptionPane.QUESTION_MESSAGE,
+				    		null,
+				    		options,
+				    		options[1]);
+						}
+				});
+			
+			taxiPane.add(callTaxi);
+			taxiPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+			
+			return taxiPane;
+		
+		}
+	 
+	
+	}
+}
