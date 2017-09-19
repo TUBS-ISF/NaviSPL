@@ -220,7 +220,7 @@ delta Routing requires Localization {
 				coordinates = new String();
 				apiUrl = "https://api.openrouteservice.org/directions?";
 				api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
-				profileUrl = "profile=driving-car";
+				profileUrl = getProfile();
 				request = new String();
 				addCoordinates(latitudeStart, longitudeStart);
 				addCoordinates(latitudeEnd, longitudeEnd);
@@ -231,13 +231,17 @@ delta Routing requires Localization {
 					coordinates = new String();
 					apiUrl = "https://api.openrouteservice.org/directions?";
 					api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
-					profileUrl = "profile=driving-car";
+					profileUrl = getProfile();
 					request = new String();
 					addCoordinates(Double.parseDouble(latitudeStart), Double.parseDouble(longitudeStart));
 					addCoordinates(Double.parseDouble(latitudeEnd), Double.parseDouble(longitudeEnd));
 				} catch(NumberFormatException e) {
 					e.printStackTrace();
 				}
+			}
+			
+			public String getProfile() {
+				return "profile=driving-car";
 			}
 			
 			private void addCoordinates(double longitude, double latitude) {
