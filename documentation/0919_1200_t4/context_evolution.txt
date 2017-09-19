@@ -1,0 +1,6 @@
+- How did you evolve the context model?
+	 Added constraint for new feature "RouteHistory" -> "Routecalculation"
+
+
+- Why did you evolve the context model (in this way)?
+	Added RouteHistory feature requires implementation of Routecalculation in addition to History to work.

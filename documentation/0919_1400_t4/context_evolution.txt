@@ -1,0 +1,7 @@
+- How did you evolve the context model?
+	Added new context enum for current vehicle mode 
+	(currently car and pedestrian)
+
+- Why did you evolve the context model (in this way)?
+	New context information to chose between vehicle modes 
+	requires a new context enum.

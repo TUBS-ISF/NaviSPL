@@ -1,0 +1,6 @@
+- How did you evolve the feature model?
+i added a constraint to it
+
+
+- Why did you evolve the feature model (in this way)?
+Feature Orientation maps wrongfully pixels to coordinates and as LocationImages requires the JMapViewer.getMapPostion() function, both cannot be selected at the same time.

@@ -1,0 +1,19 @@
+- How did you evolve the feature model and the constraints?
+	1. Added StandardZoom feature under map.
+	2. moved Navigation under Route.
+	3. Moved RouteDistance and dependent features under Navigation.
+	4. Created alternative group under Routecalculation containing 
+		vehicle modes "Car" and "Pedestrian".
+	5. Created new subgroup "Services" under Core containing 
+		at least one of either "Carpooling" and "Taxi".
+	6. Added feature "BusStops" under Information.
+
+- Why did you evolve the feature model (in this way)?
+	1. Requirement for Pedestrian
+	2. Features Car and Pedestrian refine Routecalculation. 
+		Navigation only has Routecalculation as a constraint.
+	3. Distance and dependent features require Navigation.
+	4. To adapt the vehicle context, we need a feature for each 
+		EnumLiteral, because they effect the route calculation.
+	5. Carpooling and Taxi are not Information and deserve their own subgroup.
+	6. Requirement for Pedestrian.
