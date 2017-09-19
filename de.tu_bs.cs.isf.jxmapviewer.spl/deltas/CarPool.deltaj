@@ -1,0 +1,598 @@
+delta CarPool{
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		adds import java.awt.Dimension;
+		adds import java.awt.GridBagConstraints;
+		adds import java.awt.GridBagLayout;
+		adds import java.awt.event.ActionEvent;
+		adds import java.awt.event.ActionListener;
+		adds import java.awt.event.FocusEvent;
+		adds import java.awt.event.FocusListener;
+		adds import java.awt.event.MouseEvent;
+		adds import java.awt.event.MouseListener;
+		adds import java.io.File;
+		adds import java.io.FileInputStream;
+		adds import java.io.FileOutputStream;
+		adds import java.io.IOException;
+		adds import java.io.ObjectOutputStream;
+		adds import java.nio.file.Path;
+		adds import java.util.HashMap;
+		adds import java.util.Vector;
+	
+		adds import de.tu_bs.cs.isf.navi.carpool.CarPoolResult;
+		adds import javax.swing.JButton;
+		adds import javax.swing.JFrame;
+		adds import javax.swing.JLabel;
+		adds import javax.swing.JList;
+		adds import javax.swing.JPanel;
+		adds import javax.swing.JTextField;
+		adds import javax.swing.JScrollPane;
+	
+		adds boolean isStartSelected;
+		adds boolean isEndSelected;
+		adds private String carPoolTxtPath;
+		adds private java.util.Vector<de.tu_bs.cs.isf.navi.carpool.CarPoolResult> carPoolList;
+		adds private javax.swing.JList<de.tu_bs.cs.isf.navi.carpool.CarPoolResult> jListCarPoolResult;
+	
+		modifies addMenu11() {
+		
+			carPoolTxtPath = "src/CarPool.txt";
+			
+			carPoolList = new Vector<CarPoolResult>();
+			JPanel pane = new JPanel();
+			JButton btnSearchPassenger = new JButton("Search Passenger");
+			JButton btnSearchDriver = new JButton("Search Driver");
+			JButton btnDelete = new JButton("Delete Selection");
+			JLabel startLabel = new JLabel("Start:");
+			JLabel endLabel = new JLabel("End:");
+			JLabel nameLabel = new JLabel("Name:");
+			JLabel sizeLabel = new JLabel("Plätze:");
+			JLabel contactLabel = new JLabel("Tel.:");
+			JLabel dateLabel = new JLabel("Date:");
+	
+			JTextField dateTF = new JTextField("dd/mm/yyyy");
+			JTextField timeTF = new JTextField("hrs:mins");
+			JTextField nameTF = new JTextField();
+			JTextField sizeTF = new JTextField();
+			JTextField contactTF = new JTextField();
+			JTextField startLat = new JTextField();
+			JTextField startLong = new JTextField();
+			JTextField endLat = new JTextField();
+			JTextField endLong = new JTextField();
+	
+			btnSearchPassenger.addActionListener(new ActionListener() {
+	
+				
+				public void actionPerformed(ActionEvent e) {
+	
+					String name = nameTF.getText();
+					String size = sizeTF.getText();
+					String contact = contactTF.getText();
+					String startLatitude = startLat.getText();
+					String startLongitude = startLong.getText();
+					String endLatitude = endLat.getText();
+					String endLongitude = endLong.getText();
+	
+					String date = dateTF.getText();
+					String time = timeTF.getText();
+	
+					String syear = date.substring(6, 10);
+					String smonth = date.substring(3, 5);
+					String sday = date.substring(0, 2);
+	
+					String shour = time.substring(0, 2);
+					String smin = time.substring(3, 5);
+					
+	
+					int year, month, day, hour, min;
+	
+	
+	
+					if (name == null || size == null || contact == null || startLatitude == null || startLongitude == null
+							|| endLatitude == null || endLongitude == null || sday == null || smonth == null || syear == null
+							|| shour == null || smin == null)
+						return;
+					
+					try {
+						day = Integer.parseInt(sday);
+						month = Integer.parseInt(smonth);
+						year = Integer.parseInt(syear);
+		
+						hour = Integer.parseInt(shour);
+						min = Integer.parseInt(smin);
+					} catch (NumberFormatException ee) {
+						return;
+					}
+	
+					CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), contact);
+					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
+	
+					obj.setDate(year, month, day, hour, min);
+					carPoolList.add(obj);
+					saveCarPoolResults();
+					putCarPoolItemsInList();
+	
+				}
+	
+			});
+	
+			btnSearchDriver.addActionListener(new ActionListener() {
+	
+				
+				public void actionPerformed(ActionEvent e) {
+					String name = nameTF.getText();
+					String size = sizeTF.getText();
+					String contact = contactTF.getText();
+					String startLatitude = startLat.getText();
+					String startLongitude = startLong.getText();
+					String endLatitude = endLat.getText();
+					String endLongitude = endLong.getText();
+	
+					String date = dateTF.getText();
+					String time = timeTF.getText();
+	
+					String syear = date.substring(6, 10);
+					String smonth = date.substring(3, 5);
+					String sday = date.substring(0, 2);
+	
+					String shour = time.substring(0, 2);
+					String smin = time.substring(3, 5);
+					
+	
+					int year, month, day, hour, min;
+	
+	
+	
+					if (name == null || size == null || contact == null || startLatitude == null || startLongitude == null
+							|| endLatitude == null || endLongitude == null || sday == null || smonth == null || syear == null
+							|| shour == null || smin == null)
+						return;
+					
+					try {
+						day = Integer.parseInt(sday);
+						month = Integer.parseInt(smonth);
+						year = Integer.parseInt(syear);
+		
+						hour = Integer.parseInt(shour);
+						min = Integer.parseInt(smin);
+					} catch (NumberFormatException ee) {
+						return;
+					}
+	
+					CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), contact);
+					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
+	
+					obj.setDate(year, month, day, hour, min);
+					carPoolList.add(obj);
+					saveCarPoolResults();
+					putCarPoolItemsInList();
+				}
+	
+			});
+	
+			btnDelete.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent e) {
+					carPoolList.removeElement(jListCarPoolResult.getSelectedValue());
+					saveCarPoolResults();
+					putCarPoolItemsInList();
+				}
+	
+			});
+	
+			jListCarPoolResult = new JList<CarPoolResult>();
+			jListCarPoolResult.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+			jListCarPoolResult.setVisibleRowCount(-1);
+	
+			JScrollPane carPoolScroll = new JScrollPane(jListCarPoolResult);
+	
+			carPoolScroll.setPreferredSize(new Dimension(250, 250));
+			GridBagLayout grid = new GridBagLayout();
+			pane.setLayout(grid);
+			pane.add(startLat);
+			pane.add(startLong);
+			pane.add(endLat);
+			pane.add(endLong);
+			pane.add(btnSearchPassenger);
+			pane.add(btnSearchDriver);
+			pane.add(carPoolScroll);
+			pane.add(startLabel);
+			pane.add(endLabel);
+			pane.add(nameLabel);
+			pane.add(sizeLabel);
+			pane.add(contactLabel);
+			pane.add(nameTF);
+			pane.add(contactTF);
+			pane.add(sizeTF);
+			pane.add(btnDelete);
+			pane.add(dateTF);
+			pane.add(timeTF);
+			pane.add(dateLabel);
+	
+			FocusListener startListener = new FocusListener() {
+	
+				public void focusGained(FocusEvent e) {
+					isStartSelected = Boolean.TRUE;
+				}
+	
+				public void focusLost(FocusEvent e) {
+					isStartSelected = Boolean.FALSE;
+				}
+	
+			};
+	
+			FocusListener endListener = new FocusListener() {
+	
+				public void focusGained(FocusEvent e) {
+					isEndSelected = Boolean.TRUE;
+				}
+	
+				public void focusLost(FocusEvent e) {
+					isEndSelected = Boolean.FALSE;
+				}
+	
+			};
+	
+			startLat.addFocusListener(startListener);
+	
+			startLong.addFocusListener(startListener);
+	
+			endLat.addFocusListener(endListener);
+	
+			endLong.addFocusListener(endListener);
+	
+			GridBagConstraints con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 0;
+			grid.addLayoutComponent(startLabel, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 1;
+			grid.addLayoutComponent(endLabel, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 0;
+			con.fill = 2;
+			grid.addLayoutComponent(startLat, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 2;
+			con.gridy = 0;
+			con.fill = 2;
+			grid.addLayoutComponent(startLong, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(endLat, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 2;
+			con.gridy = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(endLong, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 6;
+			con.fill = 2;
+			grid.addLayoutComponent(btnSearchPassenger, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 2;
+			con.gridy = 6;
+			con.fill = 2;
+			grid.addLayoutComponent(btnSearchDriver, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 7;
+			con.gridwidth = 2;
+			con.fill = 2;
+			grid.addLayoutComponent(carPoolScroll, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 2;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(nameLabel, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 2;
+			con.gridwidth = 2;
+			con.fill = 2;
+			grid.addLayoutComponent(nameTF, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 3;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(contactLabel, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 3;
+			con.gridwidth = 2;
+			con.fill = 2;
+			grid.addLayoutComponent(contactTF, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 4;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(sizeLabel, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 4;
+			con.gridwidth = 2;
+			con.fill = 2;
+			grid.addLayoutComponent(sizeTF, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 2;
+			con.gridy = 8;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(btnDelete, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 5;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(dateTF, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 2;
+			con.gridy = 5;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(timeTF, con);
+	
+			con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 5;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(dateLabel, con);
+	
+			startLat.setSize(endLat.getSize());
+	
+			mapViewer.addMouseListener(new MouseListener() {
+	
+				
+				public void mouseClicked(MouseEvent e) {
+					if (isStartSelected) {
+						org.openstreetmap.gui.jmapviewer.MapMarkerDot m = GPSselect;
+						startLat.setText(String.valueOf(m.getLat()));
+						startLong.setText(String.valueOf(m.getLon()));
+					} else if (isEndSelected) {
+						org.openstreetmap.gui.jmapviewer.MapMarkerDot m = GPSselect;
+						endLat.setText(String.valueOf(m.getLat()));
+						endLong.setText(String.valueOf(m.getLon()));
+					}
+				}
+	
+				
+				public void mousePressed(MouseEvent e) {
+	
+				}
+	
+				
+				public void mouseReleased(MouseEvent e) {
+	
+				}
+	
+				
+				public void mouseEntered(MouseEvent e) {
+	
+				}
+	
+				
+				public void mouseExited(MouseEvent e) {
+	
+				}
+	
+			});
+	
+			loadCarPoolResults();
+	
+			menuPanelList.put("CarPool", pane);
+	
+		}	
+		
+		adds private void loadCarPoolResults() {
+			try {
+				File f = new File(carPoolTxtPath);
+	
+				if (!f.exists() && !f.isDirectory()) {
+					Path path = java.nio.file.Paths.get(carPoolTxtPath);
+					java.nio.file.Files.createFile(path);
+				}
+	
+				FileInputStream is = new FileInputStream(f);
+	
+				if (is.available() > 0) {
+					java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(is);
+	
+					Vector<CarPoolResult> loadedList = (Vector<CarPoolResult>) (objectInput.readObject());
+					is.close();
+					objectInput.close();
+	
+					carPoolList.addAll(loadedList);
+					putCarPoolItemsInList();
+	
+				}
+	
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+	
+		}
+	
+		adds private void putCarPoolItemsInList() {
+			CarPoolResult[] carPoolArray = new CarPoolResult[carPoolList.size()];
+			for (int i = 0; i < carPoolList.size(); i++) {
+				CarPoolResult carPoolObj = carPoolList.get(i);
+				carPoolArray[i] = carPoolObj;
+			}
+			this.jListCarPoolResult.setListData(carPoolArray);
+		}
+	
+		adds private void saveCarPoolResults() {
+			try {
+				File file = new File(carPoolTxtPath);
+				FileOutputStream fileOutput = new FileOutputStream(file);
+				ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+				objectOutput.writeObject(carPoolList);
+				fileOutput.close();
+				objectOutput.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} 
+		}
+		adds {
+			package de.tu_bs.cs.isf.navi.carpool;
+	
+			import java.io.Serializable;
+			import java.util.Date;
+			
+			public class CarPoolResult implements Serializable {
+			
+			
+				public static int DRIVER;
+				public static int PASSENGER;
+				
+				private Date startTime;
+			
+				private int searchType;
+			
+				private int carSize;
+				private String contact;
+				private String name;
+			
+				private double startLat;
+				private double startLong;
+				private double endLat;
+				private double endLong;
+			
+				public CarPoolResult(int type, String name, int size, String contact) {
+					DRIVER = 1;
+					PASSENGER = 2;
+					searchType = type;
+					this.name = name;
+					this.carSize = size;
+					this.name = name;
+					this.contact = contact;
+					startTime = new Date();
+					
+				}
+				
+				public void setDate(int year, int month, int day, int hour, int min) {
+					startTime.setYear(year);
+					startTime.setMonth(month);
+					startTime.setDate(day);
+					startTime.setHours(hour);
+					startTime.setMinutes(min);
+					startTime.setSeconds(0);
+	
+				}
+			
+				public void setRoute(double startLat, double startLong, double endLat, double endLong) {
+					this.setStartLat(startLat);
+					this.setStartLong(startLat);
+					this.setEndLat(endLat);
+					this.setEndLong(endLong);
+				}
+			
+				public int getSearchType() {
+					return searchType;
+				}
+			
+				public void setSearchType(int searchType) {
+					this.searchType = searchType;
+				}
+			
+				public int getCarSize() {
+					return carSize;
+				}
+			
+				public void setCarSize(int carSize) {
+					this.carSize = carSize;
+				}
+			
+				public String getContact() {
+					return contact;
+				}
+			
+				public void setContact(String contact) {
+					this.contact = contact;
+				}
+			
+				public String getName() {
+					return name;
+				}
+			
+				public void setName(String name) {
+					this.name = name;
+				}
+			
+				public double getStartLat() {
+					return startLat;
+				}
+			
+				public void setStartLat(double startLat) {
+					this.startLat = startLat;
+				}
+			
+				public double getStartLong() {
+					return startLong;
+				}
+			
+				public void setStartLong(double startLong) {
+					this.startLong = startLong;
+				}
+			
+				public double getEndLat() {
+					return endLat;
+				}
+			
+				public void setEndLat(double endLat) {
+					this.endLat = endLat;
+				}
+			
+				public double getEndLong() {
+					return endLong;
+				}
+			
+				public void setEndLong(double endLong) {
+					this.endLong = endLong;
+				}
+			
+				public String toString() {
+					if (searchType == 1)
+						return "<html>" + startTime + "<br>Driving from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
+								+ " " + contact + "<br>Free seats: " + carSize + "</html>";
+					else
+						return "<html>" + startTime + "<br>Search driver from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
+								+ " " + contact + "<br>Required seats: " + carSize + "</html>";
+				}
+			}
+		
+	}
+
+}

@@ -10,9 +10,6 @@
 "Weather":
 <decore/Weather.decore> [2017/09/12 - eternity]
 
-"Wind":
-<decore/Wind.decore> [2017/09/17 - eternity]
-
 "Time":
 <decore/Time.decore> [2017/09/13 - eternity]
 
@@ -27,21 +24,3 @@
 
 "Carpooling":
 <decore/CarPool.decore> [2017/09/18 - eternity]
-
-"LocationImages":
-<decore/POIphoto.decore> [2017/09/15 - eternity]
-
-"Wikipedia":
-<decore/Wikipedia.decore> [2017/09/19 - eternity]
-
-"StandardZoom":
-<decore/GreaterZoom.decore> [2017/09/19 - eternity]
-
-"Taxi":
-<decore/Taxi.decore> [2017/09/19 - eternity]
-
-"BusStops":
-<decore/BusStopsNearby.decore> [2017/09/19 - eternity]
-
-"Pedestrian":
-<decore/PedestrianRoute.decore> [2017/09/19 - eternity]
