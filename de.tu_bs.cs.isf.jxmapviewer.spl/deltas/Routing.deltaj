@@ -1,0 +1,481 @@
+delta Routing requires Localization {
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
+		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
+		adds import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
+		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
+		adds import de.tu_bs.cs.isf.navi.routing.RoutingCoordinate;
+		adds import java.awt.event.ActionEvent;
+		adds import java.awt.event.ActionListener;
+		adds import java.awt.Insets;
+		adds import javax.swing.JList;
+		adds import javax.swing.JScrollPane;
+		adds import javax.swing.ListSelectionModel;
+		adds import javax.swing.JTextField;
+		adds import javax.swing.JButton;
+		adds import javax.swing.JPanel;
+		adds import java.awt.GridBagConstraints;
+		adds import java.awt.GridBagLayout;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		
+		adds import java.awt.BasicStroke;
+		adds import java.awt.Color;
+		 
+		
+	
+		
+	
+		adds private de.tu_bs.cs.isf.navi.routing.RoutingInformation routingInformation;
+		adds private org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon readyPolygon;
+		adds public javax.swing.JButton startRouteBtn;
+		adds public javax.swing.JTextField startRouteLatitude;
+		adds public javax.swing.JTextField startRouteLongitude;
+		adds public javax.swing.JTextField endRouteLatitude;
+		adds public javax.swing.JTextField endRouteLongitude;
+		
+		adds private void addHistoryRoutingListener() {
+		}
+		
+		adds private void paintRoute() {
+			if (routingInformation.getRoutingInformation().size() <= 1)
+				return;
+			List<double[]> polygon = routingInformation.getPolygonPoints();
+			RoutingCoordinate[] way = new RoutingCoordinate[polygon.size() * 2];
+			for (int i = 0; i < polygon.size(); i++) {
+				way[i] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
+			}
+			for (int i = polygon.size() - 1; i >= 0; i--) {
+				way[polygon.size() * 2 - i - 1] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
+			}
+			
+			mapViewer.removeMapPolygon(readyPolygon);
+			readyPolygon = new MapPolygonImpl(way);
+						
+			float dash1[] = {10.0f};
+			BasicStroke asd = new BasicStroke(10.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, dash1, 0.0f);
+			
+			readyPolygon.getStyle().setStroke(asd);
+			
+			mapViewer.addMapPolygon(readyPolygon);
+			mapViewer.repaint();
+		}
+		
+		modifies addMenu1() {
+			int q = 25;
+			Insets i = new Insets(q, q, q, q);
+	
+			
+			startRouteLatitude = new JTextField();
+			startRouteLatitude.setText("52.27111");
+			startRouteLongitude = new javax.swing.JTextField();
+			startRouteLongitude.setText("10.53111");
+			JButton getStartCoords = new JButton("GetStart");
+			getStartCoords.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent e) {
+					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = GPSselect;
+					startRouteLatitude.setText(String.valueOf(m.getLat()));
+					startRouteLongitude.setText(String.valueOf(m.getLon()));
+				}
+				
+				
+			});
+			
+			
+			
+			
+			endRouteLatitude = new JTextField();
+			endRouteLatitude.setText("52.14240");
+			endRouteLongitude = new JTextField();
+			endRouteLongitude.setText("10.54840");
+			JButton getEndCoords = new JButton("GetEnd");
+			getEndCoords.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent e) {
+					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = GPSselect;
+					endRouteLatitude.setText(String.valueOf(m.getLat()));
+					endRouteLongitude.setText(String.valueOf(m.getLon()));
+				}
+				
+			});
+			
+			
+			final JList<String> routingList = new JList<String>();
+			routingList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+			routingList.setLayoutOrientation(JList.VERTICAL);
+			routingList.setVisibleRowCount(-1);
+	
+			startRouteBtn = new JButton("Start Routing");
+			startRouteBtn.setMargin(i);
+			startRouteBtn.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent e) {
+					RoutingCalculator calc = new RoutingCalculator(startRouteLatitude.getText(), startRouteLongitude.getText(),
+							endRouteLatitude.getText(), endRouteLongitude.getText());
+					routingInformation = calc.calculateRoute();
+					if(routingInformation != null) {
+						routingList.clearSelection();
+						routingList.setListData(routingInformation.getRouteInstructions());
+						paintRoute();
+					} else {
+						String[] gehtNicht = new String[] {"Route can not be calculated"};
+						routingList.setListData(gehtNicht);
+					}
+				}
+	
+			});
+			
+			addHistoryRoutingListener();
+	
+			JScrollPane listScroller = new JScrollPane(routingList);
+			listScroller.setPreferredSize(new Dimension(250, 250));
+
+			
+			JPanel panel = new JPanel();
+			GridBagLayout grid = new GridBagLayout();
+	
+			panel.setLayout(grid);
+	
+			GridBagConstraints conStartLat = new GridBagConstraints();
+			conStartLat.weightx = 1;
+			conStartLat.fill = GridBagConstraints.HORIZONTAL;
+			conStartLat.gridx = 0;
+			conStartLat.gridy = 0;
+			panel.add(startRouteLatitude, conStartLat);
+	
+			GridBagConstraints conStartLong = new GridBagConstraints();
+			conStartLong.weightx = 1;
+			conStartLong.fill = GridBagConstraints.HORIZONTAL;
+			conStartLong.gridx = 1;
+			conStartLong.gridy = 0;
+			panel.add(startRouteLongitude, conStartLong);
+	
+			GridBagConstraints conEndLat = new GridBagConstraints();
+			conEndLat.weightx = 1;
+			conEndLat.fill = GridBagConstraints.HORIZONTAL;
+			conEndLat.gridx = 0;
+			conEndLat.gridy = 1;
+			panel.add(endRouteLatitude, conEndLat);
+	
+			GridBagConstraints conEndLong = new GridBagConstraints();
+			conEndLong.weightx = 1;
+			conEndLong.fill = GridBagConstraints.HORIZONTAL;
+			conEndLong.gridx = 1;
+			conEndLong.gridy = 1;
+			panel.add(endRouteLongitude, conEndLong);
+	
+			GridBagConstraints conStartBtn = new GridBagConstraints();
+			conStartBtn.gridwidth = 3;
+			conStartBtn.fill = GridBagConstraints.HORIZONTAL;
+			conStartBtn.gridx = 0;
+			conStartBtn.gridy = 2;
+			panel.add(startRouteBtn, conStartBtn);
+	
+			GridBagConstraints conList = new GridBagConstraints();
+			conList.gridwidth = 3;
+			conList.fill = GridBagConstraints.HORIZONTAL;
+			conList.gridx = 0;
+			conList.gridy = 3;
+			panel.add(listScroller, conList);
+			
+			GridBagConstraints conSartCoordBtn = new GridBagConstraints();
+			conSartCoordBtn.fill = GridBagConstraints.HORIZONTAL;
+			conSartCoordBtn.gridx = 2;
+			conSartCoordBtn.gridy = 0;
+			panel.add(getStartCoords, conSartCoordBtn);
+			
+			GridBagConstraints conEndCoordBtn = new GridBagConstraints();
+			conEndCoordBtn.fill = GridBagConstraints.HORIZONTAL;
+			conEndCoordBtn.gridx = 2;
+			conEndCoordBtn.gridy = 1;
+			panel.add(getEndCoords, conEndCoordBtn);
+			
+			menuPanelList.put("Routing", panel);
+		}
+	}
+	
+	
+	
+	
+
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+
+		import java.io.BufferedReader;
+		import java.io.IOException;
+		import java.io.InputStreamReader;
+		import java.net.HttpURLConnection;
+		import java.net.MalformedURLException;
+		import java.net.URL;
+		
+		import org.json.JSONArray;
+		import org.json.JSONException;
+		import org.json.JSONObject;
+		import org.json.JSONTokener;
+		
+
+		public class RoutingCalculator {
+		
+			private String coordinates;
+			private String apiUrl;
+			private String api_keyUrl;
+			private String profileUrl;
+			private de.tu_bs.cs.isf.navi.routing.RoutingInformation route;
+			private String request;
+			
+			public RoutingCalculator(long latitudeStart, long longitudeStart, long latitudeEnd, long longitudeEnd) {
+				coordinates = new String();
+				apiUrl = "https://api.openrouteservice.org/directions?";
+				api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
+				profileUrl = "profile=driving-car";
+				request = new String();
+				addCoordinates(latitudeStart, longitudeStart);
+				addCoordinates(latitudeEnd, longitudeEnd);
+			}
+			
+			public RoutingCalculator(String latitudeStart, String longitudeStart, String latitudeEnd, String longitudeEnd) {
+				try {
+					coordinates = new String();
+					apiUrl = "https://api.openrouteservice.org/directions?";
+					api_keyUrl = "api_key=58d904a497c67e00015b45fc36a9e9b71dbc4ca655f5f2375eebfb67";
+					profileUrl = "profile=driving-car";
+					request = new String();
+					addCoordinates(Double.parseDouble(latitudeStart), Double.parseDouble(longitudeStart));
+					addCoordinates(Double.parseDouble(latitudeEnd), Double.parseDouble(longitudeEnd));
+				} catch(NumberFormatException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			private void addCoordinates(double longitude, double latitude) {
+				if (coordinates.length() == 0)
+					coordinates += "coordinates=" + String.valueOf(latitude) + "," + String.valueOf(longitude);
+				else
+					coordinates += "|" + String.valueOf(latitude) + "," + String.valueOf(longitude);
+				
+			}
+		
+			public de.tu_bs.cs.isf.navi.routing.RoutingInformation calculateRoute() {
+				try {
+					route = new de.tu_bs.cs.isf.navi.routing.RoutingInformation();
+					request = apiUrl + api_keyUrl + "&" + profileUrl + "&" + coordinates;
+					URL url = new URL(request + "&geometry_format=polyline");
+					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+					conn.setRequestMethod("GET");
+					conn.setRequestProperty("accept", "application/json");
+					if (conn.getResponseCode() != 200) {
+						
+						throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+					}
+		
+					BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+					String output;
+		
+					while ((output = br.readLine()) != null) {
+		
+						try {
+							JSONTokener t = new JSONTokener(output);
+							
+							JSONObject parsed = (JSONObject) t.nextValue();
+							
+							
+		
+							JSONArray routesArray = (JSONArray) parsed.get("routes");
+							JSONObject routes = (JSONObject) routesArray.get(0);
+							
+							
+							JSONArray polygon = (JSONArray) routes.get("geometry");
+							
+							
+							for (int i = 0; i < polygon.length(); i++) {
+								JSONArray polygonpoints = (JSONArray) polygon.get(i);
+								route.addPolygonPoint((Double) polygonpoints.get(1), (Double) polygonpoints.get(0));
+							}
+		
+							JSONArray segementsArray = (JSONArray) routes.get("segments");
+							JSONObject segments = (JSONObject) segementsArray.get(0);
+		
+							JSONArray stepsArray = (JSONArray) segments.get("steps");
+							
+							for(int i = 0; i < stepsArray.length(); i++) {
+								JSONObject JSONstep = (JSONObject) stepsArray.get(i);
+		
+								Number duration = (Number) JSONstep.get("duration");
+								Number distance = (Number) JSONstep.get("distance");
+								String instruction = (String) JSONstep.get("instruction");
+								String name = (String) JSONstep.get("name");
+								Number type = (Number) JSONstep.get("type");
+		
+								JSONArray wayPointArray = (JSONArray) JSONstep.get("way_points");
+								Number wayPointX = (Number) wayPointArray.get(0);
+								Number wayPointY = (Number) wayPointArray.get(1);
+		
+								de.tu_bs.cs.isf.navi.routing.RoutingStepInformation newInformation = new de.tu_bs.cs.isf.navi.routing.RoutingStepInformation(duration, distance,
+										instruction, name, type, wayPointX, wayPointY);
+								route.addStep(newInformation);
+							}
+						} catch (ClassCastException e) {
+							e.printStackTrace();
+						} catch (NullPointerException e) {
+							e.printStackTrace();
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+		
+					conn.disconnect();
+		
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				return route;
+			}
+		}
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+
+		import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
+		
+		public class RoutingCoordinate implements ICoordinate {
+			
+			private double lat;
+			private double longi;
+			
+			public RoutingCoordinate(double lat, double longi) {
+				this.setLat(lat);
+				this.setLon(longi);
+			}
+			
+			public double getLat() {
+				return lat;
+			}
+		
+			public void setLat(double lat) {
+				this.lat = lat;
+			}
+		
+			public double getLon() {
+				return longi;
+			}
+		
+			public void setLon(double lon) {
+				this.longi = lon;
+			}
+		}
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+
+		import java.util.ArrayList;
+		import java.util.List;
+		
+		public class RoutingInformation {
+			
+			private List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> steps;
+			public static RoutingInformation currentRoute;
+			private List<double[]> polygonPoints;
+			
+			public RoutingInformation() {
+				steps = new ArrayList<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation>();
+				polygonPoints = new ArrayList<double[]>();
+			}
+			
+			public void addStep(de.tu_bs.cs.isf.navi.routing.RoutingStepInformation o) {
+				steps.add(o);
+			}
+			
+			public List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> getRoutingInformation() {
+				return steps;
+			}
+		
+			public String[] getRouteInstructions() {
+				String[] output = new String[steps.size()];
+				for(int i=0; i<output.length; i++) {
+					output[i] = steps.get(i).getInstruction();
+				}
+				
+				return output;
+			}
+			
+			public void addPolygonPoint(double latitude, double longitude) {
+				double[] add = {latitude, longitude};
+				polygonPoints.add(add);
+			}
+			
+			public List<double[]> getPolygonPoints() {
+				return polygonPoints;
+			}
+		 }
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.routing;
+
+		public class RoutingStepInformation {
+			private Number duration;
+			private Number distance;
+			private String instruction;
+			private String name;
+			private Number type;
+			private Number[] wayPoint;
+			
+			public RoutingStepInformation(Number duration, Number distance, String instruction, String name, Number type, Number wayPointX, Number wayPointY) {
+				wayPoint = new Number[2];
+				this.setDuration(duration);
+				this.setDistance(distance);
+				this.setInstruction(instruction);
+				this.setName(name);
+				this.setType(type);
+				this.wayPoint[0] = wayPointX;
+				this.wayPoint[1] = wayPointY;
+			}
+		
+			public Number getDuration() {
+				return duration;
+			}
+		
+			public void setDuration(Number duration) {
+				this.duration = duration;
+			}
+		
+			public Number getDistance() {
+				return distance;
+			}
+		
+			public void setDistance(Number distance) {
+				this.distance = distance;
+			}
+		
+			public String getInstruction() {
+				return instruction;
+			}
+		
+			public void setInstruction(String instruction) {
+				this.instruction = instruction;
+			}
+		
+			public String getName() {
+				return name;
+			}
+		
+			public void setName(String name) {
+				this.name = name;
+			}
+		
+			public Number getType() {
+				return type;
+			}
+		
+			public void setType(Number type) {
+				this.type = type;
+			}
+		}
+	}
+}
