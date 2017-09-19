@@ -1,5 +1,5 @@
 
-delta Weather {
+delta Weather requires Localization {
 
 	
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
@@ -11,6 +11,7 @@ delta Weather {
 		adds import javax.swing.BoxLayout;
 		adds import javax.swing.JPanel;
 		adds import java.awt.Font;
+		adds import javax.swing.JLabel;
 	
 		adds public net.aksingh.owmjapis.CurrentWeather getWeather(double latitude, double longitude) {
 			OpenWeatherMap openWeatherMap = new OpenWeatherMap(Units.METRIC, "e6d53f6128339f0b361aa69105feecea");
@@ -40,15 +41,14 @@ delta Weather {
 			final JLabel weather = new JLabel();
 			weather.setFont(weather.getFont().deriveFont(15.0f));
 			
+			addWind(weatherPane);
+			
 
 			weatherPane.add(temperature);
 		
 			weatherPane.add(weather);
 			weatherPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-			
-			
-			
-			
+		
 			mapViewer.addMouseListener(new java.awt.event.MouseListener() {
 				
 				public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -56,9 +56,9 @@ delta Weather {
 			        java.awt.Point point = e.getPoint();
 			        org.openstreetmap.gui.jmapviewer.Coordinate co = (org.openstreetmap.gui.jmapviewer.Coordinate) mapViewer.getPosition(point);
 					CurrentWeather currentweather = getWeather(co.getLat(), co.getLon());
-					temperature.setText(String.valueOf(currentweather.getMainInstance().getTemperature()));
+					temperature.setText(String.valueOf(currentweather.getMainInstance().getTemperature())+" °C");
 					weather.setText(currentweather.getWeatherInstance(0).getWeatherDescription());
-					
+					updateWind(currentweather);
 				}	
 				
 				public void mousePressed(java.awt.event.MouseEvent e) {	}
@@ -76,6 +76,9 @@ delta Weather {
 		
 		}
 	 
+	 	adds private void addWind(javax.swing.JPanel panel) {}
+	 	
+	 	adds private void updateWind(net.aksingh.owmjapis.CurrentWeather currentweather) {}
 	
 	}
 
