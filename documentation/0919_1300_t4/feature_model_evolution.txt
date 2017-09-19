@@ -1,0 +1,5 @@
+- How did you evolve the feature model?
+	Added new feature Wikipedia as subfeature of POI.
+
+- Why did you evolve the feature model (in this way)?
+	Necessary for new feature implementation. Wikipedia depends on POI.
