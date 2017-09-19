@@ -1,0 +1,5 @@
+- How did you evolve the feature model?
+	Added new feature RouteHistory as subfeature of History.
+
+- Why did you evolve the feature model (in this way)?
+	Necessary for new feature implementation. RouteHistory depends on History.
