@@ -4,6 +4,7 @@ delta Localization {
 		adds private javax.swing.JTextField GPSlat;
 		adds private javax.swing.JTextField GPSlon;
 		adds public javax.swing.JButton gpsButton;
+		
 		adds private org.openstreetmap.gui.jmapviewer.MapMarkerDot GPSselect;
 		
 		modifies addMenu2() {

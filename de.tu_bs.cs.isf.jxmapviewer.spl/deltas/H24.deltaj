@@ -1,0 +1,8 @@
+delta H24 requires Time {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		modifies setLocalizedPattern(java.text.SimpleDateFormat dateFormat) {
+			dateFormat.applyLocalizedPattern("H:mm");
+		}
+	}
+}
