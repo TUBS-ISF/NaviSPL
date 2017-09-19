@@ -1,10 +1,22 @@
 - How did you evolve the feature model?
-	Added following features to the model: Navigation, Suggestions, Routedistance, RemainingDistance, TravelTime, RemainingTravelTime, Wind, 
-	H12, H24
+	Added following features to the model: 
+	1. Navigation
+	2. Suggestions
+	3. Routedistance
+	4. RemainingDistance 
+	5. TravelTime
+	6. RemainingTravelTime
+	7. Wind
+	8. H12
+	9. H24
+	
+	10. Renamed Subfeatures of SpeedLimit
 
 - Why did you evolve the feature model (in this way)?
-	1. Use of contextual restraints is encouraged. 
-	The actual restraints will be added later, when the feature is done, because without 
-	the feature they block the generation of the Variant.
+	1. - 7. new requierd features
 	
-	2. Route is an abstract feature. 
+	8. + 9. Time should be in the format of the Country the Product is rolled out in
+			(Use of contextual constraints)
+			
+	10. Naming Features with Numbers only could lead to problems and isn't very specific.
+	 
