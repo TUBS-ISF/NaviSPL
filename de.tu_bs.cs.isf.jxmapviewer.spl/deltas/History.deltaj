@@ -54,7 +54,7 @@ delta History requires Localization {
 			});
 	
 			JScrollPane scrollPane = new JScrollPane(jListHistory);
-			scrollPane.setPreferredSize(new Dimension(250, 250));
+			
 	
 			JButton deleteBtn = new JButton("Delete selected item");
 			deleteBtn.addActionListener(new ActionListener() {
@@ -206,8 +206,10 @@ delta History requires Localization {
 		}
 	}
 	adds {
-		 import java.io.Serializable;
-		 import java.util.Date;
+		package de.tu_bs.cs.isf.navi.history;
+	
+		import java.io.Serializable;
+		import java.util.Date;
 	
 		public class HistoryObject implements Serializable {
 		
@@ -217,19 +219,12 @@ delta History requires Localization {
 			double endlongitude;
 			double endlatitude;
 		
-			public HistoryObject(double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
-		
-				this.startlongitude = startlongitude;
-				this.startlatitude = startlatitude;
-				this.endlongitude = endlongitude;
-				this.endlatitude = endlatitude;
-				timestamp = new Date(System.currentTimeMillis());
-			}
-		
 			public HistoryObject(double startlatitude, double startlongitude) {
 		
 				this.startlongitude = startlongitude;
 				this.startlatitude = startlatitude;
+				this.endlatitude = 0;
+				this.endlongitude = 0;
 				timestamp = new Date(System.currentTimeMillis());
 			}
 		

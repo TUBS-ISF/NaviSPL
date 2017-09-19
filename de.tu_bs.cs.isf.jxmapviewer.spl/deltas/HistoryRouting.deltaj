@@ -1,4 +1,4 @@
-delta HistoryRouting requires History, Routing{
+delta HistoryRouting requires History, Routing {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 	
@@ -17,14 +17,24 @@ delta HistoryRouting requires History, Routing{
 	}
 	
 	modifies de.tu_bs.cs.isf.navi.HistoryObject {
+	
+		adds public HistoryObject(double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
 		
-		if(this.endlatitude != 0 && this.endlongitude != 0) {
-			return "<html>" + timestamp.toString() + "<br>" + " Startlat: " + String.valueOf(startlatitude)
-						+ " Startlong: " + String.valueOf(startlongitude) + " Endlat: " + String.valueOf(endlatitude)
-						+ " Endlong: " + String.valueOf(endlongitude) + "</html>";
+				this.startlongitude = startlongitude;
+				this.startlatitude = startlatitude;
+				this.endlongitude = endlongitude;
+				this.endlatitude = endlatitude;
+				timestamp = new Date(System.currentTimeMillis());
+			}
+		
+		modifies toString() {
+			if(this.endlatitude != 0 && this.endlongitude != 0) {
+				return "<html>" + timestamp.toString() + "<br>" + " Startlat: " + String.valueOf(startlatitude)
+							+ " Startlong: " + String.valueOf(startlongitude) + " Endlat: " + String.valueOf(endlatitude)
+							+ " Endlong: " + String.valueOf(endlongitude) + "</html>";
+			}
+			original();
 		}
-		original();
-
 			
 	}
 
