@@ -37,7 +37,7 @@ delta CarPool{
 	
 		modifies addMenu11() {
 		
-			carPoolTxtPath = "resources/CarPool.txt";
+			carPoolTxtPath = "src/CarPool.txt";
 			
 			carPoolList = new Vector<CarPoolResult>();
 			JPanel pane = new JPanel();
@@ -105,7 +105,7 @@ delta CarPool{
 						return;
 					}
 	
-					CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), Integer.parseInt(contact));
+					CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), contact);
 					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
 	
@@ -161,7 +161,7 @@ delta CarPool{
 						return;
 					}
 	
-					CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), Integer.parseInt(contact));
+					CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), contact);
 					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
 	
@@ -482,7 +482,7 @@ delta CarPool{
 				private int searchType;
 			
 				private int carSize;
-				private int contact;
+				private String contact;
 				private String name;
 			
 				private double startLat;
@@ -490,7 +490,7 @@ delta CarPool{
 				private double endLat;
 				private double endLong;
 			
-				public CarPoolResult(int type, String name, int size, int contact) {
+				public CarPoolResult(int type, String name, int size, String contact) {
 					DRIVER = 1;
 					PASSENGER = 2;
 					searchType = type;
@@ -508,6 +508,8 @@ delta CarPool{
 					startTime.setDate(day);
 					startTime.setHours(hour);
 					startTime.setMinutes(min);
+					startTime.setSeconds(0);
+	
 				}
 			
 				public void setRoute(double startLat, double startLong, double endLat, double endLong) {
@@ -533,11 +535,11 @@ delta CarPool{
 					this.carSize = carSize;
 				}
 			
-				public int getContact() {
+				public String getContact() {
 					return contact;
 				}
 			
-				public void setContact(int contact) {
+				public void setContact(String contact) {
 					this.contact = contact;
 				}
 			
