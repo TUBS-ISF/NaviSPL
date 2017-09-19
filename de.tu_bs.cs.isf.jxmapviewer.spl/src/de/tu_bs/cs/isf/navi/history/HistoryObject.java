@@ -1,4 +1,4 @@
-package historyTest;
+package de.tu_bs.cs.isf.navi.history;
 
 public class HistoryObject {
 

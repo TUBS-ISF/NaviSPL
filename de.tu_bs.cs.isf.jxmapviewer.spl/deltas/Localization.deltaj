@@ -3,7 +3,7 @@ delta Localization {
 		
 		adds private javax.swing.JTextField GPSlat;
 		adds private javax.swing.JTextField GPSlon;
-		
+		adds public javax.swing.JButton gpsButton;
 		adds private org.openstreetmap.gui.jmapviewer.MapMarkerDot GPSselect;
 		
 		modifies addMenu2() {
@@ -44,7 +44,7 @@ delta Localization {
 			bagCon.weightx = 3;
 			gpsMenu.add(GPSlon, bagCon);
 						
-			javax.swing.JButton gpsButton = new javax.swing.JButton();
+			gpsButton = new javax.swing.JButton();
 			gpsButton.setText("Go To Location");
 			bagCon.fill = 2;
 			bagCon.gridx = 1;

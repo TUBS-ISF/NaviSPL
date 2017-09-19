@@ -1,4 +1,4 @@
-delta History requires Localization{
+delta History requires Localization {
 	
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		adds import java.awt.event.ActionEvent; 
@@ -21,13 +21,14 @@ delta History requires Localization{
 		adds import javax.swing.event.ListSelectionEvent;
 		adds import javax.swing.event.ListSelectionListener;
  
-		adds import historyTest.HistoryObject;
+		adds import de.tu_bs.cs.isf.navi.history.HistoryObject;
 		
-		adds java.util.Vector<HistoryObject> historyList;
-		adds javax.swing.JList<HistoryObject> jListHistory;
-		adds private String historyListTxtPath = "src/de/tu_bs/cs/isf/navi/History.txt";
+		adds java.util.Vector<de.tu_bs.cs.isf.navi.history.HistoryObject> historyList;
+		adds javax.swing.JList<de.tu_bs.cs.isf.navi.history.HistoryObject> jListHistory;
+		adds private String historyListTxtPath;
 		
 		modifies addMenu9() {
+			historyListTxtPath = "resources/History.txt";
 			jListHistory = new JList<HistoryObject>();
 			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(-1);
@@ -95,6 +96,30 @@ delta History requires Localization{
 				
 			});
 			
+			gpsButton.addMouseListener(new java.awt.event.MouseListener() {
+	
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+					try {
+				    	double lat = Double.valueOf(GPSlat.getText());
+				    	double lon = Double.valueOf(GPSlon.getText());
+				    	
+				    	addLocationToHistory(lat, lon);		
+						
+			    	} catch (NumberFormatException e1) {
+			    		
+			    	}
+				}
+	
+				public void mousePressed(java.awt.event.MouseEvent e) { }
+	
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				public void mouseEntered(java.awt.event.MouseEvent e) { }
+	
+				public void mouseExited(java.awt.event.MouseEvent e) { }
+				
+			});
+			
 			GridBagLayout historyGrid = new GridBagLayout();
 			GridBagConstraints historyConstraints = new GridBagConstraints();
 			historyConstraints.gridx = 0;
@@ -118,7 +143,7 @@ delta History requires Localization{
 			
 		} 
 		
-		adds public void addLocationToHistory(double longitude, double latitude) {
+		adds public void addLocationToHistory(double latitude, double longitude) {
 
 			HistoryObject obj = new HistoryObject(latitude, longitude);
 			historyList.add(obj);
@@ -181,18 +206,16 @@ delta History requires Localization{
 		}
 	}
 	adds {
-		import java.io.Serializable;
-		import java.util.Date;
+		 import java.io.Serializable;
+		 import java.util.Date;
 	
 		public class HistoryObject implements Serializable {
 		
-			private static final long serialVersionUID = 1L;
-		
 			Date timestamp;
-			double startlongitude = 0;
-			double startlatitude = 0;
-			double endlongitude = 0;
-			double endlatitude = 0;
+			double startlongitude;
+			double startlatitude;
+			double endlongitude;
+			double endlatitude;
 		
 			public HistoryObject(double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
 		
