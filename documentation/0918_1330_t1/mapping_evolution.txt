@@ -1,0 +1,6 @@
+- How did you evolve the mapping?
+Added Mapping for the POIimage feature
+
+
+- Why did you evolve the mapping (in this way)?
+Implementation of the new feature requires a mapping update

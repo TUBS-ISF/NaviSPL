@@ -1,0 +1,18 @@
+delta Wind requires Weather {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
+		adds private javax.swing.JLabel wind;
+		
+		modifies addWind(javax.swing.JPanel panel) {
+			wind = new JLabel();
+			wind.setFont(wind.getFont().deriveFont(15.0f));
+			
+			panel.add(wind);
+		}
+	 	
+	 	modifies updateWind(net.aksingh.owmjapis.CurrentWeather currentweather) {
+	 		wind.setText(String.valueOf(currentweather.getWindInstance().getWindSpeed())+" m/s");
+	 	}
+		
+	}
+}
