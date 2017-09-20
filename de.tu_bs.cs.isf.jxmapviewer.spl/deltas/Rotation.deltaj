@@ -29,6 +29,33 @@ delta Rotation {
 		
 		modifies addMenu4() {
 			menuPanelList.put("Rotate", addRotateMenu());
+			
+
+		mapViewer.addMouseListener(new java.awt.event.MouseListener() {
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				if (mapViewer.getRotAngle() != 0 && mapViewer.getRotAngle() != 360) {
+					mapViewer.setRotAngle(0);
+					rotSlider.setValue(0);
+					rotSlider.updateUI();
+				}
+
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+			}
+		});
+			
+			
 		}
 	
 	}
@@ -55,7 +82,7 @@ delta Rotation {
 	    adds public void paint(java.awt.Graphics g) {
 			Graphics2D g2d = (Graphics2D) g;
 	        AffineTransform transform = g2d.getTransform();
-	        transform.rotate(Math.toRadians(rotAngle), g2d.getClipBounds().getCenterX(), g2d.getClipBounds().getCenterX());
+	        transform.rotate(Math.toRadians(-rotAngle), g2d.getClipBounds().getCenterX(), g2d.getClipBounds().getCenterX());
 	        g2d.setTransform(transform);
 	    	
 	        super.paint(g);
