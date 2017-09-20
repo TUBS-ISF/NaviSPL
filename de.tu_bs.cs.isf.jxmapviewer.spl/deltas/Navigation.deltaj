@@ -92,7 +92,7 @@ delta Navigation requires Routing, Localization {
 	
 			final NaviApp naviApp = this;
 	
-			startBtn.addActionListener(new ActionListener() {
+			startRouteBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					final RoutingInformation oldRouting = routingInformation;
 	
