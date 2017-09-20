@@ -5,22 +5,24 @@ delta Rotation {
 		
 		adds import javax.swing.event.ChangeEvent;
 		adds import javax.swing.event.ChangeListener;
+		
+		adds private javax.swing.JSlider rotSlider;
 	
 		adds private javax.swing.JPanel addRotateMenu() {
 			JPanel p = new JPanel();
 			
-			JSlider s = new JSlider(JSlider.HORIZONTAL, 0, 360, 0);
-			s.setMajorTickSpacing(90);
-			s.setMinorTickSpacing(10);
-			s.setPaintTicks(Boolean.TRUE);
-			s.setPaintLabels(Boolean.TRUE);
-			s.addChangeListener(new ChangeListener() {
+			rotSlider = new JSlider(JSlider.HORIZONTAL, 0, 360, 0);
+			rotSlider.setMajorTickSpacing(90);
+			rotSlider.setMinorTickSpacing(10);
+			rotSlider.setPaintTicks(Boolean.TRUE);
+			rotSlider.setPaintLabels(Boolean.TRUE);
+			rotSlider.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent e) {
 					JSlider s = (JSlider) e.getSource();
 					mapViewer.setRotAngle(s.getValue());
 				}			
 			});
-			p.add(s);		
+			p.add(rotSlider);		
 			
 			return p;
 		}
@@ -63,7 +65,11 @@ delta Rotation {
 	    	Point p = new Point(x, y);    	
 	    	p = rotatePoint(p, rotAngle);
 	    	
-	        super.moveMap(p.x, p.y);
+	        tileController.cancelOutstandingJobs();
+	        center.x += p.x;
+	        center.y += p.y;
+	        repaint();
+	        this.fireJMVEvent(new JMVCommandEvent(COMMAND.MOVE, this));
 	    }
 	    
 	    modifies getPosition(int mapPointX, int mapPointY) {
@@ -76,10 +82,6 @@ delta Rotation {
 	        return tileSource.xyToLatLon(p.x, p.y, zoom);
 	    }
 	    
-	    adds public java.awt.Point rotatePoint(java.awt.Point p, double rot) {
-	    	return rotatePoint(p, rot, new Point(0,0));
-	    }
-	    
 	    adds public java.awt.Point rotatePoint(java.awt.Point p, double rot, java.awt.Point o) {    	
 	    	Point r = new Point();    	
 	    	r.x = (int) (((p.x - o.x) * Math.cos(Math.toRadians(-rot)) - (p.y - o.y) * Math.sin(Math.toRadians(-rot))) + o.x);
@@ -87,6 +89,10 @@ delta Rotation {
 			    	
 	    	return r;
 			
+	    }
+	    
+	    adds public java.awt.Point rotatePoint(java.awt.Point p, double rot) {
+	    	return rotatePoint(p, rot, new Point(0,0));
 	    }
 	    	
 	    modifies paintComponent(java.awt.Graphics g) {
@@ -127,16 +133,14 @@ delta Rotation {
 	            } else {
 	                iMove = 0;
 	            }
-	        } // calculate the visibility borders
+	        } 
 	        int xMin = -tilesize * borderMult;
 	        int yMin = -tilesize * borderMult;
 	        int xMax = getWidth() * borderMult;
 	        int yMax = getHeight() * borderMult;
 	
-	        // calculate the length of the grid (number of squares per edge)
 	        int gridLength = 1 << zoom;
 	
-	        // paint the tiles in a spiral, starting from center of the map
 	        boolean painted = Boolean.TRUE;
 	        int x = 0;
 	        while (painted) {
@@ -147,10 +151,8 @@ delta Rotation {
 	                }
 	                for (int j = 0; j < x; j++) {
 	                    if (xMin <= posx && posx <= xMax && yMin <= posy && posy <= yMax) {
-	                        // tile is visible
 	                        Tile tile;
 	                        if (scrollWrapEnabled) {
-	                            // in case tilex is out of bounds, grab the tile to use for wrapping
 	                            int tilexWrap = ((tilex % gridLength) + gridLength) % gridLength;
 	                            tile = tileController.getTile(tilexWrap, tiley, zoom);
 	                        } else {
@@ -173,7 +175,6 @@ delta Rotation {
 	                iMove = (iMove + 1) % move.length;
 	            }
 	        }
-	        // outer border of the map
 	        int mapSize = tilesize << zoom;
 	        if (scrollWrapEnabled) {
 	            g.drawLine(0, h2 - center.y, getWidth(), h2 - center.y);
@@ -181,10 +182,7 @@ delta Rotation {
 	        } else {
 	            g.drawRect(w2 - center.x, h2 - center.y, mapSize, mapSize);
 	        }
-	
-	        // g.drawString("Tiles in cache: " + tileCache.getTileCount(), 50, 20);
-	
-	        // keep x-coordinates from growing without bound if scroll-wrap is enabled
+		
 	        if (scrollWrapEnabled) {
 	            center.x = center.x % mapSize;
 	        }
