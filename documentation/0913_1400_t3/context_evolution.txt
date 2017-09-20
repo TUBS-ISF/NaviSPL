@@ -1,6 +1,0 @@
-- How did you evolve the context model?
-1. Added LocationEnum with three values (Germany, France, GB).
-2. Added context Location.
-
-- Why did you evolve the context model (in this way)?
-1. & 2. Easiest way to fulfill Customer requirements 

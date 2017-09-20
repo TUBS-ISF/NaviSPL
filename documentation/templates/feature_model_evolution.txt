@@ -1,4 +1,4 @@
-- How did you evolve the feature model and the constraints?
+- How did you evolve the feature model?
 
 
 

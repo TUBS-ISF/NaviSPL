@@ -1,6 +1,0 @@
-- How did you evolve the mapping?
-Added Mapping for Feature Favorites
-
-
-- Why did you evolve the mapping (in this way)?
-Implementation of a new Feature

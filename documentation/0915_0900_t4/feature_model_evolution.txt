@@ -1,9 +1,0 @@
-- How did you evolve the feature model?
-Set LocationImages as a Child of POI, instead of Information.
-
-
-- Why did you evolve the feature model (in this way)?
-
-Technical Reason: POI and LocationImages both fetch their data from GooglePlaces.
-
-Semantic Reason: Most Picures you would want to see would be of a POI. 
