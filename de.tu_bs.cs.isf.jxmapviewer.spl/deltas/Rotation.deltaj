@@ -1,0 +1,247 @@
+delta Rotation {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import javax.swing.JPanel;
+		adds import javax.swing.JSlider;
+		
+		adds import javax.swing.event.ChangeEvent;
+		adds import javax.swing.event.ChangeListener;
+		
+		adds private javax.swing.JSlider rotSlider;
+	
+		adds private javax.swing.JPanel addRotateMenu() {
+			JPanel p = new JPanel();
+			
+			rotSlider = new JSlider(JSlider.HORIZONTAL, 0, 360, 0);
+			rotSlider.setMajorTickSpacing(90);
+			rotSlider.setMinorTickSpacing(10);
+			rotSlider.setPaintTicks(Boolean.TRUE);
+			rotSlider.setPaintLabels(Boolean.TRUE);
+			rotSlider.addChangeListener(new ChangeListener() {
+				public void stateChanged(ChangeEvent e) {
+					JSlider s = (JSlider) e.getSource();
+					mapViewer.setRotAngle(s.getValue());
+				}			
+			});
+			p.add(rotSlider);		
+			
+			return p;
+		}
+		
+		modifies addMenu4() {
+			menuPanelList.put("Rotate", addRotateMenu());
+			
+
+		mapViewer.addMouseListener(new java.awt.event.MouseListener() {
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				if (mapViewer.getRotAngle() != 0 && mapViewer.getRotAngle() != 360) {
+					mapViewer.setRotAngle(0);
+					rotSlider.setValue(0);
+					rotSlider.updateUI();
+				}
+
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+			}
+		});
+			
+			
+		}
+	
+	}
+	
+	modifies org.openstreetmap.gui.jmapviewer.JMapViewer {
+	
+		adds import java.awt.Graphics;
+		adds import java.awt.Graphics2D;
+		adds import java.awt.Point;
+		adds import java.awt.geom.AffineTransform;
+	
+	
+		adds private double rotAngle = 0;
+	
+		adds public void setRotAngle(double rot) {
+			this.rotAngle = rot;
+			repaint();
+		}
+		
+		adds public double getRotAngle() {
+			return this.rotAngle;
+		}
+		
+	    adds public void paint(java.awt.Graphics g) {
+			Graphics2D g2d = (Graphics2D) g;
+	        AffineTransform transform = g2d.getTransform();
+	        transform.rotate(Math.toRadians(-rotAngle), g2d.getClipBounds().getCenterX(), g2d.getClipBounds().getCenterX());
+	        g2d.setTransform(transform);
+	    	
+	        super.paint(g);
+	    }
+	    
+	    modifies moveMap(int x, int y) {    	
+	    	Point p = new Point(x, y);    	
+	    	p = rotatePoint(p, rotAngle);
+	    	
+	        tileController.cancelOutstandingJobs();
+	        center.x += p.x;
+	        center.y += p.y;
+	        repaint();
+	        this.fireJMVEvent(new JMVCommandEvent(COMMAND.MOVE, this));
+	    }
+	    
+	    modifies getPosition(int mapPointX, int mapPointY) {
+	        int x = center.x + mapPointX - getWidth() / 2;
+	        int y = center.y + mapPointY - getHeight() / 2;
+	
+	        Point p = new Point(x, y);
+			p = rotatePoint(p, rotAngle, center);
+	        
+	        return tileSource.xyToLatLon(p.x, p.y, zoom);
+	    }
+	    
+	    adds public java.awt.Point rotatePoint(java.awt.Point p, double rot, java.awt.Point o) {    	
+	    	Point r = new Point();    	
+	    	r.x = (int) (((p.x - o.x) * Math.cos(Math.toRadians(-rot)) - (p.y - o.y) * Math.sin(Math.toRadians(-rot))) + o.x);
+	    	r.y = (int) (((p.x - o.x) * Math.sin(Math.toRadians(-rot)) + (p.y - o.y) * Math.cos(Math.toRadians(-rot))) + o.y);
+			    	
+	    	return r;
+			
+	    }
+	    
+	    adds public java.awt.Point rotatePoint(java.awt.Point p, double rot) {
+	    	return rotatePoint(p, rot, new Point(0,0));
+	    }
+	    	
+	    modifies paintComponent(java.awt.Graphics g) {
+	    	int borderMult = 2;
+	    	
+	        super.paintComponent(g);
+	
+	        int iMove = 0;
+	
+	        int tilesize = tileSource.getTileSize();
+	        int tilex = center.x / tilesize;
+	        int tiley = center.y / tilesize;
+	        int offsx = center.x % tilesize;
+	        int offsy = center.y % tilesize;
+	
+	        int w2 = getWidth() / 2;
+	        int h2 = getHeight() / 2;
+	        int posx = w2 - offsx;
+	        int posy = h2 - offsy;
+	
+	        int diffLeft = offsx;
+	        int diffRight = tilesize - offsx;
+	        int diffTop = offsy;
+	        int diffBottom = tilesize - offsy;
+	
+	        boolean startLeft = diffLeft < diffRight;
+	        boolean startTop = diffTop < diffBottom;
+	
+	        if (startTop) {
+	            if (startLeft) {
+	                iMove = 2;
+	            } else {
+	                iMove = 3;
+	            }
+	        } else {
+	            if (startLeft) {
+	                iMove = 1;
+	            } else {
+	                iMove = 0;
+	            }
+	        } 
+	        int xMin = -tilesize * borderMult;
+	        int yMin = -tilesize * borderMult;
+	        int xMax = getWidth() * borderMult;
+	        int yMax = getHeight() * borderMult;
+	
+	        int gridLength = 1 << zoom;
+	
+	        boolean painted = Boolean.TRUE;
+	        int x = 0;
+	        while (painted) {
+	            painted = Boolean.FALSE;
+	            for (int i = 0; i < 4; i++) {
+	                if (i % 2 == 0) {
+	                    x++;
+	                }
+	                for (int j = 0; j < x; j++) {
+	                    if (xMin <= posx && posx <= xMax && yMin <= posy && posy <= yMax) {
+	                        Tile tile;
+	                        if (scrollWrapEnabled) {
+	                            int tilexWrap = ((tilex % gridLength) + gridLength) % gridLength;
+	                            tile = tileController.getTile(tilexWrap, tiley, zoom);
+	                        } else {
+	                            tile = tileController.getTile(tilex, tiley, zoom);
+	                        }
+	                        if (tile != null) {
+	                            tile.paint(g, posx, posy, tilesize, tilesize);
+	                            if (tileGridVisible) {
+	                                g.drawRect(posx, posy, tilesize, tilesize);
+	                            }
+	                        }
+	                        painted = Boolean.TRUE;
+	                    }
+	                    Point p = move[iMove];
+	                    posx += p.x * tilesize;
+	                    posy += p.y * tilesize;
+	                    tilex += p.x;
+	                    tiley += p.y;
+	                }
+	                iMove = (iMove + 1) % move.length;
+	            }
+	        }
+	        int mapSize = tilesize << zoom;
+	        if (scrollWrapEnabled) {
+	            g.drawLine(0, h2 - center.y, getWidth(), h2 - center.y);
+	            g.drawLine(0, h2 - center.y + mapSize, getWidth(), h2 - center.y + mapSize);
+	        } else {
+	            g.drawRect(w2 - center.x, h2 - center.y, mapSize, mapSize);
+	        }
+		
+	        if (scrollWrapEnabled) {
+	            center.x = center.x % mapSize;
+	        }
+	
+	        if (mapPolygonsVisible && mapPolygonList != null) {
+	            synchronized (this) {
+	                for (MapPolygon polygon : mapPolygonList) {
+	                    if (polygon.isVisible())
+	                        paintPolygon(g, polygon);
+	                }
+	            }
+	        }
+	
+	        if (mapRectanglesVisible && mapRectangleList != null) {
+	            synchronized (this) {
+	                for (MapRectangle rectangle : mapRectangleList) {
+	                    if (rectangle.isVisible())
+	                        paintRectangle(g, rectangle);
+	                }
+	            }
+	        }
+	
+	        if (mapMarkersVisible && mapMarkerList != null) {
+	            synchronized (this) {
+	                for (MapMarker marker : mapMarkerList) {
+	                    if (marker.isVisible())
+	                        paintMarker(g, marker);
+	                }
+	            }
+	        }
+	
+	        attribution.paintAttribution(g, getWidth(), getHeight(), getPosition(0, 0), getPosition(getWidth(), getHeight()), zoom, this);
+	    }
+	}
+}
