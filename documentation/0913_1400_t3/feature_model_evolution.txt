@@ -1,8 +1,0 @@
-- How did you evolve the feature model?
-1.Added two children (24Hours, 12Hours) as alternative group to Time.
-2. Added constraint for Germany, France and GB to enforce matching time system.
-
-
-- Why did you evolve the feature model (in this way)?
-1. Context requires two different time formats.
-2. In GB the only time system option should be 12Hours, in France and Germany the only time system option should be 24Hours.

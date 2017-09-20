@@ -45,3 +45,9 @@
 
 "Pedestrian":
 <decore/PedestrianRoute.decore> [2017/09/19 - eternity]
+
+"History":
+<decore/History.decore> [2017/09/18 - eternity]
+
+"RouteHistory":
+<decore/HistoryRouting.decore> [2017/09/18 - eternity]

@@ -5,6 +5,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.HashMap;
 
+
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -81,7 +82,7 @@ public class NaviApp extends JFrame {
 
 		menuPanelList = new HashMap<String, JComponent>();
 
-		// Call menu functionsconSartCoordBtn
+		// Call menu functions
 		addMenu1();
 		addMenu2();
 		addMenu3();

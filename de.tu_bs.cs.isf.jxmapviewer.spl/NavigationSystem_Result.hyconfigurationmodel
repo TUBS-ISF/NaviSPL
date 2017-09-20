@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:HyConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://hyvar-project.eu/feature/configuration/1.0" id="_e54bfd83-25b3-41b9-98ba-eff599420f70" creationDate="2017-09-18T13:32:19.599+0200">
+  <elements xsi:type="configuration:HyFeatureSelected" id="_a1286e08-716d-4586-adc9-e8e32f982246">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_63e09ae1-859d-43bb-90e3-65703f3069df">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_e52334b8-c162-4965-927d-051da5e24e9f"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_9f05d754-d2a8-4951-8595-ea829a25074d">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_a3eae74d-8957-41dd-98e8-01733471590f"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_9c503f77-3e53-4371-98b7-09997e6dcce0">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_3f698f03-5d38-4a94-83cc-b524b4f613be"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_0415ed97-4d84-411c-a5f7-b5798bbbbcc4">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_e9b72d6a-4be9-46b0-a573-18800875c92d"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_e3f95ca2-c326-4dbd-b149-7c7ff301e1e6">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_e79baf5d-817e-4682-9dbd-eb8a8b7e0a71"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_aabaa85f-395f-41fe-9ce3-48f061dd52b4">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_7a6d8a3b-a81f-423f-943a-5cf107240607"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_4aa93484-883d-49ff-86e8-0414238f6f18">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_14d7f285-3578-46a7-bd88-57a0ba790e40"/>
+  </elements>
+  <featureModel href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#/"/>
+</configuration:HyConfiguration>

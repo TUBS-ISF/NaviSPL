@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:HyConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://hyvar-project.eu/feature/configuration/1.0" id="_ece7e2cf-9d9e-48c8-b0f5-e7d70b19f418">
+  <elements xsi:type="configuration:HyFeatureSelected" id="_bc3e552f-9d7d-4f2d-862a-e3f368fa9cb3">
+    <selectedFeature href="NavigationSystem.hyfeature#_5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_ff4faa66-a7ca-4f98-ba0e-bef271b4ac76">
+    <selectedFeature href="NavigationSystem.hyfeature#_e52334b8-c162-4965-927d-051da5e24e9f"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_77d72062-ced6-485c-a253-f5c1f164cf44">
+    <selectedFeature href="NavigationSystem.hyfeature#_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_29a09ac9-f5cc-433c-bd4f-3de6630a27cd">
+    <selectedFeature href="NavigationSystem.hyfeature#_3f698f03-5d38-4a94-83cc-b524b4f613be"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_fd26c1c1-eed1-415d-a976-589e595e7d03">
+    <selectedFeature href="NavigationSystem.hyfeature#_7a6d8a3b-a81f-423f-943a-5cf107240607"/>
+  </elements>
+  <featureModel href="NavigationSystem.hyfeature#/"/>
+</configuration:HyConfiguration>
