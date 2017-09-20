@@ -1,0 +1,6 @@
+- How did you evolve the feature model and the constraints?
+	1. Moved History and dependent feature to Map Subgroup
+
+
+- Why did you evolve the feature model (in this way)?
+	1. History is not dependent on Route
