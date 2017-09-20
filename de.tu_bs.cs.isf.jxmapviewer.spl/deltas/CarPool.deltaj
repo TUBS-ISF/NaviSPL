@@ -28,6 +28,7 @@ delta CarPool{
 		adds import javax.swing.JPanel;
 		adds import javax.swing.JTextField;
 		adds import javax.swing.JScrollPane;
+		adds import javax.swing.JOptionPane;
 	
 		adds boolean isStartSelected;
 		adds boolean isEndSelected;
@@ -37,7 +38,7 @@ delta CarPool{
 	
 		modifies addMenu11() {
 		
-			carPoolTxtPath = "src/CarPool.txt";
+			carPoolTxtPath = "resources/CarPool.txt";
 			
 			carPoolList = new Vector<CarPoolResult>();
 			JPanel pane = new JPanel();
@@ -47,19 +48,20 @@ delta CarPool{
 			JLabel startLabel = new JLabel("Start:");
 			JLabel endLabel = new JLabel("End:");
 			JLabel nameLabel = new JLabel("Name:");
-			JLabel sizeLabel = new JLabel("Plätze:");
-			JLabel contactLabel = new JLabel("Tel.:");
+			JLabel sizeLabel = new JLabel("Seats:");
+			JLabel contactLabel = new JLabel("Phone:");
 			JLabel dateLabel = new JLabel("Date:");
-	
-			JTextField dateTF = new JTextField("dd/mm/yyyy");
-			JTextField timeTF = new JTextField("hrs:mins");
-			JTextField nameTF = new JTextField();
-			JTextField sizeTF = new JTextField();
-			JTextField contactTF = new JTextField();
-			JTextField startLat = new JTextField();
-			JTextField startLong = new JTextField();
-			JTextField endLat = new JTextField();
-			JTextField endLong = new JTextField();
+			JLabel radiusLabel = new JLabel("Radius (km) ");
+		    final JTextField radiusTF = new JTextField();
+			final JTextField dateTF = new JTextField("dd/mm/yyyy");
+			final JTextField timeTF = new JTextField("hrs:mins");
+			final JTextField nameTF = new JTextField();
+			final JTextField sizeTF = new JTextField();
+			final JTextField contactTF = new JTextField();
+			final JTextField startLat = new JTextField();
+			final JTextField startLong = new JTextField();
+			final JTextField endLat = new JTextField();
+			final JTextField endLong = new JTextField();
 	
 			btnSearchPassenger.addActionListener(new ActionListener() {
 	
@@ -110,6 +112,20 @@ delta CarPool{
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
 	
 					obj.setDate(year, month, day, hour, min);
+					
+					int count = 0;
+					for (int i = 0; i < carPoolList.size(); i++) {
+						CarPoolResult cps = carPoolList.get(i);
+						double distance = mapViewer.getTileController().getTileSource().getDistance(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude), cps.getStartLat(), cps.getStartLong()) / 1000;
+						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 2) {
+							count++;
+						}
+					}
+					if (count > 0) {
+						JOptionPane.showMessageDialog(NaviApp.this, count + " Drivers are searching in your vicinity", "CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);	
+					}
+					
+					
 					carPoolList.add(obj);
 					saveCarPoolResults();
 					putCarPoolItemsInList();
@@ -166,6 +182,20 @@ delta CarPool{
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
 	
 					obj.setDate(year, month, day, hour, min);
+					
+					int count = 0;
+					for (int i = 0; i < carPoolList.size(); i++) {
+						CarPoolResult cps = carPoolList.get(i);
+						
+						double distance = mapViewer.getTileController().getTileSource().getDistance(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude), cps.getStartLat(), cps.getStartLong()) / 1000;
+						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 1) {
+							count++;
+						}
+					}
+					if (count > 0) {
+						JOptionPane.showMessageDialog(NaviApp.this, count + " Passengers are searching in your vicinity", "CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);	
+					}
+					
 					carPoolList.add(obj);
 					saveCarPoolResults();
 					putCarPoolItemsInList();
@@ -211,6 +241,8 @@ delta CarPool{
 			pane.add(dateTF);
 			pane.add(timeTF);
 			pane.add(dateLabel);
+			pane.add(radiusTF);
+			pane.add(radiusLabel);
 	
 			FocusListener startListener = new FocusListener() {
 	
@@ -247,11 +279,13 @@ delta CarPool{
 			GridBagConstraints con = new GridBagConstraints();
 			con.gridx = 0;
 			con.gridy = 0;
+			con.anchor = GridBagConstraints.WEST;
 			grid.addLayoutComponent(startLabel, con);
 	
 			con = new GridBagConstraints();
 			con.gridx = 0;
 			con.gridy = 1;
+			con.anchor = GridBagConstraints.WEST;
 			grid.addLayoutComponent(endLabel, con);
 	
 			con = new GridBagConstraints();
@@ -280,19 +314,19 @@ delta CarPool{
 	
 			con = new GridBagConstraints();
 			con.gridx = 1;
-			con.gridy = 6;
+			con.gridy = 7;
 			con.fill = 2;
 			grid.addLayoutComponent(btnSearchPassenger, con);
 	
 			con = new GridBagConstraints();
 			con.gridx = 2;
-			con.gridy = 6;
+			con.gridy = 7;
 			con.fill = 2;
 			grid.addLayoutComponent(btnSearchDriver, con);
 	
 			con = new GridBagConstraints();
 			con.gridx = 1;
-			con.gridy = 7;
+			con.gridy = 8;
 			con.gridwidth = 2;
 			con.fill = 2;
 			grid.addLayoutComponent(carPoolScroll, con);
@@ -341,7 +375,7 @@ delta CarPool{
 	
 			con = new GridBagConstraints();
 			con.gridx = 2;
-			con.gridy = 8;
+			con.gridy = 9;
 			con.gridwidth = 1;
 			con.fill = 2;
 			grid.addLayoutComponent(btnDelete, con);
@@ -366,6 +400,20 @@ delta CarPool{
 			con.gridwidth = 1;
 			con.fill = 2;
 			grid.addLayoutComponent(dateLabel, con);
+			
+			con = new GridBagConstraints();
+			con.gridx = 0;
+			con.gridy = 6;
+			con.gridwidth = 1;
+			con.fill = 2;
+			grid.addLayoutComponent(radiusLabel, con);
+			
+			con = new GridBagConstraints();
+			con.gridx = 1;
+			con.gridy = 6;
+			con.gridwidth = 2;
+			con.fill = 2;
+			grid.addLayoutComponent(radiusTF, con);
 	
 			startLat.setSize(endLat.getSize());
 	
@@ -418,6 +466,7 @@ delta CarPool{
 	
 				if (!f.exists() && !f.isDirectory()) {
 					Path path = java.nio.file.Paths.get(carPoolTxtPath);
+					f.getParentFile().mkdirs();
 					java.nio.file.Files.createFile(path);
 				}
 	
