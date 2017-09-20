@@ -160,6 +160,10 @@ delta Favorite requires Localization{
 				bagCon.weighty = 0;
 				this.add(button, bagCon);
 			}
+			
+			public void addSaveFavRouteButton(JButton button){
+			
+			}
 		
 			public de.tu_bs.cs.isf.navi.gui.FavoriteListElement createFavListElement(org.openstreetmap.gui.jmapviewer.Coordinate co) {
 				return new de.tu_bs.cs.isf.navi.gui.FavoriteListElement(nameTextField.getText(), co.getLat(), co.getLon());
@@ -175,9 +179,11 @@ delta Favorite requires Localization{
 			modifies addMenu3() {
 				final de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();
 					fav.addSaveFavButton(createFavoriteButton(fav));
+					fav.addSaveFavRouteButton(createFavoriteRouteButton(fav));
 					fav.list.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
 						public void valueChanged(javax.swing.event.ListSelectionEvent e) {
 							if (fav.list.getSelectedValue() != null) {
+								if(!fav.list.getSelectedValue().getIsRoute()){
 								org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(
 										fav.list.getSelectedValue().getLat(), fav.list.getSelectedValue().getLongi());
 								mapViewer.setDisplayPosition(co, mapViewer.getZoom());
@@ -189,11 +195,21 @@ delta Favorite requires Localization{
 								GPSselect.setLon(co.getLon());
 								GPSlat.setText("" + co.getLat());
 								GPSlon.setText("" + co.getLon());
+								} else {
+									startRouteLatitude.setText(String.valueOf(fav.list.getSelectedValue().getLat()));
+									startRouteLongitude.setText(String.valueOf(fav.list.getSelectedValue().getLongi()));
+									endRouteLatitude.setText(String.valueOf(fav.list.getSelectedValue().getLatEnd()));
+									endRouteLongitude.setText(String.valueOf(fav.list.getSelectedValue().getLongiEnd()));
+								}
 							}
 						}
 					});
 					menuPanelList.put("Favorites", fav);
 					repaint();
+				}
+				
+				adds public javax.swing.JButton createFavoriteRouteButton(final de.tu_bs.cs.isf.navi.gui.Favorite fav) {
+				return null;
 				}
 			
 			adds public javax.swing.JButton createFavoriteButton(final de.tu_bs.cs.isf.navi.gui.Favorite fav) {
@@ -255,11 +271,24 @@ delta Favorite requires Localization{
 				private double lat;
 				private double longi;
 				private String name;
-			
+				private double latEnd;
+				private double longiEnd;
+				private boolean isRoute;		
+					
 				public FavoriteListElement(String name, double lat, double longi){
 					setLat(lat);
 					setLongi(longi);
 					this.setName(name);
+					isRoute = Boolean.FALSE;
+				}
+				
+				public FavoriteListElement(int placeholder, String name, double latStart, double longiStart, double latEnd, double longiEnd){
+				setLat(latStart);
+				setLongi(longiStart);
+				setLatEnd(latEnd);
+				setLongiEnd(longiEnd);
+				setName(name);
+				isRoute = Boolean.TRUE;
 				}
 			
 			
@@ -288,6 +317,29 @@ delta Favorite requires Localization{
 			
 				public void setLongi(double longi) {
 					this.longi = longi;
+				}
+				
+				public double getLatEnd() {
+					return latEnd;
+				}
+			
+			
+				public void setLatEnd(double lat) {
+					this.latEnd = lat;
+				}
+			
+			
+				public double getLongiEnd() {
+					return longiEnd;
+				}
+			
+			
+				public void setLongiEnd(double longi) {
+					this.longiEnd = longi;
+				}
+				
+				public boolean getIsRoute(){
+					return this.isRoute;
 				}
 			
 			

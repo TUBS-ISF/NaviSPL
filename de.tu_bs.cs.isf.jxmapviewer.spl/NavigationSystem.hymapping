@@ -51,3 +51,6 @@
 
 "RouteHistory":
 <decore/HistoryRouting.decore> [2017/09/18 - eternity]
+
+"FavoriteRoute":
+<decore/FavoriteRoute.decore> [2017/09/20 - eternity]
