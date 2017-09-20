@@ -1,0 +1,11 @@
+- When did you notice the inconsistency in the product (i.e., different behavior)?
+When creating the deltas for our feature, we realized that accessing certain JButtons was not possible
+since they were only contained within a method and not exposed to the containing class.
+
+- Why did this inconsistency occur?
+Accessing the JButtons from outside that method was not needed at the moment they were created
+
+- How did you repair this inconsistency?
+We altered the creating delta
+
+(If this documentation page is lacking sense, ask Adrian... We don't quite know how to express this on point)
