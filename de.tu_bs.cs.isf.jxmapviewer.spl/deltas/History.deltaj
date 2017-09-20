@@ -1,0 +1,275 @@
+delta History requires Localization {
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import java.awt.event.ActionEvent; 
+		adds import java.awt.event.ActionListener;
+		adds import java.awt.event.MouseEvent;
+		adds import java.awt.event.MouseListener;
+		adds import java.io.File;
+		adds import java.io.FileInputStream;
+		adds import java.io.FileOutputStream;
+		adds import java.io.IOException;
+		adds import java.io.ObjectOutputStream;
+	
+	
+		adds import java.nio.file.Path;
+		adds import java.util.Vector;
+		adds import javax.swing.JButton;
+		adds import javax.swing.JList;
+		adds import javax.swing.JPanel;
+		adds import javax.swing.JScrollPane;  
+		adds import javax.swing.event.ListSelectionEvent;
+		adds import javax.swing.event.ListSelectionListener;
+ 
+		adds import de.tu_bs.cs.isf.navi.history.HistoryObject;
+		
+		adds java.util.Vector<de.tu_bs.cs.isf.navi.history.HistoryObject> historyList;
+		adds javax.swing.JList<de.tu_bs.cs.isf.navi.history.HistoryObject> jListHistory;
+		adds private String historyListTxtPath;
+		
+		modifies addMenu9() {
+			historyListTxtPath = "src/History.txt";
+			jListHistory = new JList<HistoryObject>();
+			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+			jListHistory.setVisibleRowCount(20);
+			jListHistory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+	
+				public void valueChanged(ListSelectionEvent e) {
+					if (jListHistory.getSelectedValue() != null) {
+						org.openstreetmap.gui.jmapviewer.Coordinate co = new org.openstreetmap.gui.jmapviewer.Coordinate(jListHistory.getSelectedValue().getStartlatitude(),
+								jListHistory.getSelectedValue().getStartlongitude());
+	
+						mapViewer.setDisplayPosition(co, mapViewer.getZoom());
+						if (GPSselect == null) {
+							GPSselect = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(co);
+							mapViewer.addMapMarker(GPSselect);
+						}
+						GPSselect.setLat(co.getLat());
+						GPSselect.setLon(co.getLon());
+						GPSlat.setText("" + co.getLat());
+						GPSlon.setText("" + co.getLon());
+					}
+				}
+	
+			});
+	
+			JScrollPane scrollPane = new JScrollPane(jListHistory);
+			
+	
+			JButton deleteBtn = new JButton("Delete selected item");
+			deleteBtn.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent e) {
+					historyList.removeElement(jListHistory.getSelectedValue());
+					saveHistory();
+					putHistoryItemsInList();
+				}
+	
+			});
+			
+			mapViewer.addMouseListener(new MouseListener() {
+	
+				public void mouseClicked(MouseEvent e) {
+					
+					
+				}
+	
+				public void mousePressed(MouseEvent e) {
+					if (javax.swing.SwingUtilities.isRightMouseButton(e)) {
+						jListHistory.clearSelection();
+					}
+					
+				}
+	
+				public void mouseReleased(MouseEvent e) {
+	
+					
+				}
+	
+				public void mouseEntered(MouseEvent e) {
+					
+				}
+	
+				public void mouseExited(MouseEvent e) {
+					
+				}
+				
+			});
+			
+			gpsButton.addMouseListener(new java.awt.event.MouseListener() {
+	
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+					try {
+				    	double lat = Double.valueOf(GPSlat.getText());
+				    	double lon = Double.valueOf(GPSlon.getText());
+				    	
+				    	addLocationToHistory(lat, lon);		
+						
+			    	} catch (NumberFormatException e1) {
+			    		
+			    	}
+				}
+	
+				public void mousePressed(java.awt.event.MouseEvent e) { }
+	
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				public void mouseEntered(java.awt.event.MouseEvent e) { }
+	
+				public void mouseExited(java.awt.event.MouseEvent e) { }
+				
+			});
+			
+			GridBagLayout historyGrid = new GridBagLayout();
+			GridBagConstraints historyConstraints = new GridBagConstraints();
+			historyConstraints.gridx = 0;
+			historyConstraints.gridy = 0;
+			historyGrid.addLayoutComponent(scrollPane, historyConstraints);
+	
+			historyConstraints = new GridBagConstraints();
+			historyConstraints.gridx = 0;
+			historyConstraints.gridy = 1;
+			historyGrid.addLayoutComponent(deleteBtn, historyConstraints);
+	
+			historyList = new Vector<HistoryObject>();
+			loadHistory();
+			scrollPane.setPreferredSize(new Dimension(250, 250));
+			JPanel panel = new JPanel();
+			panel.setLayout(historyGrid);
+			panel.add(scrollPane);
+			panel.add(deleteBtn);
+	
+			menuPanelList.put("History", panel);
+			
+		} 
+		
+		adds public void addLocationToHistory(double latitude, double longitude) {
+
+			HistoryObject obj = new HistoryObject(latitude, longitude);
+			historyList.add(obj);
+	
+			putHistoryItemsInList();
+			saveHistory();
+		}
+		
+		adds private void loadHistory() {
+			try {
+				File f = new File(historyListTxtPath);
+	
+				if (!f.exists() && !f.isDirectory()) {
+					Path path = java.nio.file.Paths.get(this.historyListTxtPath);
+					java.nio.file.Files.createFile(path);
+				}
+	
+				FileInputStream is = new FileInputStream(f);
+	
+				if (is.available() > 0) {
+					java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(is);
+	
+					Vector<HistoryObject> loadedList = (Vector<HistoryObject>) (objectInput.readObject());
+					is.close();
+					objectInput.close();
+	
+					historyList.addAll(loadedList);
+					putHistoryItemsInList();
+	
+				}
+	
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		adds private void saveHistory() {
+			try {
+				File file = new File(historyListTxtPath);
+				FileOutputStream fileOutput = new FileOutputStream(file);
+				ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+				objectOutput.writeObject(historyList);
+				fileOutput.close();
+				objectOutput.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	
+		adds private void putHistoryItemsInList() {
+			HistoryObject[] historyArray = new HistoryObject[historyList.size()];
+			for (int i = 0; i < historyList.size(); i++) {
+				HistoryObject historyObj = historyList.get(i);
+				historyArray[i] = historyObj;
+			}
+			this.jListHistory.setListData(historyArray);
+		}
+	}
+	adds {
+		package de.tu_bs.cs.isf.navi.history;
+	
+		import java.io.Serializable;
+		import java.util.Date;
+	
+		public class HistoryObject implements Serializable {
+		
+			Date timestamp;
+			double startlongitude;
+			double startlatitude;
+			double endlongitude;
+			double endlatitude;
+		
+			public HistoryObject(double startlatitude, double startlongitude) {
+		
+				this.startlongitude = startlongitude;
+				this.startlatitude = startlatitude;
+				this.endlatitude = 0;
+				this.endlongitude = 0;
+				timestamp = new Date(System.currentTimeMillis());
+			}
+		
+			public double getStartlongitude() {
+				return startlongitude;
+			}
+		
+			public void setStartlongitude(double startlongitude) {
+				this.startlongitude = startlongitude;
+			}
+		
+			public double getStartlatitude() {
+				return startlatitude;
+			}
+		
+			public void setStartlatitude(double startlatitude) {
+				this.startlatitude = startlatitude;
+			}
+		
+			public double getEndLongitude() {
+				return endlongitude;
+			}
+		
+			public void setEndLongitude(double endLongitude) {
+				this.endlongitude = endLongitude;
+			}
+		
+			public double getEndlatitude() {
+				return endlatitude;
+			}
+		
+			public void setEndlatitude(double endlatitude) {
+				this.endlatitude = endlatitude;
+			}
+		
+			public Date getTimestamp() {
+				return timestamp;
+			}
+		
+			public String toString() {
+				return "<html>" + timestamp.toString() + "<br>" + " Lat: " + String.valueOf(startlatitude) + " Long: "
+							+ String.valueOf(startlongitude) + "</html>";	
+			}
+		
+		}
+	}
+	
+}

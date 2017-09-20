@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JSplitPane;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 
@@ -17,8 +18,8 @@ import com.gg.slider.SideBar.SideBarMode;
 @SuppressWarnings("serial")
 public class NaviApp extends JFrame {
 
-	private JMapViewer mapViewer;
-
+	protected JMapViewer mapViewer;
+	
 	private SideBar menuPanel;
 
 	private JSplitPane splitPane;
