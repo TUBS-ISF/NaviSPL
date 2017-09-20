@@ -28,7 +28,7 @@ delta History requires Localization {
 		adds private String historyListTxtPath;
 		
 		modifies addMenu9() {
-			historyListTxtPath = "src/History.txt";
+			historyListTxtPath = "resources/History.txt";
 			jListHistory = new JList<HistoryObject>();
 			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(20);
@@ -159,6 +159,7 @@ delta History requires Localization {
 	
 				if (!f.exists() && !f.isDirectory()) {
 					Path path = java.nio.file.Paths.get(this.historyListTxtPath);
+					f.getParentFile().mkdirs();
 					java.nio.file.Files.createFile(path);
 				}
 	

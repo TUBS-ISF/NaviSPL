@@ -393,6 +393,10 @@ delta Navigation requires Routing, Localization {
 			public double[] getCurrentNormal() {
 				return this.currentNormal;
 			}
+			
+			public int getLastPolygonPoint() {
+				return this.currentIndex;
+			}
 		}
 	}
 	
