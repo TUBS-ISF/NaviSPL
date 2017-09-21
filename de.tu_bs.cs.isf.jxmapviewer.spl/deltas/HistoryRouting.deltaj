@@ -1,7 +1,9 @@
 delta HistoryRouting requires History, Routing {
-
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
 	
+	
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
 		
 		modifies addHistoryRoutingListener() {
 			startRouteBtn.addActionListener(new ActionListener() {
@@ -19,6 +21,21 @@ delta HistoryRouting requires History, Routing {
 				}
 	
 			});
+			
+			if (jListHistory == null)
+				jListHistory = new JList<HistoryObject>();
+			jListHistory.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+						public void valueChanged(javax.swing.event.ListSelectionEvent e) {
+							if (jListHistory.getSelectedValue() != null) {
+								if(jListHistory.getSelectedValue().isRoute()){
+									startRouteLatitude.setText(String.valueOf(jListHistory.getSelectedValue().getStartlatitude()));
+									startRouteLongitude.setText(String.valueOf(jListHistory.getSelectedValue().getStartlongitude()));
+									endRouteLatitude.setText(String.valueOf(jListHistory.getSelectedValue().getEndlatitude()));
+									endRouteLongitude.setText(String.valueOf(jListHistory.getSelectedValue().getEndLongitude()));
+								}
+							}
+						}
+					});
 		}
 		
 		adds public void addRouteToHistory(double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
@@ -34,13 +51,14 @@ delta HistoryRouting requires History, Routing {
 	}
 	
 	modifies de.tu_bs.cs.isf.navi.history.HistoryObject {
-	
+		
 		adds public HistoryObject(int workAround, double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
 			this.startlongitude = startlongitude;
 			this.startlatitude = startlatitude;
 			this.endlongitude = endlongitude;
 			this.endlatitude = endlatitude;
-			timestamp = new Date(System.currentTimeMillis());
+			this.isRoute = Boolean.TRUE;
+			timestamp = new java.util.Date(System.currentTimeMillis());
 		}
 		
 		modifies toString() {

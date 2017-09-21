@@ -29,7 +29,9 @@ delta History requires Localization {
 		
 		modifies addMenu9() {
 			historyListTxtPath = "resources/History.txt";
-			jListHistory = new JList<HistoryObject>();
+
+			if (jListHistory == null)
+				jListHistory = new JList<HistoryObject>();
 			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(20);
 			jListHistory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -216,10 +218,11 @@ delta History requires Localization {
 		public class HistoryObject implements Serializable {
 		
 			Date timestamp;
-			double startlongitude;
-			double startlatitude;
-			double endlongitude;
-			double endlatitude;
+			private double startlongitude;
+			private double startlatitude;
+			private double endlongitude;
+			private double endlatitude;
+			private boolean isRoute;
 		
 			public HistoryObject(double startlatitude, double startlongitude) {
 		
@@ -227,6 +230,7 @@ delta History requires Localization {
 				this.startlatitude = startlatitude;
 				this.endlatitude = 0;
 				this.endlongitude = 0;
+				isRoute = Boolean.FALSE;
 				timestamp = new Date(System.currentTimeMillis());
 			}
 		
@@ -264,6 +268,10 @@ delta History requires Localization {
 		
 			public Date getTimestamp() {
 				return timestamp;
+			}
+			
+			public boolean isRoute() {
+				return isRoute;			
 			}
 		
 			public String toString() {
