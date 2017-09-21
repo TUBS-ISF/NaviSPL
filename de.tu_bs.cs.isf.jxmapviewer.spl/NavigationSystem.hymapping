@@ -60,3 +60,6 @@
 
 "Orientation":
 <decore/Rotation.decore> [2017/09/11 - eternity]
+
+"Orientation" && "Navigation":
+<decore/RotationNavi.decore> [2017/09/20 - eternity]

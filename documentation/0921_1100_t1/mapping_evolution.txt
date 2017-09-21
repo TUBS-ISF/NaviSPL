@@ -1,0 +1,6 @@
+- How did you evolve the mapping?
+	Added extended deltaj for orientation feature that is used if Orientation and Navigation is active
+
+
+- Why did you evolve the mapping (in this way)?
+	It serves as a bridge between those features. Having this logical expression is easier than adding a sub-feature of orientation that has a constraint in place
