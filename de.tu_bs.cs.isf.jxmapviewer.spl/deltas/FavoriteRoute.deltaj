@@ -2,59 +2,67 @@ delta FavoriteRoute requires Routing, Favorite {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		
-		modifies createFavoriteRouteButton(de.tu_bs.cs.isf.navi.gui.Favorite fav){
+		modifies createFavoriteRouteButton(de.tu_bs.cs.isf.navi.gui.Favorite fav) {
 			javax.swing.JButton favSaveButton = new javax.swing.JButton("Add New Favorite Route");
-		      favSaveButton.addActionListener(new java.awt.event.ActionListener(){
+		    favSaveButton.addActionListener(new java.awt.event.ActionListener(){
 		      
-		      public void actionPerformed(java.awt.event.ActionEvent e) {
-						if (!fav.nameTextField.getText().equals("") && fav.nameTextField.getText() != null) {
-						fav.addFavElement(new de.tu_bs.cs.isf.navi.gui.FavoriteListElement(0, fav.nameTextField.getText(),Double.parseDouble(startRouteLatitude.getText()),
+		    	public void actionPerformed(java.awt.event.ActionEvent e) {
+					if (!fav.getNameTextField().getText().equals("") && fav.getNameTextField().getText() != null) {
+						fav.addFavElement(new de.tu_bs.cs.isf.navi.gui.FavoriteListElement(0, fav.getNameTextField().getText(),Double.parseDouble(startRouteLatitude.getText()),
 						 																	Double.parseDouble(startRouteLongitude.getText()), 
 						 																	Double.parseDouble(endRouteLatitude.getText()), 
 						 																	Double.parseDouble(endRouteLongitude.getText())));
-						fav.nameTextField.setText("");
-							}
-			   			}
-				});
+						fav.getNameTextField().setText("");
+				}
+				}
+			});
 			return favSaveButton;
 		}
 		
+		modifies fillRoutingTextFieldCoordinates(String startLat, String startLongi, String endLat, String endLongi){
+			startRouteLatitude.setText(startLat);
+			startRouteLongitude.setText(startLongi);
+			endRouteLatitude.setText(endLat);
+			endRouteLongitude.setText(endLongi);
+		}
+		
 	}
+	
 	modifies de.tu_bs.cs.isf.navi.gui.Favorite {
 	
-	adds private javax.swing.JPanel panel;
+		adds private javax.swing.JPanel panel;
 	
-	modifies addSaveFavButton(javax.swing.JButton button){
+		modifies addSaveFavButton(javax.swing.JButton button){
 			panel = new javax.swing.JPanel();
-		panel.setLayout(new java.awt.GridBagLayout());
-		bagCon.fill = 2;
-		bagCon.gridx = 1;
-		bagCon.gridy = 0;
-		bagCon.weightx = 1;
-		bagCon.gridheight = 1;
-		bagCon.gridwidth = 1;
-		bagCon.weighty = 0;
-		this.add(panel, bagCon);
-		bagCon.fill = 2;
-		bagCon.gridx = 0;
-		bagCon.gridy = 0;
-		bagCon.weightx = 1;
-		bagCon.gridheight = 1;
-		bagCon.gridwidth = 1;
-		bagCon.weighty = 0;
-		panel.add(button, bagCon);
-	}
+			panel.setLayout(new java.awt.GridBagLayout());
+			bagCon.fill = 2;
+			bagCon.gridx = 1;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			bagCon.gridheight = 1;
+			bagCon.gridwidth = 1;
+			bagCon.weighty = 0;
+			this.add(panel, bagCon);
+			bagCon.fill = 2;
+			bagCon.gridx = 0;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			bagCon.gridheight = 1;
+			bagCon.gridwidth = 1;
+			bagCon.weighty = 0;
+			panel.add(button, bagCon);
+		}	
 	
-	modifies addSaveFavRouteButton(javax.swing.JButton button){
-		bagCon.fill = 2;
-		bagCon.gridx = 1;
-		bagCon.gridy = 0;
-		bagCon.weightx = 1;
-		bagCon.gridheight = 1;
-		bagCon.gridwidth = 1;
-		bagCon.weighty = 0;
-		panel.add(button, bagCon);
-	}
+		modifies addSaveFavRouteButton(javax.swing.JButton button){
+			bagCon.fill = 2;
+			bagCon.gridx = 1;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			bagCon.gridheight = 1;
+			bagCon.gridwidth = 1;
+			bagCon.weighty = 0;
+			panel.add(button, bagCon);
+		}	
 	
 	}
 }
