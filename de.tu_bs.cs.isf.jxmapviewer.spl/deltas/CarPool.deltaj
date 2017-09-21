@@ -19,6 +19,10 @@ delta CarPool{
 		adds import java.nio.file.Path;
 		adds import java.util.HashMap;
 		adds import java.util.Vector;
+		adds import java.text.DateFormat;
+		adds import java.text.ParseException;
+		adds import java.text.SimpleDateFormat;
+		adds import java.util.Date;
 	
 		adds import de.tu_bs.cs.isf.navi.carpool.CarPoolResult;
 		adds import javax.swing.JButton;
@@ -64,144 +68,120 @@ delta CarPool{
 			final JTextField endLong = new JTextField();
 	
 			btnSearchPassenger.addActionListener(new ActionListener() {
-	
-				
-				public void actionPerformed(ActionEvent e) {
-	
-					String name = nameTF.getText();
-					String size = sizeTF.getText();
-					String contact = contactTF.getText();
-					String startLatitude = startLat.getText();
-					String startLongitude = startLong.getText();
-					String endLatitude = endLat.getText();
-					String endLongitude = endLong.getText();
-	
-					String date = dateTF.getText();
-					String time = timeTF.getText();
-	
-					String syear = date.substring(6, 10);
-					String smonth = date.substring(3, 5);
-					String sday = date.substring(0, 2);
-	
-					String shour = time.substring(0, 2);
-					String smin = time.substring(3, 5);
-					
-	
+			public void actionPerformed(ActionEvent e) {
+				String name = nameTF.getText();
+				String size = sizeTF.getText();
+				String contact = contactTF.getText();
+				String startLatitude = startLat.getText();
+				String startLongitude = startLong.getText();
+				String endLatitude = endLat.getText();
+				String endLongitude = endLong.getText();
+
+				try {
+					SimpleDateFormat test = new SimpleDateFormat("dd/MM/yyyy H:mm");
+					test.getCalendar().setLenient(Boolean.FALSE);
+					Date date = test.parse(dateTF.getText() + " " + timeTF.getText());
 					int year, month, day, hour, min;
-	
-	
-	
-					if (name == null || size == null || contact == null || startLatitude == null || startLongitude == null
-							|| endLatitude == null || endLongitude == null || sday == null || smonth == null || syear == null
-							|| shour == null || smin == null)
+					if (name == null || size == null || contact == null || startLatitude == null
+							|| startLongitude == null || endLatitude == null || endLongitude == null)
 						return;
-					
-					try {
-						day = Integer.parseInt(sday);
-						month = Integer.parseInt(smonth);
-						year = Integer.parseInt(syear);
-		
-						hour = Integer.parseInt(shour);
-						min = Integer.parseInt(smin);
-					} catch (NumberFormatException ee) {
-						return;
-					}
-	
+					day = date.getDay();
+					month = date.getMonth();
+					year = date.getYear();
+					hour = date.getHours();
+					min = date.getMinutes();
 					CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), contact);
 					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
-	
 					obj.setDate(year, month, day, hour, min);
-					
 					int count = 0;
 					for (int i = 0; i < carPoolList.size(); i++) {
 						CarPoolResult cps = carPoolList.get(i);
-						double distance = mapViewer.getTileController().getTileSource().getDistance(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude), cps.getStartLat(), cps.getStartLong()) / 1000;
+						double distance = mapViewer.getTileController().getTileSource().getDistance(
+								Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+								cps.getStartLat(), cps.getStartLong()) / 1000;
 						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 2) {
 							count++;
 						}
 					}
 					if (count > 0) {
-						JOptionPane.showMessageDialog(NaviApp.this, count + " Drivers are searching in your vicinity", "CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);	
+						JOptionPane.showMessageDialog(NaviApp.this,
+								count + " Passengers are searching in your vicinity", "CarPooling24.de",
+								JOptionPane.INFORMATION_MESSAGE);
 					}
-					
-					
 					carPoolList.add(obj);
 					saveCarPoolResults();
 					putCarPoolItemsInList();
-	
+				} catch (NumberFormatException ee) {
+					return;
+				} catch (ParseException ex) {
+					return;
+				} catch (Exception ey) {
+					return;
 				}
-	
-			});
-	
-			btnSearchDriver.addActionListener(new ActionListener() {
-	
-				
-				public void actionPerformed(ActionEvent e) {
-					String name = nameTF.getText();
-					String size = sizeTF.getText();
-					String contact = contactTF.getText();
-					String startLatitude = startLat.getText();
-					String startLongitude = startLong.getText();
-					String endLatitude = endLat.getText();
-					String endLongitude = endLong.getText();
-	
-					String date = dateTF.getText();
-					String time = timeTF.getText();
-	
-					String syear = date.substring(6, 10);
-					String smonth = date.substring(3, 5);
-					String sday = date.substring(0, 2);
-	
-					String shour = time.substring(0, 2);
-					String smin = time.substring(3, 5);
-					
-	
-					int year, month, day, hour, min;
-	
-	
-	
-					if (name == null || size == null || contact == null || startLatitude == null || startLongitude == null
-							|| endLatitude == null || endLongitude == null || sday == null || smonth == null || syear == null
-							|| shour == null || smin == null)
-						return;
-					
-					try {
-						day = Integer.parseInt(sday);
-						month = Integer.parseInt(smonth);
-						year = Integer.parseInt(syear);
-		
-						hour = Integer.parseInt(shour);
-						min = Integer.parseInt(smin);
-					} catch (NumberFormatException ee) {
-						return;
-					}
-	
+
+			}
+		});
+		btnSearchDriver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = nameTF.getText();
+				String size = sizeTF.getText();
+				String contact = contactTF.getText();
+				String startLatitude = startLat.getText();
+				String startLongitude = startLong.getText();
+				String endLatitude = endLat.getText();
+				String endLongitude = endLong.getText();
+				String date = dateTF.getText();
+				String time = timeTF.getText();
+
+				try {
+				SimpleDateFormat test = new SimpleDateFormat("dd/MM/yyyy H:mm");
+				test.getCalendar().setLenient(Boolean.FALSE);
+				Date datee = test.parse(dateTF.getText() + " " + timeTF.getText());
+				int year, month, day, hour, min;
+				if (name == null || size == null || contact == null || startLatitude == null || startLongitude == null
+						|| endLatitude == null || endLongitude == null)
+					return;
+					day = datee.getDay();
+					month = datee.getMonth();
+					year = datee.getYear();
+					hour = datee.getHours();
+					min = datee.getMinutes();
 					CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), contact);
 					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
-	
 					obj.setDate(year, month, day, hour, min);
-					
 					int count = 0;
 					for (int i = 0; i < carPoolList.size(); i++) {
 						CarPoolResult cps = carPoolList.get(i);
-						
-						double distance = mapViewer.getTileController().getTileSource().getDistance(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude), cps.getStartLat(), cps.getStartLong()) / 1000;
+						double distance = mapViewer.getTileController().getTileSource().getDistance(
+								Double.parseDouble(startLatitude), Double.parseDouble(startLongitude), cps.getStartLat(),
+								cps.getStartLong()) / 1000;
 						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 1) {
 							count++;
 						}
 					}
 					if (count > 0) {
-						JOptionPane.showMessageDialog(NaviApp.this, count + " Passengers are searching in your vicinity", "CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);	
+						JOptionPane.showMessageDialog(NaviApp.this, count + " Drivers are searching in your vicinity",
+								"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
 					}
-					
 					carPoolList.add(obj);
 					saveCarPoolResults();
 					putCarPoolItemsInList();
+				} catch (NumberFormatException ee) {
+					return;
+				} catch (ParseException e1) {
+					JOptionPane.showMessageDialog(NaviApp.this, e1.getMessage(),
+								"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(NaviApp.this, e2.getMessage(),
+								"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
+					return;
 				}
-	
-			});
+				
+			}
+		});
 	
 			btnDelete.addActionListener(new ActionListener() {
 	
