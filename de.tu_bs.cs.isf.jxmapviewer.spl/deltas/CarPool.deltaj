@@ -57,7 +57,7 @@ delta CarPool{
 			JLabel dateLabel = new JLabel("Date:");
 			JLabel radiusLabel = new JLabel("Radius (km) ");
 		    final JTextField radiusTF = new JTextField();
-			final JTextField dateTF = new JTextField("dd/mm/yyyy");
+			final JTextField dateTF = new JTextField("dd.mm.yyyy");
 			final JTextField timeTF = new JTextField("hrs:mins");
 			final JTextField nameTF = new JTextField();
 			final JTextField sizeTF = new JTextField();
@@ -76,24 +76,19 @@ delta CarPool{
 				String startLongitude = startLong.getText();
 				String endLatitude = endLat.getText();
 				String endLongitude = endLong.getText();
-
 				try {
-					SimpleDateFormat test = new SimpleDateFormat("dd/MM/yyyy H:mm");
+					SimpleDateFormat test = new SimpleDateFormat("dd.MM.yyyy H:mm");
 					test.getCalendar().setLenient(Boolean.FALSE);
 					Date date = test.parse(dateTF.getText() + " " + timeTF.getText());
-					int year, month, day, hour, min;
+
 					if (name == null || size == null || contact == null || startLatitude == null
 							|| startLongitude == null || endLatitude == null || endLongitude == null)
 						return;
-					day = date.getDay();
-					month = date.getMonth();
-					year = date.getYear();
-					hour = date.getHours();
-					min = date.getMinutes();
+
 					CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), contact);
 					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
-					obj.setDate(year, month, day, hour, min);
+					obj.setDate(date);
 					int count = 0;
 					for (int i = 0; i < carPoolList.size(); i++) {
 						CarPoolResult cps = carPoolList.get(i);
@@ -119,7 +114,6 @@ delta CarPool{
 				} catch (Exception ey) {
 					return;
 				}
-
 			}
 		});
 		btnSearchDriver.addActionListener(new ActionListener() {
@@ -131,32 +125,26 @@ delta CarPool{
 				String startLongitude = startLong.getText();
 				String endLatitude = endLat.getText();
 				String endLongitude = endLong.getText();
-				String date = dateTF.getText();
-				String time = timeTF.getText();
 
 				try {
-				SimpleDateFormat test = new SimpleDateFormat("dd/MM/yyyy H:mm");
-				test.getCalendar().setLenient(Boolean.FALSE);
-				Date datee = test.parse(dateTF.getText() + " " + timeTF.getText());
-				int year, month, day, hour, min;
-				if (name == null || size == null || contact == null || startLatitude == null || startLongitude == null
-						|| endLatitude == null || endLongitude == null)
-					return;
-					day = datee.getDay();
-					month = datee.getMonth();
-					year = datee.getYear();
-					hour = datee.getHours();
-					min = datee.getMinutes();
+					SimpleDateFormat test = new SimpleDateFormat("dd.MM.yyyy H:mm");
+					test.getCalendar().setLenient(Boolean.FALSE);
+					Date datee = test.parse(dateTF.getText() + " " + timeTF.getText());
+
+					if (name == null || size == null || contact == null || startLatitude == null
+							|| startLongitude == null || endLatitude == null || endLongitude == null)
+						return;
+
 					CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), contact);
 					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
 							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
-					obj.setDate(year, month, day, hour, min);
+					obj.setDate(datee);
 					int count = 0;
 					for (int i = 0; i < carPoolList.size(); i++) {
 						CarPoolResult cps = carPoolList.get(i);
 						double distance = mapViewer.getTileController().getTileSource().getDistance(
-								Double.parseDouble(startLatitude), Double.parseDouble(startLongitude), cps.getStartLat(),
-								cps.getStartLong()) / 1000;
+								Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+								cps.getStartLat(), cps.getStartLong()) / 1000;
 						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 1) {
 							count++;
 						}
@@ -171,15 +159,14 @@ delta CarPool{
 				} catch (NumberFormatException ee) {
 					return;
 				} catch (ParseException e1) {
-					JOptionPane.showMessageDialog(NaviApp.this, e1.getMessage(),
-								"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(NaviApp.this, e1.getMessage(), "CarPooling24.de",
+							JOptionPane.INFORMATION_MESSAGE);
 					return;
 				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(NaviApp.this, e2.getMessage(),
-								"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(NaviApp.this, e2.getMessage(), "CarPooling24.de",
+							JOptionPane.INFORMATION_MESSAGE);
 					return;
 				}
-				
 			}
 		});
 	
@@ -531,14 +518,8 @@ delta CarPool{
 					
 				}
 				
-				public void setDate(int year, int month, int day, int hour, int min) {
-					startTime.setYear(year);
-					startTime.setMonth(month);
-					startTime.setDate(day);
-					startTime.setHours(hour);
-					startTime.setMinutes(min);
-					startTime.setSeconds(0);
-	
+				public void setDate(Date date) {
+					startTime = date;
 				}
 			
 				public void setRoute(double startLat, double startLong, double endLat, double endLong) {
@@ -614,10 +595,10 @@ delta CarPool{
 			
 				public String toString() {
 					if (searchType == 1)
-						return "<html>" + startTime + "<br>Driving from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
+						return "<html>" + startTime.toString() + "<br>Driving from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
 								+ " " + contact + "<br>Free seats: " + carSize + "</html>";
 					else
-						return "<html>" + startTime + "<br>Search driver from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
+						return "<html>" + startTime.toString() + "<br>Search driver from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
 								+ " " + contact + "<br>Required seats: " + carSize + "</html>";
 				}
 			}
