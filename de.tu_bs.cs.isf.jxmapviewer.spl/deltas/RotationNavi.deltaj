@@ -2,9 +2,7 @@ delta RotationNavi requires Rotation, Navigation{
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 	
-		modifies addMenu4(){
-			original();
-		
+		modifies rotationCall1(){		
 			new Thread(new Runnable() {
 				public void run() {
 					handleNaviRotation();
