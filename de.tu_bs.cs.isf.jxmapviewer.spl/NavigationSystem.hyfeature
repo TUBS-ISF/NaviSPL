@@ -159,6 +159,7 @@
     <names validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-19T00:00:00.000+0200" id="_1a42d1a5-6513-46f0-8ac8-eaf6ecf25523" name="New Feature 6"/>
     <types validSince="2017-09-19T00:00:00.000+0200" id="_cdc46f22-9772-49a2-a389-1d6af1be9f5c"/>
   </features>
+<<<<<<< Upstream, based on origin/develop
   <features validSince="2017-09-19T13:00:00.000+0200" id="_4a82872d-019b-4ccc-9d24-7f37cf435681" groupMembership="_59ccd906-7395-40d0-9603-614bbd255eb4 _c717baa4-8c11-48e5-9a40-abe0a4d33938 _d7e84915-c150-4fe6-a063-511634b0f436">
     <names validSince="2017-09-19T13:00:00.000+0200" id="_a94b99c0-216b-40b5-9d29-7a170ab15bd7" name="Pedestrian"/>
     <types validSince="2017-09-19T13:00:00.000+0200" id="_7257444d-e777-48b2-9af8-2db8f2a43e0b"/>
@@ -199,6 +200,40 @@
   <features validSince="2017-09-21T00:00:00.000+0200" id="_2dda69c6-6aa8-4df2-81ec-9b2a7d6b9099" groupMembership="_d7e84915-c150-4fe6-a063-511634b0f436">
     <names validSince="2017-09-21T00:00:00.000+0200" id="_a4a6657c-50e0-4eb4-90e6-9236b6192d63" name="Truck"/>
     <types validSince="2017-09-21T00:00:00.000+0200" id="_d8dc16d8-5428-41b3-86d6-aa8df579268c"/>
+=======
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_4a82872d-019b-4ccc-9d24-7f37cf435681" groupMembership="_59ccd906-7395-40d0-9603-614bbd255eb4">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_a94b99c0-216b-40b5-9d29-7a170ab15bd7" name="Pedestrian"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_7257444d-e777-48b2-9af8-2db8f2a43e0b"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_8b9a2378-8bdd-4609-ac43-b530fe00b60f" groupMembership="_59ccd906-7395-40d0-9603-614bbd255eb4">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_0ee0ce32-3087-412f-a9bb-3efcc7c9d8eb" name="Car"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_14280ba2-9dac-48e8-94b0-b98b16d9b235"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_c6a4699e-35c3-4029-b14e-e133094b6f9b" groupMembership="_62b5356e-cbf1-49f8-bc6c-e7a37ce210a6">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_b6358a73-0f6d-4c32-99b8-03cf495bed8f" name="Services"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_e79556b5-ed39-4c2d-8fa3-c0e5e6e92acf" childGroup="_d19926ab-c2f1-49cc-878b-94a1b23043ce"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_c12d74a1-ae38-477b-8e65-ecd9a20c3859"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_b14b7cc9-cda1-4eb6-a67a-67d0c17f091b" groupMembership="_440385af-654c-4029-a208-34d9b8927e1e">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_1cc0366e-fa38-40ab-aa4a-7517f3776991" name="Taxi"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_1887e0be-0c04-4101-bd10-83d96e026296"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_602420d2-8fcc-42f6-8009-3545a69268d3" groupMembership="_98d96191-7b25-45f3-a7d9-9e972d9e4b70">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_0f8a0666-c7bb-43ac-9cbb-6478ead5bdea" name="BusStops"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_b7487139-a6c0-4263-8c5a-ff58957cc3a5"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_5c21c915-d924-4c25-9659-c8a676e67219" groupMembership="_a0b99817-7cda-46c7-800b-3cc7d47fefa0 _8ab2bdcd-87f0-4972-b0a4-7bff0481b2da">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_92b988ac-643a-4826-a9da-99c5dffa08de" name="StandardZoom"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_71e760b9-9277-416c-81fd-c720ee6ea360"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_98f73d42-c01a-4d6d-8d6d-582900e0f122">
+    <names validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_208f106c-b817-49ca-a4bb-ed08cd1e4fb9" name="PedestrianZoom"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_dc4557fe-da43-4cda-bbde-80b12bddc69a"/>
+  </features>
+  <features validSince="2017-09-20T00:00:00.000+0200" id="_f3852104-a862-43eb-b1ba-c1189a266f22" groupMembership="_5fd69364-4495-4d90-9d24-bbac006e55f3">
+    <names validSince="2017-09-20T00:00:00.000+0200" id="_fbf78409-fce3-434d-bebb-4f42e6c8d64e" name="FavoriteRoute"/>
+    <types validSince="2017-09-20T00:00:00.000+0200" id="_8bc9d763-f72a-4c8e-beba-fa81cbe7f847"/>
+>>>>>>> bddbeea added ListSelectionListener in HistoryRouting
   </features>
   <groups id="_02f749ce-b4c0-4982-9509-f84dda355f95" childOf="_974f692a-8151-4bda-8cb6-7648925d35da">
     <parentOf validUntil="2017-09-11T13:42:20.657+0200" id="_b15744ae-8d9f-423a-80e6-f0e86930d108" supersedingElement="_e729e7bb-304f-4c30-a197-3da172c4aa08" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _5bde071f-4082-4a07-a362-676a93467b14 _0f9b4294-2f53-4ec2-96f9-3f2053399f21"/>
@@ -243,9 +278,13 @@
   </groups>
   <groups validSince="2017-09-18T13:32:19.599+0200" id="_e457f522-ef5c-443c-b89a-ac1f905c0aa0" childOf="_ddd8c1c1-a689-4afc-9197-ae00e75b8eae">
     <parentOf validSince="2017-09-18T13:32:19.599+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_0a5eafbd-51ef-4127-90bf-145f72716cd9" supersedingElement="_59ccd906-7395-40d0-9603-614bbd255eb4" features="_8cbbf0bf-4d9b-467c-857d-b88a7764fa6e _b5d53c89-fe79-4e01-bc3d-dfbba2d6cda8"/>
+<<<<<<< Upstream, based on origin/develop
     <parentOf validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-20T00:00:00.000+0200" id="_59ccd906-7395-40d0-9603-614bbd255eb4" supersedingElement="_c717baa4-8c11-48e5-9a40-abe0a4d33938" supersededElement="_0a5eafbd-51ef-4127-90bf-145f72716cd9" features="_4a82872d-019b-4ccc-9d24-7f37cf435681 _8b9a2378-8bdd-4609-ac43-b530fe00b60f"/>
     <parentOf validSince="2017-09-20T00:00:00.000+0200" validUntil="2017-09-21T00:00:00.000+0200" id="_c717baa4-8c11-48e5-9a40-abe0a4d33938" supersedingElement="_d7e84915-c150-4fe6-a063-511634b0f436" supersededElement="_59ccd906-7395-40d0-9603-614bbd255eb4" features="_4a82872d-019b-4ccc-9d24-7f37cf435681 _8b9a2378-8bdd-4609-ac43-b530fe00b60f"/>
     <parentOf validSince="2017-09-21T00:00:00.000+0200" id="_d7e84915-c150-4fe6-a063-511634b0f436" supersededElement="_c717baa4-8c11-48e5-9a40-abe0a4d33938" features="_4a82872d-019b-4ccc-9d24-7f37cf435681 _8b9a2378-8bdd-4609-ac43-b530fe00b60f _2dda69c6-6aa8-4df2-81ec-9b2a7d6b9099"/>
+=======
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_59ccd906-7395-40d0-9603-614bbd255eb4" supersededElement="_0a5eafbd-51ef-4127-90bf-145f72716cd9" features="_4a82872d-019b-4ccc-9d24-7f37cf435681 _8b9a2378-8bdd-4609-ac43-b530fe00b60f"/>
+>>>>>>> bddbeea added ListSelectionListener in HistoryRouting
     <types validSince="2017-09-18T13:32:19.599+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_da43907a-a9cb-4b0f-b17d-ae05afad50e5"/>
     <types validSince="2017-09-19T13:00:00.000+0200" id="_f6c7c78c-8404-470f-baaa-6846ef06b4d0" type="ALTERNATIVE"/>
   </groups>
