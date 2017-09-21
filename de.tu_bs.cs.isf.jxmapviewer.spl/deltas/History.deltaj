@@ -215,10 +215,11 @@ delta History requires Localization {
 		public class HistoryObject implements Serializable {
 		
 			Date timestamp;
-			double startlongitude;
-			double startlatitude;
-			double endlongitude;
-			double endlatitude;
+			private double startlongitude;
+			private double startlatitude;
+			private double endlongitude;
+			private double endlatitude;
+			private boolean isRoute;
 		
 			public HistoryObject(double startlatitude, double startlongitude) {
 		
@@ -226,6 +227,7 @@ delta History requires Localization {
 				this.startlatitude = startlatitude;
 				this.endlatitude = 0;
 				this.endlongitude = 0;
+				isRoute = Boolean.FALSE;
 				timestamp = new Date(System.currentTimeMillis());
 			}
 		
@@ -263,6 +265,10 @@ delta History requires Localization {
 		
 			public Date getTimestamp() {
 				return timestamp;
+			}
+			
+			public boolean isRoute() {
+				return isRoute;			
 			}
 		
 			public String toString() {
