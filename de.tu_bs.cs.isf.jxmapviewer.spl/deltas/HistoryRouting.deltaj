@@ -21,7 +21,8 @@ delta HistoryRouting requires History, Routing {
 				}
 	
 			});
-			
+			if (jListHistory == null)
+				jListHistory = new JList<HistoryObject>();
 			jListHistory.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
 						public void valueChanged(javax.swing.event.ListSelectionEvent e) {
 							if (jListHistory.getSelectedValue() != null) {

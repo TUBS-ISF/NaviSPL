@@ -29,7 +29,9 @@ delta History requires Localization {
 		
 		modifies addMenu9() {
 			historyListTxtPath = "resources/History.txt";
-			jListHistory = new JList<HistoryObject>();
+			if (jListHistory == null)
+				jListHistory = new JList<HistoryObject>();
+
 			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(20);
 			jListHistory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
