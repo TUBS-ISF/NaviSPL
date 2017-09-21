@@ -1,0 +1,12 @@
+- How did you evolve one or multiple configurations?
+	1. Added Base Configuration (Only Localization and Core)
+	2. Added Configuration CarNavPOIWikiImagesWeather
+	3. Added CarCarpoolingFavoritesTime
+	4. Added CarNavigationHistoryFavoritesPOITime
+	5. Added PedestrianNavigationBusTaxi
+	6. Added PedestrianNavigationPOIImagesWikiWeatherHistoryTime
+	7. Added TruckNavigationFavoritesTimeWind
+
+- Why did you evolve one or multiple configurations (in this way)?
+	1. Basic Configuration; should always work, unless new mandatory features are implemented later.
+	2. - 7. Configurations with different use cases that satisfy all current constraints.

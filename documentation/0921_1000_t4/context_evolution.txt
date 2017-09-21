@@ -1,0 +1,11 @@
+- How did you evolve the context model?
+	1. Added additional context for vehicle type 'Truck'.
+	2. Added constraint for 'Truck' to select 'Wind'.
+	3. Extended constraints by adding timestamps to temporal validities
+
+
+- Why did you evolve the context model (in this way)?
+	1. Multiple vehicle types are requested. Each vehicle has their own context.
+	2. 'Truck' should implicate 'Wind' by design of the feature.
+	3. Timestamps necessary for validities, where a single date has multiple
+		feature model versions.

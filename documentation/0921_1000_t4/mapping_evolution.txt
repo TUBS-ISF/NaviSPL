@@ -1,0 +1,12 @@
+- How did you evolve the mapping?
+	1. Orientation and Navigation lead to navigation rotation delta being selected.
+	2. Moved mapping elements around to improve visibility.
+
+- Why did you evolve the mapping (in this way)?
+	1. Due to problems with the underlying mapviewer (mouse click 
+		location warped when map is rotated), Orientation is split into two deltas;
+		one for manual map rotation, resetting on mouse click; one for rotating map
+		according to current movement of the navigation system.
+		The latter will be selected, when both Navigation and Orientation are selected.
+		This will be implemented in a future merge.
+	2. large amount of mappings are difficult to read, when not sorted.
