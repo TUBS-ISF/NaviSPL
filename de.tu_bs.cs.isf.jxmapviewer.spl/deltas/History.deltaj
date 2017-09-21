@@ -29,9 +29,13 @@ delta History requires Localization {
 		
 		modifies addMenu9() {
 			historyListTxtPath = "resources/History.txt";
+<<<<<<< HEAD
 			if (jListHistory == null)
 				jListHistory = new JList<HistoryObject>();
 
+=======
+			jListHistory = new JList<HistoryObject>();
+>>>>>>> branch 'feature/History2' of https://github.com/TUBS-ISF/ProjectSPLDevelopment
 			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(20);
 			jListHistory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {

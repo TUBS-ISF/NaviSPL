@@ -21,8 +21,12 @@ delta HistoryRouting requires History, Routing {
 				}
 	
 			});
+<<<<<<< HEAD
 			if (jListHistory == null)
 				jListHistory = new JList<HistoryObject>();
+=======
+			
+>>>>>>> branch 'feature/History2' of https://github.com/TUBS-ISF/ProjectSPLDevelopment
 			jListHistory.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
 						public void valueChanged(javax.swing.event.ListSelectionEvent e) {
 							if (jListHistory.getSelectedValue() != null) {
