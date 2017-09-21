@@ -1,0 +1,58 @@
+delta RotationNavi requires Rotation, Navigation{
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		modifies addMenu4(){
+			original();
+		
+			new Thread(new Runnable() {
+				public void run() {
+					handleNaviRotation();
+				}
+			}).start();
+		
+		}
+	
+		adds private void handleNaviRotation() {
+			double targetAngle = 0d;
+				while (Boolean.TRUE) {
+			
+					if (naviSim != null) {
+						if (!naviSim.isFinished() && naviSpeed.getValue() > 0 && naviSim.getCurrentNormal() != null) {
+							double[] curNormal = naviSim.getCurrentNormal();
+					
+							double px = curNormal[1];
+							double py = curNormal[0];
+					
+							double rot = Math.acos(py /(Math.sqrt((Math.pow(px, 2) + Math.pow(py, 2)))));
+
+							rot = Math.toDegrees(rot);
+							if (px < -0.1) rot = 360 - rot;
+							targetAngle = rot;
+						}
+					}
+					double diff = targetAngle - mapViewer.getRotAngle();
+			
+					diff *= 0.05d;
+					double rot = mapViewer.getRotAngle() + diff;
+			
+					mapViewer.setRotAngle(rot);
+					rotSlider.setValue((int) rot);			
+			
+					try {
+				Thread.sleep(20);
+					} catch (InterruptedException e) {
+				e.printStackTrace();
+					}
+			}
+		}
+	
+	}
+		
+	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread{
+
+		adds public boolean isFinished() {
+			return finish;
+		}
+	}
+}
