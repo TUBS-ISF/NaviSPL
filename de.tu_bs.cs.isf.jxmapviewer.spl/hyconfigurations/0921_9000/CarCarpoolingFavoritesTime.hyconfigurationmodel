@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:HyConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://hyvar-project.eu/feature/configuration/1.0" id="_d6adc9d6-43cf-41ca-aa8d-874c3724d6c9">
+  <elements xsi:type="configuration:HyFeatureSelected" id="_01b089df-40cf-415d-bf4e-854897c9268a">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_e9b72d6a-4be9-46b0-a573-18800875c92d"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_dddaad3d-f447-481c-a22a-9a159298ceaf">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_f7d80bec-07da-443f-99c4-01644229b62b">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_3f698f03-5d38-4a94-83cc-b524b4f613be"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_f8dbd211-34b9-49cd-9822-cb45ff597695">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_7a6d8a3b-a81f-423f-943a-5cf107240607"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_2adf5fe2-ee3d-475f-a39d-2087df8c1bac">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_8cbbf0bf-4d9b-467c-857d-b88a7764fa6e"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_b8be0aa7-fed0-43d5-8b8b-4b9da3f82c28">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_e52334b8-c162-4965-927d-051da5e24e9f"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_180e189c-c95b-47d9-be8b-46565edea13c">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_5e5f03ee-81b8-481f-8811-4e228487ace7"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_1b27d89a-461f-4380-aea3-de13a6a67404">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_14d7f285-3578-46a7-bd88-57a0ba790e40"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_38114b6c-e55f-4008-99e1-f4af33f5f2a4">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_8b9a2378-8bdd-4609-ac43-b530fe00b60f"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_bebac5e7-9498-4c17-8f9c-73c14642f8ab">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_e79baf5d-817e-4682-9dbd-eb8a8b7e0a71"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_78e3765c-f161-443e-bc30-d335b6114b56">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_991c8f20-2a82-4b03-a35c-fc4f741e1c2d"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_355f89ea-f620-4c2f-b2d5-07883f77bb31">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_c6a4699e-35c3-4029-b14e-e133094b6f9b"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_2d4b7e41-3e74-4789-ab12-d4898008fe09">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_f3852104-a862-43eb-b1ba-c1189a266f22"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_178c0ba5-eca0-4d2a-a5b5-99aed6a75bdd">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_0f9b4294-2f53-4ec2-96f9-3f2053399f21"/>
+  </elements>
+  <featureModel href="../../NavigationSystem.hyfeature#/"/>
+</configuration:HyConfiguration>
