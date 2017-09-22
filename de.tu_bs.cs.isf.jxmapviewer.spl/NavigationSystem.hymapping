@@ -66,3 +66,12 @@
 
 "Navigation":
 <decore/Navigation.decore> [2017/09/20 - eternity]
+
+"InfoGroup" && ("Time" || "Weather"):
+<decore/Information.decore> [2017/09/22 - eternity]
+
+"InfoGroup" && "Time":
+<decore/TimeInfo.decore> [2017/09/22 - eternity]
+
+"InfoGroup" && "Weather":
+<decore/WeatherInfo.decore> [2017/09/22 - eternity]

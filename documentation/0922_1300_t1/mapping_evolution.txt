@@ -1,0 +1,7 @@
+- How did you evolve the mapping?
+	Added InfoGroup feature mapping with Time and Weather as additional conditions
+
+
+- Why did you evolve the mapping (in this way)?
+	InfoGroup is supposed to group menu items that only display some simple information.
+	Therefore InfoGroup has to be selected with either Time or Weather feature
