@@ -1,0 +1,9 @@
+- How did you evolve the feature model?
+	Added feature TextToTSpeech to Information + added TTSNavi as child
+	Rearranged TravelTime to parent Navigation, added ArrivalTime and DepartureTime as subfeatures.
+	Renamed sNone, s112, s130 to SpeedlimitDE, SpeedlimitUK, SpeedlimitFR
+
+- Why did you evolve the feature model (in this way)?
+	TextToSpeech is a new feature, requested by the customer, the child was added to make clear that that feature only uses Navi as TTS source
+	ArrivalTime and DepartureTime were requested by the customer, it felt natural to have everything centralized under the TravelTime feature
+	The Speedlimit children names weren't well chosen (as the it wasn't too obvious), so we adjusted them
