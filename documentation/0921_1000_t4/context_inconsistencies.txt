@@ -1,0 +1,25 @@
+- Did your feature model or context evolution lead to inconsistent context-sensitivity (i.e., wrong configurations for certain contexts)?
+	When selecting 'Routingcalculation' without a child feature, setting context as 'Truck' then reconfiguring 
+
+		(with the given constraints):	
+			
+			context:Vehicle = enum:VehicleEnum.Pedestrian && Routecalculation -> Pedestrian && StandardZoom [2017/09/19T13:00:00 - eternity]
+			context:Vehicle = enum:VehicleEnum.Pedestrian ->! Speedlimit [2017/09/19T13:00:00 - eternity]
+
+			context:Vehicle = enum:VehicleEnum.Car && Routecalculation -> Car [2017/09/19T13:00:00 - eternity]
+			context:Vehicle = enum:VehicleEnum.Car ->! Taxi [2017/09/19T13:00:00 - eternity]
+			
+			context:Vehicle = enum:VehicleEnum.Truck && Routecalculation -> Truck && Wind [2017/09/21 - eternity]
+			context:Vehicle = enum:VehicleEnum.Truck -> !(BusStops || Carpooling || Taxi) [2017/09/21 - eternity]
+	
+- What was the wrong behavior?
+	The reconfiguration did not show expected behavior (i.e. selecting 'Truck' feature, and subsequently 'Weather' and 'Wind'),
+	instead removing 'Routecalculation' from the selection, and adding Favorites for whatever reason.
+	This did not happen for sibling context features 'Pedestrian' and 'Car' 
+
+- Why did it happen?
+	First speculation:
+	Routecalculation is not a mandatory feature. Removing it from the configuration is the smallest change possible to satisfy all constraints.
+
+- How did you repair it?
+	No fix at this point.

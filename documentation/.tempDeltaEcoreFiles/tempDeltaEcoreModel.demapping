@@ -1,0 +1,62 @@
+"Localization" :
+	<decore/Localization.decore>
+
+"StandardZoom" :
+	<decore/GreaterZoom.decore>
+
+"Orientation" :
+	<decore/Rotation.decore>
+
+"History" :
+	<decore/History.decore>
+
+"RouteHistory" :
+	<decore/HistoryRouting.decore>
+
+"Routecalculation" :
+	<decore/Routing.decore>
+
+"Pedestrian" :
+	<decore/PedestrianRoute.decore>
+
+"Navigation" :
+	<decore/Navigation.decore>
+
+"Favorites" :
+	<decore/Favorite.decore>
+
+"Weather" :
+	<decore/Weather.decore>
+
+"Wind" :
+	<decore/Wind.decore>
+
+"Time" :
+	<decore/Time.decore>
+
+"H24" :
+	<decore/H24.decore>
+
+"H12" :
+	<decore/H12.decore>
+
+"POI" :
+	<decore/Poi.decore>
+
+"LocationImages" :
+	<decore/POIphoto.decore>
+
+"Wikipedia" :
+	<decore/Wikipedia.decore>
+
+"BusStops" :
+	<decore/BusStopsNearby.decore>
+
+"Carpooling" :
+	<decore/CarPool.decore>
+
+"Taxi" :
+	<decore/Taxi.decore>
+
+"FavoriteRoute" :
+	<decore/FavoriteRoute.decore>
