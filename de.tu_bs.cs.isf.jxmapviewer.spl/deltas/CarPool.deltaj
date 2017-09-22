@@ -40,7 +40,8 @@ delta CarPool{
 		adds private java.util.Vector<de.tu_bs.cs.isf.navi.carpool.CarPoolResult> carPoolList;
 		adds private javax.swing.JList<de.tu_bs.cs.isf.navi.carpool.CarPoolResult> jListCarPoolResult;
 	
-		modifies addMenu11() {
+		modifies addMenu() {			
+			original();
 		
 			carPoolTxtPath = "resources/CarPool.txt";
 			

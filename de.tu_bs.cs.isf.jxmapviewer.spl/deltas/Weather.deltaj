@@ -26,7 +26,8 @@ delta Weather requires Localization {
 			return null; 
 		}
 		
-		modifies addMenu5() {
+		modifies addMenu() {
+			original();
 			menuPanelList.put("Wetter", addWeather());
 		}
 		

@@ -82,70 +82,14 @@ public class NaviApp extends JFrame {
 		menuPanelList = new HashMap<String, JComponent>();
 
 		// Call menu functions
-		addMenu1();
-		addMenu2();
-		addMenu3();
-		addMenu4();
-		addMenu5();
-		addMenu6();
-		addMenu7();
-		addMenu8();
-		addMenu9();
-		addMenu10();
-		addMenu11();
-		addMenu12();
-		addMenu13();
-		addMenu14();
-		addMenu15();
+		addMenu();
 
 		for (String featureName : menuPanelList.keySet()) {
 			menuPanel.add(new SidebarSection(menuPanel, featureName, menuPanelList.get(featureName)));
 		}
 	}
 
-	public void addMenu1() {
-	}
-
-	public void addMenu2() {
-	}
-
-	public void addMenu3() {
-	}
-
-	public void addMenu4() {
-	}
-
-	public void addMenu5() {
-	}
-
-	public void addMenu6() {
-	}
-
-	public void addMenu7() {
-	}
-
-	public void addMenu8() {
-	}
-
-	public void addMenu9() {
-	}
-
-	public void addMenu10() {
-	}
-
-	public void addMenu11() {
-	}
-
-	public void addMenu12() {
-	}
-
-	public void addMenu13() {
-	}
-
-	public void addMenu14() {
-	}
-
-	public void addMenu15() {
+	public void addMenu() {
 	}
 
 	public static void main(String[] args) {

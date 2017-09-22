@@ -22,7 +22,8 @@ delta Time requires Localization {
 			return dateFormat.format(cal.getTime());
 		}
 		
-		modifies addMenu8() {
+		modifies addMenu() {
+			original();
 			menuPanelList.put("Time", addTime());
 		}
 		

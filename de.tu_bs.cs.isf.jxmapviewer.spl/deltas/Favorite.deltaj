@@ -221,7 +221,8 @@ delta Favorite requires Localization {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 			
-		modifies addMenu3() {
+		modifies addMenu() {
+			original();
 			final de.tu_bs.cs.isf.navi.gui.Favorite fav = new de.tu_bs.cs.isf.navi.gui.Favorite();
 			fav.addSaveFavButton(createFavoriteButton(fav));
 			fav.addSaveFavRouteButton(createFavoriteRouteButton(fav));

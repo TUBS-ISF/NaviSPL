@@ -12,7 +12,8 @@ delta Wikipedia requires Poi {
 	
 		adds long oldTime;
 	
-		modifies addMenu14() {
+		modifies addMenu() {
+			original();
 			createWikiMenu();
 			mapViewer.addMouseMotionListener(new java.awt.event.MouseMotionListener() {
 			public void mouseDragged(java.awt.event.MouseEvent e) {

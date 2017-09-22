@@ -61,7 +61,8 @@ delta Routing requires Localization {
 			mapViewer.repaint();
 		}
 		
-		modifies addMenu1() {
+		modifies addMenu() {
+			original();
 			int q = 25;
 			Insets i = new Insets(q, q, q, q);
 	

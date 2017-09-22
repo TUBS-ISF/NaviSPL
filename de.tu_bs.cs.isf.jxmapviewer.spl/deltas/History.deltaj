@@ -27,7 +27,8 @@ delta History requires Localization {
 		adds javax.swing.JList<de.tu_bs.cs.isf.navi.history.HistoryObject> jListHistory;
 		adds private String historyListTxtPath;
 		
-		modifies addMenu9() {
+		modifies addMenu() {
+			original();
 			historyListTxtPath = "resources/History.txt";
 
 			if (jListHistory == null)

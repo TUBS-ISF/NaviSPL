@@ -27,7 +27,8 @@ delta Rotation {
 			return p;
 		}
 		
-		modifies addMenu4() {
+		modifies addMenu() {
+			original();
 			menuPanelList.put("Rotate", addRotateMenu());
 			
 

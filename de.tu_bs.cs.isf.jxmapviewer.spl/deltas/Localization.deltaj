@@ -7,8 +7,9 @@ delta Localization {
 
 		adds private org.openstreetmap.gui.jmapviewer.MapMarkerDot GPSselect;
 		
-		modifies addMenu2() {
+		modifies addMenu() {
 			menuPanelList.put("GPS", addGPS());
+			original();
 		}
 		
 		adds private javax.swing.JPanel addGPS() {			

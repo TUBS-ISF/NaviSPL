@@ -7,7 +7,8 @@ delta Poi requires Localization {
 		adds protected javax.swing.JSlider poiSlider;
 		adds protected javax.swing.JCheckBox poiCheckAll;
 		
-		modifies addMenu6() {
+		modifies addMenu() {
+			original();
 			POIlist = new java.util.ArrayList<de.tu_bs.cs.isf.navi.poi.POIelement>();
 			createPOImenu();
 			mapViewer.addMouseListener(new java.awt.event.MouseListener() {

@@ -1,5 +1,5 @@
 delta Taxi requires Localization {
-modifies de.tu_bs.cs.isf.navi.NaviApp {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		adds import org.json.JSONException;
 		adds import net.aksingh.owmjapis.CurrentWeather;
 		adds import net.aksingh.owmjapis.OpenWeatherMap;
@@ -11,7 +11,8 @@ modifies de.tu_bs.cs.isf.navi.NaviApp {
 		adds import javax.swing.JButton;
 		adds import javax.swing.JOptionPane;
 
-		modifies addMenu12() {
+		modifies addMenu() {
+			original();
 			menuPanelList.put("Taxi", addTaxi());
 		}
 		

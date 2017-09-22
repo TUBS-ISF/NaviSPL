@@ -1,9 +1,7 @@
 delta GreaterZoom {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		modifies setupMap() {
-			mapViewer = new JMapViewer();
-			mapViewer.setMinimumSize(new Dimension(0, 0));
-			splitPane.setLeftComponent(mapViewer);
+			original();
 			mapViewer.setZoom(15);
 		}
 	}

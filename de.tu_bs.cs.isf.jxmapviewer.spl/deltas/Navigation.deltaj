@@ -37,7 +37,8 @@ delta Navigation requires Routing, Localization {
 			(new Thread(naviSim)).start();
 		}
 	
-		modifies addMenu13() {
+		modifies addMenu() {
+			original();
 			naviSpeed = new JSlider(JSlider.VERTICAL, 0, 100, 0);
 			naviSpeed.setMajorTickSpacing(20);
 			naviSpeed.setMinorTickSpacing(5);

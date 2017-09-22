@@ -1,6 +1,8 @@
 delta POIphoto requires Poi {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		modifies addMenu7() {
+	
+		modifies addMenu() {
+			original();
 			createPicMenu();
 			
 			mapViewer.addMouseMotionListener(new java.awt.event.MouseMotionListener() {
