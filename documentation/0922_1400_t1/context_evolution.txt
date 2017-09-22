@@ -1,0 +1,6 @@
+- How did you evolve the context model?
+	Added constraints for Suggestions to Favs and History
+
+
+- Why did you evolve the context model (in this way)?
+	You can only suggest favorites or history if those features are selected
