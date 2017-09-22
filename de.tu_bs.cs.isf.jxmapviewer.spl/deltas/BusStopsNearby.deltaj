@@ -104,49 +104,7 @@ delta BusStopsNearby requires Localization {
 					JSONObject bus = (JSONObject) resultArray.get(i);
 					
 					JSONObject loc = (JSONObject) ((JSONObject) bus.get("geometry")).get("location");
-					Coordinate c = ne
-
-	public void addMenu2() {
-	}
-
-	public void addMenu3() {
-	}
-
-	public void addMenu4() {
-	}
-
-	public void addMenu5() {
-	}
-
-	public void addMenu6() {
-	}
-
-	public void addMenu7() {
-	}
-
-	public void addMenu8() {
-	}
-
-	public void addMenu9() {
-	}
-
-	public void addMenu10() {
-	}
-
-	public void addMenu11() {
-	}
-
-	public void addMenu12() {
-	}
-
-	public void addMenu13() {
-	}
-
-	public void addMenu14() {
-	}
-
-	public void addMenu15() {
-	}w Coordinate(loc.getDouble("lat"), loc.getDouble("lng"));
+					Coordinate c = new Coordinate(loc.getDouble("lat"), loc.getDouble("lng"));
 					String name = bus.getString("name");
 					
 					MapMarkerDot m = new MapMarkerDot(name, c);
