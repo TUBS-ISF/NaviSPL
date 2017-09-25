@@ -224,6 +224,7 @@ delta Routing requires Localization {
 			private String profileUrl;
 			private de.tu_bs.cs.isf.navi.routing.RoutingInformation route;
 			private String request;
+			private JSONObject routes;
 			
 			
 			public RoutingCalculator(long latitudeStart, long longitudeStart, long latitudeEnd, long longitudeEnd) {
@@ -314,7 +315,7 @@ delta Routing requires Localization {
 				
 
 				JSONArray routesArray = (JSONArray) parsed.get("routes");
-				JSONObject routes = (JSONObject) routesArray.get(0);
+				routes = (JSONObject) routesArray.get(0);
 				
 				
 				JSONArray polygon = (JSONArray) routes.get("geometry");

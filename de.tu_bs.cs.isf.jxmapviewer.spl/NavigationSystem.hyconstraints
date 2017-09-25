@@ -18,3 +18,7 @@ context:Vehicle = enum:VehicleEnum.Car -> !Taxi [2017/09/19T13:00:00 - eternity]
 
 context:Vehicle = enum:VehicleEnum.Truck && Routecalculation -> Truck [2017/09/21 - eternity]
 context:Vehicle = enum:VehicleEnum.Truck -> !(BusStops || Carpooling || Taxi) [2017/09/21 - eternity]
+
+context:DistanceType = enum:LocationEnum.Germany -> RouteDistance [2017/09/25 - eternity]
+context:DistanceType = enum:LocationEnum.France -> RouteDistance [2017/09/25 - eternity]
+context:DistanceType = enum:LocationEnum.GB -> RouteDistanceMile [2017/09/25 - eternity]
