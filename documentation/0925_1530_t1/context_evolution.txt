@@ -1,0 +1,7 @@
+- How did you evolve the context model?
+	Added constraints for Kilometer and Mile
+
+
+- Why did you evolve the context model (in this way)?
+	Distance requires to be changed based on the location, therefore the following constraints were added
+	We refrained from using another ContextEnum for the distance location as otherwise you might have to select the location several times.

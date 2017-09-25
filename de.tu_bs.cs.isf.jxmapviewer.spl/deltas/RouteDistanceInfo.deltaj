@@ -1,0 +1,12 @@
+delta RouteDistanceInfo requires RouteDistance, Information {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
+		modifies setupMenu() {
+			original();
+			javax.swing.JPanel rd = (javax.swing.JPanel) menuPanelList.remove("Route Distance");			
+			menuPanel.remove(rd.getParent());
+			infoPanel.addInformationFeature(rd);
+		}
+	}
+	
+}

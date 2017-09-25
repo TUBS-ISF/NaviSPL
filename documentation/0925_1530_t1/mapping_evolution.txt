@@ -1,0 +1,7 @@
+- How did you evolve the mapping?
+	Added RouteDistance, RouteDistanceRemaining feature mapping + InfoGroup mapping (in case its selected)
+
+
+- Why did you evolve the mapping (in this way)?
+	Added new deltaj files, need to also make sure that Information.deltaj is included if RouteDistance is selected
+	(adding to previous Information.deltaj is not possible as the mapping date would be wrong.)
