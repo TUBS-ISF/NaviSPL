@@ -1,0 +1,78 @@
+delta SpeedlimitDE requires SpeedLimit {
+
+	modifies de.tu_bs.cs.isf.navi.speedlimit.Speedlimit {
+	
+		adds import java.awt.BasicStroke;
+		adds private javax.swing.JPanel speedpanelNone;
+	
+		
+		modifies init() {
+			original();
+			speedpanelNone = new JPanel() {
+				public void paintComponent(Graphics g) {	
+					super.paintComponent(g);
+					int paintPosx = naviApp.getSplitPane().getDividerLocation() - 120;
+					Graphics2D g2 = (Graphics2D) g;
+					g2.setColor(Color.GRAY);
+					g2.fillOval(paintPosx, paintPosy, 100, 100);
+					g2.setColor(Color.WHITE);
+					g2.fillOval(paintPosx+2, paintPosy+2, 96, 96);
+					g2.setColor(Color.GRAY);
+					g2.setStroke(new BasicStroke(3));
+					g2.drawLine(paintPosx + 11  , 96 , paintPosx + 77, 30);
+					g2.drawLine(paintPosx + 15, 100, paintPosx + 81, 34);
+					g2.drawLine(paintPosx + 19, 104, paintPosx + 85, 38);
+					g2.drawLine(paintPosx + 23, 108, paintPosx + 89, 42);
+				}
+			};
+		
+		}
+	
+		modifies calculateLimit() {
+	
+			original();
+			if (wayType == 1) {
+				if (avgSpeed > 120) {
+					speedPanelNone();				
+				} else if (100 < avgSpeed && avgSpeed <= 120) {
+					speedPanel3("120");
+				} else if (80 < avgSpeed && avgSpeed <= 100) {
+					speedPanel3("100");
+				} else if (60 < avgSpeed && avgSpeed <= 80) {
+					speedPanel2("80");
+				}
+			} else if (wayType == 2) {
+				if (avgSpeed > 100) {
+					speedPanelNone();				
+				} else if (80 < avgSpeed && avgSpeed <= 100) {
+					speedPanel3("100");
+				} else if (70 < avgSpeed && avgSpeed <= 80) {
+					speedPanel2("80");
+				} else if (50 < avgSpeed && avgSpeed <= 70) {
+					speedPanel2("70");
+				} else if (avgSpeed <= 50) {
+					speedPanel2("50");
+				}			
+			}else if (wayType == 3) {
+				if (avgSpeed > 50) {
+				} else if (30 < avgSpeed && avgSpeed <= 50) {
+					speedPanel2("50");
+				} else if (avgSpeed <= 30) {
+					speedPanel2("30");
+				} 
+			}else {
+				speedPanelEmpty();
+			}
+			paintSpeedlimit();
+	
+		}
+		
+		adds private void speedPanelNone() {
+			speedpanel = speedpanelNone;
+			speedpanel.setSize(1998, 960);
+			speedpanel.repaint();
+		}
+			
+	}
+
+}

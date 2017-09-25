@@ -390,13 +390,17 @@ delta Routing requires Localization {
 		import java.util.ArrayList;
 		import java.util.List;
 		
-		public class RoutingInformation {
+		public class RoutingInformation { 
 			
 			private List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> steps;
 			public static RoutingInformation currentRoute;
 			private List<double[]> polygonPoints;
 			
 			public RoutingInformation() {
+				setUpRoutingInformation();
+			}
+			
+			private void setUpRoutingInformation() {
 				steps = new ArrayList<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation>();
 				polygonPoints = new ArrayList<double[]>();
 			}
