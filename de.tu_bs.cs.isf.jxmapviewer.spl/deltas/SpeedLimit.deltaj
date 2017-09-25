@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 delta SpeedLimit requires Routing, Navigation {
 
 		
@@ -270,4 +271,14 @@ delta SpeedLimit requires Routing, Navigation {
 	}
 
 	
+=======
+delta SpeedLimit{
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		modifies addMenu10() {
+			menuPanelList.put("Speedlimit", new SpeedLimit());
+		}
+		
+>>>>>>> 07e848285abf5e59825c32aa9ce400bb442d3b9e
 }
