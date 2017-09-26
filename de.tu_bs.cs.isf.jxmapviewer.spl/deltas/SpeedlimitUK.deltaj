@@ -5,7 +5,7 @@ delta SpeedlimitUK requires SpeedLimit {
 		modifies calculateLimit() {
 	
 			original();
-			
+						
 			if (wayType == 1) {
 				 if (avgSpeed >= 100) {
 					speedPanel2("70");

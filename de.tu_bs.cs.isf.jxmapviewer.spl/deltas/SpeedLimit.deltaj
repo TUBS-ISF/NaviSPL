@@ -16,25 +16,19 @@ delta SpeedLimit requires Routing, Navigation {
 			JSONArray wayTypesArray = (JSONArray) wayTypesObject.get("values");
 			for (int i = 0; i < wayTypesArray.length(); i++) {
 				JSONArray typesAndPolys = (JSONArray) wayTypesArray.get(i);
-				route.addWayType ((int) typesAndPolys.get(0), (int) typesAndPolys.get(1), (int) typesAndPolys.get(2));
+				route.addWayType((Integer) typesAndPolys.get(0), (Integer) typesAndPolys.get(1), (Integer) typesAndPolys.get(2));
 			}
 			JSONObject avgSpeedObject = (JSONObject) extrasObject.get("avgspeed");
 			JSONArray avgSpeedArray = (JSONArray) avgSpeedObject.get("values");
 			for (int i = 0; i < avgSpeedArray.length(); i++) {
 				JSONArray speedsAndPolys = (JSONArray) avgSpeedArray.get(i);
-				route.addAvgSpeed((int) speedsAndPolys.get(0), (int) speedsAndPolys.get(1), (int) speedsAndPolys.get(2));
+				System.out.println(speedsAndPolys.get(0).getClass());
+				route.addAvgSpeed((Integer) speedsAndPolys.get(0), (Integer) speedsAndPolys.get(1), (Integer) speedsAndPolys.get(2));
 			}
-			
 		}
-	
 	}
 	
-	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread{
-		visibility stillDriving() {public};
-	}
-	
-	modifies de.tu_bs.cs.isf.navi.NaviApp{
-		
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
 		adds import de.tu_bs.cs.isf.navi.speedlimit.Speedlimit;
 	
 		adds public javax.swing.JSplitPane getSplitPane() {
@@ -51,7 +45,10 @@ delta SpeedLimit requires Routing, Navigation {
 			Speedlimit speedLimit = new Speedlimit(naviSim, routingInformation, app);
 			(new Thread(speedLimit)).start();
 		}
-		
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread {
+		visibility stillDriving() {public};
 	}
 	
 	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation { 
@@ -89,11 +86,10 @@ delta SpeedLimit requires Routing, Navigation {
 	
 		adds public void setAvgSpeed(java.util.List<int[]> avgSpeed) {
 			this.avgSpeed = avgSpeed;
-		}	
-	
-	
+		}
 	}
-	adds{
+	
+	adds {
 		package de.tu_bs.cs.isf.navi.speedlimit;
 
 		import java.awt.Color;
@@ -134,7 +130,7 @@ delta SpeedLimit requires Routing, Navigation {
 			private JPanel speedpanel2Digits;
 			private JPanel speedpanel3Digits;
 		
-			public Speedlimit(NaviSimulationThread naviThread, RoutingInformation routingInformation, NaviApp naviApp) {
+			public Speedlimit(NaviSimulationThread naviThread, RoutingInformation routingInformation, de.tu_bs.cs.isf.navi.NaviApp naviApp) {
 				this.naviApp = naviApp;
 				this.naviThread = naviThread;
 				this.routingInfo = routingInformation;
@@ -148,9 +144,9 @@ delta SpeedLimit requires Routing, Navigation {
 				}
 				
 				paintPosy = 20;
-				int strOffset3 = 19;
-				int strOffset2 = 29;
-				int circOffset = 10;
+				final int strOffset3 = 19;
+				final int strOffset2 = 29;
+				final int circOffset = 10;
 				
 				speedpanel = new JPanel();
 				
@@ -268,3 +264,4 @@ delta SpeedLimit requires Routing, Navigation {
 			}
 		}
 	}
+}
