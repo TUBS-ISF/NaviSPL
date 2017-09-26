@@ -75,7 +75,6 @@ public class TiltedPane extends JPanel {
 	public void collapse() {
 		contentPane.setVisible(false);
 		calculateHeight();
-		contentPane.setPreferredSize(new Dimension(minComponentWidth, prefHeight));
 		tiltedPaneBar.invalidate();
 	}
 
