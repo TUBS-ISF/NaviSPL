@@ -1,0 +1,68 @@
+delta TravelTime requires Routing {
+	
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingCalculator {
+		
+		modifies interpretJSONString(String output) {
+			original(output);
+			
+			JSONObject summary = (JSONObject) routes.get("summary");
+			route.setDuration(summary.getDouble("duration"));
+			
+		}
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation { 
+	
+		adds private double duration;	
+		
+		adds public double getDuration() {
+			return duration;
+		}
+
+		adds public void setDuration(double duration) {
+			this.duration = duration;
+		}
+	}
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp{
+	
+		modifies addMenu(){
+			original();
+			addTravelTime();
+		}
+		
+		modifies paintRoute(){
+			original();
+			calcTravelTime();
+		}
+		
+		adds private javax.swing.JPanel durPanel = new javax.swing.JPanel();
+		adds private javax.swing.JLabel durLabel = new javax.swing.JLabel();
+		
+		adds private void addTravelTime(){	
+			JLabel textLabel = new JLabel("Estimated Travel Time: ");
+			durLabel.setText("00:00");
+			durPanel.add(textLabel);
+			durPanel.add(durLabel);
+			menuPanelList.put("Travel Time", durPanel);
+			
+		}
+		
+		adds private void calcTravelTime() {
+			double durationInSek = routingInformation.getDuration();
+			int durHrs = (int) Math.floor(durationInSek/3600) ;
+			int durMins = (int) (Math.floor(durationInSek/60))%60 ;
+			
+			durLabel.setText( formatTime(durHrs) +":"+ formatTime(durMins));
+			
+		}
+		
+		adds private String formatTime(int time) {
+			String ret = String.valueOf(time);
+			if (time < 10) {
+				ret = "0" + time;
+			} 
+			return ret;
+		}
+	}
+}

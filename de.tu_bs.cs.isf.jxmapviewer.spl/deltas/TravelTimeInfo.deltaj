@@ -1,0 +1,14 @@
+delta TravelTimeInfo requires TravelTime, Information{
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+
+		modifies setupMenu() {
+			original();
+			javax.swing.JPanel t = (javax.swing.JPanel) menuPanelList.remove("Travel Time");			
+			menuPanel.remove(t.getParent());
+			infoPanel.addInformationFeature(t);
+		}
+
+	}
+
+}
