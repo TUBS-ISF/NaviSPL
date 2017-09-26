@@ -7,20 +7,18 @@ import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JSplitPane;
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 
-import com.gg.slider.SideBar;
-import com.gg.slider.SidebarSection;
-import com.gg.slider.SideBar.SideBarMode;
+import de.tu_bs.cs.isf.navi.tiltedpane.TiltedPane;
+import de.tu_bs.cs.isf.navi.tiltedpane.TiltedPaneBar;
 
 @SuppressWarnings("serial")
 public class NaviApp extends JFrame {
 
 	protected JMapViewer mapViewer;
 	
-	private SideBar menuPanel;
+	private TiltedPaneBar menuPanel;
 
 	private JSplitPane splitPane;
 
@@ -75,8 +73,7 @@ public class NaviApp extends JFrame {
 
 	public void setupMenu() {
 
-		menuPanel = new SideBar(SideBarMode.TOP_LEVEL, true, 300, true);
-		menuPanel.setMinimumSize(new Dimension(0, 0));
+		menuPanel = new TiltedPaneBar();
 		splitPane.setRightComponent(menuPanel);
 
 		menuPanelList = new HashMap<String, JComponent>();
@@ -85,7 +82,7 @@ public class NaviApp extends JFrame {
 		addMenu();
 
 		for (String featureName : menuPanelList.keySet()) {
-			menuPanel.add(new SidebarSection(menuPanel, featureName, menuPanelList.get(featureName)));
+			menuPanel.add(new TiltedPane(menuPanel, featureName, menuPanelList.get(featureName)));
 		}
 	}
 
