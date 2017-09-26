@@ -25,5 +25,38 @@ delta ttsNavi requires tts {
 								prevInst = inst;
 							}
 */
+
+		adds public String prevInst;
+		modifies run() {
+			prevInst = "";
+			original();
+		}
+
+		modifies currentInstruction(double distance, String instruction) {
+			String formatedDistance = getFormatedDistance(distance);
+			if (!formatedDistance.contains("miles"))
+				formatedDistance = formatedDistance.replace("m", "meters").replace("k", "kilo").replace("yd", "yards");
+			final String dest = formatedDistance;
+			final String inst = instruction;
+			
+			double distcheck = Math.pow(getCurrentSpeed(), 2) / 20;
+			if (!prevInst.equals(inst) && distance < distcheck) {
+				
+				new Thread(new Runnable() {
+
+					public void run() {
+						try {
+							naviApp.voice.getDefaultAudioPlayer().cancel();
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						}
+						naviApp.voice.getOutputQueue().removeAll();
+						naviApp.voice.speak("In " + dest + ": " + inst);
+					}
+					
+				}).start();
+				prevInst = inst;
+			}
+		}
 	}
 }

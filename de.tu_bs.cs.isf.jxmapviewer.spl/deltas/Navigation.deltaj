@@ -319,6 +319,8 @@ delta Navigation requires Routing, Localization {
 							}
 							prevDist = dist;
 							
+							currentInstruction(dist, rsi.getInstruction());
+							
 							String labelText = String.format("<html><div WIDTH=%d>%s</div></html>", naviApp.naviDirectionLabel.getWidth(), "In " + this.getFormatedDistance(dist) + ": " + rsi.getInstruction());
 							
 							naviApp.naviDirectionLabel.setText(labelText);
@@ -331,6 +333,8 @@ delta Navigation requires Routing, Localization {
 						this.distanceTravelled += Double.valueOf(rsi.getDistance().toString());
 					}
 				}
+			}
+			public void currentInstruction(double distance, String instruction) {
 			}
 			
 			private String getFormatedDistance(double inputMeters) {
