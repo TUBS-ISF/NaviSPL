@@ -4,9 +4,13 @@ delta TravelTimeInfo requires TravelTime, Information{
 
 		modifies setupMenu() {
 			original();
-			javax.swing.JPanel t = (javax.swing.JPanel) menuPanelList.remove("Travel Time");			
-			menuPanel.remove(t.getParent());
+			javax.swing.JPanel t = (javax.swing.JPanel) menuPanelList.remove("Travel Time");
+			t.getParent().getParent().remove(t.getParent());
 			infoPanel.addInformationFeature(t);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
 		}
 
 	}

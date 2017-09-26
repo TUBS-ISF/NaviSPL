@@ -10,7 +10,7 @@ delta Wikipedia requires Poi {
 		adds import java.io.InputStream;
 		adds import java.io.InputStreamReader;
 	
-		adds long oldTime;
+		adds private long oldTimeWiki;
 	
 		modifies addMenu() {
 			original();
@@ -38,9 +38,9 @@ delta Wikipedia requires Poi {
 								+ org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS * 2);
 						if (a1 && a2 && a3 && a4) {
 							if (WikiElement == null) {
-								if (System.currentTimeMillis() > oldTime + 1000) {
+								if (System.currentTimeMillis() > oldTimeWiki + 1000) {
 									displayText(p);
-									oldTime = System.currentTimeMillis();
+									oldTimeWiki = System.currentTimeMillis();
 								}
 							}
 							return;
