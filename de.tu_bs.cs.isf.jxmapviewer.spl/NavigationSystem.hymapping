@@ -117,3 +117,6 @@
 
 "SpeedlimitUK":
 <decore/SpeedlimitUK.decore>  [2017/09/25 - eternity]
+
+"TextToSpeech":
+<decore/tts.decore>  [2017/09/25 - eternity]
