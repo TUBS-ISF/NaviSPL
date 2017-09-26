@@ -1,30 +1,6 @@
-delta ttsNavi requires tts {
+delta ttsNavi requires tts, Navigation {
 	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread {	
-/* // modify stilldriving (where label is updated)
-							String derp = getFormatedDistance(dist);
-							if (!derp.contains("miles"))
-								final String dest = getFormatedDistance(dist).replace("m", "meters").replace("k", "kilo").replace("yd", "yards");
-							final String inst =  rsi.getInstruction();
-							
-							double distcheck = Math.pow(currentSpeed, 2) / 20;
-							if (!prevInst.equals(inst) && dist < distcheck) {
-								
-								new Thread(new Runnable() {
-	
-									public void run() {
-										try {
-											naviApp.voice.getDefaultAudioPlayer().cancel();
-										} catch (InstantiationException e) {
-											e.printStackTrace();
-										}
-										naviApp.voice.getOutputQueue().removeAll();
-										naviApp.voice.speak("In " + dest + ": " + inst);
-									}
-									
-								}).start();
-								prevInst = inst;
-							}
-*/
+
 
 		adds public String prevInst;
 		modifies run() {
@@ -33,6 +9,7 @@ delta ttsNavi requires tts {
 		}
 
 		modifies currentInstruction(double distance, String instruction) {
+			original(distance, instruction);
 			String formatedDistance = getFormatedDistance(distance);
 			if (!formatedDistance.contains("miles"))
 				formatedDistance = formatedDistance.replace("m", "meters").replace("k", "kilo").replace("yd", "yards");
