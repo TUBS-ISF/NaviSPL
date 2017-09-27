@@ -82,7 +82,7 @@ public class NaviApp extends JFrame {
 		addMenu();
 
 		for (String featureName : menuPanelList.keySet()) {
-			menuPanel.add(new TiltedPane(menuPanel, featureName, menuPanelList.get(featureName)));
+			menuPanel.addSection(new TiltedPane(menuPanel, featureName, menuPanelList.get(featureName)), true);
 		}
 	}
 
