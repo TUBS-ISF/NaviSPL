@@ -1,0 +1,15 @@
+delta TimeRemainingInfo requires TimeRemaining, TravelTimeInfo, Information{
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+
+		modifies setupMenu() {
+			original();
+			javax.swing.JPanel ttr = (javax.swing.JPanel) menuPanelList.remove("Remaining Travel Time");
+			ttr.getParent().getParent().remove(ttr.getParent());
+			infoPanel.addInformationFeature(ttr);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+		}
+	
+}

@@ -1,0 +1,42 @@
+delta SuggestionsFavorites requires Favorite, Suggestions {
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+	
+		adds import de.tu_bs.cs.isf.navi.gui.FavoriteListElement;
+		
+		modifies collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+			original(marker, radius);
+			getSuggestionsFromFavorites(marker, radius);
+		}
+		
+		adds private void getSuggestionsFromFavorites(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+				List<FavoriteListElement> dummyFavs = new ArrayList<FavoriteListElement>();
+				
+				for (int i = 0; i < dummyFavs.size(); i++) {
+					FavoriteListElement obj = dummyFavs.get(i);
+					
+					
+					double la1 = obj.getLat();
+					double lo1 = obj.getLongi();
+					double la2 = marker.getLat();
+					double lo2 = marker.getLon();
+					double distance = mapViewer.getTileController().getTileSource().getDistance(la1, lo1, la2, lo2);
+					
+					if(distance < radius) {
+						if(!obj.getIsRoute()) {
+							Coordinate co = new Coordinate(la1, lo1);
+							MapMarkerDot suggestion = new MapMarkerDot(co);
+							suggestionsList.add(new Suggestion(suggestion));
+						} else {
+							Coordinate coStart = new Coordinate(la1, lo1);
+							Coordinate coEnd = new Coordinate(obj.getLatEnd(), obj.getLongiEnd());
+							MapMarkerDot dotStart = new MapMarkerDot(coStart);
+							MapMarkerDot dotEnd = new MapMarkerDot(coEnd);
+							Suggestion suggestion = new Suggestion("Route", dotStart, dotEnd, new Polygon());
+							suggestionsList.add(suggestion);
+						}
+					}		
+				}
+			}
+	}
+}

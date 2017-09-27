@@ -1,0 +1,6 @@
+- How did you evolve the context model?
+	Added constraint for RemainingTravelTime
+
+
+- Why did you evolve the context model (in this way)?
+	RemainingTravelTime requires a time format, so either H12 or H24 - and as both are in an alternate group, we can use its parent, Time

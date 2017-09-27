@@ -91,3 +91,50 @@
 "InfoGroup" && "RouteDistance":
 <decore/RouteDistanceInfo.decore> [2017/09/25 - eternity]
 
+"Suggestions":
+<decore/Suggestions.decore> [2017/09/22 - eternity]
+
+"SuggestionHistory":
+<decore/SuggestionsHistory.decore> [2017/09/22 - eternity]
+
+"SuggestionFav":
+<decore/SuggestionsFavorites.decore> [2017/09/22 - eternity]
+
+"TravelTime":
+<decore/TravelTime.decore> [2017/09/19 - eternity]
+
+"InfoGroup" && "TravelTime":
+<decore/TravelTimeInfo.decore> [2017/09/22 - eternity]
+
+"Speedlimit":
+<decore/SpeedLimit.decore>  [2017/09/25 - eternity]
+
+"SpeedlimitDE":
+<decore/SpeedlimitDE.decore>  [2017/09/25 - eternity]
+
+"SpeedlimitFR":
+<decore/SpeedlimitFR.decore>  [2017/09/25 - eternity]
+
+"SpeedlimitUK":
+<decore/SpeedlimitUK.decore>  [2017/09/25 - eternity]
+
+"TextToSpeech":
+<decore/tts.decore>  [2017/09/25 - eternity]
+
+"TTSNavi":
+<decore/ttsNavi.decore>  [2017/09/25 - eternity]
+
+"RemainingTravelTime":
+<decore/TimeRemaining.decore> [2017/09/22 - eternity]
+
+"InfoGroup" && "RemainingTravelTime":
+<decore/TimeRemaining.decore> [2017/09/22 - eternity]
+
+"ArrivalTime":
+<decore/ArrivalTime.decore> [2017/09/22 - eternity]
+
+"DepartureTime":
+<decore/DepartureTime.decore> [2017/09/22 - eternity]
+
+"ArrivalTime" || "DepartureTime":
+<decore/DepartureArrivalTimeHelper.decore> [2017/09/22 - eternity]

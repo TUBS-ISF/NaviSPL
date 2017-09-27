@@ -1,0 +1,36 @@
+delta SpeedlimitFR requires SpeedLimit
+
+	modifies de.tu_bs.cs.isf.navi.speedlimit.Speedlimit {
+		modifies calculateLimit() {
+	
+			original();
+			
+			if (wayType == 1) {
+				if (avgSpeed > 110) {
+					speedPanel3("130");			
+				} else if (90 < avgSpeed && avgSpeed <= 110) {
+					speedPanel3("110");
+				} else if (50 < avgSpeed && avgSpeed <= 90) {
+					speedPanel2("90");
+				} 
+			} else if (wayType == 2) {
+				if (avgSpeed > 110) {
+					speedPanel3("130");			
+				} else if (90 < avgSpeed && avgSpeed <= 110) {
+					speedPanel3("110");
+				} else if (80 < avgSpeed && avgSpeed <= 90) {
+					speedPanel2("90");
+				} else if (avgSpeed <= 50) {
+					speedPanel2("50");
+				}			
+			}else if (wayType == 3) {
+				if (avgSpeed < 50) {
+					speedPanel2("50");
+				} 
+			}else {
+				speedPanelEmpty();
+			}
+			paintSpeedlimit();
+		}
+	}
+}

@@ -1,0 +1,14 @@
+delta tts {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+
+		adds public com.sun.speech.freetts.VoiceManager vm;
+	    adds public com.sun.speech.freetts.Voice voice;	    
+	    modifies addMenu() {
+	    	vm = com.sun.speech.freetts.VoiceManager.getInstance();
+		    voice = vm.getVoice("kevin16");
+		    
+		    voice.allocate();
+		    original();
+	    }
+    }
+}

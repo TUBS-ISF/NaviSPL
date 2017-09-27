@@ -1,0 +1,140 @@
+"Localization":
+<decore/Localization.decore> [2017/09/11 - eternity]
+
+"StandardZoom":
+<decore/GreaterZoom.decore> [2017/09/19 - eternity]
+
+"Orientation":
+<decore/Rotation.decore> [2017/09/11 - eternity]
+
+"Orientation" && "Navigation":
+<decore/RotationNavi.decore> [2017/09/20 - eternity]
+
+"History":
+<decore/History.decore> [2017/09/18 - eternity]
+
+"RouteHistory":
+<decore/HistoryRouting.decore> [2017/09/18 - eternity]
+
+"Routecalculation":
+<decore/Routing.decore> [2017/09/11 - eternity]
+
+"Pedestrian":
+<decore/PedestrianRoute.decore> [2017/09/19 - eternity]
+
+"Navigation":
+<decore/Navigation.decore> [2017/09/20 - eternity]
+
+"Favorites":
+<decore/Favorite.decore> [2017/09/11 - eternity]
+
+"Weather":
+<decore/Weather.decore> [2017/09/12 - eternity]
+
+"Wind":
+<decore/Wind.decore> [2017/09/17 - eternity]
+
+"Time":
+<decore/Time.decore> [2017/09/13 - eternity]
+
+"H24":
+<decore/H24.decore> [2017/09/13 - eternity]
+
+"H12":
+<decore/H12.decore> [2017/09/13 - eternity]
+
+"POI":
+<decore/Poi.decore>  [2017/09/12 - eternity]
+
+"LocationImages":
+<decore/POIphoto.decore> [2017/09/15 - eternity]
+
+"Wikipedia":
+<decore/Wikipedia.decore> [2017/09/19 - eternity]
+
+"BusStops":
+<decore/BusStopsNearby.decore> [2017/09/19 - eternity]
+
+"Carpooling":
+<decore/CarPool.decore> [2017/09/18 - eternity]
+
+"Taxi":
+<decore/Taxi.decore> [2017/09/19 - eternity]
+
+"FavoriteRoute":
+<decore/FavoriteRoute.decore> [2017/09/20 - eternity]
+
+"Navigation":
+<decore/Navigation.decore> [2017/09/20 - eternity]
+
+"InfoGroup" && ("Time" || "Weather"):
+<decore/Information.decore> [2017/09/22 - eternity]
+
+"InfoGroup" && "Time":
+<decore/TimeInfo.decore> [2017/09/22 - eternity]
+
+"InfoGroup" && "Weather":
+<decore/WeatherInfo.decore> [2017/09/22 - eternity]
+
+"RouteDistance":
+<decore/RouteDistance.decore> [2017/09/25 - eternity]
+
+"RouteDistance" && "Mile":
+<decore/RouteDistanceMile.decore> [2017/09/25 - eternity]
+
+"RemainingDistance":
+<decore/RouteDistanceRemaining.decore> [2017/09/25 - eternity]
+
+"InfoGroup" && "RouteDistance":
+<decore/Information.decore> [2017/09/25 - eternity]
+
+"InfoGroup" && "RouteDistance":
+<decore/RouteDistanceInfo.decore> [2017/09/25 - eternity]
+
+"Suggestions":
+<decore/Suggestions.decore> [2017/09/22 - eternity]
+
+"SuggestionHistory":
+<decore/SuggestionsHistory.decore> [2017/09/22 - eternity]
+
+"SuggestionFav":
+<decore/SuggestionsFavorites.decore> [2017/09/22 - eternity]
+
+"TravelTime":
+<decore/TravelTime.decore> [2017/09/19 - eternity]
+
+"InfoGroup" && "TravelTime":
+<decore/TravelTimeInfo.decore> [2017/09/22 - eternity]
+
+"Speedlimit":
+<decore/SpeedLimit.decore>  [2017/09/25 - eternity]
+
+"SpeedlimitDE":
+<decore/SpeedlimitDE.decore>  [2017/09/25 - eternity]
+
+"SpeedlimitFR":
+<decore/SpeedlimitFR.decore>  [2017/09/25 - eternity]
+
+"SpeedlimitUK":
+<decore/SpeedlimitUK.decore>  [2017/09/25 - eternity]
+
+"TextToSpeech":
+<decore/tts.decore>  [2017/09/25 - eternity]
+
+"TTSNavi":
+<decore/ttsNavi.decore>  [2017/09/25 - eternity]
+
+"RemainingTravelTime":
+<decore/TimeRemaining.decore> [2017/09/22 - eternity]
+
+"InfoGroup" && "RemainingTravelTime":
+<decore/TimeRemaining.decore> [2017/09/22 - eternity]
+
+"ArrivalTime":
+<decore/ArrivalTime.decore> [2017/09/22 - eternity]
+
+"DepartureTime":
+<decore/DepartureTime.decore> [2017/09/22 - eternity]
+
+"ArrivalTime" || "DepartureTime":
+<decore/DepartureArrivalTimeHelper.decore> [2017/09/22 - eternity]
