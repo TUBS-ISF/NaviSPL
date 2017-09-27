@@ -29,10 +29,11 @@ public class TiltedPaneBar extends JScrollPane{
 	public void addSection(TiltedPane section, boolean collapsed) {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.anchor = GridBagConstraints.NORTH;
 		gbc.gridx = 0;
 		gbc.gridy = i++;
 		gbc.weightx = 1;
-		gbc.weighty = 1;
+		gbc.weighty = 0;
 		
 		components.add(section, gbc);
 		if (collapsed) section.collapse();

@@ -1,6 +1,7 @@
 package de.tu_bs.cs.isf.navi.tiltedpane;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
@@ -42,6 +43,7 @@ public class TiltedPane extends JPanel {
 		titlePanel.setLayout(new BorderLayout());
 		titlePanel.setPreferredSize(new Dimension(getPreferredSize().width, titleHeight));
 		titlePanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		titlePanel.setOpaque(true);
 		titlePanel.setPreferredSize(new Dimension(minComponentWidth, titleHeight));
 		titlePanel.addMouseListener(new MouseAdapter() {
 			public void mouseReleased(MouseEvent e) {
@@ -52,7 +54,6 @@ public class TiltedPane extends JPanel {
 				}
 			}
 		});
-		
 		add(titlePanel, BorderLayout.NORTH);
 		add(component, BorderLayout.CENTER);
 
@@ -75,14 +76,19 @@ public class TiltedPane extends JPanel {
 	public void collapse() {
 		contentPane.setVisible(false);
 		calculateHeight();
-		tiltedPaneBar.invalidate();
+		contentPane.setMaximumSize(new Dimension(minComponentWidth, prefHeight));
+		titlePanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+		titlePanel.setBackground(null);
+		tiltedPaneBar.revalidate();
 	}
 
 	public void expand() {
 		contentPane.setVisible(true);
 		calculateHeight();
-		contentPane.setPreferredSize(new Dimension(minComponentWidth, prefHeight));
-		tiltedPaneBar.invalidate();
+		contentPane.setMaximumSize(new Dimension(minComponentWidth, prefHeight));
+		titlePanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
+		titlePanel.setBackground(new Color(204, 204, 204));
+		tiltedPaneBar.revalidate();
 	}
 
 	public boolean isCollapsed() {
