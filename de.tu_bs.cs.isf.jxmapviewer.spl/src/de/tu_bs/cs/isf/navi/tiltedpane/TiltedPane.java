@@ -64,8 +64,7 @@ public class TiltedPane extends JPanel {
 		if (firstCalculationHeight || contentPane.isVisible()) {
 			prefHeight = titleHeight*2;
 			for (Component c : contentPane.getComponents()) {
-				prefHeight += c.geConflicting files
-de.tu_bs.cs.isf.jxmtPreferredSize().height;
+				prefHeight += c.getPreferredSize().height;
 			}
 			firstCalculationHeight = false;
 		}
