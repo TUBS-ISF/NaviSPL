@@ -1,0 +1,10 @@
+- When did you notice the inconsistency in the product (i.e., different behavior)?
+When developing the feature "RemainingTravelTime" we realized that we needed a Method to format
+Time-Strings properly. There was already one in the Feature "TravelTime", that wasn't quite what 
+we needed. 
+
+- Why did this inconsistency occur?
+"TravelTime" used a different Time format, that was easier to split up in Hours and Minutes. 
+
+- How did you repair this inconsistency?
+We altered the Method in the "TravelTime" Delta to fit the needs of both Features.
