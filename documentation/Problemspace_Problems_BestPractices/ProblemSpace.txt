@@ -1,0 +1,73 @@
+Probleme & Lösungen: Problem Space
+
+
+
+"Abstrakte Features als Grouping element" (FeatureModel Bilder)
+	- Neue abstrakte Features werden dem FeatureModel hinzugefügt um bessere Übersicht zu bekommen (Grouping).
+	- Features ohne Funktion spannen eine OR-Gruppe mit möglichen Subfeatures auf. 
+
+"Nutzung von Cross-Tree-Constraints":
+	- Anordnung der Features im Modell kann nicht immer 1:1 auf die logischen Abhängigkeiten abgebildet werden.
+	- Häufig ist es notwendig, diese Abhängigkeiten durch Constraints abzubilden.
+
+"Unklare Featureabhängigkeiten bei Featureerstellung"
+	- "TravelTime" wurde unter "Navigation" am Anfang hinzugefügt, da die Fahrtdauer (zusammen mit der restlichen Fahrtdauer) als Feature vom Kunden verlangt wurde. Aus Plausiblitätsgründen 			wurde das Feature in Fahrtdauer und Restliche Fahrtdauer aufgeteilt, jedoch nicht beachtet, dass die Fahrtdauer nicht "Navigation" benötigt. Somit wurde "TravelTime" umgehangen, mit 			Constraint auf "Routecalculation" und lediglich "RemainingTravelTime" mit einem Constraint auf "Navigation"
+	- Die Featureherarchie im Featuremodel bildet meistens die Featureabhängigkeit unzulänglich ab. => "Routecalculation modi" + Navigation + TravelTime
+
+
+"Umstrukturierungen von Features machen alte Konfigurationen ggf. überflüssig"
+	- 
+
+InfoGroup not eternity
+	- Um weniger Menüpunkte zu haben gibt es das Feature "InfoGroup", welche mehrere Feature panels zusammenfast (bspw Time, Weather, TravelTime)
+	- Jedoch kann es nicht alleine existieren, also brauchen wir ein constraint welches besagt: "InfoGroup" -> Time || Weather || TravelTime
+	- Da jedoch manche features noch nicht existieren und bspw "InfoGroup" -> Time || Weather und "InfoGroup" -> TravelTime nicht gleich sind, benötigen wir mehrere constraints mit 			unterschiedlichen laufzeiten
+		--> "InfoGroup" -> Time || Weather [22.09. - 25.09.]
+	 		"InfoGroup" -> Time || Weather || TravelTime [25.09. - eternity]
+
+"Featuremodell, Mapping und Constraints sollten zentral vom Scrummaster verwaltet werden":
+	- Für jedes neue Feature (und ggf. auch für Änderungen an bestehenden Features) werden Änderungen an Mapping und Modell notwendig.
+	- Damit keine Unstimmigkeiten entstehen, sollten nicht alle Teammitglieder gleichzeitig daran Änderungen vornehmen. 
+
+Timestamps
+ ->nur ein Featuremodell pro Tag, um Probleme zu umgehen.
+
+
+HEADER: Probleme & Lösungen im Problem Space
+- Probleme: Cross-Tree-Constraints
+- Best Practise: Evolutionsbearbeitung
+- Probleme: Featurewanderung
+- Best Practise: Abstrakte Features
+- Best Practise: Constraints Backward Compatibility
+- Best Practise: Timestamps
+
+"Cross-Tree-Constraints"
+1. Bild von Featuremodel (Konkretes beispiel)
+2. Bild von Constraint
+
+"Evolutionsbearbeitung" X
+1. Schema Ablauf + Highlight auf einzelne Komponenten
+
+"Featurewanderung" X
+1. Bild von Featuremodel (Nach initialem Einfügen)
+2. Bild von Featuremodel (nach Implementierung)
+
+"Abstrakte Features" X
+1. Bild von Featuremodel Step 0 (Base)
+2. Bild von Featuremodel Step 1 (Abstrakt)
+3. Bild von Featuremodel Step 2 (OR)
+
+"Constraints Backward Compatibility" X
+1. Bild von Featuremodel (InfoGroup mit Time, Weather, TravelTime)
+2. "InfoGroup" -> Time || Weather [22.09. - eternity]
+3. "InfoGroup" -> Time || Weather || TravelTime [22.09. - eternity] KONFLIKT
+
+4. "InfoGroup" -> Time || Weather || TravelTime [25.09. - eternity] KONFLIKT
+
+5. "InfoGroup" -> Time || Weather [25.09. - 25.09.] 
+   "InfoGroup" -> Time || Weather || TravelTime [25.09. - eternity]
+
+"Timestamps" X
+1. Bild von Constraints mit Timestamps
+	--> Unübersichtlich!
+2. Bilder von Featuremodell Timestamps
