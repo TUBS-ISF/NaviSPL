@@ -82,12 +82,13 @@ delta Favorite requires Localization {
 			 */
 			private Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadFavList() {
 				try {
-					java.io.File f = new java.io.File("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+					java.io.File f = new java.io.File("resources/favList.txt");
 					if(!f.exists() && !f.isDirectory()) { 
-						java.nio.file.Path path = java.nio.file.Paths.get("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+						f.getParentFile().mkdirs();
+						java.nio.file.Path path = java.nio.file.Paths.get("resources/favList.txt");
 					    java.nio.file.Files.createFile(path);
 					}
-					FileInputStream inputStream = new FileInputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+					FileInputStream inputStream = new FileInputStream("resources/favList.txt");
 					if (inputStream.available() > 0) {	
 						java.io.ObjectInputStream objectInput = new java.io.ObjectInputStream(inputStream);
 						Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> loadedList = (Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement>) (objectInput
@@ -109,7 +110,7 @@ delta Favorite requires Localization {
 			 */
 			private void saveFavList() {
 				try {
-					FileOutputStream fileOutput = new FileOutputStream("src/de/tu_bs/cs/isf/navi/gui/favList.txt");
+					FileOutputStream fileOutput = new FileOutputStream("resources/favList.txt");
 					ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
 					Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement> tempList = new Vector<de.tu_bs.cs.isf.navi.gui.FavoriteListElement>(content);
 					objectOutput.writeObject(tempList);
