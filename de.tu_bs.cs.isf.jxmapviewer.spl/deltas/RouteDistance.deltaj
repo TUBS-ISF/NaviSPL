@@ -1,0 +1,81 @@
+delta RouteDistance requires Routing, Navigation{
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
+		adds import javax.swing.BorderFactory;
+		adds import javax.swing.BoxLayout;
+					
+		adds javax.swing.JPanel distancePanel = new javax.swing.JPanel();
+			
+		modifies addMenu(){
+			original();
+			addRouteDistance();
+		}
+		
+		adds public javax.swing.JPanel addRouteDistance(){
+			
+			final JLabel entireLabel = new JLabel("");
+		
+			distancePanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+		
+			BoxLayout boxLayout = new BoxLayout(distancePanel, BoxLayout.Y_AXIS);
+			
+			distancePanel.setLayout(boxLayout);
+			distancePanel.add(entireLabel);
+		
+			menuPanelList.put("Route Distance", distancePanel);
+		
+			new Thread(new Runnable() {
+	
+				public void run() {
+					while (Boolean.TRUE) {
+						if (naviSim != null) {
+						    writeDistance(distancePanel);
+						}
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}).start();
+		return distancePanel;
+		}
+			
+		adds private void writeDistance(javax.swing.JPanel panel){
+			((JLabel) (panel.getComponent(panel.getComponentCount() - 1)))
+							.setText("Route Distance: " + naviSim.getFormatedDistance(routingInformation.getRouteDistance()));
+		}
+	}
+		
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingCalculator {
+		
+		adds import org.json.JSONObject;
+			
+		modifies interpretJSONString(String output) {
+			original(output);
+			JSONObject summary = (JSONObject) routes.get("summary");
+			double routeDistance = (Double) summary.get("distance");
+			route.setRouteDistance(routeDistance);
+		}
+	}
+		
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation {
+		
+		adds private double routeDistance;
+	
+		adds public void setRouteDistance(double input) {
+			this.routeDistance = input;
+		}
+	
+		adds public double getRouteDistance() {
+			return this.routeDistance;
+		}
+	}
+		
+	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread {
+		
+	  visibility getFormatedDistance(double) {public};
+	}
+}

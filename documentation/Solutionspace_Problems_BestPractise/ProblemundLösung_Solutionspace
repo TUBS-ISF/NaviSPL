@@ -1,0 +1,54 @@
+Probleme & Lösungen: Solutionspace
+
+
+- Jedes Delta fügt JComponents zu
+	--> Problem: Andere Deltas können die JComponents nicht sehen/nutzen, wenn nicht exposed
+	--> Lösung: Klären welche JComponents in anderen Deltas benötgit werden, diese dann exposen/public setzen
+	--> Best Practise: JComponents generell als KlassenvariableN anlegen.
+
+- Schlechte Performanz entsteht dadurch, dass nicht gewährleistet wird dass z.B. ein Thread aus einem anderen Feature nutzbar ist, da dies nicht in der Variante sein muss.
+	--> Problem: Jedes Feature hat z.B. eigene Threads, obwohl dies teilweise zusammengefasst werden kann.
+		- Beispiel: 
+	--> Lösung: ----
+	--> Best Practise: Ein separates Delta mit ansprechbaren Thread, welches required werden kann 
+
+- Mehrere Deltas/Features benötigen gleiche Basisfunktionalitäten, sind aber nicht garantiert in einer Variante.
+	--> Problem: Redundanter Code (vor allem in Features mit contextabhängigem Code)
+	--> Lösung/Best Practise: Deltas die thematisch zusammengehören erhalten ein required Delta welches diese Basisfunktionalitäten beinhaltet.
+
+- Durch die Verschachtelungen von Originalcalls wird die Lesbarkeit in der Variante stark beeinträchtigt
+	--> Problem: Steigender Umfang der Variante führ zu stärkeren Unlesbarkeit, Testen und Überprüfen des Codes wird schwer/aufwändig
+	--> Lösung/Best Practise: --- 
+	--> Anmerkung: Durch die Art wie das Tool Originalverschachtelungen umsetzt, war ein Mindestmaß an Lesbarkeit und Featuretraceability gegeben.
+	Bild: Original und generierte Methode aus Variante zeigen
+	
+
+- Entwicklung in Deltas ist mit bisherigem Tooling nicht möglich
+	--> Problem: Funktionalität und Interaktion mit dem Core und anderen Features ist durch reines Deltaentwickeln nicht testbar
+	--> Lösung/Best Practise: Minimal Variante (Core + required Features) generieren und dort weiterentwickeln, danach in DeltaJ umschreiben
+			(Selbst bei ausgereiftem Tooling würde das ständige Generieren zum Testen der Variante den Workflow stören und zu einem entwickeln in der Variante führen.)
+		erwünscht: entweder auto-diff oder neuen code "mittracken"
+
+- Nutzung von extra Methoden zum Ansprechen durch (andere) Deltas
+	--> Problem: Code in anonymen Klassen (zB Listener) oder aber "Einhängen" in Code mitten in einer Methode (zB innerhalb einer while-Schleife) ohne weiteres nicht möglich
+	--> Lösung/Best Practise: Exposen solcher Codestellen notwendig, indem eigens für diesen Zweck angelegte Methoden aufgerufen werden. Diese können anschließend von (anderen) Deltas modifiziert werden.
+			- auch HookUp-Methoden genannt.
+	Bild: 
+
+- Original call in deltaj wird originale methode seperat mitgespeichert als method$deltaname
+	--> Problem: Das führt zu scoping Problemen
+	--> Lösung: variablen exposed
+		-> benötigte variablen als parameter übergeben nur möglich, falls der original am ende des modifizierten anweisungsblocks ist. ansonsten müsste der original call mehrere variablen zurückgeben (z.B. in einer map zusammen mit dem variablennamen)
+
+
+
+Kommunikationsprobleme, ausgelöst durch separates Entwickelen (möglich durch Delta-Entwicklung), führt zu Fehlern / Darstellungsproblemen
+	- Ohne Konventionen zu GUI-Layout etc. kann nicht garantiert werden wenn zukünftige Deltas andere zusammenverwenden, dies nicht zu Problemen in der Darstellung führen.
+		- z.B. verschiedene Layouts -> optisch hässlich, verschobene Ausgaben/Felder
+
+- Swing Layout durcheinandergebracht
+	--> Problem: verschiedene Deltas fügen zur selben Accordeon-Komponente mit unterschiedlichen Layouts Buttons und Labels hinzu, die Formatierung sieht entsprechend schön aus
+	--> Lösung: gleiches Layout nutzen
+
+
+Screenshots und Bilder viel einfügen

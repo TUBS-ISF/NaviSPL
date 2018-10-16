@@ -1,0 +1,212 @@
+delta Suggestions requires Localization, Routing {
+
+	adds{
+		
+		package de.tu_bs.cs.isf.navi.suggestion;
+
+		import java.awt.Color;
+		import java.awt.Polygon;
+		
+		import org.openstreetmap.gui.jmapviewer.Coordinate;
+		import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
+		
+		import de.tu_bs.cs.isf.navi.suggestion.Suggestion;
+		
+		public class Suggestion {
+			private MapMarkerDot markerStart;
+			private MapMarkerDot markerEnd;
+			private Polygon route;
+			private String text;
+			
+			public Suggestion(String text, MapMarker markerStart,MapMarker markerEnd, Polygon route) {
+				this.setMarkerStart(markerStart);
+				this.setMarkerEnd(markerEnd);
+				this.markerStart.setName("Start");
+				this.markerEnd.setName("End");
+				this.markerStart.setBackColor(new Color(255, 80, 80));
+				this.markerEnd.setBackColor(new Color(179, 0, 0));
+				this.setRoute(route);
+				this.setText(text);
+			}
+			
+			public Suggestion(MapMarker marker) {
+				this.setMarkerStart(marker);
+				this.markerStart.setName("Location");
+				this.markerStart.setBackColor(new Color(204, 51, 255));
+				this.text = "";
+				this.route = null;
+			}
+		
+			public MapMarker getMarkerStart() {
+				return markerStart;
+			}
+		
+			public void setMarkerStart(MapMarker markerStart) {
+				this.markerStart = (MapMarkerDot) markerStart;
+			}
+		
+			public MapMarker getMarkerEnd() {
+				return markerEnd;
+			}
+		
+			public void setMarkerEnd(MapMarker markerEnd) {
+				this.markerEnd = (MapMarkerDot) markerEnd;
+			}
+		
+			public Polygon getRoute() {
+				return route;
+			}
+		
+			public void setRoute(Polygon route) {
+				this.route = route;
+			}
+			
+			public String getText() {
+				return text;
+			}
+		
+			public void setText(String text) {
+				this.text = text;
+			}
+		
+			public Boolean isRoute() {
+				return route != null;
+			}
+		}
+				
+	
+	}
+
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+
+		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		adds import java.util.ArrayList;
+		adds import java.util.List;
+
+		adds import org.openstreetmap.gui.jmapviewer.Coordinate;
+		adds import java.awt.Polygon;
+		adds import javax.swing.BoxLayout;
+		adds import javax.swing.JPanel;
+		adds import javax.swing.JSlider;
+		adds import javax.swing.JLabel;
+		adds import de.tu_bs.cs.isf.navi.suggestion.Suggestion;
+		adds import java.awt.event.MouseListener;
+		adds import java.awt.event.MouseEvent;
+		
+		adds private java.util.List<de.tu_bs.cs.isf.navi.suggestion.Suggestion> suggestionsList = new java.util.ArrayList<de.tu_bs.cs.isf.navi.suggestion.Suggestion>();
+		adds private javax.swing.JPanel suggestionsPanel;
+		adds private javax.swing.JSlider suggestionsSlider;
+		adds private long oldTime;
+		
+		adds private void drawSuggestions() {
+				List<MapMarker> mapList = mapViewer.getMapMarkerList();
+				List<MapMarkerDot> toAdd = new ArrayList<MapMarkerDot>();
+				ArrayList<MapMarkerDot> suggestionsMarkerList = new ArrayList<MapMarkerDot>();
+				
+				for (Suggestion sug : suggestionsList)
+					if (!sug.isRoute())
+						suggestionsMarkerList.add((MapMarkerDot) sug.getMarkerStart());
+					else {
+						suggestionsMarkerList.add((MapMarkerDot) sug.getMarkerStart());
+						suggestionsMarkerList.add((MapMarkerDot) sug.getMarkerEnd());
+					}
+				
+				for (MapMarkerDot mmd : suggestionsMarkerList) {
+					if (!mapList.contains(mmd))
+						toAdd.add(mmd);
+				}
+				
+				for (int i = 0; i < toAdd.size(); i++) {
+					MapMarkerDot marker = toAdd.get(i);
+					mapViewer.addMapMarker(marker);
+				}
+		}
+		
+		adds private void getSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+			suggestionsList.clear();
+			mapViewer.removeAllMapMarkers();
+			mapViewer.addMapMarker(GPSselect);
+			
+			collectSuggestions(marker, radius);
+			drawSuggestions();
+		}		
+		
+		adds private void collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {}
+		
+		modifies addMenu() {
+			original();
+			createSuggestionMenu();
+			mapViewer.addMouseListener(new MouseListener() {
+				
+				public void mouseClicked(MouseEvent e) {
+					getSuggestions(GPSselect, (Double) suggestionsSlider.getValue());
+				}
+				
+				public void mousePressed(MouseEvent e) { 
+					java.awt.Point mousePoint = e.getPoint();
+					for (Suggestion p : suggestionsList) {
+						if (mapViewer.getMapMarkerList().contains(p.getMarkerStart())) {
+							org.openstreetmap.gui.jmapviewer.Coordinate c = p.getMarkerStart().getCoordinate();
+							java.awt.Point point = mapViewer.getMapPosition(c);
+							if (point == null)
+								continue;
+								
+							point.x -= MapMarkerDot.DOT_RADIUS;
+							point.y -= MapMarkerDot.DOT_RADIUS;
+							boolean a1 = mousePoint.x >= point.x;
+							boolean a2 = mousePoint.x <= (point.x + MapMarkerDot.DOT_RADIUS * 1.7);
+							boolean a3 = mousePoint.y >= point.y;
+							boolean a4 = mousePoint.y <= (point.y + MapMarkerDot.DOT_RADIUS * 1.7);
+							
+							if (a1 && a2 && a3 && a4) {
+		
+								if (System.currentTimeMillis() > oldTime + 1000) {
+									if(p.isRoute()) {
+										startRouteLatitude.setText(String.valueOf(p.getMarkerStart().getLat()));
+										startRouteLongitude.setText(String.valueOf(p.getMarkerStart().getLon()));
+										endRouteLatitude.setText(String.valueOf(p.getMarkerEnd().getLat()));
+										endRouteLongitude.setText(String.valueOf(p.getMarkerEnd().getLon()));
+										startRouteBtn.doClick();
+									} else {
+										GPSlat.setText(String.valueOf(p.getMarkerStart().getLat()));
+										GPSlon.setText(String.valueOf(p.getMarkerStart().getLon()));
+									}
+										
+									oldTime = System.currentTimeMillis();
+								}
+								
+								return;
+							}
+						}
+					}
+				}			
+				public void mouseReleased(MouseEvent e) { }			
+				public void mouseEntered(MouseEvent e) { }
+				public void mouseExited(MouseEvent e) { }			
+			});
+		}
+		
+		adds protected void createSuggestionMenu() {
+			suggestionsPanel = new JPanel();		
+			suggestionsPanel.setLayout(new BoxLayout(suggestionsPanel, BoxLayout.PAGE_AXIS));
+			
+			JPanel suggestionsHeader = new JPanel();
+			suggestionsSlider = new javax.swing.JSlider(JSlider.HORIZONTAL, 500, 5000, 500);
+			suggestionsSlider.setMajorTickSpacing(2250);
+			suggestionsSlider.setMinorTickSpacing(250);
+			suggestionsSlider.setPaintTicks(Boolean.TRUE);
+			suggestionsSlider.setPaintLabels(Boolean.TRUE);
+			suggestionsSlider.setSnapToTicks(Boolean.TRUE);
+			suggestionsSlider.setPreferredSize(new java.awt.Dimension(150, 40));
+			
+			suggestionsHeader.add(new JLabel("Radius:"));
+			suggestionsHeader.add(suggestionsSlider);
+			
+			suggestionsPanel.add(suggestionsHeader);
+			
+			menuPanelList.put("Suggestions", suggestionsPanel);
+		}
+	}
+}

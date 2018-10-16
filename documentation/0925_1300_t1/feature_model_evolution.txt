@@ -1,0 +1,5 @@
+- How did you evolve the feature model?
+	Added Kilometer and Mile under RouteDistance in an ALTERNATE group
+
+- Why did you evolve the feature model (in this way)?
+	Due to context-sensitivity, Kilometer and Mile require an alternate group. as they only apply for distance, its added under the RouteDistance node.

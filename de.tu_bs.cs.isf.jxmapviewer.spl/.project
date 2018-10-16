@@ -15,9 +15,39 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>eu.hyvar.feature.mapping.resource.hymapping.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.deltaecore.core.decore.resource.decore.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>eu.hyvar.feature.constraint.resource.hyconstraints.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>eu.hyvar.context.resource.hycontextinformation.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.emftext.language.java.resource.java.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>de.tu_bs.cs.isf.deltaj.resource.deltaj.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>eu.hyvar.feature.mapping.resource.hymapping.nature</nature>
+		<nature>org.deltaecore.core.decore.resource.decore.nature</nature>
+		<nature>eu.hyvar.feature.constraint.resource.hyconstraints.nature</nature>
+		<nature>eu.hyvar.context.resource.hycontextinformation.nature</nature>
+		<nature>org.emftext.language.java.resource.java.nature</nature>
 	</natures>
 </projectDescription>

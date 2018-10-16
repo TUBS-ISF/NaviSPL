@@ -1,0 +1,16 @@
+delta WeatherInfo requires Weather, Information {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
+		modifies setupMenu() {
+			original();
+			javax.swing.JPanel w = (javax.swing.JPanel) menuPanelList.remove("Wetter");
+			w.getParent().getParent().remove(w.getParent());
+			infoPanel.addInformationFeature(w);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+		}
+	}
+	
+}

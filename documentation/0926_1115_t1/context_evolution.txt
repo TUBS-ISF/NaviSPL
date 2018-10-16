@@ -1,0 +1,10 @@
+- How did you evolve the context model?
+	1 removed "LocationImages" -> !"Orientation" constraint
+	2 changed "InfoGroup" constraint
+	3 added TravelTime constraints
+
+
+- Why did you evolve the context model (in this way)?
+	1 we don't need this feature restriction anymore as (some time ago) the Orientation feature has been fixed by rotating to 0 when clicked on the map.
+	2 we had to take care of the feature model evolution. As previously documented, InfoGroup has to be combined with one of the other features, it cannot exist alone. Therefore new features had to be added into the OR-constraints
+	3 Need to keep track of TravelTime dependencies 

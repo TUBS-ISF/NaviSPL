@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:HyConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://hyvar-project.eu/feature/configuration/1.0" id="_d8e21fb2-2843-4a1f-9cab-6d1a67d84779">
+  <elements xsi:type="configuration:HyFeatureSelected" id="_bd300aee-57aa-4cca-ac46-36ea4d337ed4">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_7a6d8a3b-a81f-423f-943a-5cf107240607"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_b951c7d0-5348-4ef3-96c4-d43919eeeba3">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_b6b10287-4e40-4687-a0e5-be806e547b70">
+    <selectedFeature href="../../NavigationSystem.hyfeature#_3f698f03-5d38-4a94-83cc-b524b4f613be"/>
+  </elements>
+  <featureModel href="../../NavigationSystem.hyfeature#/"/>
+</configuration:HyConfiguration>

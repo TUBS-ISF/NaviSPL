@@ -1,0 +1,8 @@
+delta GreaterZoom {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		modifies setupMap() {
+			original();
+			mapViewer.setZoom(15);
+		}
+	}
+}

@@ -1,0 +1,266 @@
+delta SpeedLimit requires Routing, Navigation {
+
+		
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingCalculator {
+		
+		modifies buildURL() {
+			original();
+			request+="&extra_info=waytype|AvgSpeed";
+		}
+		
+		modifies interpretJSONString(String output) {
+			original(output);
+			
+			JSONObject extrasObject = (JSONObject) routes.get("extras");
+			JSONObject wayTypesObject = (JSONObject) extrasObject.get("waytypes");
+			JSONArray wayTypesArray = (JSONArray) wayTypesObject.get("values");
+			for (int i = 0; i < wayTypesArray.length(); i++) {
+				JSONArray typesAndPolys = (JSONArray) wayTypesArray.get(i);
+				route.addWayType(typesAndPolys.getInt(0), typesAndPolys.getInt(1), typesAndPolys.getInt(2));
+			}
+			JSONObject avgSpeedObject = (JSONObject) extrasObject.get("avgspeed");
+			JSONArray avgSpeedArray = (JSONArray) avgSpeedObject.get("values");
+			for (int i = 0; i < avgSpeedArray.length(); i++) {
+				JSONArray speedsAndPolys = (JSONArray) avgSpeedArray.get(i);
+				route.addAvgSpeed(speedsAndPolys.getInt(0), speedsAndPolys.getInt(1), speedsAndPolys.getInt(2));
+			}
+		}
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import de.tu_bs.cs.isf.navi.speedlimit.Speedlimit;
+	
+		adds public javax.swing.JSplitPane getSplitPane() {
+			return splitPane;
+		}
+		
+		modifies startNavigationSimulation(de.tu_bs.cs.isf.navi.NaviApp naviApp){
+			original(naviApp);
+			addSpeedLimitToNavigation();
+		}
+		
+		adds void addSpeedLimitToNavigation(){
+			NaviApp app = this;
+			Speedlimit speedLimit = new Speedlimit(naviSim, routingInformation, app);
+			(new Thread(speedLimit)).start();
+		}
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread {
+		visibility stillDriving() {public};
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation { 
+	
+		adds private java.util.List<int[]> wayTypes;
+		adds private java.util.List<int[]> avgSpeed;	
+		
+		modifies setUpRoutingInformation() {
+			original();
+			wayTypes = new ArrayList<int[]>();
+			avgSpeed = new ArrayList<int[]>();		
+		}
+	
+		adds public void addWayType (int startPoly, int endPoly, int wayType) {
+			int[] add = { startPoly, endPoly, wayType};
+			wayTypes.add(add);
+		}
+	
+		adds public void addAvgSpeed (int startPoly, int endPoly, int speed) {
+			int[] add = { startPoly, endPoly, speed};
+			avgSpeed.add(add);
+		}
+		
+		adds public java.util.List<int[]> getWayTypes() {
+			return wayTypes;
+		}
+	
+		adds public void setWayTypes(java.util.List<int[]> wayTypes) {
+			this.wayTypes = wayTypes;
+		}
+	
+		adds public java.util.List<int[]> getAvgSpeed() {
+			return avgSpeed;
+		}
+	
+		adds public void setAvgSpeed(java.util.List<int[]> avgSpeed) {
+			this.avgSpeed = avgSpeed;
+		}
+	}
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.speedlimit;
+
+		import java.awt.Color;
+		import java.awt.Dimension;
+		import java.awt.Font;
+		import java.awt.Graphics;
+		import java.util.List;
+		
+		import javax.swing.JPanel;
+		import javax.swing.SwingUtilities;
+		
+		import de.tu_bs.cs.isf.navi.NaviSimulationThread;
+		import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
+		import de.tu_bs.cs.isf.navi.NaviApp;
+		
+
+		import java.awt.Color;
+		import java.awt.Font;
+		import java.awt.Graphics;
+		import java.awt.Graphics2D;
+		
+		public class Speedlimit implements Runnable {
+		
+			private RoutingInformation routingInfo;
+			private NaviSimulationThread naviThread;
+			private int polyPoint, wayType,	avgSpeed;
+			private List<int[]> wayTypes;
+			private List<int[]> avgSpeeds;
+			private String speedLimit;
+			private NaviApp naviApp;
+			private int paintPosy;
+			public boolean isRunning;
+			private long timeRouteStarted;
+			private int stepsPerSecond = 10;
+			private JPanel speedpanel;
+			private JPanel speedpanelEmpty;
+
+			private JPanel speedpanel2Digits;
+			private JPanel speedpanel3Digits;
+		
+			public Speedlimit(NaviSimulationThread naviThread, RoutingInformation routingInformation, de.tu_bs.cs.isf.navi.NaviApp naviApp) {
+				this.naviApp = naviApp;
+				this.naviThread = naviThread;
+				this.routingInfo = routingInformation;
+				init();
+			}
+		
+			private void init() {
+				if (routingInfo != null) {
+					wayTypes = routingInfo.getWayTypes();
+					avgSpeeds = routingInfo.getAvgSpeed();			
+				}
+				
+				paintPosy = 20;
+				final int strOffset3 = 19;
+				final int strOffset2 = 29;
+				final int circOffset = 10;
+				
+				speedpanel = new JPanel();
+				
+				speedLimit = "0";
+				
+				speedpanel3Digits = new JPanel() {
+					public void paintComponent(Graphics g) { 
+						 super.paintComponent(g);
+						int paintPosx = naviApp.getSplitPane().getDividerLocation() - 120;
+						g.setColor(Color.RED);
+						g.fillOval(paintPosx, paintPosy, 100, 100);
+						g.setColor(Color.WHITE);
+						g.fillOval(paintPosx + circOffset, paintPosy + circOffset, 80, 80);
+						g.setColor(Color.BLACK);
+						g.setFont(new Font("Arial", Font.BOLD, 30));
+						g.drawString(speedLimit, paintPosx + strOffset3, 82);
+					}
+				};
+				
+				speedpanel2Digits = new JPanel() {
+					public void paintComponent(Graphics g) { 
+						super.paintComponent(g);
+						int paintPosx = naviApp.getSplitPane().getDividerLocation() - 120;
+						g.setColor(Color.RED);
+						g.fillOval(paintPosx, paintPosy, 100, 100);
+						g.setColor(Color.WHITE);
+						g.fillOval(paintPosx + circOffset, paintPosy + circOffset, 80, 80);
+						g.setColor(Color.BLACK);
+						g.setFont(new Font("Arial", Font.BOLD, 30));
+						g.drawString(speedLimit, paintPosx + strOffset2, 82);
+						}
+				};
+				
+
+				
+				speedpanelEmpty = new JPanel() {
+					public void paintComponent(Graphics g) { 
+					
+					}
+				};
+				
+				isRunning = Boolean.FALSE;
+							
+			}
+		
+			public void run() {
+				this.timeRouteStarted = System.currentTimeMillis();
+				long frameStart;
+				
+				while(naviThread.stillDriving()) {
+					
+				isRunning = Boolean.TRUE;
+				
+					frameStart = System.currentTimeMillis();
+					calculateLimit();
+					
+		
+					
+					long frameEnd = System.currentTimeMillis();
+					long sleepTime = (1000 / stepsPerSecond) - (frameEnd - frameStart);
+					if (sleepTime < 0) {
+						sleepTime = 0;
+					}
+					try {
+						Thread.sleep(sleepTime);
+					} catch (InterruptedException e) {
+						System.out.println("SpeedlimitThread interrupted");
+					}
+				}
+				isRunning = Boolean.FALSE;
+			}
+		
+			private void calculateLimit() {
+				polyPoint = naviThread.getLastPolygonPoint();
+				
+				for (int[] i : wayTypes) {
+					if (i[0] <= polyPoint && polyPoint <= i[1]) {
+						wayType = i[2];
+					}
+				}
+				for (int[] i : avgSpeeds) {
+					if (i[0] <= polyPoint && polyPoint <= i[1]) {
+						avgSpeed = i[2];
+					}
+				}
+					
+			}
+			
+			private synchronized void paintSpeedlimit() {
+				naviApp.setGlassPane(speedpanel); 
+				speedpanel.setOpaque(Boolean.FALSE);
+				speedpanel.setVisible(Boolean.TRUE);
+			}
+		
+			private void speedPanel3(String speedLimit) {;
+				this.speedLimit = speedLimit;
+				speedpanel = speedpanel3Digits;
+				speedpanel.setSize(naviApp.getWidth(), naviApp.getHeight());
+				speedpanel.repaint();
+		
+			}
+			
+			private void speedPanel2(String speedLimit) {
+				this.speedLimit = speedLimit;
+				speedpanel = speedpanel2Digits;
+				speedpanel.setSize(naviApp.getWidth(), naviApp.getHeight());
+				speedpanel.repaint();
+			
+			}
+						
+			private void speedPanelEmpty() {
+				speedpanel = speedpanelEmpty;
+				speedpanel.setSize(naviApp.getWidth(), naviApp.getHeight());
+				speedpanel.repaint();
+			}
+		}
+	}
+}

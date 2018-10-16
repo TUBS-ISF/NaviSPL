@@ -1,0 +1,15 @@
+"LocationImages" -> !"Orientation" [2017/09/18 - eternity]
+"RouteHistory" -> "Routecalculation" [2017/09/19 - eternity]
+"FavoriteRoute" -> "Routecalculation" [2017/09/20 - eternity]
+"Navigation" -> "Routecalculation" [2017/09/20 - eternity]
+
+context:Location = enum:LocationEnum.Germany && Time -> H24 [2017/09/13 - eternity]
+context:Location = enum:LocationEnum.France && Time -> H24 [2017/09/13 - eternity]
+context:Location = enum:LocationEnum.GB && Time -> H12 [2017/09/13 - eternity]
+
+context:Vehicle = enum:VehicleEnum.Pedestrian -> StandardZoom [2017/09/19 - eternity]
+context:Vehicle = enum:VehicleEnum.Pedestrian && Routecalculation -> Pedestrian [2017/09/19 - eternity]
+context:Vehicle = enum:VehicleEnum.Pedestrian ->! Speedlimit [2017/09/19 - eternity]
+
+context:Vehicle = enum:VehicleEnum.Car ->! Taxi [2017/09/19 - eternity]
+context:Vehicle = enum:VehicleEnum.Car && Routecalculation -> Car [2017/09/19 - eternity]

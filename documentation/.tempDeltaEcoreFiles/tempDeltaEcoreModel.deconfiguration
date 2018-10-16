@@ -1,0 +1,7 @@
+configuration <tempDeltaEcoreModel.defeaturemodel>{
+	"Localization",
+"Map",
+"Core",
+"Carpooling",
+"Services"
+}

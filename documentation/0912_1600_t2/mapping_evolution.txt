@@ -1,0 +1,6 @@
+- How did you evolve the mapping?
+Added mapping dates for Localization
+
+
+- Why did you evolve the mapping (in this way)?
+A Mapping should have valid Dates

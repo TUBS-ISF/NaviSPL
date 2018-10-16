@@ -1,0 +1,6 @@
+- How did you evolve the context model?
+	Added constraint for  TTSNavi
+
+
+- Why did you evolve the context model (in this way)?
+	TTSNavi requires Navigation 

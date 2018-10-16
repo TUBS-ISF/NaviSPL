@@ -1,0 +1,5 @@
+- How did you evolve the feature model?
+	Rearranged TravelTime feature from Navigation to Route parent
+
+- Why did you evolve the feature model (in this way)?
+	TravelTime is independent of Navigation, same for Arrival and DepartureTime, only RemainingTravelTime relies on Navigation.

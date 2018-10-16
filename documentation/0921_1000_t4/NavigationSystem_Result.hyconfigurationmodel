@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configuration:HyConfiguration xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configuration="http://hyvar-project.eu/feature/configuration/1.0" id="_2b672dc1-1783-4380-b61e-ef7dcd80b00a" creationDate="2017-09-21T00:00:00.000+0200">
+  <elements xsi:type="configuration:HyFeatureSelected" id="_7788c02e-5109-4840-8ecf-913ad5520e4d">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_3f698f03-5d38-4a94-83cc-b524b4f613be"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_dd344f2f-7d9d-4db8-8949-6bfc8ac4cfaf">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_0f9b4294-2f53-4ec2-96f9-3f2053399f21"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_28158ddb-c204-47a4-bdac-4bb8a47187a5">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_7a6d8a3b-a81f-423f-943a-5cf107240607"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_37cda437-4b18-464d-9da7-6eb1cfda1985">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  </elements>
+  <elements xsi:type="configuration:HyFeatureSelected" id="_badbaaec-061f-42ee-8eab-1bfdd1ee2061">
+    <selectedFeature href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#_e9b72d6a-4be9-46b0-a573-18800875c92d"/>
+  </elements>
+  <featureModel href="platform:/resource/de.tu_bs.cs.isf.jxmapviewer.spl/NavigationSystem.hyfeature#/"/>
+</configuration:HyConfiguration>

@@ -1,0 +1,15 @@
+delta RouteDistanceMile requires RouteDistance{
+
+	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread {
+	
+	  modifies getFormatedDistance(double inputMeters) {
+		  double yards = inputMeters * 1.09361;
+		  if (yards > 17600)
+				return (int) Math.ceil(yards / 1760.0d) + " miles";
+			else if (yards > 1760)
+				return Math.round(Math.round(yards) / 176.0d) / 10.0d + " miles";
+			else
+				return Math.round(yards) + " yd";
+	  }
+	}
+}

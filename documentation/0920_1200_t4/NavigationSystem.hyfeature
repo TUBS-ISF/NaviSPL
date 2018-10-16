@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feature:HyFeatureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feature="http://hyvar-project.eu/feature/1.0">
+  <rootFeature id="_b4d547f8-9586-47dc-8417-54ef3b3d44dd" feature="_2f66d385-3a83-4cd9-813a-2312d9b97051"/>
+  <features id="_2f66d385-3a83-4cd9-813a-2312d9b97051">
+    <names validUntil="2017-09-11T13:42:20.657+0200" id="_ff4ca4dd-365b-4069-869c-edce647927b0" name="Core"/>
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_e6ff5e4a-8047-486d-9bf6-5c2fcf0c23bf" name="Core"/>
+    <parentOf id="_974f692a-8151-4bda-8cb6-7648925d35da" childGroup="_02f749ce-b4c0-4982-9509-f84dda355f95"/>
+    <types id="_49ae597c-3349-42be-b81a-527743180d63" type="MANDATORY"/>
+  </features>
+  <features id="_3f698f03-5d38-4a94-83cc-b524b4f613be" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _31e2e233-1bc5-47b1-a607-3ba649b85cd6 _a0b99817-7cda-46c7-800b-3cc7d47fefa0 _8ab2bdcd-87f0-4972-b0a4-7bff0481b2da">
+    <names id="_65eca7d5-ea6a-4f7d-99c6-daaa66d964d8" name="Localization"/>
+    <types id="_e6e815e5-345c-4f7a-bb9b-c553893c0bb6" type="MANDATORY"/>
+  </features>
+  <features id="_e79baf5d-817e-4682-9dbd-eb8a8b7e0a71" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _38481ce4-c680-4431-a629-8bb6ce094c65 _4de45860-14c4-41da-a69c-1363881f4ff1 _fe7f05bb-d6ff-47d9-8d8b-8684554c55b5 _f34da92e-7982-44ff-8edc-328120cc6268 _57806bbc-2d3c-489e-b851-6dcb5f4ba4e9">
+    <names id="_f71a3d19-2cf8-48f6-a1d3-f8853b171692" name="Routecalculation"/>
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_ddd8c1c1-a689-4afc-9197-ae00e75b8eae" childGroup="_e457f522-ef5c-443c-b89a-ac1f905c0aa0"/>
+    <types id="_b5d91677-a7ef-444f-b038-a71b09cc4395"/>
+  </features>
+  <features id="_5bde071f-4082-4a07-a362-676a93467b14" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _31e2e233-1bc5-47b1-a607-3ba649b85cd6 _a0b99817-7cda-46c7-800b-3cc7d47fefa0 _8ab2bdcd-87f0-4972-b0a4-7bff0481b2da">
+    <names id="_75095d7f-6ea9-4c75-aebd-89a1d29569c7" name="Orientation"/>
+    <types id="_100078f5-f544-4546-b5da-5d917670f394"/>
+  </features>
+  <features id="_0f9b4294-2f53-4ec2-96f9-3f2053399f21" groupMembership="_b15744ae-8d9f-423a-80e6-f0e86930d108 _38481ce4-c680-4431-a629-8bb6ce094c65 _4de45860-14c4-41da-a69c-1363881f4ff1 _fe7f05bb-d6ff-47d9-8d8b-8684554c55b5 _f34da92e-7982-44ff-8edc-328120cc6268 _57806bbc-2d3c-489e-b851-6dcb5f4ba4e9">
+    <names id="_0cb53634-998a-4161-b06c-273688a05765" name="Favorites"/>
+    <types id="_cc9a5f8c-06af-46e6-8ed6-fc62538695a9"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54 _98d96191-7b25-45f3-a7d9-9e972d9e4b70">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_fb18d846-c4ec-4f71-99f9-840458491219" name="Weather"/>
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_5df134f0-79ad-441a-82c7-297b5c0116f1" childGroup="_a5ad35ce-a68c-47c3-9bb2-5a35d0861a3e"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_9c7c4339-db29-454c-bd36-6f60613b7257"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54 _98d96191-7b25-45f3-a7d9-9e972d9e4b70">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_dacac242-9447-40a4-900c-69a40df208d8" name="POI"/>
+    <parentOf validSince="2017-09-15T09:09:07.273+0200" id="_dc85dad9-ce07-45f0-b2cd-7b0a3c5d8dc9" childGroup="_988a93da-cc66-4d42-96ae-20a4eaaeed1c"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_899ed280-2309-4f96-adec-eb87176fc484"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a" groupMembership="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31 _9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _672470f8-b035-4c15-9c19-f7a2b269038e _9e468d96-7a5a-493a-93a4-7486dca5e261">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_291817b0-4d98-409e-8c76-8ad66217f1dc" name="LocationImages"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_e2b1f03b-289f-47ab-ac35-fc0ad4928fa6"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_7a6d8a3b-a81f-423f-943a-5cf107240607" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08 _62b5356e-cbf1-49f8-bc6c-e7a37ce210a6">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_239457f1-6624-480c-b9c3-8b35f3884ff7" name="Map"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_ce2a79a2-280f-4f1b-ad78-bdedb985def4" childGroup="_b6c7f4f4-f0a8-4008-b30f-9662aec9d231"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_1ee83c81-4151-495b-8c90-9f05666a921b" type="MANDATORY"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_e9b72d6a-4be9-46b0-a573-18800875c92d" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08 _62b5356e-cbf1-49f8-bc6c-e7a37ce210a6">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_2e88c3e1-c367-403e-8d20-eac681158b2c" name="Route"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_149cece5-45a5-4fb3-9c8d-9b6ba2e456f2" childGroup="_fbd9a167-0e71-43fb-916f-1be6cb8a4fbc"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_1a43e06e-4eb3-4ba6-ab0a-ad1d85438009"/>
+  </features>
+  <features validSince="2017-09-11T13:42:20.657+0200" id="_e52334b8-c162-4965-927d-051da5e24e9f" groupMembership="_e729e7bb-304f-4c30-a197-3da172c4aa08 _62b5356e-cbf1-49f8-bc6c-e7a37ce210a6">
+    <names validSince="2017-09-11T13:42:20.657+0200" id="_a3c45e81-20f4-472c-92ae-9833fc9215f8" name="Information"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" id="_7a08a5c4-529c-4645-9944-4459423c279c" childGroup="_5cd1bdb8-213b-4f0e-b9f4-be8e7eda0295"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_a0823250-8a27-4b24-be01-3931356a48e3"/>
+  </features>
+  <features validSince="2017-09-12T12:00:00.000+0200" id="_14d7f285-3578-46a7-bd88-57a0ba790e40" groupMembership="_9572ca4c-d321-4517-9f72-12141819c5bd _4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54 _98d96191-7b25-45f3-a7d9-9e972d9e4b70">
+    <names validSince="2017-09-12T12:00:00.000+0200" id="_bf3775f4-af69-4310-bba0-2f2749acc94e" name="Time"/>
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_ed4cb987-db49-4f46-b0ea-14ab92a5e488" childGroup="_4be97e20-1149-4ee5-bc2a-68594ea8e4a5"/>
+    <types validSince="2017-09-12T12:00:00.000+0200" id="_49ba2086-7489-4f29-bd2a-76eb59b9fef7"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" id="_91939f32-64e6-468c-863b-bfe426c58ff1" groupMembership="_4de45860-14c4-41da-a69c-1363881f4ff1 _fe7f05bb-d6ff-47d9-8d8b-8684554c55b5 _f34da92e-7982-44ff-8edc-328120cc6268 _8ab2bdcd-87f0-4972-b0a4-7bff0481b2da">
+    <names validSince="2017-09-14T12:56:23.307+0200" id="_96cc502c-5203-4844-b03f-5eeb3bd44aa8" name="History"/>
+    <parentOf validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-20T00:00:00.000+0200" id="_c1e72ddf-c387-423d-8cbf-e10f75be49f4" childGroup="_f3c095fa-e0d6-47fa-8dc5-69abfedb0262"/>
+    <parentOf validSince="2017-09-20T00:00:00.000+0200" id="_18b1bb70-b759-47d6-912e-d407f7e69435" childGroup="_0c5387d5-3cc0-4236-9713-9f81fdc901ec"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_b4a027fe-c911-4f07-b886-8ac48e99df93"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_805a999a-8913-42c2-9326-eb843afb1b30">
+    <names validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_69f3b77d-89c6-4f6a-882e-735f799a4db4" name="Speedlimit"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_e8a4446c-9ba2-4114-94fa-03155acb6a81"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_07232b09-339f-4c9f-8446-55038c4c48a0">
+    <names validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_ba5a466e-9de2-4896-ad8b-78726a443284" name="Speedlimit"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_db8da7f8-ca4e-4f49-9f25-9789326b7096"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" id="_64f311cf-bdff-4ebf-b4ec-8bc518fc36a7" groupMembership="_4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54 _98d96191-7b25-45f3-a7d9-9e972d9e4b70">
+    <names validSince="2017-09-14T12:56:23.307+0200" id="_9cb33717-ee24-420d-af24-ba48d8131e1b" name="Speedlimit"/>
+    <parentOf validSince="2017-09-18T10:26:22.406+0200" id="_29f0a0a9-ecc0-47c2-8d07-dad4d86050f3" childGroup="_61382a45-b077-42ba-bcaa-ecb06da0dca5"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_2902dcf0-fdf2-4b21-aacc-b4010bab10a8"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" id="_991c8f20-2a82-4b03-a35c-fc4f741e1c2d" groupMembership="_4371056c-dc36-4221-9f0e-6653924fc5ba _aefe8613-6e32-4189-bb89-497c13695d54 _440385af-654c-4029-a208-34d9b8927e1e">
+    <names validSince="2017-09-14T12:56:23.307+0200" id="_810e0c70-d5af-4098-af3a-3bb5f9bad821" name="Carpooling"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_47d312fb-ac79-4c3f-8e0a-91601bf33226"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_b4c2c753-de3c-4344-ab0f-deb0d6056ebe">
+    <names validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_b4fc220c-d6cc-4b9a-b00b-d250b29a1399" name="New Feature 1"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_02affe30-2053-42a1-8bcf-244c1ec75bd6"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_4d22a56b-6158-4a8c-8669-ef0779144937">
+    <names validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_19251c51-4eb1-4439-9876-089124a997ca" name="New Feature 2"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_9cfeae7d-fb4e-4443-ac2c-bad2f5e5b510"/>
+  </features>
+  <features validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_1e986a3e-aece-4fef-90e2-3a085ef728e1">
+    <names validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_393394e1-8159-46a7-9204-dc5681a7ddee" name="New Feature 3"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_242b603d-8bff-488c-a9bf-53795f2bb7b3"/>
+  </features>
+  <features validSince="2017-09-15T09:09:07.273+0200" validUntil="2017-09-15T09:09:07.273+0200" id="_4b8b3283-bc03-44ef-9b74-498a1781b661">
+    <names validSince="2017-09-15T09:09:07.273+0200" validUntil="2017-09-15T09:09:07.273+0200" id="_b3aff2ba-7bf6-429c-abc8-a137598f58ae" name="New Feature 4"/>
+    <types validSince="2017-09-15T09:09:07.273+0200" id="_5640f32a-83d0-4d6f-9ad2-44d4959b52dd"/>
+  </features>
+  <features validSince="2017-09-18T10:26:22.406+0200" id="_db435b50-fdd4-49c3-a23f-ca34c4ddfe69" groupMembership="_5eb64968-83e9-4789-9413-59a59127d34c">
+    <names validSince="2017-09-18T10:26:22.406+0200" validUntil="2017-09-18T13:32:19.599+0200" id="_b131e62f-98f7-4164-a28a-31f0e95653e7" name="None"/>
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_dea5c149-cd1e-4f6d-b4f2-1b517e76003f" name="sNone"/>
+    <types validSince="2017-09-18T10:26:22.406+0200" id="_985038f6-d4c6-4fbc-9db2-ce79f53a4264"/>
+  </features>
+  <features validSince="2017-09-18T10:26:22.406+0200" id="_920453d7-8714-4be9-b3b4-7b41ff5ee81b" groupMembership="_5eb64968-83e9-4789-9413-59a59127d34c">
+    <names validSince="2017-09-18T10:26:22.406+0200" validUntil="2017-09-18T13:32:19.599+0200" id="_3f53fbc4-099c-4e38-87f7-333315eba4f2" name="112"/>
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_7f4f54db-1bd8-495b-867c-901c1ef80994" name="s112"/>
+    <types validSince="2017-09-18T10:26:22.406+0200" id="_cc0154ec-78fe-42d1-97b7-81846bf8d6b8"/>
+  </features>
+  <features validSince="2017-09-18T10:26:22.406+0200" id="_900acd67-d557-498d-8993-0832126359ed" groupMembership="_5eb64968-83e9-4789-9413-59a59127d34c">
+    <names validSince="2017-09-18T10:26:22.406+0200" validUntil="2017-09-18T13:32:19.599+0200" id="_bcf198d9-8aaf-4ddc-af14-09cea9dd0bc0" name="130"/>
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_243dc2ac-9efc-4bcf-9b6d-c1e0b4c44be8" name="s130"/>
+    <types validSince="2017-09-18T10:26:22.406+0200" id="_aa7a9cca-b36e-4cae-ab92-b4f19ba135e5"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_8cbbf0bf-4d9b-467c-857d-b88a7764fa6e" groupMembership="_0a5eafbd-51ef-4127-90bf-145f72716cd9 _f34da92e-7982-44ff-8edc-328120cc6268 _57806bbc-2d3c-489e-b851-6dcb5f4ba4e9">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_17553e57-10f8-4b8e-b60c-a161b2a9e204" name="Navigation"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_8a4c8120-0bc6-4e24-af17-d79234270559" childGroup="_db56365b-39ce-44e6-ab63-ad79edfd8176"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_2d1b6688-8b1d-43b7-95d2-9da5a1bf734c"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_b5d53c89-fe79-4e01-bc3d-dfbba2d6cda8" groupMembership="_0a5eafbd-51ef-4127-90bf-145f72716cd9 _c3247eec-5016-4abd-b000-13e1896ff05c">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_f0149c87-a005-4934-b41e-b7cd8620db01" name="RouteDistance"/>
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_546ee5b3-3c8a-42bd-a277-54e77002b65c" childGroup="_24c1dde3-1cf6-4035-9aa5-ce9e4def998a"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_3b592ace-7c00-4087-aca4-0061dceef257"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_90a711db-a59e-4cc7-80c4-4c6d27475875" groupMembership="_c60e736e-0ee7-49bd-a8eb-c7b15fad7cf5">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_d2cdcafc-a2ec-4417-9a38-926f318e9765" name="TravelTime"/>
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_b6b733d0-c2b5-4536-b770-0d66ebbc4065" childGroup="_bdc4e6f5-6296-4b25-9d07-2915ecbef877"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_630a3680-40b4-4b8d-9f5b-ff1d3e541e65"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_26a73081-74b0-462e-88c2-f3b2e7e3695f" groupMembership="_c60e736e-0ee7-49bd-a8eb-c7b15fad7cf5">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_c3f17168-baed-42e4-951c-b33074c3243f" name="RemainingDistance"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_2a1ff98b-e26e-4aeb-984c-0e4628e2fd75"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_5378d86b-299f-4dfe-8f0e-dfbcf02d0a6b" groupMembership="_56b528ce-c08c-4cdb-a287-e9e2e18640e1">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_a1303ec9-b41f-49b6-bda5-ff5ac4f4c21d" name="RemainingTravelTime"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_70477cd2-93a6-476f-9f74-e2b1102ce508"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_17a8a333-1357-40c2-af1e-a069f023aee3" groupMembership="_fe7f05bb-d6ff-47d9-8d8b-8684554c55b5 _f34da92e-7982-44ff-8edc-328120cc6268 _57806bbc-2d3c-489e-b851-6dcb5f4ba4e9">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_1ecfefcc-67c1-461d-909c-82c8e4e8be4f" name="Suggestions"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_a7537bc7-eb03-426a-a4bf-f0817f4b1e0c"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_a3eae74d-8957-41dd-98e8-01733471590f" groupMembership="_ec051450-7db0-4603-9912-5560504735fa">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_f885e195-6984-4001-a84b-78f373bbec50" name="H12"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_6c4afccc-963e-4f8f-bbbd-1e592fb72e81"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_5e5f03ee-81b8-481f-8811-4e228487ace7" groupMembership="_ec051450-7db0-4603-9912-5560504735fa">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_c7d9337f-861d-4663-9717-dd13a235d59d" name="H24"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_a3c22e0f-9060-4e01-b1c1-9b031b5c73e3"/>
+  </features>
+  <features validSince="2017-09-18T13:32:19.599+0200" id="_49e3c79c-3b36-43ee-b963-833d1621cc3c" groupMembership="_fc98cb8f-57de-4d00-883c-43d03728f1a0">
+    <names validSince="2017-09-18T13:32:19.599+0200" id="_2e2841b0-1952-49bb-b08b-2e928171c8f1" name="Wind"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_694e039c-9953-4a63-bf5d-525eb903b3db"/>
+  </features>
+  <features validSince="2017-09-19T00:00:00.000+0200" id="_1239f262-b3ea-40a5-b90e-166f05d60b79" groupMembership="_372e01e6-c382-4f39-a860-ccb26f011481 _15fb6e73-c9f2-4450-b61d-c41e6d273256">
+    <names validSince="2017-09-19T00:00:00.000+0200" id="_36e0bfaf-6c34-462d-99d2-5d0fa6d27977" name="RouteHistory"/>
+    <types validSince="2017-09-19T00:00:00.000+0200" id="_0182f1b9-6c32-4b6e-bd85-0aa515a969d7"/>
+  </features>
+  <features validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-19T00:00:00.000+0200" id="_712aad4c-ab85-41be-9d91-8c3915581d2c">
+    <names validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-19T00:00:00.000+0200" id="_7525092c-274e-4f88-9404-2ea0885a43b1" name="New Feature 5"/>
+    <types validSince="2017-09-19T00:00:00.000+0200" id="_5002e84a-cc0d-4c34-8a03-4fd01358cf15"/>
+  </features>
+  <features validSince="2017-09-19T00:00:00.000+0200" id="_2dbc9dd3-6f8f-4475-992f-b0dcbc992302" groupMembership="_9e468d96-7a5a-493a-93a4-7486dca5e261">
+    <names validSince="2017-09-19T00:00:00.000+0200" id="_e2dc8a53-6c9c-43f2-8374-b14f72376684" name="Wikipedia"/>
+    <types validSince="2017-09-19T00:00:00.000+0200" id="_79996f6f-ed89-4e4c-a56f-cf7e70ecd154"/>
+  </features>
+  <features validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-19T00:00:00.000+0200" id="_d91fdb2c-64e1-47b7-a266-fb5b5d283d72">
+    <names validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-19T00:00:00.000+0200" id="_1a42d1a5-6513-46f0-8ac8-eaf6ecf25523" name="New Feature 6"/>
+    <types validSince="2017-09-19T00:00:00.000+0200" id="_cdc46f22-9772-49a2-a389-1d6af1be9f5c"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_4a82872d-019b-4ccc-9d24-7f37cf435681" groupMembership="_59ccd906-7395-40d0-9603-614bbd255eb4">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_a94b99c0-216b-40b5-9d29-7a170ab15bd7" name="Pedestrian"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_7257444d-e777-48b2-9af8-2db8f2a43e0b"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_8b9a2378-8bdd-4609-ac43-b530fe00b60f" groupMembership="_59ccd906-7395-40d0-9603-614bbd255eb4">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_0ee0ce32-3087-412f-a9bb-3efcc7c9d8eb" name="Car"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_14280ba2-9dac-48e8-94b0-b98b16d9b235"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_c6a4699e-35c3-4029-b14e-e133094b6f9b" groupMembership="_62b5356e-cbf1-49f8-bc6c-e7a37ce210a6">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_b6358a73-0f6d-4c32-99b8-03cf495bed8f" name="Services"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_e79556b5-ed39-4c2d-8fa3-c0e5e6e92acf" childGroup="_d19926ab-c2f1-49cc-878b-94a1b23043ce"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_c12d74a1-ae38-477b-8e65-ecd9a20c3859"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_b14b7cc9-cda1-4eb6-a67a-67d0c17f091b" groupMembership="_440385af-654c-4029-a208-34d9b8927e1e">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_1cc0366e-fa38-40ab-aa4a-7517f3776991" name="Taxi"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_1887e0be-0c04-4101-bd10-83d96e026296"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_602420d2-8fcc-42f6-8009-3545a69268d3" groupMembership="_98d96191-7b25-45f3-a7d9-9e972d9e4b70">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_0f8a0666-c7bb-43ac-9cbb-6478ead5bdea" name="BusStops"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_b7487139-a6c0-4263-8c5a-ff58957cc3a5"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" id="_5c21c915-d924-4c25-9659-c8a676e67219" groupMembership="_a0b99817-7cda-46c7-800b-3cc7d47fefa0 _8ab2bdcd-87f0-4972-b0a4-7bff0481b2da">
+    <names validSince="2017-09-19T13:00:00.000+0200" id="_92b988ac-643a-4826-a9da-99c5dffa08de" name="StandardZoom"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_71e760b9-9277-416c-81fd-c720ee6ea360"/>
+  </features>
+  <features validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_98f73d42-c01a-4d6d-8d6d-582900e0f122">
+    <names validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_208f106c-b817-49ca-a4bb-ed08cd1e4fb9" name="PedestrianZoom"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_dc4557fe-da43-4cda-bbde-80b12bddc69a"/>
+  </features>
+  <groups id="_02f749ce-b4c0-4982-9509-f84dda355f95" childOf="_974f692a-8151-4bda-8cb6-7648925d35da">
+    <parentOf validUntil="2017-09-11T13:42:20.657+0200" id="_b15744ae-8d9f-423a-80e6-f0e86930d108" supersedingElement="_e729e7bb-304f-4c30-a197-3da172c4aa08" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _5bde071f-4082-4a07-a362-676a93467b14 _0f9b4294-2f53-4ec2-96f9-3f2053399f21"/>
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_e729e7bb-304f-4c30-a197-3da172c4aa08" supersedingElement="_62b5356e-cbf1-49f8-bc6c-e7a37ce210a6" supersededElement="_b15744ae-8d9f-423a-80e6-f0e86930d108" features="_7a6d8a3b-a81f-423f-943a-5cf107240607 _e9b72d6a-4be9-46b0-a573-18800875c92d _e52334b8-c162-4965-927d-051da5e24e9f"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_62b5356e-cbf1-49f8-bc6c-e7a37ce210a6" supersededElement="_e729e7bb-304f-4c30-a197-3da172c4aa08" features="_7a6d8a3b-a81f-423f-943a-5cf107240607 _e9b72d6a-4be9-46b0-a573-18800875c92d _e52334b8-c162-4965-927d-051da5e24e9f _c6a4699e-35c3-4029-b14e-e133094b6f9b"/>
+    <types id="_4664f16b-13c3-4110-a7f0-7b1684753fe0"/>
+  </groups>
+  <groups validSince="2017-09-11T13:42:20.657+0200" id="_b6c7f4f4-f0a8-4008-b30f-9662aec9d231" childOf="_ce2a79a2-280f-4f1b-ad78-bdedb985def4">
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_31e2e233-1bc5-47b1-a607-3ba649b85cd6" supersedingElement="_a0b99817-7cda-46c7-800b-3cc7d47fefa0" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _5bde071f-4082-4a07-a362-676a93467b14"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-20T00:00:00.000+0200" id="_a0b99817-7cda-46c7-800b-3cc7d47fefa0" supersedingElement="_8ab2bdcd-87f0-4972-b0a4-7bff0481b2da" supersededElement="_31e2e233-1bc5-47b1-a607-3ba649b85cd6" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _5bde071f-4082-4a07-a362-676a93467b14 _5c21c915-d924-4c25-9659-c8a676e67219"/>
+    <parentOf validSince="2017-09-20T00:00:00.000+0200" id="_8ab2bdcd-87f0-4972-b0a4-7bff0481b2da" supersededElement="_a0b99817-7cda-46c7-800b-3cc7d47fefa0" features="_3f698f03-5d38-4a94-83cc-b524b4f613be _5bde071f-4082-4a07-a362-676a93467b14 _5c21c915-d924-4c25-9659-c8a676e67219 _91939f32-64e6-468c-863b-bfe426c58ff1"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" id="_28a704a6-2157-49f6-b40d-3fecba5ec8b3"/>
+  </groups>
+  <groups validSince="2017-09-11T13:42:20.657+0200" id="_fbd9a167-0e71-43fb-916f-1be6cb8a4fbc" childOf="_149cece5-45a5-4fb3-9c8d-9b6ba2e456f2">
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_38481ce4-c680-4431-a629-8bb6ce094c65" supersedingElement="_4de45860-14c4-41da-a69c-1363881f4ff1" features="_0f9b4294-2f53-4ec2-96f9-3f2053399f21 _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71"/>
+    <parentOf validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-18T13:32:19.599+0200" id="_4de45860-14c4-41da-a69c-1363881f4ff1" supersedingElement="_fe7f05bb-d6ff-47d9-8d8b-8684554c55b5" supersededElement="_38481ce4-c680-4431-a629-8bb6ce094c65" features="_0f9b4294-2f53-4ec2-96f9-3f2053399f21 _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _91939f32-64e6-468c-863b-bfe426c58ff1"/>
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_fe7f05bb-d6ff-47d9-8d8b-8684554c55b5" supersedingElement="_f34da92e-7982-44ff-8edc-328120cc6268" supersededElement="_4de45860-14c4-41da-a69c-1363881f4ff1" features="_0f9b4294-2f53-4ec2-96f9-3f2053399f21 _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _91939f32-64e6-468c-863b-bfe426c58ff1 _17a8a333-1357-40c2-af1e-a069f023aee3"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" validUntil="2017-09-20T00:00:00.000+0200" id="_f34da92e-7982-44ff-8edc-328120cc6268" supersedingElement="_57806bbc-2d3c-489e-b851-6dcb5f4ba4e9" supersededElement="_fe7f05bb-d6ff-47d9-8d8b-8684554c55b5" features="_0f9b4294-2f53-4ec2-96f9-3f2053399f21 _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _91939f32-64e6-468c-863b-bfe426c58ff1 _17a8a333-1357-40c2-af1e-a069f023aee3 _8cbbf0bf-4d9b-467c-857d-b88a7764fa6e"/>
+    <parentOf validSince="2017-09-20T00:00:00.000+0200" id="_57806bbc-2d3c-489e-b851-6dcb5f4ba4e9" supersededElement="_f34da92e-7982-44ff-8edc-328120cc6268" features="_0f9b4294-2f53-4ec2-96f9-3f2053399f21 _e79baf5d-817e-4682-9dbd-eb8a8b7e0a71 _17a8a333-1357-40c2-af1e-a069f023aee3 _8cbbf0bf-4d9b-467c-857d-b88a7764fa6e"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-18T10:26:22.406+0200" id="_bb3c35a3-9fb0-4185-af9f-194b0e59ffd7"/>
+    <types validSince="2017-09-18T10:26:22.406+0200" validUntil="2017-09-18T13:32:19.599+0200" id="_4d0c84f5-cc2b-4f58-b900-711ab7a376e0" type="OR"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_4c7a2f2d-aa27-491b-9c56-6017023cddc4" type="OR"/>
+  </groups>
+  <groups validSince="2017-09-11T13:42:20.657+0200" id="_5cd1bdb8-213b-4f0e-b9f4-be8e7eda0295" childOf="_7a08a5c4-529c-4645-9944-4459423c279c">
+    <parentOf validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-12T12:00:00.000+0200" id="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31" supersedingElement="_9572ca4c-d321-4517-9f72-12141819c5bd" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5"/>
+    <parentOf validSince="2017-09-12T12:00:00.000+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_9572ca4c-d321-4517-9f72-12141819c5bd" supersedingElement="_4371056c-dc36-4221-9f0e-6653924fc5ba" supersededElement="_c42d4ac7-2fee-4c2e-a19f-abd277dbbe31" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40"/>
+    <parentOf validSince="2017-09-14T12:56:23.307+0200" validUntil="2017-09-15T09:09:07.273+0200" id="_4371056c-dc36-4221-9f0e-6653924fc5ba" supersedingElement="_aefe8613-6e32-4189-bb89-497c13695d54" supersededElement="_9572ca4c-d321-4517-9f72-12141819c5bd" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40 _64f311cf-bdff-4ebf-b4ec-8bc518fc36a7 _991c8f20-2a82-4b03-a35c-fc4f741e1c2d"/>
+    <parentOf validSince="2017-09-15T09:09:07.273+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_aefe8613-6e32-4189-bb89-497c13695d54" supersedingElement="_98d96191-7b25-45f3-a7d9-9e972d9e4b70" supersededElement="_4371056c-dc36-4221-9f0e-6653924fc5ba" features="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40 _64f311cf-bdff-4ebf-b4ec-8bc518fc36a7 _991c8f20-2a82-4b03-a35c-fc4f741e1c2d"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_98d96191-7b25-45f3-a7d9-9e972d9e4b70" supersededElement="_aefe8613-6e32-4189-bb89-497c13695d54" features="_3d1f2994-9177-4ac4-bd2c-a35c55ea8005 _5592b0ba-d73f-4f75-ae46-4a43f9c2c4e5 _14d7f285-3578-46a7-bd88-57a0ba790e40 _64f311cf-bdff-4ebf-b4ec-8bc518fc36a7 _602420d2-8fcc-42f6-8009-3545a69268d3"/>
+    <types validSince="2017-09-11T13:42:20.657+0200" validUntil="2017-09-12T12:00:00.000+0200" id="_39cf381b-3324-4b65-9dc5-e732ca03b2fa"/>
+    <types validSince="2017-09-12T12:00:00.000+0200" validUntil="2017-09-14T12:56:23.307+0200" id="_525f53f6-e9ec-47c1-bc35-e1a186155174" type="OR"/>
+    <types validSince="2017-09-14T12:56:23.307+0200" id="_e97fc235-625a-4da4-90c6-abdd9a79f12e" type="OR"/>
+  </groups>
+  <groups validSince="2017-09-15T09:09:07.273+0200" id="_988a93da-cc66-4d42-96ae-20a4eaaeed1c" childOf="_dc85dad9-ce07-45f0-b2cd-7b0a3c5d8dc9">
+    <parentOf validSince="2017-09-15T09:09:07.273+0200" validUntil="2017-09-19T00:00:00.000+0200" id="_672470f8-b035-4c15-9c19-f7a2b269038e" supersedingElement="_9e468d96-7a5a-493a-93a4-7486dca5e261" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a"/>
+    <parentOf validSince="2017-09-19T00:00:00.000+0200" id="_9e468d96-7a5a-493a-93a4-7486dca5e261" supersededElement="_672470f8-b035-4c15-9c19-f7a2b269038e" features="_1b1d2daf-d2e0-47fa-82e4-8077aab9e66a _2dbc9dd3-6f8f-4475-992f-b0dcbc992302"/>
+    <types validSince="2017-09-15T09:09:07.273+0200" id="_456ff069-af47-4638-8e90-ec924ebcd171"/>
+  </groups>
+  <groups validSince="2017-09-18T10:26:22.406+0200" id="_61382a45-b077-42ba-bcaa-ecb06da0dca5" childOf="_29f0a0a9-ecc0-47c2-8d07-dad4d86050f3">
+    <parentOf validSince="2017-09-18T10:26:22.406+0200" id="_5eb64968-83e9-4789-9413-59a59127d34c" features="_db435b50-fdd4-49c3-a23f-ca34c4ddfe69 _920453d7-8714-4be9-b3b4-7b41ff5ee81b _900acd67-d557-498d-8993-0832126359ed"/>
+    <types validSince="2017-09-18T10:26:22.406+0200" id="_7f12eefe-28eb-43fd-9457-283ec403f244" type="ALTERNATIVE"/>
+  </groups>
+  <groups validSince="2017-09-18T13:32:19.599+0200" id="_e457f522-ef5c-443c-b89a-ac1f905c0aa0" childOf="_ddd8c1c1-a689-4afc-9197-ae00e75b8eae">
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_0a5eafbd-51ef-4127-90bf-145f72716cd9" supersedingElement="_59ccd906-7395-40d0-9603-614bbd255eb4" features="_8cbbf0bf-4d9b-467c-857d-b88a7764fa6e _b5d53c89-fe79-4e01-bc3d-dfbba2d6cda8"/>
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_59ccd906-7395-40d0-9603-614bbd255eb4" supersededElement="_0a5eafbd-51ef-4127-90bf-145f72716cd9" features="_4a82872d-019b-4ccc-9d24-7f37cf435681 _8b9a2378-8bdd-4609-ac43-b530fe00b60f"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" validUntil="2017-09-19T13:00:00.000+0200" id="_da43907a-a9cb-4b0f-b17d-ae05afad50e5"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_f6c7c78c-8404-470f-baaa-6846ef06b4d0" type="ALTERNATIVE"/>
+  </groups>
+  <groups validSince="2017-09-18T13:32:19.599+0200" id="_24c1dde3-1cf6-4035-9aa5-ce9e4def998a" childOf="_546ee5b3-3c8a-42bd-a277-54e77002b65c">
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_c60e736e-0ee7-49bd-a8eb-c7b15fad7cf5" features="_26a73081-74b0-462e-88c2-f3b2e7e3695f _90a711db-a59e-4cc7-80c4-4c6d27475875"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_2f3d8335-60b2-49b6-89c2-d1ac382ceaad"/>
+  </groups>
+  <groups validSince="2017-09-18T13:32:19.599+0200" id="_bdc4e6f5-6296-4b25-9d07-2915ecbef877" childOf="_b6b733d0-c2b5-4536-b770-0d66ebbc4065">
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_56b528ce-c08c-4cdb-a287-e9e2e18640e1" features="_5378d86b-299f-4dfe-8f0e-dfbcf02d0a6b"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_87fd55de-87b3-48ae-be8a-b1e1b445bd62"/>
+  </groups>
+  <groups validSince="2017-09-18T13:32:19.599+0200" id="_4be97e20-1149-4ee5-bc2a-68594ea8e4a5" childOf="_ed4cb987-db49-4f46-b0ea-14ab92a5e488">
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_ec051450-7db0-4603-9912-5560504735fa" features="_a3eae74d-8957-41dd-98e8-01733471590f _5e5f03ee-81b8-481f-8811-4e228487ace7"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_86ee4f02-1b99-4f9f-9efe-a2230e298473" type="ALTERNATIVE"/>
+  </groups>
+  <groups validSince="2017-09-18T13:32:19.599+0200" id="_a5ad35ce-a68c-47c3-9bb2-5a35d0861a3e" childOf="_5df134f0-79ad-441a-82c7-297b5c0116f1">
+    <parentOf validSince="2017-09-18T13:32:19.599+0200" id="_fc98cb8f-57de-4d00-883c-43d03728f1a0" features="_49e3c79c-3b36-43ee-b963-833d1621cc3c"/>
+    <types validSince="2017-09-18T13:32:19.599+0200" id="_ac4dbd44-fd53-4756-b3cd-dd7ea65581bb"/>
+  </groups>
+  <groups validSince="2017-09-19T00:00:00.000+0200" id="_f3c095fa-e0d6-47fa-8dc5-69abfedb0262" childOf="_c1e72ddf-c387-423d-8cbf-e10f75be49f4">
+    <parentOf validSince="2017-09-19T00:00:00.000+0200" validUntil="2017-09-20T00:00:00.000+0200" id="_372e01e6-c382-4f39-a860-ccb26f011481" features="_1239f262-b3ea-40a5-b90e-166f05d60b79"/>
+    <types validSince="2017-09-19T00:00:00.000+0200" id="_d9dc2266-db1c-4048-a584-6ea78e6610c8"/>
+  </groups>
+  <groups validSince="2017-09-19T13:00:00.000+0200" id="_db56365b-39ce-44e6-ab63-ad79edfd8176" childOf="_8a4c8120-0bc6-4e24-af17-d79234270559">
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_c3247eec-5016-4abd-b000-13e1896ff05c" features="_b5d53c89-fe79-4e01-bc3d-dfbba2d6cda8"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_497eba73-419e-406c-8696-db1298c086c5"/>
+  </groups>
+  <groups validSince="2017-09-19T13:00:00.000+0200" id="_d19926ab-c2f1-49cc-878b-94a1b23043ce" childOf="_e79556b5-ed39-4c2d-8fa3-c0e5e6e92acf">
+    <parentOf validSince="2017-09-19T13:00:00.000+0200" id="_440385af-654c-4029-a208-34d9b8927e1e" features="_991c8f20-2a82-4b03-a35c-fc4f741e1c2d _b14b7cc9-cda1-4eb6-a67a-67d0c17f091b"/>
+    <types validSince="2017-09-19T13:00:00.000+0200" id="_f94f79f7-5374-4184-a44e-f6313481e25a" type="OR"/>
+  </groups>
+  <groups validSince="2017-09-20T00:00:00.000+0200" id="_0c5387d5-3cc0-4236-9713-9f81fdc901ec" childOf="_18b1bb70-b759-47d6-912e-d407f7e69435">
+    <parentOf validSince="2017-09-20T00:00:00.000+0200" id="_15fb6e73-c9f2-4450-b61d-c41e6d273256" features="_1239f262-b3ea-40a5-b90e-166f05d60b79"/>
+    <types validSince="2017-09-20T00:00:00.000+0200" id="_1ca7052c-0c7a-4b5e-b9aa-c1fcd001af1a"/>
+  </groups>
+</feature:HyFeatureModel>

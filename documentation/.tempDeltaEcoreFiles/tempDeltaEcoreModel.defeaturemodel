@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ASCII"?>
+<feature:DEFeatureModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:feature="http://deltaecore.org/feature/1.0">
+  <rootFeature minCardinality="1" maxCardinality="1" name="Core">
+    <groups minCardinality="1" maxCardinality="4">
+      <features minCardinality="1" maxCardinality="1" name="Map">
+        <groups minCardinality="1" maxCardinality="4">
+          <features minCardinality="1" maxCardinality="1" name="Localization"/>
+          <features maxCardinality="1" name="Orientation"/>
+          <features maxCardinality="1" name="StandardZoom"/>
+          <features maxCardinality="1" name="History">
+            <groups maxCardinality="1">
+              <features maxCardinality="1" name="RouteHistory"/>
+            </groups>
+          </features>
+        </groups>
+      </features>
+      <features maxCardinality="1" name="Route">
+        <groups minCardinality="1" maxCardinality="4">
+          <features maxCardinality="1" name="Favorites">
+            <groups maxCardinality="1">
+              <features maxCardinality="1" name="FavoriteRoute"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="Routecalculation">
+            <groups minCardinality="1" maxCardinality="1">
+              <features maxCardinality="1" name="Pedestrian"/>
+              <features maxCardinality="1" name="Car"/>
+              <features maxCardinality="1" name="Truck"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="Suggestions"/>
+          <features maxCardinality="1" name="Navigation">
+            <groups maxCardinality="1">
+              <features maxCardinality="1" name="RouteDistance">
+                <groups maxCardinality="2">
+                  <features maxCardinality="1" name="RemainingDistance"/>
+                  <features maxCardinality="1" name="TravelTime">
+                    <groups maxCardinality="1">
+                      <features maxCardinality="1" name="RemainingTravelTime"/>
+                    </groups>
+                  </features>
+                </groups>
+              </features>
+            </groups>
+          </features>
+        </groups>
+      </features>
+      <features maxCardinality="1" name="Information">
+        <groups minCardinality="1" maxCardinality="5">
+          <features maxCardinality="1" name="POI">
+            <groups maxCardinality="2">
+              <features maxCardinality="1" name="LocationImages"/>
+              <features maxCardinality="1" name="Wikipedia"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="Weather">
+            <groups maxCardinality="1">
+              <features maxCardinality="1" name="Wind"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="Time">
+            <groups minCardinality="1" maxCardinality="1">
+              <features maxCardinality="1" name="H12"/>
+              <features maxCardinality="1" name="H24"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="Speedlimit">
+            <groups minCardinality="1" maxCardinality="1">
+              <features maxCardinality="1" name="sNone"/>
+              <features maxCardinality="1" name="s112"/>
+              <features maxCardinality="1" name="s130"/>
+            </groups>
+          </features>
+          <features maxCardinality="1" name="BusStops"/>
+        </groups>
+      </features>
+      <features maxCardinality="1" name="Services">
+        <groups minCardinality="1" maxCardinality="2">
+          <features maxCardinality="1" name="Carpooling"/>
+          <features maxCardinality="1" name="Taxi"/>
+        </groups>
+      </features>
+    </groups>
+  </rootFeature>
+</feature:DEFeatureModel>

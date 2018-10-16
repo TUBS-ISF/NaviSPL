@@ -1,0 +1,6 @@
+- How did you evolve the context model?
+	 Added Contextual restraints for Time Feature
+
+
+- Why did you evolve the context model (in this way)?
+	Have been added before, but weren't working and blocked the derivation of a variant. 

@@ -1,0 +1,6 @@
+- How did you evolve the mapping?
+	Added mapping for feature "Wikipedia"
+
+
+- Why did you evolve the mapping (in this way)?
+	Feature done and merged into develop

@@ -1,0 +1,6 @@
+- How did you evolve the context model?
+	Added constraints for SpeedlimitDE, FR, GB
+
+
+- Why did you evolve the context model (in this way)?
+	Depending on the location, speedlimits (on highways for example) are set differently. therefore the right speed limits need to be mapped.

@@ -1,0 +1,8 @@
+- How did you evolve the context model?
+	1. Added new constraint: "Navigation" -> "Routecalculation".
+	2. Extended constraints for time format to require Time feature selected.
+
+- Why did you evolve the context model (in this way)?
+	1. Navigation is useless without a calculated route.
+	2. Time format should not be set, if Time is not set as a feature.
+		Otherwise, time would always be set when building a configuration.

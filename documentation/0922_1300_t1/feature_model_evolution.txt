@@ -1,0 +1,6 @@
+- How did you evolve the feature model?
+	Added feature InfoGroup to Information
+
+
+- Why did you evolve the feature model (in this way)?
+	Feature InfoGroup needs to be added to the feature model

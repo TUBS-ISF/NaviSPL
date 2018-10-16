@@ -1,0 +1,6 @@
+- How did you evolve the feature model?
+	1. Added feature 'Truck' to vehicle types under Routecalculation.
+
+
+- Why did you evolve the feature model (in this way)?
+	1. New truck context needs a corresponding feature.

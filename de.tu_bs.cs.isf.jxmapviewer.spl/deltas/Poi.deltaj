@@ -1,0 +1,253 @@
+delta Poi requires Localization {
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import javax.swing.BoxLayout;
+		adds import javax.swing.JSlider;
+		adds import java.awt.Color;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+					
+		adds protected java.util.List<de.tu_bs.cs.isf.navi.poi.POIelement> POIlist;
+		adds protected javax.swing.JPanel poiPanel;
+		adds protected javax.swing.JPanel poiItems;
+		adds protected javax.swing.JSlider poiSlider;
+		adds protected javax.swing.JCheckBox poiCheckAll;
+		
+		modifies addMenu() {
+			original();
+			POIlist = new java.util.ArrayList<de.tu_bs.cs.isf.navi.poi.POIelement>();
+			createPOImenu();
+			mapViewer.addMouseListener(new java.awt.event.MouseListener() {
+				
+				public void mouseClicked(java.awt.event.MouseEvent e) {	
+					clearPOIlist();
+					findPOI();
+					updatePOImenu();
+				}
+				
+				public void mousePressed(java.awt.event.MouseEvent e) { }			
+				public void mouseReleased(java.awt.event.MouseEvent e) { }			
+				public void mouseEntered(java.awt.event.MouseEvent e) { }
+				public void mouseExited(java.awt.event.MouseEvent e) { }			
+			});
+		}
+		
+		adds protected void createPOImenu() {
+			poiPanel = new javax.swing.JPanel();		
+			poiPanel.setLayout(new javax.swing.BoxLayout(poiPanel, BoxLayout.PAGE_AXIS));
+			
+			poiItems = new javax.swing.JPanel();		
+			poiItems.setLayout(new javax.swing.BoxLayout(poiItems, BoxLayout.PAGE_AXIS));
+			
+			javax.swing.JPanel poiHeader = new javax.swing.JPanel();
+			poiSlider = new javax.swing.JSlider(JSlider.HORIZONTAL, 500, 5000, 500);
+			poiSlider.setMajorTickSpacing(2250);
+			poiSlider.setMinorTickSpacing(250);
+			poiSlider.setPaintTicks(Boolean.TRUE);
+			poiSlider.setPaintLabels(Boolean.TRUE);
+			poiSlider.setSnapToTicks(Boolean.TRUE);
+			poiSlider.setPreferredSize(new java.awt.Dimension(150, 40));
+			
+			poiCheckAll = new javax.swing.JCheckBox();
+			poiCheckAll.setText("All");
+			poiCheckAll.setSelected(Boolean.TRUE);
+			poiCheckAll.addItemListener(new java.awt.event.ItemListener() {
+			    public void itemStateChanged(java.awt.event.ItemEvent e) {
+			    	for (java.awt.Component c : poiItems.getComponents()) {
+			    		((javax.swing.JCheckBox) c).setSelected(poiCheckAll.isSelected());
+			    	}
+			    }
+			});
+			
+			poiHeader.add(poiCheckAll);
+			
+			poiHeader.add(new javax.swing.JLabel("| Radius:"));
+			poiHeader.add(poiSlider);
+			
+			poiPanel.add(poiHeader);
+			
+			javax.swing.JScrollPane poiScroll = new javax.swing.JScrollPane(poiItems);
+			poiScroll.setPreferredSize(new java.awt.Dimension(250, 250));
+			
+			poiPanel.add(poiScroll);
+			
+			menuPanelList.put("POI", poiPanel);
+		}
+		
+		adds protected void updatePOImenu() {
+			
+			java.util.List<String> types = getAllPOItypes();
+			for (String type : types) {
+				javax.swing.JCheckBox c = new javax.swing.JCheckBox();
+				poiItems.add(c);
+				
+				c.setText(type);
+				c.setName(type);
+				c.setSelected(Boolean.TRUE);
+				c.addItemListener(new java.awt.event.ItemListener() {
+				    public void itemStateChanged(java.awt.event.ItemEvent e) {
+				    	updatePOIvisibility();
+	
+				    	boolean allPos = Boolean.TRUE;
+				    	boolean allNeg = Boolean.TRUE;
+				    	for (java.awt.Component c : poiItems.getComponents()) {
+				    		if (((javax.swing.JCheckBox) c).isSelected()) {
+				    			if (allNeg) {
+				    				allNeg = !allNeg;
+				    			}
+				    		} else {
+				    			if (allPos) {
+				    				allPos = !allPos;
+				    			}
+				    		}
+				    	}
+				    	if (allPos) {
+				    		poiCheckAll.setSelected(Boolean.TRUE);
+				    	} else if (allNeg) {
+				    		poiCheckAll.setSelected(Boolean.FALSE);
+				    	}
+				    }
+				});
+			}
+			poiCheckAll.setSelected(Boolean.TRUE);
+			poiItems.updateUI();
+		}
+	
+	
+		adds private java.util.List<String> getAllPOItypes() {
+			java.util.List<String> l = new java.util.ArrayList<String>();
+			for (de.tu_bs.cs.isf.navi.poi.POIelement e : POIlist) {
+				for (String s : e.types) {
+					if (!l.contains(s)) {
+						l.add(s);
+					}
+				}
+			}
+			return l;
+		}
+	
+		adds protected void findPOI() {
+			String location = "location=" + GPSselect.getLat() + "," + GPSselect.getLon();
+			String radius = "radius=" + String.valueOf(poiSlider.getValue());
+			String type = "";
+			String api_key = "key=AIzaSyBU_1NMbpJ9PPUUrL6WsCqHWKGh0mpiNrU";
+			String request = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + location + "&" + radius + "&"
+								+ type + "&" + api_key;
+			try {
+				java.net.URL url = new java.net.URL(request);
+				java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("accept", "application/json");
+						
+				java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader((conn.getInputStream())));
+				String output;
+				String all = "";
+		
+				while ((output = br.readLine()) != null) {
+					all += output;				
+				}
+				
+				org.json.JSONTokener t = new org.json.JSONTokener(all);									
+				org.json.JSONObject parsed = (org.json.JSONObject) t.nextValue();
+					
+				String status =  parsed.getString("status");
+				
+				if (!(status.equals("OK"))){ 
+					System.out.println("POI Status: " + status);			
+				}
+				
+				org.json.JSONArray resultArray = (org.json.JSONArray) parsed.get("results");
+				
+				for (int i = 0; i < resultArray.length(); i++) {
+					org.json.JSONObject poi = (org.json.JSONObject) resultArray.get(i);
+					
+					org.json.JSONObject loc = (org.json.JSONObject) ((org.json.JSONObject) poi.get("geometry")).get("location");
+					org.openstreetmap.gui.jmapviewer.Coordinate c = new org.openstreetmap.gui.jmapviewer.Coordinate(loc.getDouble("lat"), loc.getDouble("lng"));
+					String name = poi.getString("name");
+					
+					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(name, c);
+					m.setStyle(new org.openstreetmap.gui.jmapviewer.Style(Color.BLACK, Color.RED, null, MapMarkerDot.getDefaultFont()));
+					
+					mapViewer.addMapMarker(m);
+					
+					org.json.JSONArray typeArray = (org.json.JSONArray) poi.get("types");
+					java.util.List<String> typeList = new java.util.ArrayList<String>();
+					for (int j = 0; j < typeArray.length(); j++) {					
+						typeList.add(typeArray.getString(j));
+					}
+					
+					POIlist.add(new de.tu_bs.cs.isf.navi.poi.POIelement(m, typeList, poi));
+				}
+				
+			} catch (java.net.ProtocolException e) {
+			} catch (java.net.MalformedURLException e) {
+			} catch (java.io.IOException e) {
+			}
+		}
+		
+		adds protected void updatePOIvisibility() {
+			java.util.List<javax.swing.JCheckBox> cb = new java.util.ArrayList<javax.swing.JCheckBox>();
+			
+			java.awt.Component[] comps = poiItems.getComponents();
+			for (java.awt.Component comp : comps) {
+				try {
+					cb.add((javax.swing.JCheckBox) comp);
+				} catch (ClassCastException e) {
+					
+				}
+			}
+			
+			
+			for (de.tu_bs.cs.isf.navi.poi.POIelement e : POIlist) {
+				boolean shouldBeVisible = Boolean.FALSE;
+				for (String s : e.types) {
+					for (javax.swing.JCheckBox c : cb) {
+						if (c.getName().equals(s)) {
+							if (c.isSelected()) {
+								shouldBeVisible = Boolean.TRUE;
+							}
+						}
+					}
+				}
+				if (shouldBeVisible && !mapViewer.getMapMarkerList().contains(e.marker)) {
+					mapViewer.addMapMarker(e.marker);
+				}
+				if (!shouldBeVisible && mapViewer.getMapMarkerList().contains(e.marker)) {
+					mapViewer.removeMapMarker(e.marker);
+				}
+			}
+		}
+		
+		adds protected void clearPOIlist() {
+			for (de.tu_bs.cs.isf.navi.poi.POIelement p : POIlist) {
+				mapViewer.removeMapMarker(p.marker);
+			}
+			POIlist.clear();
+			
+			poiItems.removeAll();
+		}
+	}
+	
+	adds {
+	
+		package de.tu_bs.cs.isf.navi.poi;
+
+		import java.util.List;
+		
+		public class POIelement {
+			
+			public java.util.List<String> types;
+			
+			public org.openstreetmap.gui.jmapviewer.MapMarkerDot marker;
+			
+			public org.json.JSONObject json;	
+			
+			public POIelement(org.openstreetmap.gui.jmapviewer.MapMarkerDot m, java.util.List<String>types, org.json.JSONObject json) {
+				this.marker = m;
+				this.types = types;
+				this.json = json;
+			}
+		
+		}
+			
+	
+	}
+}

@@ -1,0 +1,79 @@
+delta HistoryRouting requires History, Routing {
+	
+	
+	
+	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		
+		
+		modifies addHistoryRoutingListener() {
+			startRouteBtn.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent e) {
+					
+					double slat = Double.parseDouble(startRouteLatitude.getText());
+					double slon = Double.parseDouble(startRouteLongitude.getText());
+					
+					double elat = Double.parseDouble(endRouteLatitude.getText());
+					double elon = Double.parseDouble(endRouteLongitude.getText());
+					
+					addRouteToHistory(slat, slon, elat, elon);
+					
+				}
+	
+			});
+			
+			if (jListHistory == null)
+				jListHistory = new JList<HistoryObject>();
+			jListHistory.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+						public void valueChanged(javax.swing.event.ListSelectionEvent e) {
+							if (jListHistory.getSelectedValue() != null) {
+								if(jListHistory.getSelectedValue().isRoute()){
+									startRouteLatitude.setText(String.valueOf(jListHistory.getSelectedValue().getStartlatitude()));
+									startRouteLongitude.setText(String.valueOf(jListHistory.getSelectedValue().getStartlongitude()));
+									endRouteLatitude.setText(String.valueOf(jListHistory.getSelectedValue().getEndlatitude()));
+									endRouteLongitude.setText(String.valueOf(jListHistory.getSelectedValue().getEndLongitude()));
+								}
+							}
+						}
+					});
+		}
+		
+		adds public void addRouteToHistory(double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
+			HistoryObject obj = new HistoryObject(0, startlatitude, startlongitude, endlatitude, endlongitude);
+	
+			if (historyList == null)
+				historyList = new Vector<HistoryObject>();
+			historyList.add(obj);
+			putHistoryItemsInList();
+			saveHistory();
+		}
+		
+	}
+	
+	modifies de.tu_bs.cs.isf.navi.history.HistoryObject {
+		
+		adds public HistoryObject(int workAround, double startlatitude, double startlongitude, double endlatitude, double endlongitude) {
+			this.startlongitude = startlongitude;
+			this.startlatitude = startlatitude;
+			this.endlongitude = endlongitude;
+			this.endlatitude = endlatitude;
+			this.isRoute = Boolean.TRUE;
+			timestamp = new java.util.Date(System.currentTimeMillis());
+		}
+		
+		modifies toString() {
+			if(this.endlatitude != 0 && this.endlongitude != 0) {
+				return "<html>" + timestamp.toString() + "<br>" + " Startlat: " + String.valueOf(startlatitude)
+							+ " Startlong: " + String.valueOf(startlongitude) + " Endlat: " + String.valueOf(endlatitude)
+							+ " Endlong: " + String.valueOf(endlongitude) + "</html>";
+			}
+			return original();
+		}
+			
+	}
+
+ 
+
+
+	
+}

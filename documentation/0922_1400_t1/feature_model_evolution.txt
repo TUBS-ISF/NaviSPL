@@ -1,0 +1,6 @@
+- How did you evolve the feature model?
+	Rearranged Suggestions to Information, added SuggestionFav and SuggestionHistory as sub-features in an OR group.
+
+
+- Why did you evolve the feature model (in this way)?
+	Suggestions are supposed to work with Favorites as well, so moving it to Information made more sense as you can suggest locations as well as routes.
