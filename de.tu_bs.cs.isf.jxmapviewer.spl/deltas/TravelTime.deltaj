@@ -10,8 +10,7 @@ delta TravelTime requires Routing {
 		}
 	}
 	
-	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation { 
-	
+	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation {
 		adds private double duration;	
 		
 		adds public double getDuration() {

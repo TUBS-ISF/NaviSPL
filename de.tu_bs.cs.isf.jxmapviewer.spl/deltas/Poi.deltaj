@@ -1,5 +1,9 @@
 delta Poi requires Localization {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import javax.swing.BoxLayout;
+		adds import javax.swing.JSlider;
+		adds import java.awt.Color;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 					
 		adds protected java.util.List<de.tu_bs.cs.isf.navi.poi.POIelement> POIlist;
 		adds protected javax.swing.JPanel poiPanel;
@@ -28,13 +32,13 @@ delta Poi requires Localization {
 		
 		adds protected void createPOImenu() {
 			poiPanel = new javax.swing.JPanel();		
-			poiPanel.setLayout(new javax.swing.BoxLayout(poiPanel, javax.swing.BoxLayout.PAGE_AXIS));
+			poiPanel.setLayout(new javax.swing.BoxLayout(poiPanel, BoxLayout.PAGE_AXIS));
 			
 			poiItems = new javax.swing.JPanel();		
-			poiItems.setLayout(new javax.swing.BoxLayout(poiItems, javax.swing.BoxLayout.PAGE_AXIS));
+			poiItems.setLayout(new javax.swing.BoxLayout(poiItems, BoxLayout.PAGE_AXIS));
 			
 			javax.swing.JPanel poiHeader = new javax.swing.JPanel();
-			poiSlider = new javax.swing.JSlider(javax.swing.JSlider.HORIZONTAL, 500, 5000, 500);
+			poiSlider = new javax.swing.JSlider(JSlider.HORIZONTAL, 500, 5000, 500);
 			poiSlider.setMajorTickSpacing(2250);
 			poiSlider.setMinorTickSpacing(250);
 			poiSlider.setPaintTicks(Boolean.TRUE);
@@ -160,7 +164,7 @@ delta Poi requires Localization {
 					String name = poi.getString("name");
 					
 					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(name, c);
-					m.setStyle(new org.openstreetmap.gui.jmapviewer.Style(java.awt.Color.BLACK, java.awt.Color.RED, null, org.openstreetmap.gui.jmapviewer.MapMarkerDot.getDefaultFont()));
+					m.setStyle(new org.openstreetmap.gui.jmapviewer.Style(Color.BLACK, Color.RED, null, MapMarkerDot.getDefaultFont()));
 					
 					mapViewer.addMapMarker(m);
 					

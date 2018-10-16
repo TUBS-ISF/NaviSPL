@@ -1,18 +1,17 @@
-delta ArrivalTime requires DepartureArrivalTimeHelper{
+delta ArrivalTime requires DepartureArrivalTimeHelper {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 	
-		adds private javax.swing.JButton departureButton = new JButton("Calculate Departure");
+		adds private javax.swing.JButton departureButton = new javax.swing.JButton("Calculate Departure");
 		
 		modifies addTravelTime() {
 			original();
 			departureArrivalConstraints.gridwidth = 1;
-			departureArrivalConstraints.fill = GridBagConstraints.HORIZONTAL;
+			departureArrivalConstraints.fill = GridBagConstraints.HORIZONTAL; 
 			departureArrivalConstraints.gridx = 2;
 			departureArrivalConstraints.gridy = 2;
-			departureButton.addActionListener(new ActionListener() {
-				
-				public void actionPerformed(ActionEvent e) {
+			departureButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
 					timeDepartureTextField.setText(calculateDepartureTime(timeArrivalTextField.getText()));
 				}
 			});

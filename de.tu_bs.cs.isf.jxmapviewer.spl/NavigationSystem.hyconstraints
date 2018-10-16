@@ -1,6 +1,6 @@
 "LocationImages" -> !"Orientation" [2017/09/18T10:26:22 - eternity]
 "RouteHistory" -> "Routecalculation" [2017/09/19T00:00:00 - eternity]
-"FavoriteRoute" -> "Routecalculation" [2017/09/11T13:42:20 - eternity]
+"FavoriteRoute" -> "Routecalculation" [2017/09/21T13:42:20 - eternity]
 "Navigation" -> "Routecalculation" [2017/09/19T13:00:00 - eternity]
 
 "Truck" -> "Wind" [2017/09/21 - eternity]
@@ -18,9 +18,9 @@
 "RemainingTravelTime" -> "Navigation" [2017/09/26 - eternity]
 "RemainingTravelTime" -> "Time" [2017/09/22 - eternity]
 
-context:Location = enum:LocationEnum.Germany && Time -> H24 [2017/09/12T12:00:00 - eternity]
-context:Location = enum:LocationEnum.France && Time -> H24 [2017/09/12T12:00:00 - eternity]
-context:Location = enum:LocationEnum.GB && Time -> H12 [2017/09/12T12:00:00 - eternity]
+context:Location = enum:LocationEnum.Germany && Time -> H24 [2017/09/18T14:00:00 - eternity]
+context:Location = enum:LocationEnum.France && Time -> H24 [2017/09/18T14:00:00 - eternity]
+context:Location = enum:LocationEnum.GB && Time -> H12 [2017/09/18T14:00:00 - eternity]
 
 context:Vehicle = enum:VehicleEnum.Pedestrian && Routecalculation -> Pedestrian [2017/09/19T13:00:00 - eternity]
 context:Vehicle = enum:VehicleEnum.Pedestrian -> !Speedlimit [2017/09/19T13:00:00 - eternity]

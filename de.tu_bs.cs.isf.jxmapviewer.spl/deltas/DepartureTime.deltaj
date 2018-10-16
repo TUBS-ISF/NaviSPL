@@ -1,8 +1,11 @@
 delta DepartureTime requires DepartureArrivalTimeHelper{
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import java.awt.event.ActionEvent;
+		adds import java.awt.event.ActionListener;
+		adds import javax.swing.JButton;
 	
-		adds private javax.swing.JButton arrivalButton = new JButton("Calculate Arrival");
+		adds private JButton arrivalButton = new JButton("Calculate Arrival");
 		
 		modifies addTravelTime() {
 			original();

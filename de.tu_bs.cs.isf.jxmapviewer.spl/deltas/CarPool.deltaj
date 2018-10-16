@@ -1,7 +1,9 @@
-delta CarPool{
+delta CarPool requires Localization {
 
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 	
+		adds import de.tu_bs.cs.isf.navi.carpool.CarPoolResult;
+		
 		adds import java.awt.Dimension;
 		adds import java.awt.GridBagConstraints;
 		adds import java.awt.GridBagLayout;
@@ -11,6 +13,9 @@ delta CarPool{
 		adds import java.awt.event.FocusListener;
 		adds import java.awt.event.MouseEvent;
 		adds import java.awt.event.MouseListener;
+		
+		adds import java.nio.file.Paths;
+		adds import java.nio.file.Files;
 		adds import java.io.File;
 		adds import java.io.FileInputStream;
 		adds import java.io.FileOutputStream;
@@ -24,7 +29,6 @@ delta CarPool{
 		adds import java.text.SimpleDateFormat;
 		adds import java.util.Date;
 	
-		adds import de.tu_bs.cs.isf.navi.carpool.CarPoolResult;
 		adds import javax.swing.JButton;
 		adds import javax.swing.JFrame;
 		adds import javax.swing.JLabel;
@@ -33,6 +37,7 @@ delta CarPool{
 		adds import javax.swing.JTextField;
 		adds import javax.swing.JScrollPane;
 		adds import javax.swing.JOptionPane;
+		adds import javax.swing.ListSelectionModel;
 	
 		adds boolean isStartSelected;
 		adds boolean isEndSelected;
@@ -69,108 +74,109 @@ delta CarPool{
 			final JTextField endLong = new JTextField();
 	
 			btnSearchPassenger.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String name = nameTF.getText();
-				String size = sizeTF.getText();
-				String contact = contactTF.getText();
-				String startLatitude = startLat.getText();
-				String startLongitude = startLong.getText();
-				String endLatitude = endLat.getText();
-				String endLongitude = endLong.getText();
-				try {
-					SimpleDateFormat test = new SimpleDateFormat("dd.MM.yyyy H:mm");
-					test.getCalendar().setLenient(Boolean.FALSE);
-					Date date = test.parse(dateTF.getText() + " " + timeTF.getText());
-
-					if (name == null || size == null || contact == null || startLatitude == null
-							|| startLongitude == null || endLatitude == null || endLongitude == null)
-						return;
-
-					CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), contact);
-					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
-							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
-					obj.setDate(date);
-					int count = 0;
-					for (int i = 0; i < carPoolList.size(); i++) {
-						CarPoolResult cps = carPoolList.get(i);
-						double distance = mapViewer.getTileController().getTileSource().getDistance(
-								Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
-								cps.getStartLat(), cps.getStartLong()) / 1000;
-						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 2) {
-							count++;
-						}
-					}
-					if (count > 0) {
-						JOptionPane.showMessageDialog(NaviApp.this,
-								count + " Passengers are searching in your vicinity", "CarPooling24.de",
-								JOptionPane.INFORMATION_MESSAGE);
-					}
-					carPoolList.add(obj);
-					saveCarPoolResults();
-					putCarPoolItemsInList();
-				} catch (NumberFormatException ee) {
-					return;
-				} catch (ParseException ex) {
-					return;
-				} catch (Exception ey) {
-					return;
-				}
-			}
-		});
-		btnSearchDriver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String name = nameTF.getText();
-				String size = sizeTF.getText();
-				String contact = contactTF.getText();
-				String startLatitude = startLat.getText();
-				String startLongitude = startLong.getText();
-				String endLatitude = endLat.getText();
-				String endLongitude = endLong.getText();
-
-				try {
-					SimpleDateFormat test = new SimpleDateFormat("dd.MM.yyyy H:mm");
-					test.getCalendar().setLenient(Boolean.FALSE);
-					Date datee = test.parse(dateTF.getText() + " " + timeTF.getText());
-
-					if (name == null || size == null || contact == null || startLatitude == null
-							|| startLongitude == null || endLatitude == null || endLongitude == null)
-						return;
-
-					CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), contact);
-					obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
-							Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
-					obj.setDate(datee);
-					int count = 0;
-					for (int i = 0; i < carPoolList.size(); i++) {
-						CarPoolResult cps = carPoolList.get(i);
-						double distance = mapViewer.getTileController().getTileSource().getDistance(
-								Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
-								cps.getStartLat(), cps.getStartLong()) / 1000;
-						if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 1) {
-							count++;
-						}
-					}
-					if (count > 0) {
-						JOptionPane.showMessageDialog(NaviApp.this, count + " Drivers are searching in your vicinity",
-								"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
-					}
-					carPoolList.add(obj);
-					saveCarPoolResults();
-					putCarPoolItemsInList();
-				} catch (NumberFormatException ee) {
-					return;
-				} catch (ParseException e1) {
-					JOptionPane.showMessageDialog(NaviApp.this, e1.getMessage(), "CarPooling24.de",
-							JOptionPane.INFORMATION_MESSAGE);
-					return;
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(NaviApp.this, e2.getMessage(), "CarPooling24.de",
-							JOptionPane.INFORMATION_MESSAGE);
-					return;
-				}
-			}
-		});
+				public void actionPerformed(ActionEvent e) {
+					String name = nameTF.getText();
+					String size = sizeTF.getText();
+					String contact = contactTF.getText();
+					String startLatitude = startLat.getText();
+					String startLongitude = startLong.getText();
+					String endLatitude = endLat.getText();
+					String endLongitude = endLong.getText();
+					try {
+						SimpleDateFormat test = new SimpleDateFormat("dd.MM.yyyy H:mm");
+						test.getCalendar().setLenient(Boolean.FALSE);
+						Date date = test.parse(dateTF.getText() + " " + timeTF.getText());
 	
+						if (name == null || size == null || contact == null || startLatitude == null
+								|| startLongitude == null || endLatitude == null || endLongitude == null)
+							return;
+	
+						CarPoolResult obj = new CarPoolResult(1, name, Integer.parseInt(size), contact);
+						obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+								Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
+						obj.setDate(date);
+						int count = 0;
+						for (int i = 0; i < carPoolList.size(); i++) {
+							CarPoolResult cps = carPoolList.get(i);
+							double distance = mapViewer.getTileController().getTileSource().getDistance(
+									Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+									cps.getStartLat(), cps.getStartLong()) / 1000;
+							if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 2) {
+								count++;
+							}
+						}
+						if (count > 0) {
+							JOptionPane.showMessageDialog(NaviApp.this,
+									count + " Passengers are searching in your vicinity", "CarPooling24.de",
+									JOptionPane.INFORMATION_MESSAGE);
+						}
+						carPoolList.add(obj);
+						saveCarPoolResults();
+						putCarPoolItemsInList();
+					} catch (NumberFormatException ee) {
+						return;
+					} catch (ParseException ex) {
+						return;
+					} catch (Exception ey) {
+						return;
+					}
+				}
+			});
+			
+			btnSearchDriver.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String name = nameTF.getText();
+					String size = sizeTF.getText();
+					String contact = contactTF.getText();
+					String startLatitude = startLat.getText();
+					String startLongitude = startLong.getText();
+					String endLatitude = endLat.getText();
+					String endLongitude = endLong.getText();
+	
+					try {
+						SimpleDateFormat test = new SimpleDateFormat("dd.MM.yyyy H:mm");
+						test.getCalendar().setLenient(Boolean.FALSE);
+						Date datee = test.parse(dateTF.getText() + " " + timeTF.getText());
+	
+						if (name == null || size == null || contact == null || startLatitude == null
+								|| startLongitude == null || endLatitude == null || endLongitude == null)
+							return;
+	
+						CarPoolResult obj = new CarPoolResult(2, name, Integer.parseInt(size), contact);
+						obj.setRoute(Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+								Double.parseDouble(endLatitude), Double.parseDouble(endLongitude));
+						obj.setDate(datee);
+						int count = 0;
+						for (int i = 0; i < carPoolList.size(); i++) {
+							CarPoolResult cps = carPoolList.get(i);
+							double distance = mapViewer.getTileController().getTileSource().getDistance(
+									Double.parseDouble(startLatitude), Double.parseDouble(startLongitude),
+									cps.getStartLat(), cps.getStartLong()) / 1000;
+							if (distance <= Double.parseDouble(radiusTF.getText()) && cps.getSearchType() == 1) {
+								count++;
+							}
+						}
+						if (count > 0) {
+							JOptionPane.showMessageDialog(NaviApp.this, count + " Drivers are searching in your vicinity",
+									"CarPooling24.de", JOptionPane.INFORMATION_MESSAGE);
+						}
+						carPoolList.add(obj);
+						saveCarPoolResults();
+						putCarPoolItemsInList();
+					} catch (NumberFormatException ee) {
+						return;
+					} catch (ParseException e1) {
+						JOptionPane.showMessageDialog(NaviApp.this, e1.getMessage(), "CarPooling24.de",
+								JOptionPane.INFORMATION_MESSAGE);
+						return;
+					} catch (Exception e2) {
+						JOptionPane.showMessageDialog(NaviApp.this, e2.getMessage(), "CarPooling24.de",
+								JOptionPane.INFORMATION_MESSAGE);
+						return;
+					}
+				}
+			});
+		
 			btnDelete.addActionListener(new ActionListener() {
 	
 				public void actionPerformed(ActionEvent e) {
@@ -182,7 +188,7 @@ delta CarPool{
 			});
 	
 			jListCarPoolResult = new JList<CarPoolResult>();
-			jListCarPoolResult.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+			jListCarPoolResult.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			jListCarPoolResult.setVisibleRowCount(-1);
 	
 			JScrollPane carPoolScroll = new JScrollPane(jListCarPoolResult);
@@ -433,9 +439,9 @@ delta CarPool{
 				File f = new File(carPoolTxtPath);
 	
 				if (!f.exists() && !f.isDirectory()) {
-					Path path = java.nio.file.Paths.get(carPoolTxtPath);
+					Path path = Paths.get(carPoolTxtPath);
 					f.getParentFile().mkdirs();
-					java.nio.file.Files.createFile(path);
+					Files.createFile(path);
 				}
 	
 				FileInputStream is = new FileInputStream(f);
@@ -480,130 +486,133 @@ delta CarPool{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		} 
 		}
-		adds {
-			package de.tu_bs.cs.isf.navi.carpool;
+	}
 	
-			import java.io.Serializable;
-			import java.util.Date;
+	
+	
+	
+	
+	adds {
+		package de.tu_bs.cs.isf.navi.carpool;
+
+		import java.io.Serializable;
+		import java.util.Date;
+		
+		public class CarPoolResult implements Serializable {
+		
+		
+			public static int DRIVER;
+			public static int PASSENGER;
 			
-			public class CarPoolResult implements Serializable {
-			
-			
-				public static int DRIVER;
-				public static int PASSENGER;
+			private Date startTime;
+		
+			private int searchType;
+		
+			private int carSize;
+			private String contact;
+			private String name;
+		
+			private double startLat;
+			private double startLong;
+			private double endLat;
+			private double endLong;
+		
+			public CarPoolResult(int type, String name, int size, String contact) {
+				DRIVER = 1;
+				PASSENGER = 2;
+				searchType = type;
+				this.name = name;
+				this.carSize = size;
+				this.name = name;
+				this.contact = contact;
+				startTime = new Date();
 				
-				private Date startTime;
+			}
 			
-				private int searchType;
-			
-				private int carSize;
-				private String contact;
-				private String name;
-			
-				private double startLat;
-				private double startLong;
-				private double endLat;
-				private double endLong;
-			
-				public CarPoolResult(int type, String name, int size, String contact) {
-					DRIVER = 1;
-					PASSENGER = 2;
-					searchType = type;
-					this.name = name;
-					this.carSize = size;
-					this.name = name;
-					this.contact = contact;
-					startTime = new Date();
-					
-				}
-				
-				public void setDate(Date date) {
-					startTime = date;
-				}
-			
-				public void setRoute(double startLat, double startLong, double endLat, double endLong) {
-					this.setStartLat(startLat);
-					this.setStartLong(startLat);
-					this.setEndLat(endLat);
-					this.setEndLong(endLong);
-				}
-			
-				public int getSearchType() {
-					return searchType;
-				}
-			
-				public void setSearchType(int searchType) {
-					this.searchType = searchType;
-				}
-			
-				public int getCarSize() {
-					return carSize;
-				}
-			
-				public void setCarSize(int carSize) {
-					this.carSize = carSize;
-				}
-			
-				public String getContact() {
-					return contact;
-				}
-			
-				public void setContact(String contact) {
-					this.contact = contact;
-				}
-			
-				public String getName() {
-					return name;
-				}
-			
-				public void setName(String name) {
-					this.name = name;
-				}
-			
-				public double getStartLat() {
-					return startLat;
-				}
-			
-				public void setStartLat(double startLat) {
-					this.startLat = startLat;
-				}
-			
-				public double getStartLong() {
-					return startLong;
-				}
-			
-				public void setStartLong(double startLong) {
-					this.startLong = startLong;
-				}
-			
-				public double getEndLat() {
-					return endLat;
-				}
-			
-				public void setEndLat(double endLat) {
-					this.endLat = endLat;
-				}
-			
-				public double getEndLong() {
-					return endLong;
-				}
-			
-				public void setEndLong(double endLong) {
-					this.endLong = endLong;
-				}
-			
-				public String toString() {
-					if (searchType == 1)
-						return "<html>" + startTime.toString() + "<br>Driving from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
-								+ " " + contact + "<br>Free seats: " + carSize + "</html>";
-					else
-						return "<html>" + startTime.toString() + "<br>Search driver from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
-								+ " " + contact + "<br>Required seats: " + carSize + "</html>";
-				}
+			public void setDate(Date date) {
+				startTime = date;
 			}
 		
+			public void setRoute(double startLat, double startLong, double endLat, double endLong) {
+				this.setStartLat(startLat);
+				this.setStartLong(startLat);
+				this.setEndLat(endLat);
+				this.setEndLong(endLong);
+			}
+		
+			public int getSearchType() {
+				return searchType;
+			}
+		
+			public void setSearchType(int searchType) {
+				this.searchType = searchType;
+			}
+		
+			public int getCarSize() {
+				return carSize;
+			}
+		
+			public void setCarSize(int carSize) {
+				this.carSize = carSize;
+			}
+		
+			public String getContact() {
+				return contact;
+			}
+		
+			public void setContact(String contact) {
+				this.contact = contact;
+			}
+		
+			public String getName() {
+				return name;
+			}
+		
+			public void setName(String name) {
+				this.name = name;
+			}
+		
+			public double getStartLat() {
+				return startLat;
+			}
+		
+			public void setStartLat(double startLat) {
+				this.startLat = startLat;
+			}
+		
+			public double getStartLong() {
+				return startLong;
+			}
+		
+			public void setStartLong(double startLong) {
+				this.startLong = startLong;
+			}
+		
+			public double getEndLat() {
+				return endLat;
+			}
+		
+			public void setEndLat(double endLat) {
+				this.endLat = endLat;
+			}
+		
+			public double getEndLong() {
+				return endLong;
+			}
+		
+			public void setEndLong(double endLong) {
+				this.endLong = endLong;
+			}
+		
+			public String toString() {
+				if (searchType == 1)
+					return "<html>" + startTime.toString() + "<br>Driving from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
+							+ " " + contact + "<br>Free seats: " + carSize + "</html>";
+				else
+					return "<html>" + startTime.toString() + "<br>Search driver from: " + startLat + " " + startLong + "<br>to Destination: " + endLat + " " + endLong + "<br>" + name
+							+ " " + contact + "<br>Required seats: " + carSize + "</html>";
+			}
+		}
 	}
-
 }

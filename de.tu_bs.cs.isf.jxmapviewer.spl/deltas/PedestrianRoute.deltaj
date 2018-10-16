@@ -1,8 +1,7 @@
 delta PedestrianRoute requires Routing {
 	modifies de.tu_bs.cs.isf.navi.routing.RoutingCalculator {
-	
-			modifies getProfile() {
-				return "profile=foot-walking";
-			}
+		modifies getProfile() {
+			return "profile=foot-walking";
+		}
 	}
 }

@@ -1,5 +1,8 @@
 delta POIphoto requires Poi {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
+		adds import javax.swing.JLabel;
+		adds import javax.imageio.ImageIO;
 	
 		modifies addMenu() {
 			original();
@@ -18,13 +21,13 @@ delta POIphoto requires Poi {
 							java.awt.Point point = mapViewer.getMapPosition(c);
 							if (point == null) continue;
 							
-							point.x -= org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS;
-							point.y -= org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS;
+							point.x -= MapMarkerDot.DOT_RADIUS;
+							point.y -= MapMarkerDot.DOT_RADIUS;
 							
 							boolean a1 = mousePoint.x >= point.x;
-							boolean a2 = mousePoint.x <= (point.x + org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS*2);
+							boolean a2 = mousePoint.x <= (point.x + MapMarkerDot.DOT_RADIUS*2);
 							boolean a3 = mousePoint.y >= point.y;
-							boolean a4 = mousePoint.y <= (point.y + org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS*2);
+							boolean a4 = mousePoint.y <= (point.y + MapMarkerDot.DOT_RADIUS*2);
 							
 							if (a1 && a2 && a3 && a4) {
 								if (imgElement == null) {
@@ -46,8 +49,8 @@ delta POIphoto requires Poi {
 			javax.swing.JPanel panel = new javax.swing.JPanel();
 			imgLabel = new javax.swing.JLabel();
 		
-			imgLabel.setHorizontalTextPosition(javax.swing.JLabel.CENTER);
-			imgLabel.setVerticalTextPosition(javax.swing.JLabel.CENTER);
+			imgLabel.setHorizontalTextPosition(JLabel.CENTER);
+			imgLabel.setVerticalTextPosition(JLabel.CENTER);
 				
 			panel.add(imgLabel);
 			menuPanelList.put("POI Photo", panel);
@@ -74,7 +77,7 @@ delta POIphoto requires Poi {
 			java.net.URL request;
 			try {
 				request = new java.net.URL(api);
-				java.awt.Image img = javax.imageio.ImageIO.read(request);
+				java.awt.Image img = ImageIO.read(request);
 				
 				javax.swing.ImageIcon icon = new javax.swing.ImageIcon(img); 
 				imgLabel.setIcon(icon);

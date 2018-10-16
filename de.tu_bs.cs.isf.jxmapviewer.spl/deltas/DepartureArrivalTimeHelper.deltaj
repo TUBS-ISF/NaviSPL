@@ -8,7 +8,7 @@ delta DepartureArrivalTimeHelper requires TravelTime{
 		adds private javax.swing.JLabel departureLabel = new javax.swing.JLabel("Departure:");
 		adds GridBagConstraints departureArrivalConstraints = new GridBagConstraints();
 		
-		adds private void handleDepartureArrivalConstraints(JComponent comp){
+		adds private void handleDepartureArrivalConstraints(javax.swing.JComponent comp) {
 			
 			if (departureArrivalConstraints.gridx == 1) {
 				departureArrivalConstraints.gridy++;

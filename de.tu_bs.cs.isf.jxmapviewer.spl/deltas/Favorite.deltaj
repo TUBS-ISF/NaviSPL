@@ -12,7 +12,7 @@ delta Favorite requires Localization {
 		import java.io.IOException;
 		import java.io.ObjectOutputStream;
 		import java.io.Serializable;
-		import java.util.Vector;
+		import java.util.Vector; 
 		import javax.swing.JButton;
 		import javax.swing.JLabel;
 		import javax.swing.JList;
@@ -43,8 +43,8 @@ delta Favorite requires Localization {
 				
 				removeButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-					removeFavElement(list.getSelectedValue());
-					}
+						removeFavElement(list.getSelectedValue());
+					};
 				});
 				
 				GridBagLayout gridbagLayout = new GridBagLayout();

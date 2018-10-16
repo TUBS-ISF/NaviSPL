@@ -1,4 +1,4 @@
-delta Suggestions {
+delta Suggestions requires Localization, Routing {
 
 	adds{
 		
@@ -81,14 +81,19 @@ delta Suggestions {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 
 		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 		adds import java.util.ArrayList;
+		adds import java.util.List;
 
 		adds import org.openstreetmap.gui.jmapviewer.Coordinate;
 		adds import java.awt.Polygon;
 		adds import javax.swing.BoxLayout;
 		adds import javax.swing.JPanel;
 		adds import javax.swing.JSlider;
+		adds import javax.swing.JLabel;
 		adds import de.tu_bs.cs.isf.navi.suggestion.Suggestion;
+		adds import java.awt.event.MouseListener;
+		adds import java.awt.event.MouseEvent;
 		
 		adds private java.util.List<de.tu_bs.cs.isf.navi.suggestion.Suggestion> suggestionsList = new java.util.ArrayList<de.tu_bs.cs.isf.navi.suggestion.Suggestion>();
 		adds private javax.swing.JPanel suggestionsPanel;
@@ -136,7 +141,7 @@ delta Suggestions {
 			mapViewer.addMouseListener(new MouseListener() {
 				
 				public void mouseClicked(MouseEvent e) {
-					getSuggestions(GPSselect, suggestionsSlider.getValue());
+					getSuggestions(GPSselect, (Double) suggestionsSlider.getValue());
 				}
 				
 				public void mousePressed(MouseEvent e) { 
@@ -148,12 +153,12 @@ delta Suggestions {
 							if (point == null)
 								continue;
 								
-							point.x -= org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS;
-							point.y -= org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS;
+							point.x -= MapMarkerDot.DOT_RADIUS;
+							point.y -= MapMarkerDot.DOT_RADIUS;
 							boolean a1 = mousePoint.x >= point.x;
-							boolean a2 = mousePoint.x <= (point.x + org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS * 1.7);
+							boolean a2 = mousePoint.x <= (point.x + MapMarkerDot.DOT_RADIUS * 1.7);
 							boolean a3 = mousePoint.y >= point.y;
-							boolean a4 = mousePoint.y <= (point.y + org.openstreetmap.gui.jmapviewer.MapMarkerDot.DOT_RADIUS * 1.7);
+							boolean a4 = mousePoint.y <= (point.y + MapMarkerDot.DOT_RADIUS * 1.7);
 							
 							if (a1 && a2 && a3 && a4) {
 		

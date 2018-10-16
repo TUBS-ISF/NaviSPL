@@ -10,9 +10,10 @@ delta Navigation requires Routing, Localization {
 		adds import java.awt.event.MouseListener;
 		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
 		adds import org.openstreetmap.gui.jmapviewer.Coordinate;
+		adds import de.tu_bs.cs.isf.navi.NaviSimulationThread;
 	
 		adds public javax.swing.JSlider naviSpeed;
-		adds public de.tu_bs.cs.isf.navi.NaviSimulationThread naviSim;
+		adds public NaviSimulationThread naviSim;
 		adds public javax.swing.JLabel naviSpeedLabel;
 		adds public javax.swing.JLabel naviDirectionLabel;
 		
@@ -161,7 +162,6 @@ delta Navigation requires Routing, Localization {
 		package de.tu_bs.cs.isf.navi;
 
 		import java.util.List;
-		
 		import javax.swing.JOptionPane;
 		
 		import org.openstreetmap.gui.jmapviewer.Coordinate;
@@ -350,7 +350,7 @@ delta Navigation requires Routing, Localization {
 		
 			private void navigationFinished() {
 				finish();
-				javax.swing.JOptionPane.showMessageDialog(naviApp, "Herzlichen Glückwunsch!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111111einseinself\nSie haben Ihr Ziel erreicht!", "Ziel erreicht", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(naviApp, "Herzlichen Glückwunsch!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!111111einseinself\nSie haben Ihr Ziel erreicht!", "Ziel erreicht", JOptionPane.INFORMATION_MESSAGE);
 			}
 		
 			private double getDistance(org.openstreetmap.gui.jmapviewer.Coordinate c1, org.openstreetmap.gui.jmapviewer.Coordinate c2) {

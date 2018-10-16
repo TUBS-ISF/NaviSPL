@@ -1,7 +1,8 @@
 delta Wind requires Weather {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import javax.swing.JLabel;
 		
-		adds private javax.swing.JLabel wind;
+		adds private JLabel wind;
 		
 		modifies addWind(javax.swing.JPanel panel) {
 			wind = new JLabel();

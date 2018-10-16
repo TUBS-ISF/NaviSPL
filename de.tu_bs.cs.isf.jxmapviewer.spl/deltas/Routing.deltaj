@@ -26,7 +26,7 @@ delta Routing requires Localization {
 	
 		
 	
-		adds private de.tu_bs.cs.isf.navi.routing.RoutingInformation routingInformation;
+		adds private RoutingInformation routingInformation;
 		adds private org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon readyPolygon;
 		adds public javax.swing.JButton startRouteBtn;
 		adds public javax.swing.JTextField startRouteLatitude;
@@ -40,7 +40,7 @@ delta Routing requires Localization {
 		adds private void paintRoute() {
 			if (routingInformation.getRoutingInformation().size() <= 1)
 				return;
-			List<double[]> polygon = routingInformation.getPolygonPoints();
+			java.util.List<double[]> polygon = routingInformation.getPolygonPoints();
 			RoutingCoordinate[] way = new RoutingCoordinate[polygon.size() * 2];
 			for (int i = 0; i < polygon.size(); i++) {
 				way[i] = new RoutingCoordinate(polygon.get(i)[0], polygon.get(i)[1]);
@@ -215,6 +215,8 @@ delta Routing requires Localization {
 		import org.json.JSONObject;
 		import org.json.JSONTokener;
 		
+		import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
+		
 
 		public class RoutingCalculator {
 		
@@ -222,7 +224,7 @@ delta Routing requires Localization {
 			private String apiUrl;
 			private String api_keyUrl;
 			private String profileUrl;
-			private de.tu_bs.cs.isf.navi.routing.RoutingInformation route;
+			private RoutingInformation route;
 			private String request;
 			private JSONObject routes;
 			
@@ -307,7 +309,7 @@ delta Routing requires Localization {
 				request = apiUrl + api_keyUrl + "&" + profileUrl + "&" + coordinates + "&geometry_format=polyline";
 			}
 			
-			private void interpretJSONString(String output) {
+			private void interpretJSONString(String output) throws JSONException {
 				JSONTokener t = new JSONTokener(output);
 							
 				JSONObject parsed = (JSONObject) t.nextValue();
@@ -390,10 +392,11 @@ delta Routing requires Localization {
 
 		import java.util.ArrayList;
 		import java.util.List;
+		import de.tu_bs.cs.isf.navi.routing.RoutingStepInformation;
 		
 		public class RoutingInformation { 
 			
-			private List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> steps;
+			private List<RoutingStepInformation> steps;
 			public static RoutingInformation currentRoute;
 			private List<double[]> polygonPoints;
 			
@@ -402,22 +405,22 @@ delta Routing requires Localization {
 			}
 			
 			private void setUpRoutingInformation() {
-				steps = new ArrayList<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation>();
+				steps = new ArrayList<RoutingStepInformation>();
 				polygonPoints = new ArrayList<double[]>();
 			}
 			
-			public void addStep(de.tu_bs.cs.isf.navi.routing.RoutingStepInformation o) {
+			public void addStep(RoutingStepInformation o) {
 				steps.add(o);
 			}
 			
-			public List<de.tu_bs.cs.isf.navi.routing.RoutingStepInformation> getRoutingInformation() {
+			public List<RoutingStepInformation> getRoutingInformation() {
 				return steps;
 			}
 		
 			public String[] getRouteInstructions() {
 				String[] output = new String[steps.size()];
 				for(int i=0; i<output.length; i++) {
-					output[i] = steps.get(i).getInstruction();
+					output[i] = steps.get(i).getInstruction(); 
 				}
 				
 				return output;

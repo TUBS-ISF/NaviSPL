@@ -13,12 +13,12 @@ delta Time requires Localization {
 		adds import java.util.TimeZone;
 	
 		adds public String getTime(double latitude, double longitude) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat();
+			SimpleDateFormat dateFormat = new SimpleDateFormat(); 
 			dateFormat.setTimeZone(TimeZone.getTimeZone(TimezoneMapper.latLngToTimezoneString(latitude, longitude)));
 			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.DATE, 0);
+			cal.add(Calendar.DATE, 0); 
 
-			setLocalizedPattern(dateFormat);
+			setLocalizedPattern(dateFormat); 
 			return dateFormat.format(cal.getTime());
 		}
 		

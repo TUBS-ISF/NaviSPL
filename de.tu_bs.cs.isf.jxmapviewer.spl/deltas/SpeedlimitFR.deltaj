@@ -1,8 +1,8 @@
-delta SpeedlimitFR requires SpeedLimit
+delta SpeedlimitFR requires SpeedLimit {
 
 	modifies de.tu_bs.cs.isf.navi.speedlimit.Speedlimit {
-		modifies calculateLimit() {
 	
+		modifies calculateLimit() {
 			original();
 			
 			if (wayType == 1) {
@@ -33,4 +33,5 @@ delta SpeedlimitFR requires SpeedLimit
 			paintSpeedlimit();
 		}
 	}
+	
 }

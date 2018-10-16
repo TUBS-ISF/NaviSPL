@@ -11,5 +11,5 @@ delta TimeRemainingInfo requires TimeRemaining, TravelTimeInfo, Information{
 				c.setVisible(Boolean.TRUE);
 			}
 		}
-	
+	}
 }

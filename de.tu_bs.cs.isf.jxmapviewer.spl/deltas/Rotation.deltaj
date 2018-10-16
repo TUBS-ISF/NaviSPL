@@ -14,15 +14,15 @@ delta Rotation {
 			rotSlider = new JSlider(JSlider.HORIZONTAL, 0, 360, 0);
 			rotSlider.setMajorTickSpacing(90);
 			rotSlider.setMinorTickSpacing(10);
-			rotSlider.setPaintTicks(Boolean.TRUE);
-			rotSlider.setPaintLabels(Boolean.TRUE);
+			rotSlider.setPaintTicks(true);
+			rotSlider.setPaintLabels(true);
 			rotSlider.addChangeListener(new ChangeListener() {
 				public void stateChanged(ChangeEvent e) {
 					JSlider s = (JSlider) e.getSource();
 					mapViewer.setRotAngle(s.getValue());
 				}			
 			});
-			p.add(rotSlider);		
+			p.add(rotSlider);
 			
 			return p;
 		}
@@ -184,7 +184,7 @@ delta Rotation {
 	                }
 	                for (int j = 0; j < x; j++) {
 	                    if (xMin <= posx && posx <= xMax && yMin <= posy && posy <= yMax) {
-	                        Tile tile;
+	                        org.openstreetmap.gui.jmapviewer.Tile tile;
 	                        if (scrollWrapEnabled) {
 	                            int tilexWrap = ((tilex % gridLength) + gridLength) % gridLength;
 	                            tile = tileController.getTile(tilexWrap, tiley, zoom);
@@ -246,7 +246,7 @@ delta Rotation {
 	                }
 	            }
 	        }
-	
+	        
 	        attribution.paintAttribution(g, getWidth(), getHeight(), getPosition(0, 0), getPosition(getWidth(), getHeight()), zoom, this);
 	    }
 	}

@@ -3,6 +3,7 @@ delta BusStopsNearby requires Localization {
 	
 		adds import java.util.ArrayList;
 		adds import javax.swing.JPanel;
+		adds import javax.swing.JLabel;
 		adds import javax.swing.JSlider;
 		adds import javax.swing.BoxLayout;
 		adds import java.net.HttpURLConnection;

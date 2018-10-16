@@ -11,7 +11,8 @@ delta History requires Localization {
 		adds import java.io.IOException;
 		adds import java.io.ObjectOutputStream;
 	
-	
+		adds import java.nio.file.Files;
+		adds import java.nio.file.Paths;
 		adds import java.nio.file.Path;
 		adds import java.util.Vector;
 		adds import javax.swing.JButton;
@@ -20,6 +21,8 @@ delta History requires Localization {
 		adds import javax.swing.JScrollPane;  
 		adds import javax.swing.event.ListSelectionEvent;
 		adds import javax.swing.event.ListSelectionListener;
+		adds import javax.swing.ListSelectionModel;
+		adds import javax.swing.SwingUtilities;
  
 		adds import de.tu_bs.cs.isf.navi.history.HistoryObject;
 		
@@ -33,7 +36,7 @@ delta History requires Localization {
 
 			if (jListHistory == null)
 				jListHistory = new JList<HistoryObject>();
-			jListHistory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+			jListHistory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			jListHistory.setVisibleRowCount(20);
 			jListHistory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 	
@@ -78,7 +81,7 @@ delta History requires Localization {
 				}
 	
 				public void mousePressed(MouseEvent e) {
-					if (javax.swing.SwingUtilities.isRightMouseButton(e)) {
+					if (SwingUtilities.isRightMouseButton(e)) {
 						jListHistory.clearSelection();
 					}
 					
@@ -161,9 +164,9 @@ delta History requires Localization {
 				File f = new File(historyListTxtPath);
 	
 				if (!f.exists() && !f.isDirectory()) {
-					Path path = java.nio.file.Paths.get(this.historyListTxtPath);
+					Path path = Paths.get(this.historyListTxtPath);
 					f.getParentFile().mkdirs();
-					java.nio.file.Files.createFile(path);
+					Files.createFile(path);
 				}
 	
 				FileInputStream is = new FileInputStream(f);

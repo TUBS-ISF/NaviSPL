@@ -1,10 +1,13 @@
 delta tts {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
+		adds import com.sun.speech.freetts.VoiceManager;
+		adds import com.sun.speech.freetts.Voice;
 
-		adds public com.sun.speech.freetts.VoiceManager vm;
-	    adds public com.sun.speech.freetts.Voice voice;	    
+		adds public VoiceManager vm;
+	    adds public Voice voice;
+	    
 	    modifies addMenu() {
-	    	vm = com.sun.speech.freetts.VoiceManager.getInstance();
+	    	vm = VoiceManager.getInstance();
 		    voice = vm.getVoice("kevin16");
 		    
 		    voice.allocate();

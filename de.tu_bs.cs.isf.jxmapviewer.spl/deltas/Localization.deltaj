@@ -12,7 +12,7 @@ delta Localization {
 			original();
 		}
 		
-		adds private javax.swing.JPanel addGPS() {			
+		adds private javax.swing.JPanel addGPS() {
 			javax.swing.JPanel gpsMenu = new javax.swing.JPanel();
 			gpsMenu.setLayout(new java.awt.GridBagLayout());
 			

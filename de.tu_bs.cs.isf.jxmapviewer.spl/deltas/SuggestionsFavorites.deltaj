@@ -3,6 +3,8 @@ delta SuggestionsFavorites requires Favorite, Suggestions {
 	modifies de.tu_bs.cs.isf.navi.NaviApp {
 	
 		adds import de.tu_bs.cs.isf.navi.gui.FavoriteListElement;
+		adds import java.util.List;
+		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 		
 		modifies collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
 			original(marker, radius);
