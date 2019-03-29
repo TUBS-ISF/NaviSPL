@@ -1,0 +1,18 @@
+ configuration delta "RouteDistanceInfo"
+	dialect <http://www.emftext.org/java>
+		requires <RouteDistance.decore>, <Information.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setupMenu()>, "public void setupMenu() {
+		setupMenu$RouteDistanceInfo();
+			javax.swing.JPanel rd = (javax.swing.JPanel) menuPanelList.remove(\"Route Distance\");
+			rd.getParent().getParent().remove(rd.getParent());
+			infoPanel.addInformationFeature(rd);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+	}
+", "RouteDistanceInfo", true);
+	}
+	

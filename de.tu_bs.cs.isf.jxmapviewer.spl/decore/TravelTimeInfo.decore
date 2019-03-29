@@ -1,0 +1,18 @@
+ configuration delta "TravelTimeInfo"
+	dialect <http://www.emftext.org/java>
+		requires <TravelTime.decore>, <Information.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setupMenu()>, "public void setupMenu() {
+		setupMenu$TravelTimeInfo();
+			javax.swing.JPanel t = (javax.swing.JPanel) menuPanelList.remove(\"Travel Time\");
+			t.getParent().getParent().remove(t.getParent());
+			infoPanel.addInformationFeature(t);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+	}
+", "TravelTimeInfo", true);
+	}
+	

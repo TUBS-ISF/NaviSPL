@@ -1,0 +1,11 @@
+ configuration delta "PedestrianRoute"
+	dialect <http://www.emftext.org/java>
+		requires <Routing.decore>
+		modifies <de/tu_bs/cs/isf/navi/routing/RoutingCalculator.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.routing.RoutingCalculator.getProfile()>, "public String getProfile() {
+			return \"profile=foot-walking\";
+			}
+", "PedestrianRoute", false);
+	}
+	

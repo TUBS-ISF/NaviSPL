@@ -1,0 +1,18 @@
+ configuration delta "TimeRemainingInfo"
+	dialect <http://www.emftext.org/java>
+		requires <TimeRemaining.decore>, <TravelTimeInfo.decore>, <Information.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setupMenu()>, "public void setupMenu() {
+		setupMenu$TimeRemainingInfo();
+			javax.swing.JPanel ttr = (javax.swing.JPanel) menuPanelList.remove(\"Remaining Travel Time\");
+			ttr.getParent().getParent().remove(ttr.getParent());
+			infoPanel.addInformationFeature(ttr);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+	}
+", "TimeRemainingInfo", true);
+	}
+	

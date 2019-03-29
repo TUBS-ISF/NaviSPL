@@ -1,0 +1,19 @@
+ configuration delta "RouteDistanceRemaining"
+	dialect <http://www.emftext.org/java>
+		requires <RouteDistance.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addRouteDistance()>, "public javax.swing.JPanel addRouteDistance(){
+		final JLabel remainingLabel = new JLabel(\"\");
+		distancePanel.add(remainingLabel);
+		return addRouteDistance$RouteDistanceRemaining();
+		}
+", "RouteDistanceRemaining", true);
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.writeDistance(JPanel)>, "private void writeDistance(javax.swing.JPanel panel){
+			double remainingDistance = routingInformation.getRouteDistance() - naviSim.getDistanceTravelled();
+			((JLabel) (panel.getComponent(panel.getComponentCount() - 2))).setText(\"Remaining Distance: \" + naviSim.getFormatedDistance(remainingDistance));
+		writeDistance$RouteDistanceRemaining(panel);
+		}
+", "RouteDistanceRemaining", true);
+	}
+	

@@ -1,0 +1,71 @@
+ configuration delta "Time"
+	dialect <http://www.emftext.org/java>
+		requires <Localization.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BorderFactory");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JPanel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JLabel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Font");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.text.SimpleDateFormat");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.Calendar");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "com.skedgo.converter.TimezoneMapper");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.TimeZone");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public String getTime(double latitude, double longitude) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat(); 
+			dateFormat.setTimeZone(TimeZone.getTimeZone(TimezoneMapper.latLngToTimezoneString(latitude, longitude)));
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.DATE,0); 
+
+			setLocalizedPattern(dateFormat); 
+			return dateFormat.format(cal.getTime());
+		}
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Time();
+			menuPanelList.put(\"Time\", addTime());
+	}
+", "Time", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JPanel addTime() {		
+			JPanel timePane = new JPanel();
+			timePane.setLayout(new BoxLayout(timePane, BoxLayout.PAGE_AXIS));
+			
+			
+			final javax.swing.JLabel time = new javax.swing.JLabel();
+			time.setFont(time.getFont().deriveFont(15.0f));
+			timePane.add(time);
+
+			timePane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+			
+			mapViewer.addMouseListener(new java.awt.event.MouseListener() {
+				
+				public void mouseClicked(java.awt.event.MouseEvent e) {
+			        
+			        java.awt.Point point = e.getPoint();
+			        org.openstreetmap.gui.jmapviewer.Coordinate co = (org.openstreetmap.gui.jmapviewer.Coordinate) mapViewer.getPosition(point);
+					time.setText(getTime(co.getLat(),co.getLon()));
+					
+				}	
+				
+				public void mousePressed(java.awt.event.MouseEvent e) {	}
+	
+				
+				public void mouseReleased(java.awt.event.MouseEvent e) { }
+	
+				
+				public void mouseEntered(java.awt.event.MouseEvent e) {	 }
+	
+				
+				public void mouseExited(java.awt.event.MouseEvent e) {	 }
+	        });
+			return timePane;
+		
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void setLocalizedPattern(java.text.SimpleDateFormat dateFormat) {
+		
+		}
+");
+	}
+	

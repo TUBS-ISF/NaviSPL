@@ -1,95 +1,86 @@
-delta SpeedLimit requires Routing, Navigation {
-
-		
-	modifies de.tu_bs.cs.isf.navi.routing.RoutingCalculator {
-		
-		modifies buildURL() {
-			original();
-			request+="&extra_info=waytype|AvgSpeed";
-		}
-		
-		modifies interpretJSONString(String output) {
-			original(output);
+ configuration delta "SpeedLimit"
+	dialect <http://www.emftext.org/java>
+		requires <Routing.decore>, <Navigation.decore>
+		creates <de/tu_bs/cs/isf/navi/speedlimit/Speedlimit.java>
+		modifies <de/tu_bs/cs/isf/navi/routing/RoutingCalculator.java>, <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>, <de/tu_bs/cs/isf/navi/NaviSimulationThread.java>, <de/tu_bs/cs/isf/navi/routing/RoutingInformation.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.routing.RoutingCalculator.buildURL()>, "private void buildURL() {
+		buildURL$SpeedLimit();
+			request+=\"&extra_info=waytype|AvgSpeed\";
+			}
+", "SpeedLimit", true);
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.routing.RoutingCalculator.interpretJSONString(String)>, "private void interpretJSONString(String output) throws JSONException {
+		interpretJSONString$SpeedLimit(output);
 			
-			JSONObject extrasObject = (JSONObject) routes.get("extras");
-			JSONObject wayTypesObject = (JSONObject) extrasObject.get("waytypes");
-			JSONArray wayTypesArray = (JSONArray) wayTypesObject.get("values");
+			JSONObject extrasObject = (JSONObject) routes.get(\"extras\");
+			JSONObject wayTypesObject = (JSONObject) extrasObject.get(\"waytypes\");
+			JSONArray wayTypesArray = (JSONArray) wayTypesObject.get(\"values\");
 			for (int i = 0; i < wayTypesArray.length(); i++) {
 				JSONArray typesAndPolys = (JSONArray) wayTypesArray.get(i);
 				route.addWayType(typesAndPolys.getInt(0), typesAndPolys.getInt(1), typesAndPolys.getInt(2));
 			}
-			JSONObject avgSpeedObject = (JSONObject) extrasObject.get("avgspeed");
-			JSONArray avgSpeedArray = (JSONArray) avgSpeedObject.get("values");
+			JSONObject avgSpeedObject = (JSONObject) extrasObject.get(\"avgspeed\");
+			JSONArray avgSpeedArray = (JSONArray) avgSpeedObject.get(\"values\");
 			for (int i = 0; i < avgSpeedArray.length(); i++) {
 				JSONArray speedsAndPolys = (JSONArray) avgSpeedArray.get(i);
 				route.addAvgSpeed(speedsAndPolys.getInt(0), speedsAndPolys.getInt(1), speedsAndPolys.getInt(2));
 			}
-		}
-	}
-	
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import de.tu_bs.cs.isf.navi.speedlimit.Speedlimit;
-	
-		adds public javax.swing.JSplitPane getSplitPane() {
+			}
+", "SpeedLimit", true);
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.speedlimit.Speedlimit");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JSplitPane getSplitPane() {
 			return splitPane;
 		}
-		
-		modifies startNavigationSimulation(de.tu_bs.cs.isf.navi.NaviApp naviApp){
-			original(naviApp);
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.startNavigationSimulation(NaviApp)>, "private void startNavigationSimulation(de.tu_bs.cs.isf.navi.NaviApp naviApp) {
+		startNavigationSimulation$SpeedLimit(naviApp);
 			addSpeedLimitToNavigation();
 		}
-		
-		adds void addSpeedLimitToNavigation(){
+", "SpeedLimit", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "void addSpeedLimitToNavigation(){
 			NaviApp app = this;
 			Speedlimit speedLimit = new Speedlimit(naviSim, routingInformation, app);
 			(new Thread(speedLimit)).start();
 		}
-	}
-	
-	modifies de.tu_bs.cs.isf.navi.NaviSimulationThread {
-		visibility stillDriving() {public};
-	}
-	
-	modifies de.tu_bs.cs.isf.navi.routing.RoutingInformation { 
-	
-		adds private java.util.List<int[]> wayTypes;
-		adds private java.util.List<int[]> avgSpeed;	
-		
-		modifies setUpRoutingInformation() {
-			original();
+");
+	addModifier(<method:de.tu_bs.cs.isf.navi.NaviSimulationThread.stillDriving()>, "public");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "private java.util.List<int[]> wayTypes;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "private java.util.List<int[]> avgSpeed;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.routing.RoutingInformation.setUpRoutingInformation()>, "private void setUpRoutingInformation() {
+		setUpRoutingInformation$SpeedLimit();
 			wayTypes = new ArrayList<int[]>();
-			avgSpeed = new ArrayList<int[]>();		
-		}
-	
-		adds public void addWayType (int startPoly, int endPoly, int wayType) {
+			avgSpeed = new ArrayList<int[]>();
+			}
+", "SpeedLimit", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public void addWayType (int startPoly, int endPoly, int wayType) {
 			int[] add = { startPoly, endPoly, wayType};
 			wayTypes.add(add);
 		}
-	
-		adds public void addAvgSpeed (int startPoly, int endPoly, int speed) {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public void addAvgSpeed (int startPoly, int endPoly, int speed) {
 			int[] add = { startPoly, endPoly, speed};
 			avgSpeed.add(add);
 		}
-		
-		adds public java.util.List<int[]> getWayTypes() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public java.util.List<int[]> getWayTypes() {
 			return wayTypes;
 		}
-	
-		adds public void setWayTypes(java.util.List<int[]> wayTypes) {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public void setWayTypes(java.util.List<int[]> wayTypes) {
 			this.wayTypes = wayTypes;
 		}
-	
-		adds public java.util.List<int[]> getAvgSpeed() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public java.util.List<int[]> getAvgSpeed() {
 			return avgSpeed;
 		}
-	
-		adds public void setAvgSpeed(java.util.List<int[]> avgSpeed) {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public void setAvgSpeed(java.util.List<int[]> avgSpeed) {
 			this.avgSpeed = avgSpeed;
 		}
-	}
-	
-	adds {
-		package de.tu_bs.cs.isf.navi.speedlimit;
+");
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/speedlimit/Speedlimit.java>, "package de.tu_bs.cs.isf.navi.speedlimit;
 
 		import java.awt.Color;
 		import java.awt.Dimension;
@@ -150,19 +141,19 @@ delta SpeedLimit requires Routing, Navigation {
 				
 				speedpanel = new JPanel();
 				
-				speedLimit = "0";
+				speedLimit = \"0\";
 				
 				speedpanel3Digits = new JPanel() {
 					public void paintComponent(Graphics g) { 
 						 super.paintComponent(g);
 						int paintPosx = naviApp.getSplitPane().getDividerLocation() - 120;
 						g.setColor(Color.RED);
-						g.fillOval(paintPosx, paintPosy, 100, 100);
+						g.fillOval(paintPosx, paintPosy,100,100);
 						g.setColor(Color.WHITE);
-						g.fillOval(paintPosx + circOffset, paintPosy + circOffset, 80, 80);
+						g.fillOval(paintPosx + circOffset, paintPosy + circOffset,80,80);
 						g.setColor(Color.BLACK);
-						g.setFont(new Font("Arial", Font.BOLD, 30));
-						g.drawString(speedLimit, paintPosx + strOffset3, 82);
+						g.setFont(new Font(\"Arial\", Font.BOLD,30));
+						g.drawString(speedLimit, paintPosx + strOffset3,82);
 					}
 				};
 				
@@ -171,12 +162,12 @@ delta SpeedLimit requires Routing, Navigation {
 						super.paintComponent(g);
 						int paintPosx = naviApp.getSplitPane().getDividerLocation() - 120;
 						g.setColor(Color.RED);
-						g.fillOval(paintPosx, paintPosy, 100, 100);
+						g.fillOval(paintPosx, paintPosy,100,100);
 						g.setColor(Color.WHITE);
-						g.fillOval(paintPosx + circOffset, paintPosy + circOffset, 80, 80);
+						g.fillOval(paintPosx + circOffset, paintPosy + circOffset,80,80);
 						g.setColor(Color.BLACK);
-						g.setFont(new Font("Arial", Font.BOLD, 30));
-						g.drawString(speedLimit, paintPosx + strOffset2, 82);
+						g.setFont(new Font(\"Arial\", Font.BOLD,30));
+						g.drawString(speedLimit, paintPosx + strOffset2,82);
 						}
 				};
 				
@@ -213,7 +204,7 @@ delta SpeedLimit requires Routing, Navigation {
 					try {
 						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
-						System.out.println("SpeedlimitThread interrupted");
+						System.out.println(\"SpeedlimitThread interrupted\");
 					}
 				}
 				isRunning = Boolean.FALSE;
@@ -262,6 +253,6 @@ delta SpeedLimit requires Routing, Navigation {
 				speedpanel.setSize(naviApp.getWidth(), naviApp.getHeight());
 				speedpanel.repaint();
 			}
-		}
+		}");
 	}
-}
+	

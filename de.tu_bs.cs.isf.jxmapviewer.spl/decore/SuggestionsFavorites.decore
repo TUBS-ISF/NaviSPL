@@ -1,0 +1,44 @@
+ configuration delta "SuggestionsFavorites"
+	dialect <http://www.emftext.org/java>
+		requires <Favorite.decore>, <Suggestions.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.gui.FavoriteListElement");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.List");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapMarkerDot");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.collectSuggestions(MapMarkerDot, double)>, "private void collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+		collectSuggestions$SuggestionsFavorites(marker, radius);
+			getSuggestionsFromFavorites(marker, radius);}
+", "SuggestionsFavorites", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void getSuggestionsFromFavorites(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+				List<FavoriteListElement> dummyFavs = new ArrayList<FavoriteListElement>();
+				
+				for (int i = 0; i < dummyFavs.size(); i++) {
+					FavoriteListElement obj = dummyFavs.get(i);
+					
+					
+					double la1 = obj.getLat();
+					double lo1 = obj.getLongi();
+					double la2 = marker.getLat();
+					double lo2 = marker.getLon();
+					double distance = mapViewer.getTileController().getTileSource().getDistance(la1, lo1, la2, lo2);
+					
+					if(distance < radius) {
+						if(!obj.getIsRoute()) {
+							Coordinate co = new Coordinate(la1, lo1);
+							MapMarkerDot suggestion = new MapMarkerDot(co);
+							suggestionsList.add(new Suggestion(suggestion));
+						} else {
+							Coordinate coStart = new Coordinate(la1, lo1);
+							Coordinate coEnd = new Coordinate(obj.getLatEnd(), obj.getLongiEnd());
+							MapMarkerDot dotStart = new MapMarkerDot(coStart);
+							MapMarkerDot dotEnd = new MapMarkerDot(coEnd);
+							Suggestion suggestion = new Suggestion(\"Route\", dotStart, dotEnd, new Polygon());
+							suggestionsList.add(suggestion);
+						}
+					}		
+				}
+			}
+");
+	}
+	

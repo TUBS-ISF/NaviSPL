@@ -1,0 +1,18 @@
+ configuration delta "WeatherInfo"
+	dialect <http://www.emftext.org/java>
+		requires <Weather.decore>, <Information.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setupMenu()>, "public void setupMenu() {
+		setupMenu$WeatherInfo();
+			javax.swing.JPanel w = (javax.swing.JPanel) menuPanelList.remove(\"Wetter\");
+			w.getParent().getParent().remove(w.getParent());
+			infoPanel.addInformationFeature(w);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+	}
+", "WeatherInfo", true);
+	}
+	

@@ -1,21 +1,23 @@
-delta Wikipedia requires Poi {
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import java.awt.Color;
-		adds import java.awt.Desktop;
-		adds import java.awt.Dimension;
-		adds import java.net.URI;
-		adds import java.awt.event.MouseEvent;
-		adds import java.awt.event.MouseListener;
-		adds import java.io.IOException;
-		adds import java.io.InputStream;
-		adds import java.io.InputStreamReader;
-		adds import javax.swing.JLabel;
-		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
-	
-		adds private long oldTimeWiki;
-	
-		modifies addMenu() {
-			original();
+ configuration delta "Wikipedia"
+	dialect <http://www.emftext.org/java>
+		requires <Poi.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Color");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Desktop");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Dimension");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.net.URI");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseEvent");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.io.IOException");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.io.InputStream");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.io.InputStreamReader");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JLabel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapMarkerDot");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private long oldTimeWiki;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Wikipedia();
 			createWikiMenu();
 			mapViewer.addMouseMotionListener(new java.awt.event.MouseMotionListener() {
 				public void mouseDragged(java.awt.event.MouseEvent e) { }
@@ -48,9 +50,9 @@ delta Wikipedia requires Poi {
 					WikiElement = null;
 				}
 			});
-		}
-		
-		adds private void createWikiMenu() {
+	}
+", "Wikipedia", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void createWikiMenu() {
 			javax.swing.JPanel panel = new javax.swing.JPanel();
 			WikiLabel = new javax.swing.JLabel();
 			WikiLabel.setHorizontalTextPosition(JLabel.CENTER);
@@ -71,38 +73,40 @@ delta Wikipedia requires Poi {
 	
 				public void mouseClicked(MouseEvent e) {
 					try {
-						if (wikiUrl != "") {
+						if (wikiUrl != \"\") {
 							Desktop.getDesktop().browse(URI.create(wikiUrl));
 						}
 					} catch (IOException e1) { }
 				}
 			});
 			panel.add(WikiLabel);
-			menuPanelList.put("POI Wikipedia", panel);
+			menuPanelList.put(\"POI Wikipedia\", panel);
 		}
-	
-		adds protected javax.swing.JLabel WikiLabel;
-		adds protected de.tu_bs.cs.isf.navi.poi.POIelement WikiElement;
-		adds protected String wikiUrl = "";
-	
-		adds protected void displayText(de.tu_bs.cs.isf.navi.poi.POIelement p) {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JLabel WikiLabel;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected de.tu_bs.cs.isf.navi.poi.POIelement WikiElement;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected String wikiUrl = \"\";
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void displayText(de.tu_bs.cs.isf.navi.poi.POIelement p) {
 			try {
-				String name = p.json.getString("name");
-				String request = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + name.replace(" ", "%20");
+				String name = p.json.getString(\"name\");
+				String request = \"https://en.wikipedia.org/w/api.php?action=opensearch&search=\" + name.replace(\" \", \"%20\");
 				System.out.println(request);
 				java.net.URL url = new java.net.URL(request);
 				java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("accept", "application/json");
+				conn.setRequestMethod(\"GET\");
+				conn.setRequestProperty(\"accept\", \"application/json\");
 				if (conn.getResponseCode() != 200) {
 	
-					throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+					throw new RuntimeException(\"Failed : HTTP error code : \" + conn.getResponseCode());
 				}
 				InputStream i = conn.getInputStream();
 				InputStreamReader inputs = new java.io.InputStreamReader(i);
 				java.io.BufferedReader br = new java.io.BufferedReader(inputs);
-				String output = "";
-				String all = "";
+				String output = \"\";
+				String all = \"\";
 				while ((output = br.readLine()) != null) {
 					all += output;
 				}
@@ -116,24 +120,25 @@ delta Wikipedia requires Poi {
 					dim.width = menuPanel.getWidth() - 10;
 					dim.height = 150;
 					WikiLabel.setPreferredSize(dim);
-					if (parsed.getJSONArray(parsed.length() - 2).getString(0).isEmpty() || parsed.getJSONArray(parsed.length() - 2).getString(0).contains("may refer to")) {
+					if (parsed.getJSONArray(parsed.length() - 2).getString(0).isEmpty() || parsed.getJSONArray(parsed.length() - 2).getString(0).contains(\"may refer to\")) {
 						WikiLabel.setText(
-								"<html><body>" + parsed.getString(0) + "</body></html>");
+								\"<html><body>\" + parsed.getString(0) + \"</body></html>\");
 					} else {
 						WikiLabel.setText(
-								"<html><body>" + parsed.getJSONArray(parsed.length() - 2).getString(0) + "</body></html>");
+								\"<html><body>\" + parsed.getJSONArray(parsed.length() - 2).getString(0) + \"</body></html>\");
 					}
 					wikiUrl = parsed.getJSONArray(parsed.length() - 1).getString(0);
 	
 				} else
-					WikiLabel.setText("");
+					WikiLabel.setText(\"\");
 			} catch (java.net.MalformedURLException e) {
-				System.out.println("Error1");
+				System.out.println(\"Error1\");
 			} catch (java.io.IOException e) {
-				System.out.println("Error2");
+				System.out.println(\"Error2\");
 			} catch (org.json.JSONException e) {
-				System.out.println("Error3");
+				System.out.println(\"Error3\");
 			}
 		}
+");
 	}
-}
+	

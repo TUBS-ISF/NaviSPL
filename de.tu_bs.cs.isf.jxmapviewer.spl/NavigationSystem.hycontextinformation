@@ -1,4 +1,0 @@
-Enum(LocationEnum, EnumLiteral(Germany,0), EnumLiteral(France,1), EnumLiteral(GB,2))
-Enum(VehicleEnum, EnumLiteral(Car,0), EnumLiteral(Pedestrian,1), EnumLiteral(Truck, 2))
-EnumContext(Location, LocationEnum)
-EnumContext(Vehicle, VehicleEnum)

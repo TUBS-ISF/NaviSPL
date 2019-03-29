@@ -357,4 +357,5 @@
     <parentOf validSince="2017-09-25T00:00:00.000+0200" id="_a4f2faa7-d396-438c-9a53-14fab24a0e56" features="_6c6bb5e4-1348-439c-b8d6-8a23c3a7020e"/>
     <types validSince="2017-09-25T00:00:00.000+0200" id="_16e32590-d4d0-4a3a-93c6-f5b4e79e8f3f"/>
   </groups>
+  <contexts href="NavigationSystem.dwcontextinformation#/"/>
 </feature:HyFeatureModel>

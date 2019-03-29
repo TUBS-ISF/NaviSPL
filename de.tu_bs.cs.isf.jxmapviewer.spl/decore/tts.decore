@@ -1,0 +1,20 @@
+ configuration delta "tts"
+	dialect <http://www.emftext.org/java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "com.sun.speech.freetts.VoiceManager");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "com.sun.speech.freetts.Voice");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public VoiceManager vm;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public Voice voice;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+	    	vm = VoiceManager.getInstance();
+		    voice = vm.getVoice(\"kevin16\");
+		    
+		    voice.allocate();
+		addMenu$tts();
+	}
+", "tts", true);
+	}
+	

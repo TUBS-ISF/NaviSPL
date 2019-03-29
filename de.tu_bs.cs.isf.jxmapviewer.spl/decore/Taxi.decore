@@ -1,0 +1,51 @@
+ configuration delta "Taxi"
+	dialect <http://www.emftext.org/java>
+		requires <Localization.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.json.JSONException");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "net.aksingh.owmjapis.CurrentWeather");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "net.aksingh.owmjapis.OpenWeatherMap");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "net.aksingh.owmjapis.OpenWeatherMap.Units");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BorderFactory");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JPanel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Font");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JButton");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JOptionPane");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Taxi();
+			menuPanelList.put(\"Taxi\", addTaxi());
+	}
+", "Taxi", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JPanel addTaxi() {		
+			JPanel taxiPane = new JPanel();
+			taxiPane.setLayout(new BoxLayout(taxiPane, BoxLayout.PAGE_AXIS));
+			
+			final JButton callTaxi = new JButton(\"Call Taxi\");
+			callTaxi.setFont(callTaxi.getFont().deriveFont(15.0f));
+			callTaxi.addActionListener(new java.awt.event.ActionListener() {
+		
+					public void actionPerformed(java.awt.event.ActionEvent e) {
+						Object[] options = {\"Yes, please\",
+				                    \"No, thanks\"};
+						JOptionPane.showOptionDialog(NaviApp.this,
+				    		\"Do you really want to do this?\",
+				   			\"MyTaxi24.de\",
+				    		JOptionPane.YES_NO_OPTION,
+				    		JOptionPane.QUESTION_MESSAGE,
+				    		null,
+				    		options,
+				    		options[1]);
+						}
+				});
+			
+			taxiPane.add(callTaxi);
+			taxiPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+			
+			return taxiPane;
+		
+		}
+");
+	}
+	

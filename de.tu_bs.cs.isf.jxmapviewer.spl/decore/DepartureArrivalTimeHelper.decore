@@ -1,0 +1,55 @@
+ configuration delta "DepartureArrivalTimeHelper"
+	dialect <http://www.emftext.org/java>
+		requires <TravelTime.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JTextField timeArrivalTextField = new javax.swing.JTextField(\"hh:mm\");
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JTextField timeDepartureTextField = new javax.swing.JTextField(\"hh:mm\");
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JLabel arrivalLabel = new javax.swing.JLabel(\"Arrival:\");
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JLabel departureLabel = new javax.swing.JLabel(\"Departure:\");
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "GridBagConstraints departureArrivalConstraints = new GridBagConstraints();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void handleDepartureArrivalConstraints(javax.swing.JComponent comp) {
+			
+			if (departureArrivalConstraints.gridx == 1) {
+				departureArrivalConstraints.gridy++;
+				departureArrivalConstraints.gridx = 0;
+			} else {
+				departureArrivalConstraints.gridx = 1;
+			}
+			durPanel.add(comp, departureArrivalConstraints);
+		}
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addTravelTime()>, "private void addTravelTime(){
+		addTravelTime$DepartureArrivalTimeHelper();
+			
+			GridBagLayout gridBag = new GridBagLayout();
+			
+			javax.swing.JLabel[] durPanelComponents = new javax.swing.JLabel[durPanel.getComponentCount()];
+			for (int i = 0; i < durPanel.getComponentCount(); i++) {
+				durPanelComponents[i] = (javax.swing.JLabel) durPanel.getComponents()[i];
+			}
+			durPanel.removeAll();
+			durPanel.setLayout(gridBag);
+			departureArrivalConstraints.gridwidth = 1;
+			departureArrivalConstraints.fill = GridBagConstraints.HORIZONTAL;
+			departureArrivalConstraints.gridx = 0;
+			departureArrivalConstraints.gridy = 0;
+			durPanel.add(durPanelComponents[0], departureArrivalConstraints);
+			handleDepartureArrivalConstraints(durPanelComponents[1]);
+			handleDepartureArrivalConstraints(departureLabel);
+			departureArrivalConstraints.ipadx = 60;
+			handleDepartureArrivalConstraints(timeDepartureTextField);
+			departureArrivalConstraints.ipadx = 0;
+			handleDepartureArrivalConstraints(arrivalLabel);
+			departureArrivalConstraints.ipadx = 60;
+			handleDepartureArrivalConstraints(timeArrivalTextField);
+			
+		}
+", "DepartureArrivalTimeHelper", true);
+	}
+	

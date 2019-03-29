@@ -1,0 +1,43 @@
+ configuration delta "SuggestionsHistory"
+	dialect <http://www.emftext.org/java>
+		requires <History.decore>, <Suggestions.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void getSuggestionsFromHistory(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+				for (int i = 0; i < historyList.size(); i++) {
+					HistoryObject obj = historyList.get(i);
+					
+					
+					double la1 = obj.getStartlatitude();
+					double lo1 = obj.getStartlongitude();
+					double la2 = marker.getLat();
+					double lo2 = marker.getLon();
+					double distance = mapViewer.getTileController().getTileSource().getDistance(la1, lo1, la2, lo2)/ 1000;
+					
+					boolean isRoute = Boolean.FALSE;
+					if (obj.getEndlatitude() != 0)
+						isRoute = Boolean.TRUE;
+					
+					if(distance < radius) {
+						if(!isRoute) {
+							Coordinate co = new Coordinate(la1, lo1);
+							MapMarkerDot suggestion = new MapMarkerDot(co);
+							suggestionsList.add(new Suggestion(suggestion));
+						} else {
+							Coordinate coStart = new Coordinate(la1, lo1);
+							Coordinate coEnd = new Coordinate(obj.getEndlatitude(), obj.getEndLongitude());
+							MapMarkerDot dotStart = new MapMarkerDot(coStart);
+							MapMarkerDot dotEnd = new MapMarkerDot(coEnd);
+							Suggestion suggestion = new Suggestion(\"Route\", dotStart, dotEnd, new Polygon());
+							suggestionsList.add(suggestion);					
+						}
+					}		
+				}
+			}
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.collectSuggestions(MapMarkerDot, double)>, "private void collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+		collectSuggestions$SuggestionsHistory(marker, radius);
+			getSuggestionsFromHistory(marker, radius);}
+", "SuggestionsHistory", true);
+	}
+	

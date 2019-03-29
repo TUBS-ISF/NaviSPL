@@ -1,25 +1,29 @@
-delta Navigation requires Routing, Localization {
-	
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import javax.swing.BoxLayout;
-		adds import javax.swing.JSlider;
-		adds import javax.swing.JLabel;
-		adds import java.awt.event.ActionEvent;
-		adds import java.awt.event.ActionListener;
-		adds import java.awt.event.MouseEvent;
-		adds import java.awt.event.MouseListener;
-		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
-		adds import org.openstreetmap.gui.jmapviewer.Coordinate;
-		adds import de.tu_bs.cs.isf.navi.NaviSimulationThread;
-	
-		adds public javax.swing.JSlider naviSpeed;
-		adds public NaviSimulationThread naviSim;
-		adds public javax.swing.JLabel naviSpeedLabel;
-		adds public javax.swing.JLabel naviDirectionLabel;
-		
-		visibility GPSselect {public};
-		
-		adds private void startNavigationSimulation(de.tu_bs.cs.isf.navi.NaviApp naviApp) {
+ configuration delta "Navigation"
+	dialect <http://www.emftext.org/java>
+		requires <Routing.decore>, <Localization.decore>
+		creates <de/tu_bs/cs/isf/navi/NaviSimulationThread.java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>, <de/tu_bs/cs/isf/navi/routing/RoutingStepInformation.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JSlider");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JLabel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.ActionEvent");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.ActionListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseEvent");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.routing.RoutingInformation");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.Coordinate");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.NaviSimulationThread");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JSlider naviSpeed;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public NaviSimulationThread naviSim;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JLabel naviSpeedLabel;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JLabel naviDirectionLabel;
+");
+	addModifier(<field:de.tu_bs.cs.isf.navi.NaviApp.GPSselect>, "public");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void startNavigationSimulation(de.tu_bs.cs.isf.navi.NaviApp naviApp) {
 			if (naviSim != null) {
 				naviSim.finish();
 			}
@@ -31,20 +35,20 @@ delta Navigation requires Routing, Localization {
 			}
 			GPSselect.setLat(startCoordinate.getLat());
 			GPSselect.setLon(startCoordinate.getLon());
-			mapViewer.setDisplayPosition(GPSselect, 17);
+			mapViewer.setDisplayPosition(GPSselect,17);
 			mapViewer.updateUI();
 	
 			naviSim = new NaviSimulationThread(naviApp, mapViewer, routingInformation);
 			(new Thread(naviSim)).start();
 		}
-	
-		modifies addMenu() {
-			original();
-			naviSpeed = new JSlider(JSlider.VERTICAL, 0, 100, 0);
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Navigation();
+			naviSpeed = new JSlider(JSlider.VERTICAL,0,100,0);
 			naviSpeed.setMajorTickSpacing(20);
 			naviSpeed.setMinorTickSpacing(5);
 			naviSpeed.setPaintTicks(Boolean.TRUE);
-			naviSpeed.setPreferredSize(new Dimension(100, 250));
+			naviSpeed.setPreferredSize(new Dimension(100,250));
 	
 			JPanel naviPanel = new JPanel();
 			naviPanel.setLayout(new BoxLayout(naviPanel, BoxLayout.PAGE_AXIS));
@@ -56,26 +60,26 @@ delta Navigation requires Routing, Localization {
 			outerPanel.add(naviSpeed);
 			outerPanel.add(innerPanel);
 	
-			naviSpeedLabel = new JLabel("0 km/h");
-			naviDirectionLabel = new JLabel("Keine Route berechnet");
+			naviSpeedLabel = new JLabel(\"0 km/h\");
+			naviDirectionLabel = new JLabel(\"Keine Route berechnet\");
 			
 			innerPanel.add(naviSpeedLabel);
 			
-			JButton speedButton = new JButton("VOLLGAS");
+			JButton speedButton = new JButton(\"VOLLGAS\");
 			speedButton.addMouseListener(new MouseListener() {
 	
 				public void mouseClicked(MouseEvent e) {}
 	
 				public void mousePressed(MouseEvent e) {
 					if(naviSim != null) {
-						((JButton) e.getSource()).setText("TURBO ON");
+						((JButton) e.getSource()).setText(\"TURBO ON\");
 						naviSim.turbo = Boolean.TRUE;
 					}
 				}
 	
 				public void mouseReleased(MouseEvent e) {
 					if(naviSim != null) {
-						((JButton) e.getSource()).setText("VOLLGAS");
+						((JButton) e.getSource()).setText(\"VOLLGAS\");
 						naviSim.turbo = Boolean.FALSE;
 					}
 				}
@@ -90,7 +94,7 @@ delta Navigation requires Routing, Localization {
 			naviPanel.add(outerPanel);
 			naviPanel.add(naviDirectionLabel);
 	
-			menuPanelList.put("Navigation", naviPanel);
+			menuPanelList.put(\"Navigation\", naviPanel);
 	
 			final NaviApp naviApp = this;
 	
@@ -153,13 +157,9 @@ delta Navigation requires Routing, Localization {
 				public void mouseExited(java.awt.event.MouseEvent e) {
 				}
 			});
-		}
-	
 	}
-	
-	
-	adds {
-		package de.tu_bs.cs.isf.navi;
+", "Navigation", true);
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/NaviSimulationThread.java>, "package de.tu_bs.cs.isf.navi;
 
 		import java.util.List;
 		import javax.swing.JOptionPane;
@@ -226,7 +226,7 @@ delta Navigation requires Routing, Localization {
 					try {
 						Thread.sleep(sleepTime);
 					} catch (InterruptedException e) {
-						System.out.println("NaviSimThread interrupted");
+						System.out.println(\"NaviSimThread interrupted\");
 					}
 				}
 			}
@@ -243,7 +243,7 @@ delta Navigation requires Routing, Localization {
 				double speed = (double) naviApp.naviSpeed.getValue();
 				if (speed == 0) {
 					this.currentSpeed = 0;
-					naviApp.naviSpeedLabel.setText("0 km/h");
+					naviApp.naviSpeedLabel.setText(\"0 km/h\");
 					return;
 				}
 		
@@ -302,26 +302,26 @@ delta Navigation requires Routing, Localization {
 					for (RoutingStepInformation rsi : routingInformation.getRoutingInformation()) {
 						if((Integer) rsi.getWayPoint()[0] > currentIndex) {
 							
-							Coordinate c = new Coordinate(coordinateList[currentIndex+1].getLat(), coordinateList[currentIndex+1].getLon());
+							Coordinate c = new Coordinate(coordinateList[currentIndex+ 1].getLat(), coordinateList[currentIndex+ 1].getLon());
 			
 							double dist = map.getTileController().getTileSource().getDistance(lastKnownPosition.getLat(), lastKnownPosition.getLon(), c.getLat(), c.getLon());
 							
-							for (int i = currentIndex+1; i < (Integer) rsi.getWayPoint()[0]; i++) {
+							for (int i = currentIndex+ 1; i < (Integer) rsi.getWayPoint()[0]; i++) {
 								Coordinate c1 = new Coordinate(coordinateList[i].getLat(), coordinateList[i].getLon());
-								Coordinate c2 = new Coordinate(coordinateList[i+1].getLat(), coordinateList[i+1].getLon());
+								Coordinate c2 = new Coordinate(coordinateList[i+ 1].getLat(), coordinateList[i+ 1].getLon());
 								dist += map.getTileController().getTileSource().getDistance(c1.getLat(), c1.getLon(), c2.getLat(), c2.getLon());
 							}
 							
 							if (prevDist > dist) {
 								double distDif = prevDist - dist;
 								this.currentSpeed = (distDif * stepsPerSecond) * 3.6d;
-								naviApp.naviSpeedLabel.setText((double) Math.round(this.currentSpeed * 10) / 10.0d + " km/h");
+								naviApp.naviSpeedLabel.setText((double) Math.round(this.currentSpeed * 10) / 10.0d + \" km/h\");
 							}
 							prevDist = dist;
 							
 							currentInstruction(dist, rsi.getInstruction());
 							
-							String labelText = String.format("<html><div WIDTH=%d>%s</div></html>", naviApp.naviDirectionLabel.getWidth(), "In " + this.getFormatedDistance(dist) + ": " + rsi.getInstruction());
+							String labelText = String.format(\"<html><div WIDTH=%d>%s</div></html>\", naviApp.naviDirectionLabel.getWidth(), \"In \" + this.getFormatedDistance(dist) + \": \" + rsi.getInstruction());
 							
 							naviApp.naviDirectionLabel.setText(labelText);
 			
@@ -339,18 +339,18 @@ delta Navigation requires Routing, Localization {
 			
 			public String getFormatedDistance(double inputMeters) {
 				if (inputMeters > 10000)
-					return (int) Math.ceil(inputMeters / 1000.0d) + " km";
+					return (int) Math.ceil(inputMeters / 1000.0d) + \" km\";
 				else if (inputMeters > 1000)
-					return Math.round(Math.round(inputMeters) / 100.0d) / 10.0d + " km";
+					return Math.round(Math.round(inputMeters) / 100.0d) / 10.0d + \" km\";
 				else
-					return Math.round(inputMeters) + " m";
+					return Math.round(inputMeters) + \" m\";
 			}
 			
 			protected double prevDist;
 		
 			private void navigationFinished() {
 				finish();
-				JOptionPane.showMessageDialog(naviApp, "Sie haben Ihr Ziel erreicht!", "Ziel erreicht", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(naviApp, \"Sie haben Ihr Ziel erreicht!\", \"Ziel erreicht\", JOptionPane.INFORMATION_MESSAGE);
 			}
 		
 			private double getDistance(org.openstreetmap.gui.jmapviewer.Coordinate c1, org.openstreetmap.gui.jmapviewer.Coordinate c2) {
@@ -363,7 +363,7 @@ delta Navigation requires Routing, Localization {
 				if (p1.length != 2 || p2.length != 2)
 					throw new RuntimeException();
 		
-				return Math.sqrt(Math.pow(p1[0] - p2[0], 2) + Math.pow(p1[1] - p2[1], 2));
+				return Math.sqrt(Math.pow(p1[0] - p2[0],2) + Math.pow(p1[1] - p2[1],2));
 			}
 		
 			private boolean stillDriving() {
@@ -402,17 +402,14 @@ delta Navigation requires Routing, Localization {
 			public int getLastPolygonPoint() {
 				return this.currentIndex;
 			}
-		}
-	}
-	
-	modifies de.tu_bs.cs.isf.navi.routing.RoutingStepInformation {
-	
-		adds public java.lang.Number[] getWayPoint() {
+		}");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingStepInformation>, "public java.lang.Number[] getWayPoint() {
 			return wayPoint;
 		}
-
-		adds public void setWayPoint(java.lang.Number[] wayPoint) {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingStepInformation>, "public void setWayPoint(java.lang.Number[] wayPoint) {
 			this.wayPoint = wayPoint;
 		}
+");
 	}
-}
+	

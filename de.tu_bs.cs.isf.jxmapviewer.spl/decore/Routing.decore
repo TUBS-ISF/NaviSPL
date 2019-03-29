@@ -1,43 +1,47 @@
-delta Routing requires Localization {
-
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import org.openstreetmap.gui.jmapviewer.MapPolygonImpl;
-		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon;
-		adds import de.tu_bs.cs.isf.navi.routing.RoutingCalculator;
-		adds import de.tu_bs.cs.isf.navi.routing.RoutingInformation;
-		adds import de.tu_bs.cs.isf.navi.routing.RoutingCoordinate;
-		adds import java.awt.event.ActionEvent;
-		adds import java.awt.event.ActionListener;
-		adds import java.awt.Insets;
-		adds import javax.swing.JList;
-		adds import javax.swing.JScrollPane;
-		adds import javax.swing.ListSelectionModel;
-		adds import javax.swing.JTextField;
-		adds import javax.swing.JButton;
-		adds import javax.swing.JPanel;
-		adds import java.awt.GridBagConstraints;
-		adds import java.awt.GridBagLayout;
-		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
-		
-		adds import java.awt.BasicStroke;
-		adds import java.awt.Color;
-		adds import java.util.List; 
-		
-	
-		
-	
-		adds private RoutingInformation routingInformation;
-		adds private org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon readyPolygon;
-		adds public javax.swing.JButton startRouteBtn;
-		adds public javax.swing.JTextField startRouteLatitude;
-		adds public javax.swing.JTextField startRouteLongitude;
-		adds public javax.swing.JTextField endRouteLatitude;
-		adds public javax.swing.JTextField endRouteLongitude;
-		
-		adds private void addHistoryRoutingListener() {
+ configuration delta "Routing"
+	dialect <http://www.emftext.org/java>
+		requires <Localization.decore>
+		creates <de/tu_bs/cs/isf/navi/routing/RoutingCalculator.java>, <de/tu_bs/cs/isf/navi/routing/RoutingCoordinate.java>, <de/tu_bs/cs/isf/navi/routing/RoutingInformation.java>, <de/tu_bs/cs/isf/navi/routing/RoutingStepInformation.java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapPolygonImpl");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.routing.RoutingCalculator");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.routing.RoutingInformation");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.routing.RoutingCoordinate");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.ActionEvent");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.ActionListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Insets");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JList");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JScrollPane");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.ListSelectionModel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JTextField");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JButton");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JPanel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.GridBagConstraints");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.GridBagLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapMarkerDot");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.BasicStroke");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Color");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.List");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private RoutingInformation routingInformation;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private org.openstreetmap.gui.jmapviewer.interfaces.MapPolygon readyPolygon;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JButton startRouteBtn;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JTextField startRouteLatitude;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JTextField startRouteLongitude;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JTextField endRouteLatitude;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JTextField endRouteLongitude;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void addHistoryRoutingListener() {
 		}
-		
-		adds private void paintRoute() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void paintRoute() {
 			if (routingInformation.getRoutingInformation().size() <= 1)
 				return;
 			java.util.List<double[]> polygon = routingInformation.getPolygonPoints();
@@ -60,18 +64,18 @@ delta Routing requires Localization {
 			mapViewer.addMapPolygon(readyPolygon);
 			mapViewer.repaint();
 		}
-		
-		modifies addMenu() {
-			original();
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Routing();
 			int q = 25;
 			Insets i = new Insets(q, q, q, q);
 	
 			
 			startRouteLatitude = new JTextField();
-			startRouteLatitude.setText("52.27111");
+			startRouteLatitude.setText(\"52.27111\");
 			startRouteLongitude = new javax.swing.JTextField();
-			startRouteLongitude.setText("10.53111");
-			JButton getStartCoords = new JButton("GetStart");
+			startRouteLongitude.setText(\"10.53111\");
+			JButton getStartCoords = new JButton(\"GetStart\");
 			getStartCoords.addActionListener(new ActionListener() {
 	
 				public void actionPerformed(ActionEvent e) {
@@ -87,10 +91,10 @@ delta Routing requires Localization {
 			
 			
 			endRouteLatitude = new JTextField();
-			endRouteLatitude.setText("52.14240");
+			endRouteLatitude.setText(\"52.14240\");
 			endRouteLongitude = new JTextField();
-			endRouteLongitude.setText("10.54840");
-			JButton getEndCoords = new JButton("GetEnd");
+			endRouteLongitude.setText(\"10.54840\");
+			JButton getEndCoords = new JButton(\"GetEnd\");
 			getEndCoords.addActionListener(new ActionListener() {
 	
 				public void actionPerformed(ActionEvent e) {
@@ -107,7 +111,7 @@ delta Routing requires Localization {
 			routingList.setLayoutOrientation(JList.VERTICAL);
 			routingList.setVisibleRowCount(-1);
 	
-			startRouteBtn = new JButton("Start Routing");
+			startRouteBtn = new JButton(\"Start Routing\");
 			startRouteBtn.setMargin(i);
 			startRouteBtn.addActionListener(new ActionListener() {
 	
@@ -120,7 +124,7 @@ delta Routing requires Localization {
 						routingList.setListData(routingInformation.getRouteInstructions());
 						paintRoute();
 					} else {
-						String[] gehtNicht = new String[] {"Route can not be calculated"};
+						String[] gehtNicht = new String[] {\"Route can not be calculated\"};
 						routingList.setListData(gehtNicht);
 					}
 				}
@@ -130,7 +134,7 @@ delta Routing requires Localization {
 			addHistoryRoutingListener();
 	
 			JScrollPane listScroller = new JScrollPane(routingList);
-			listScroller.setPreferredSize(new Dimension(250, 250));
+			listScroller.setPreferredSize(new Dimension(250,250));
 
 			
 			JPanel panel = new JPanel();
@@ -192,16 +196,10 @@ delta Routing requires Localization {
 			conEndCoordBtn.gridy = 1;
 			panel.add(getEndCoords, conEndCoordBtn);
 			
-			menuPanelList.put("Routing", panel);
-		}
+			menuPanelList.put(\"Routing\", panel);
 	}
-	
-	
-	
-	
-
-	adds {
-		package de.tu_bs.cs.isf.navi.routing;
+", "Routing", true);
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/routing/RoutingCalculator.java>, "package de.tu_bs.cs.isf.navi.routing;
 
 		import java.io.BufferedReader;
 		import java.io.IOException;
@@ -221,8 +219,8 @@ delta Routing requires Localization {
 		public class RoutingCalculator {
 		
 			private String coordinates;
-			private String apiUrl = "https://api.openrouteservice.org/directions?";
-			private String api_keyUrl = "api_key=5b3ce3597851110001cf6248b72cde324a2941578b6d8b4d9cafa2e1";
+			private String apiUrl = \"https://api.openrouteservice.org/directions?\";
+			private String api_keyUrl = \"api_key=5b3ce3597851110001cf6248b72cde324a2941578b6d8b4d9cafa2e1\";
 			private String profileUrl;
 			private RoutingInformation route;
 			private String request;
@@ -250,14 +248,14 @@ delta Routing requires Localization {
 			}
 			
 			public String getProfile() {
-				return "profile=driving-car";
+				return \"profile=driving-car\";
 			}
 			
 			private void addCoordinates(double longitude, double latitude) {
 				if (coordinates.length() == 0)
-					coordinates += "coordinates=" + String.valueOf(latitude) + "," + String.valueOf(longitude);
+					coordinates += \"coordinates=\" + String.valueOf(latitude) + \",\" + String.valueOf(longitude);
 				else
-					coordinates += "|" + String.valueOf(latitude) + "," + String.valueOf(longitude);
+					coordinates += \"|\" + String.valueOf(latitude) + \",\" + String.valueOf(longitude);
 				
 			}
 		
@@ -267,11 +265,11 @@ delta Routing requires Localization {
 					buildURL();
 					URL url = new URL(request);
 					HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-					conn.setRequestMethod("GET");
-					conn.setRequestProperty("accept", "application/json");
+					conn.setRequestMethod(\"GET\");
+					conn.setRequestProperty(\"accept\", \"application/json\");
 					if (conn.getResponseCode() != 200) {
 						
-						throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+						throw new RuntimeException(\"Failed : HTTP error code : \" + conn.getResponseCode());
 					}
 		
 					BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
@@ -302,7 +300,7 @@ delta Routing requires Localization {
 			}
 			
 			private void buildURL() {
-				request = apiUrl + api_keyUrl + "&" + profileUrl + "&" + coordinates + "&geometry_format=polyline";
+				request = apiUrl + api_keyUrl + \"&\" + profileUrl + \"&\" + coordinates + \"&geometry_format=polyline\";
 			}
 			
 			private void interpretJSONString(String output) throws JSONException {
@@ -312,11 +310,11 @@ delta Routing requires Localization {
 				
 				
 
-				JSONArray routesArray = (JSONArray) parsed.get("routes");
+				JSONArray routesArray = (JSONArray) parsed.get(\"routes\");
 				routes = (JSONObject) routesArray.get(0);
 				
 				
-				JSONArray polygon = (JSONArray) routes.get("geometry");
+				JSONArray polygon = (JSONArray) routes.get(\"geometry\");
 				
 				
 				for (int i = 0; i < polygon.length(); i++) {
@@ -324,21 +322,21 @@ delta Routing requires Localization {
 					route.addPolygonPoint((Double) polygonpoints.get(1), (Double) polygonpoints.get(0));
 				}
 
-				JSONArray segementsArray = (JSONArray) routes.get("segments");
+				JSONArray segementsArray = (JSONArray) routes.get(\"segments\");
 				JSONObject segments = (JSONObject) segementsArray.get(0);
 
-				JSONArray stepsArray = (JSONArray) segments.get("steps");
+				JSONArray stepsArray = (JSONArray) segments.get(\"steps\");
 				
 				for(int i = 0; i < stepsArray.length(); i++) {
 					JSONObject JSONstep = (JSONObject) stepsArray.get(i);
 
-					Number duration = (Number) JSONstep.get("duration");
-					Number distance = (Number) JSONstep.get("distance");
-					String instruction = (String) JSONstep.get("instruction");
-					String name = (String) JSONstep.get("name");
-					Number type = (Number) JSONstep.get("type");
+					Number duration = (Number) JSONstep.get(\"duration\");
+					Number distance = (Number) JSONstep.get(\"distance\");
+					String instruction = (String) JSONstep.get(\"instruction\");
+					String name = (String) JSONstep.get(\"name\");
+					Number type = (Number) JSONstep.get(\"type\");
 
-					JSONArray wayPointArray = (JSONArray) JSONstep.get("way_points");
+					JSONArray wayPointArray = (JSONArray) JSONstep.get(\"way_points\");
 					Number wayPointX = (Number) wayPointArray.get(0);
 					Number wayPointY = (Number) wayPointArray.get(1);
 
@@ -347,11 +345,8 @@ delta Routing requires Localization {
 					route.addStep(newInformation);
 				}
 			}
-		}
-	}
-	
-	adds {
-		package de.tu_bs.cs.isf.navi.routing;
+		}");
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/routing/RoutingCoordinate.java>, "package de.tu_bs.cs.isf.navi.routing;
 
 		import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
 		
@@ -380,11 +375,8 @@ delta Routing requires Localization {
 			public void setLon(double lon) {
 				this.longi = lon;
 			}
-		}
-	}
-	
-	adds {
-		package de.tu_bs.cs.isf.navi.routing;
+		}");
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/routing/RoutingInformation.java>, "package de.tu_bs.cs.isf.navi.routing;
 
 		import java.util.ArrayList;
 		import java.util.List;
@@ -415,7 +407,7 @@ delta Routing requires Localization {
 		
 			public String[] getRouteInstructions() {
 				String[] output = new String[steps.size()];
-				for(int i=0; i<output.length; i++) {
+				for(int i= 0; i<output.length; i++) {
 					output[i] = steps.get(i).getInstruction(); 
 				}
 				
@@ -430,11 +422,8 @@ delta Routing requires Localization {
 			public List<double[]> getPolygonPoints() {
 				return polygonPoints;
 			}
-		 }
-	}
-	
-	adds {
-		package de.tu_bs.cs.isf.navi.routing;
+		 }");
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/routing/RoutingStepInformation.java>, "package de.tu_bs.cs.isf.navi.routing;
 
 		public class RoutingStepInformation {
 			private Number duration;
@@ -494,6 +483,6 @@ delta Routing requires Localization {
 			public void setType(Number type) {
 				this.type = type;
 			}
-		}
+		}");
 	}
-}
+	
