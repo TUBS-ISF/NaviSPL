@@ -1,0 +1,11 @@
+ configuration delta "GreaterZoom"
+	dialect <http://www.emftext.org/java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setupMap()>, "public void setupMap() {
+		setupMap$GreaterZoom();
+			mapViewer.setZoom(15);
+	}
+", "GreaterZoom", true);
+	}
+	

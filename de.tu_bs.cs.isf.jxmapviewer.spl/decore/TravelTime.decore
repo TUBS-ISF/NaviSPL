@@ -1,0 +1,84 @@
+ configuration delta "TravelTime"
+	dialect <http://www.emftext.org/java>
+		requires <Routing.decore>
+		modifies <de/tu_bs/cs/isf/navi/routing/RoutingCalculator.java>, <de/tu_bs/cs/isf/navi/routing/RoutingInformation.java>, <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.routing.RoutingCalculator.interpretJSONString(String)>, "private void interpretJSONString(String output) throws JSONException {
+		interpretJSONString$TravelTime(output);
+			
+			JSONObject summary = (JSONObject) routes.get(\"summary\");
+			route.setDuration(summary.getDouble(\"duration\"));
+			}
+", "TravelTime", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "private double duration;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public double getDuration() {
+			return duration;
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public void setDuration(double duration) {
+			this.duration = duration;
+		}
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$TravelTime();
+			addTravelTime();
+	}
+", "TravelTime", true);
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.paintRoute()>, "private void paintRoute() {
+		paintRoute$TravelTime();
+			calcTravelTime();
+		}
+", "TravelTime", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JPanel durPanel = new javax.swing.JPanel();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JLabel durLabel = new javax.swing.JLabel();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void addTravelTime(){	
+		
+			durPanel.setLayout(new java.awt.GridBagLayout());
+			java.awt.GridBagConstraints bagCon = new java.awt.GridBagConstraints();
+			javax.swing.JLabel textLabel = new javax.swing.JLabel(\"Estimated Travel Time: \");
+			durLabel.setText(\"00:00\");
+			
+			bagCon.fill = 1;
+			bagCon.gridx = 0;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			durPanel.add(textLabel, bagCon);
+			bagCon.fill = 1;
+			bagCon.gridx = 1;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			durPanel.add(durLabel, bagCon);
+			menuPanelList.put(\"Travel Time\", durPanel);
+			
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void calcTravelTime() {
+			double durationInSek = routingInformation.getDuration();
+			durLabel.setText(formatTime((int) durationInSek));
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private String formatTime(int time) {
+			int durHrs = (int) Math.floor(time / 3600);
+			int durMins = (int) (Math.floor(time / 60)) % 60;
+			
+			String ret = String.valueOf(durHrs);
+			if (durHrs < 10) {
+				ret = \"0\" + ret;
+			}
+			ret += \":\";
+			
+			String temp = String.valueOf(durMins);
+			if (durMins < 10) {
+				temp = \"0\" + temp;
+			}
+			
+			ret += temp;
+			
+			return ret;
+		}
+");
+	}
+	

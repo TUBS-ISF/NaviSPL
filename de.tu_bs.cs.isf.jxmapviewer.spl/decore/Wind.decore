@@ -1,0 +1,19 @@
+ configuration delta "Wind"
+	dialect <http://www.emftext.org/java>
+		requires <Weather.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JLabel");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private JLabel wind;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addWind(JPanel)>, "private void addWind(javax.swing.JPanel panel) {
+			wind = new JLabel();
+			wind.setFont(wind.getFont().deriveFont(15.0f));
+			
+			panel.add(wind);}
+", "Wind", false);
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.updateWind(CurrentWeather)>, "private void updateWind(net.aksingh.owmjapis.CurrentWeather currentweather) {
+	 		wind.setText(String.valueOf(currentweather.getWindInstance().getWindSpeed())+\" m/s\");}
+", "Wind", false);
+	}
+	

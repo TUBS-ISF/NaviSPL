@@ -1,0 +1,18 @@
+ configuration delta "TimeInfo"
+	dialect <http://www.emftext.org/java>
+		requires <Time.decore>, <Information.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setupMenu()>, "public void setupMenu() {
+		setupMenu$TimeInfo();
+			javax.swing.JPanel t = (javax.swing.JPanel) menuPanelList.remove(\"Time\");
+			t.getParent().getParent().remove(t.getParent());
+			infoPanel.addInformationFeature(t);
+					
+			for (java.awt.Component c : infoPanel.getComponents()) {
+				c.setVisible(Boolean.TRUE);
+			}
+	}
+", "TimeInfo", true);
+	}
+	

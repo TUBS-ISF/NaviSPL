@@ -1,0 +1,74 @@
+ configuration delta "DepartureTime"
+	dialect <http://www.emftext.org/java>
+		requires <DepartureArrivalTimeHelper.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.ActionEvent");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.ActionListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JButton");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private JButton arrivalButton = new JButton(\"Calculate Arrival\");
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addTravelTime()>, "private void addTravelTime(){
+		addTravelTime$DepartureTime();
+			departureArrivalConstraints.gridwidth = 1;
+			departureArrivalConstraints.fill = GridBagConstraints.HORIZONTAL;
+			departureArrivalConstraints.gridx = 2;
+			departureArrivalConstraints.gridy = 1;
+			arrivalButton.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					timeArrivalTextField.setText(calculateArrivalTime(timeDepartureTextField.getText()));
+				}
+			});
+			durPanel.add(arrivalButton, departureArrivalConstraints);
+			
+		}
+", "DepartureTime", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private String calculateArrivalTime(String textFieldInput) {
+			String output = \"hh:mm\";
+			if (textFieldInput.charAt(2) == \":\".toCharArray()[0] && textFieldInput.length() == 5 && !textFieldInput.contains(\"hh:mm\")) {
+				int departureHour = Integer.valueOf(textFieldInput.substring(0,2));
+				int departureMinute = Integer.valueOf(textFieldInput.substring(3,5));
+				if (departureHour <= 23 && departureHour >= 0 && departureMinute <= 59 && departureMinute >= 0) {
+					double duration = routingInformation.getDuration() / 60;
+					int durationHours = 0;
+					int durationMinutes = 0;
+					while (duration > 60) {
+						durationHours++;
+						duration -= 60;
+					}
+					durationMinutes = (int) duration;
+					departureHour += durationHours;
+					departureMinute += durationMinutes;
+					if (departureMinute > 59) {
+						departureMinute -= 60;
+						departureHour++;
+					}
+					if (departureHour > 23) {
+						departureHour -= 24;
+					}
+					
+					if(departureHour < 10) {
+						output = \"0\" + departureHour;
+					} else {
+						output = \"\" +departureHour;
+					}
+					output += \":\";
+					if(departureMinute < 10) {
+						output += \"0\" + departureMinute;
+					} else {
+						output += \"\" + departureMinute;
+					}
+					
+				}
+				return output;
+			}
+			else {
+				timeDepartureTextField.setText(output);
+				return timeArrivalTextField.getText();
+			}
+			
+		}
+");
+	}
+	

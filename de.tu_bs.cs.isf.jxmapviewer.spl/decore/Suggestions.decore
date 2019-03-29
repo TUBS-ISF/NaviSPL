@@ -1,8 +1,10 @@
-delta Suggestions requires Localization, Routing {
-
-	adds{
-		
-		package de.tu_bs.cs.isf.navi.suggestion;
+ configuration delta "Suggestions"
+	dialect <http://www.emftext.org/java>
+		requires <Localization.decore>, <Routing.decore>
+		creates <de/tu_bs/cs/isf/navi/suggestion/Suggestion.java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/suggestion/Suggestion.java>, "package de.tu_bs.cs.isf.navi.suggestion;
 
 		import java.awt.Color;
 		import java.awt.Polygon;
@@ -22,19 +24,19 @@ delta Suggestions requires Localization, Routing {
 			public Suggestion(String text, MapMarker markerStart,MapMarker markerEnd, Polygon route) {
 				this.setMarkerStart(markerStart);
 				this.setMarkerEnd(markerEnd);
-				this.markerStart.setName("Start");
-				this.markerEnd.setName("End");
-				this.markerStart.setBackColor(new Color(255, 80, 80));
-				this.markerEnd.setBackColor(new Color(179, 0, 0));
+				this.markerStart.setName(\"Start\");
+				this.markerEnd.setName(\"End\");
+				this.markerStart.setBackColor(new Color(255,80,80));
+				this.markerEnd.setBackColor(new Color(179,0,0));
 				this.setRoute(route);
 				this.setText(text);
 			}
 			
 			public Suggestion(MapMarker marker) {
 				this.setMarkerStart(marker);
-				this.markerStart.setName("Location");
-				this.markerStart.setBackColor(new Color(204, 51, 255));
-				this.text = "";
+				this.markerStart.setName(\"Location\");
+				this.markerStart.setBackColor(new Color(204,51,255));
+				this.text = \"\";
 				this.route = null;
 			}
 		
@@ -73,34 +75,29 @@ delta Suggestions requires Localization, Routing {
 			public Boolean isRoute() {
 				return route != null;
 			}
-		}
-				
-	
-	}
-
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
-
-		adds import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
-		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
-		adds import java.util.ArrayList;
-		adds import java.util.List;
-
-		adds import org.openstreetmap.gui.jmapviewer.Coordinate;
-		adds import java.awt.Polygon;
-		adds import javax.swing.BoxLayout;
-		adds import javax.swing.JPanel;
-		adds import javax.swing.JSlider;
-		adds import javax.swing.JLabel;
-		adds import de.tu_bs.cs.isf.navi.suggestion.Suggestion;
-		adds import java.awt.event.MouseListener;
-		adds import java.awt.event.MouseEvent;
-		
-		adds private java.util.List<de.tu_bs.cs.isf.navi.suggestion.Suggestion> suggestionsList = new java.util.ArrayList<de.tu_bs.cs.isf.navi.suggestion.Suggestion>();
-		adds private javax.swing.JPanel suggestionsPanel;
-		adds private javax.swing.JSlider suggestionsSlider;
-		adds private long oldTime;
-		
-		adds private void drawSuggestions() {
+		}");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.interfaces.MapMarker");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapMarkerDot");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.ArrayList");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.List");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.Coordinate");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Polygon");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JPanel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JSlider");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JLabel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.suggestion.Suggestion");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseEvent");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private java.util.List<de.tu_bs.cs.isf.navi.suggestion.Suggestion> suggestionsList = new java.util.ArrayList<de.tu_bs.cs.isf.navi.suggestion.Suggestion>();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JPanel suggestionsPanel;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JSlider suggestionsSlider;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private long oldTime;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void drawSuggestions() {
 				List<MapMarker> mapList = mapViewer.getMapMarkerList();
 				List<MapMarkerDot> toAdd = new ArrayList<MapMarkerDot>();
 				ArrayList<MapMarkerDot> suggestionsMarkerList = new ArrayList<MapMarkerDot>();
@@ -123,20 +120,20 @@ delta Suggestions requires Localization, Routing {
 					mapViewer.addMapMarker(marker);
 				}
 		}
-		
-		adds private void getSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void getSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {
 			suggestionsList.clear();
 			mapViewer.removeAllMapMarkers();
 			mapViewer.addMapMarker(GPSselect);
 			
 			collectSuggestions(marker, radius);
 			drawSuggestions();
-		}		
-		
-		adds private void collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {}
-		
-		modifies addMenu() {
-			original();
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void collectSuggestions(org.openstreetmap.gui.jmapviewer.MapMarkerDot marker, double radius) {}
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Suggestions();
 			createSuggestionMenu();
 			mapViewer.addMouseListener(new MouseListener() {
 				
@@ -186,27 +183,28 @@ delta Suggestions requires Localization, Routing {
 				public void mouseEntered(MouseEvent e) { }
 				public void mouseExited(MouseEvent e) { }			
 			});
-		}
-		
-		adds protected void createSuggestionMenu() {
+	}
+", "Suggestions", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void createSuggestionMenu() {
 			suggestionsPanel = new JPanel();		
 			suggestionsPanel.setLayout(new BoxLayout(suggestionsPanel, BoxLayout.PAGE_AXIS));
 			
 			JPanel suggestionsHeader = new JPanel();
-			suggestionsSlider = new javax.swing.JSlider(JSlider.HORIZONTAL, 500, 5000, 500);
+			suggestionsSlider = new javax.swing.JSlider(JSlider.HORIZONTAL,500,5000,500);
 			suggestionsSlider.setMajorTickSpacing(2250);
 			suggestionsSlider.setMinorTickSpacing(250);
 			suggestionsSlider.setPaintTicks(Boolean.TRUE);
 			suggestionsSlider.setPaintLabels(Boolean.TRUE);
 			suggestionsSlider.setSnapToTicks(Boolean.TRUE);
-			suggestionsSlider.setPreferredSize(new java.awt.Dimension(150, 40));
+			suggestionsSlider.setPreferredSize(new java.awt.Dimension(150,40));
 			
-			suggestionsHeader.add(new JLabel("Radius:"));
+			suggestionsHeader.add(new JLabel(\"Radius:\"));
 			suggestionsHeader.add(suggestionsSlider);
 			
 			suggestionsPanel.add(suggestionsHeader);
 			
-			menuPanelList.put("Suggestions", suggestionsPanel);
+			menuPanelList.put(\"Suggestions\", suggestionsPanel);
 		}
+");
 	}
-}
+	

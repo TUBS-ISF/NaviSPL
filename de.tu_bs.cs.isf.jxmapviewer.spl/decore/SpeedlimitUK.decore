@@ -1,0 +1,43 @@
+ configuration delta "SpeedlimitUK"
+	dialect <http://www.emftext.org/java>
+		requires <SpeedLimit.decore>
+		modifies <de/tu_bs/cs/isf/navi/speedlimit/Speedlimit.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.speedlimit.Speedlimit.calculateLimit()>, "private void calculateLimit() {
+		calculateLimit$SpeedlimitUK();
+						
+			if (wayType == 1) {
+				 if (avgSpeed >= 100) {
+					speedPanel2(\"70\");
+				} else if (80 < avgSpeed && avgSpeed < 100) {
+					speedPanel2(\"60\");
+				} else if (60 < avgSpeed && avgSpeed <= 80) {
+					speedPanel2(\"50\");
+				}
+			} else if (wayType == 2) {
+				if (avgSpeed >= 100) {
+					speedPanel2(\"70\");
+				}else if (80 < avgSpeed && avgSpeed <= 100) {
+					speedPanel3(\"60\");
+				} else if (70 < avgSpeed && avgSpeed <= 80) {
+					speedPanel2(\"50\");
+				} else if (avgSpeed <= 50) {
+					speedPanel2(\"30\");
+				}			
+			}else if (wayType == 3) {
+				if (avgSpeed > 50) {
+					speedPanel2(\"50\");
+				} else if (30 < avgSpeed && avgSpeed <= 50) {
+					speedPanel2(\"30\");
+				} else if (avgSpeed <= 30) {
+					speedPanel2(\"20\");
+				} 
+			}else {
+				speedPanelEmpty();
+			}
+			paintSpeedlimit();
+					
+			}
+", "SpeedlimitUK", true);
+	}
+	

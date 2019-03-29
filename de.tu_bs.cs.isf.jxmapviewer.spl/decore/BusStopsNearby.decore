@@ -1,0 +1,162 @@
+ configuration delta "BusStopsNearby"
+	dialect <http://www.emftext.org/java>
+		requires <Localization.decore>
+		creates <de/tu_bs/cs/isf/navi/bus/BusElement.java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.ArrayList");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JPanel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JLabel");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JSlider");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.net.HttpURLConnection");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.net.URL");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.io.BufferedReader");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.io.InputStreamReader");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.json.JSONArray");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.json.JSONObject");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.json.JSONTokener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Color");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.List");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.net.MalformedURLException");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.net.ProtocolException");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.io.IOException");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseListener");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.event.MouseEvent");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.Coordinate");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapMarkerDot");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.Style");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "de.tu_bs.cs.isf.navi.bus.BusElement");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected java.util.List<de.tu_bs.cs.isf.navi.bus.BusElement> busStopList;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JPanel busPanel;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JSlider busSlider;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$BusStopsNearby();
+			busStopList = new ArrayList<BusElement>();
+			createBusMenu();
+			mapViewer.addMouseListener(new MouseListener() {
+				
+				public void mouseClicked(MouseEvent e) {	
+					clearBusStopsList();
+					findBusStops();
+				}
+				
+				public void mousePressed(MouseEvent e) { }			
+				public void mouseReleased(MouseEvent e) { }			
+				public void mouseEntered(MouseEvent e) { }
+				public void mouseExited(MouseEvent e) { }			
+			});
+	}
+", "BusStopsNearby", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void createBusMenu() {
+			busPanel = new JPanel();		
+			busPanel.setLayout(new BoxLayout(busPanel, BoxLayout.PAGE_AXIS));
+			
+			JPanel busHeader = new JPanel();
+			busSlider = new javax.swing.JSlider(JSlider.HORIZONTAL,500,5000,500);
+			busSlider.setMajorTickSpacing(2250);
+			busSlider.setMinorTickSpacing(250);
+			busSlider.setPaintTicks(Boolean.TRUE);
+			busSlider.setPaintLabels(Boolean.TRUE);
+			busSlider.setSnapToTicks(Boolean.TRUE);
+			busSlider.setPreferredSize(new java.awt.Dimension(150,40));
+			
+			busHeader.add(new JLabel(\"| Radius:\"));
+			busHeader.add(busSlider);
+			
+			busPanel.add(busHeader);
+			
+			menuPanelList.put(\"Bus Stops\", busPanel);
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void findBusStops() {
+			String location = \"location=\" + GPSselect.getLat() + \",\" + GPSselect.getLon();
+			String radius = \"radius=\" + String.valueOf(busSlider.getValue());
+			String type = \"type=bus_station\";/*\"['bus_station','subway_station']\";*/
+			String api_key = \"key=AIzaSyBU_1NMbpJ9PPUUrL6WsCqHWKGh0mpiNrU\";
+			String request = \"https://maps.googleapis.com/maps/api/place/nearbysearch/json?\" + location + \"&\" + radius + \"&\"
+								+ type + \"&\" + api_key;
+			try {
+				URL url = new URL(request);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod(\"GET\");
+				conn.setRequestProperty(\"accept\", \"application/json\");
+						
+				BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+				String output;
+				String all = \"\";
+		
+				while ((output = br.readLine()) != null) {
+					all += output;				
+				}
+				
+				JSONTokener t = new JSONTokener(all);									
+				JSONObject parsed = (JSONObject) t.nextValue();
+					
+				String status =  parsed.getString(\"status\");
+				
+				if (!(status.equals(\"OK\"))){ 
+					System.out.println(\"Bus Status: \" + status);			
+				}
+				
+				JSONArray resultArray = (JSONArray) parsed.get(\"results\");
+				
+				for (int i = 0; i < resultArray.length(); i++) {
+					JSONObject bus = (JSONObject) resultArray.get(i);
+					
+					JSONObject loc = (JSONObject) ((JSONObject) bus.get(\"geometry\")).get(\"location\");
+					Coordinate c = new Coordinate(loc.getDouble(\"lat\"), loc.getDouble(\"lng\"));
+					String name = bus.getString(\"name\");
+					
+					MapMarkerDot m = new MapMarkerDot(name, c);
+					m.setStyle(new Style(Color.BLACK, Color.RED, null, MapMarkerDot.getDefaultFont()));
+					
+					mapViewer.addMapMarker(m);
+					
+					JSONArray typeArray = (JSONArray) bus.get(\"types\");
+					List<String> typeList = new ArrayList<String>();
+					for (int j = 0; j < typeArray.length(); j++) {					
+						typeList.add(typeArray.getString(j));
+					}
+					
+					busStopList.add(new BusElement(m, typeList, bus));
+				}
+				
+			} catch (ProtocolException e) {
+			} catch (MalformedURLException e) {
+			} catch (IOException e) {
+			} catch (org.json.JSONException e) {
+			}
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void clearBusStopsList() {
+			for (BusElement p : busStopList) {
+				mapViewer.removeMapMarker(p.marker);
+			}
+			busStopList.clear();
+		}
+");
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/bus/BusElement.java>, "package de.tu_bs.cs.isf.navi.bus;
+
+		import java.util.List;
+		
+		public class BusElement {
+			
+			public java.util.List<String> types;
+			
+			public org.openstreetmap.gui.jmapviewer.MapMarkerDot marker;
+			
+			public org.json.JSONObject json;	
+			
+			public BusElement(org.openstreetmap.gui.jmapviewer.MapMarkerDot m, java.util.List<String>types, org.json.JSONObject json) {
+				this.marker = m;
+				this.types = types;
+				this.json = json;
+			}
+		
+		}");
+	}
+	

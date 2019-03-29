@@ -1,18 +1,25 @@
-delta Poi requires Localization {
-	modifies de.tu_bs.cs.isf.navi.NaviApp {
-		adds import javax.swing.BoxLayout;
-		adds import javax.swing.JSlider;
-		adds import java.awt.Color;
-		adds import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
-					
-		adds protected java.util.List<de.tu_bs.cs.isf.navi.poi.POIelement> POIlist;
-		adds protected javax.swing.JPanel poiPanel;
-		adds protected javax.swing.JPanel poiItems;
-		adds protected javax.swing.JSlider poiSlider;
-		adds protected javax.swing.JCheckBox poiCheckAll;
-		
-		modifies addMenu() {
-			original();
+ configuration delta "Poi"
+	dialect <http://www.emftext.org/java>
+		requires <Localization.decore>
+		creates <de/tu_bs/cs/isf/navi/poi/POIelement.java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JSlider");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.awt.Color");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "org.openstreetmap.gui.jmapviewer.MapMarkerDot");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected java.util.List<de.tu_bs.cs.isf.navi.poi.POIelement> POIlist;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JPanel poiPanel;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JPanel poiItems;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JSlider poiSlider;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected javax.swing.JCheckBox poiCheckAll;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$Poi();
 			POIlist = new java.util.ArrayList<de.tu_bs.cs.isf.navi.poi.POIelement>();
 			createPOImenu();
 			mapViewer.addMouseListener(new java.awt.event.MouseListener() {
@@ -28,9 +35,9 @@ delta Poi requires Localization {
 				public void mouseEntered(java.awt.event.MouseEvent e) { }
 				public void mouseExited(java.awt.event.MouseEvent e) { }			
 			});
-		}
-		
-		adds protected void createPOImenu() {
+	}
+", "Poi", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void createPOImenu() {
 			poiPanel = new javax.swing.JPanel();		
 			poiPanel.setLayout(new javax.swing.BoxLayout(poiPanel, BoxLayout.PAGE_AXIS));
 			
@@ -38,16 +45,16 @@ delta Poi requires Localization {
 			poiItems.setLayout(new javax.swing.BoxLayout(poiItems, BoxLayout.PAGE_AXIS));
 			
 			javax.swing.JPanel poiHeader = new javax.swing.JPanel();
-			poiSlider = new javax.swing.JSlider(JSlider.HORIZONTAL, 500, 5000, 500);
+			poiSlider = new javax.swing.JSlider(JSlider.HORIZONTAL,500,5000,500);
 			poiSlider.setMajorTickSpacing(2250);
 			poiSlider.setMinorTickSpacing(250);
 			poiSlider.setPaintTicks(Boolean.TRUE);
 			poiSlider.setPaintLabels(Boolean.TRUE);
 			poiSlider.setSnapToTicks(Boolean.TRUE);
-			poiSlider.setPreferredSize(new java.awt.Dimension(150, 40));
+			poiSlider.setPreferredSize(new java.awt.Dimension(150,40));
 			
 			poiCheckAll = new javax.swing.JCheckBox();
-			poiCheckAll.setText("All");
+			poiCheckAll.setText(\"All\");
 			poiCheckAll.setSelected(Boolean.TRUE);
 			poiCheckAll.addItemListener(new java.awt.event.ItemListener() {
 			    public void itemStateChanged(java.awt.event.ItemEvent e) {
@@ -59,20 +66,20 @@ delta Poi requires Localization {
 			
 			poiHeader.add(poiCheckAll);
 			
-			poiHeader.add(new javax.swing.JLabel("| Radius:"));
+			poiHeader.add(new javax.swing.JLabel(\"| Radius:\"));
 			poiHeader.add(poiSlider);
 			
 			poiPanel.add(poiHeader);
 			
 			javax.swing.JScrollPane poiScroll = new javax.swing.JScrollPane(poiItems);
-			poiScroll.setPreferredSize(new java.awt.Dimension(250, 250));
+			poiScroll.setPreferredSize(new java.awt.Dimension(250,250));
 			
 			poiPanel.add(poiScroll);
 			
-			menuPanelList.put("POI", poiPanel);
+			menuPanelList.put(\"POI\", poiPanel);
 		}
-		
-		adds protected void updatePOImenu() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void updatePOImenu() {
 			
 			java.util.List<String> types = getAllPOItypes();
 			for (String type : types) {
@@ -110,9 +117,8 @@ delta Poi requires Localization {
 			poiCheckAll.setSelected(Boolean.TRUE);
 			poiItems.updateUI();
 		}
-	
-	
-		adds private java.util.List<String> getAllPOItypes() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private java.util.List<String> getAllPOItypes() {
 			java.util.List<String> l = new java.util.ArrayList<String>();
 			for (de.tu_bs.cs.isf.navi.poi.POIelement e : POIlist) {
 				for (String s : e.types) {
@@ -123,23 +129,23 @@ delta Poi requires Localization {
 			}
 			return l;
 		}
-	
-		adds protected void findPOI() {
-			String location = "location=" + GPSselect.getLat() + "," + GPSselect.getLon();
-			String radius = "radius=" + String.valueOf(poiSlider.getValue());
-			String type = "";
-			String api_key = "key=AIzaSyBU_1NMbpJ9PPUUrL6WsCqHWKGh0mpiNrU";
-			String request = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" + location + "&" + radius + "&"
-								+ type + "&" + api_key;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void findPOI() {
+			String location = \"location=\" + GPSselect.getLat() + \",\" + GPSselect.getLon();
+			String radius = \"radius=\" + String.valueOf(poiSlider.getValue());
+			String type = \"\";
+			String api_key = \"key=AIzaSyBU_1NMbpJ9PPUUrL6WsCqHWKGh0mpiNrU\";
+			String request = \"https://maps.googleapis.com/maps/api/place/nearbysearch/json?\" + location + \"&\" + radius + \"&\"
+								+ type + \"&\" + api_key;
 			try {
 				java.net.URL url = new java.net.URL(request);
 				java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("accept", "application/json");
+				conn.setRequestMethod(\"GET\");
+				conn.setRequestProperty(\"accept\", \"application/json\");
 						
 				java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader((conn.getInputStream())));
 				String output;
-				String all = "";
+				String all = \"\";
 		
 				while ((output = br.readLine()) != null) {
 					all += output;				
@@ -148,27 +154,27 @@ delta Poi requires Localization {
 				org.json.JSONTokener t = new org.json.JSONTokener(all);									
 				org.json.JSONObject parsed = (org.json.JSONObject) t.nextValue();
 					
-				String status =  parsed.getString("status");
+				String status =  parsed.getString(\"status\");
 				
-				if (!(status.equals("OK"))){ 
-					System.out.println("POI Status: " + status);			
+				if (!(status.equals(\"OK\"))){ 
+					System.out.println(\"POI Status: \" + status);			
 				}
 				
-				org.json.JSONArray resultArray = (org.json.JSONArray) parsed.get("results");
+				org.json.JSONArray resultArray = (org.json.JSONArray) parsed.get(\"results\");
 				
 				for (int i = 0; i < resultArray.length(); i++) {
 					org.json.JSONObject poi = (org.json.JSONObject) resultArray.get(i);
 					
-					org.json.JSONObject loc = (org.json.JSONObject) ((org.json.JSONObject) poi.get("geometry")).get("location");
-					org.openstreetmap.gui.jmapviewer.Coordinate c = new org.openstreetmap.gui.jmapviewer.Coordinate(loc.getDouble("lat"), loc.getDouble("lng"));
-					String name = poi.getString("name");
+					org.json.JSONObject loc = (org.json.JSONObject) ((org.json.JSONObject) poi.get(\"geometry\")).get(\"location\");
+					org.openstreetmap.gui.jmapviewer.Coordinate c = new org.openstreetmap.gui.jmapviewer.Coordinate(loc.getDouble(\"lat\"), loc.getDouble(\"lng\"));
+					String name = poi.getString(\"name\");
 					
 					org.openstreetmap.gui.jmapviewer.MapMarkerDot m = new org.openstreetmap.gui.jmapviewer.MapMarkerDot(name, c);
 					m.setStyle(new org.openstreetmap.gui.jmapviewer.Style(Color.BLACK, Color.RED, null, MapMarkerDot.getDefaultFont()));
 					
 					mapViewer.addMapMarker(m);
 					
-					org.json.JSONArray typeArray = (org.json.JSONArray) poi.get("types");
+					org.json.JSONArray typeArray = (org.json.JSONArray) poi.get(\"types\");
 					java.util.List<String> typeList = new java.util.ArrayList<String>();
 					for (int j = 0; j < typeArray.length(); j++) {					
 						typeList.add(typeArray.getString(j));
@@ -183,8 +189,8 @@ delta Poi requires Localization {
 			} catch (org.json.JSONException e) {
 			}
 		}
-		
-		adds protected void updatePOIvisibility() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void updatePOIvisibility() {
 			java.util.List<javax.swing.JCheckBox> cb = new java.util.ArrayList<javax.swing.JCheckBox>();
 			
 			java.awt.Component[] comps = poiItems.getComponents();
@@ -216,8 +222,8 @@ delta Poi requires Localization {
 				}
 			}
 		}
-		
-		adds protected void clearPOIlist() {
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "protected void clearPOIlist() {
 			for (de.tu_bs.cs.isf.navi.poi.POIelement p : POIlist) {
 				mapViewer.removeMapMarker(p.marker);
 			}
@@ -225,11 +231,8 @@ delta Poi requires Localization {
 			
 			poiItems.removeAll();
 		}
-	}
-	
-	adds {
-	
-		package de.tu_bs.cs.isf.navi.poi;
+");
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/poi/POIelement.java>, "package de.tu_bs.cs.isf.navi.poi;
 
 		import java.util.List;
 		
@@ -247,8 +250,6 @@ delta Poi requires Localization {
 				this.json = json;
 			}
 		
-		}
-			
-	
+		}");
 	}
-}
+	

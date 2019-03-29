@@ -62,21 +62,20 @@ delta POIphoto requires Poi {
 			imgLabel.setIcon(null);
 			imgLabel.setText("");
 		
-			if (!p.json.has("photos")) {
-				imgLabel.setText("NO PHOTO");
-				return;
-			}
-			org.json.JSONArray a = p.json.getJSONArray("photos");
-			if (a.length() == 0) return;
-				
-			String ref = "photoreference=" + a.getJSONObject(0).getString("photo_reference");
-			String api_key = "key=AIzaSyBU_1NMbpJ9PPUUrL6WsCqHWKGh0mpiNrU";
-			String maxwidth = "maxwidth=" + String.valueOf(splitPane.getRightComponent().getWidth());
-				
-			String api = "https://maps.googleapis.com/maps/api/place/photo?" + maxwidth + "&" + ref + "&" + api_key;
-			java.net.URL request;
 			try {
-				request = new java.net.URL(api);
+				if (!p.json.has("photos")) {
+					imgLabel.setText("NO PHOTO");
+					return;
+				}
+				org.json.JSONArray a = p.json.getJSONArray("photos");
+				if (a.length() == 0) return;
+					
+				String ref = "photoreference=" + a.getJSONObject(0).getString("photo_reference");
+				String api_key = "key=AIzaSyBU_1NMbpJ9PPUUrL6WsCqHWKGh0mpiNrU";
+				String maxwidth = "maxwidth=" + String.valueOf(splitPane.getRightComponent().getWidth());
+					
+				String api = "https://maps.googleapis.com/maps/api/place/photo?" + maxwidth + "&" + ref + "&" + api_key;
+				java.net.URL request = new java.net.URL(api);
 				java.awt.Image img = ImageIO.read(request);
 				
 				javax.swing.ImageIcon icon = new javax.swing.ImageIcon(img); 
@@ -84,6 +83,7 @@ delta POIphoto requires Poi {
 					
 			} catch (java.net.MalformedURLException e) {
 			} catch (java.io.IOException e) {
+			} catch (org.json.JSONException e) {
 			}
 		}
 	}

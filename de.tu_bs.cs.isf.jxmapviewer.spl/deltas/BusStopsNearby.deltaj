@@ -125,6 +125,7 @@ delta BusStopsNearby requires Localization {
 			} catch (ProtocolException e) {
 			} catch (MalformedURLException e) {
 			} catch (IOException e) {
+			} catch (org.json.JSONException e) {
 			}
 		}
 		

@@ -1,0 +1,12 @@
+ configuration delta "H24"
+	dialect <http://www.emftext.org/java>
+		requires <Time.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.setLocalizedPattern(SimpleDateFormat)>, "private void setLocalizedPattern(java.text.SimpleDateFormat dateFormat) {
+			dateFormat.applyLocalizedPattern(\"H:mm\");
+		
+		}
+", "H24", false);
+	}
+	

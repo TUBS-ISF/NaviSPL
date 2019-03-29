@@ -1,0 +1,42 @@
+ configuration delta "ttsNavi"
+	dialect <http://www.emftext.org/java>
+		requires <tts.decore>, <Navigation.decore>
+		modifies <de/tu_bs/cs/isf/navi/NaviSimulationThread.java>
+		{
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviSimulationThread>, "public String prevInst;
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviSimulationThread.run()>, "public void run() {
+			prevInst = \"\";
+		run$ttsNavi();
+			}
+", "ttsNavi", true);
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviSimulationThread.currentInstruction(double, String)>, "public void currentInstruction(double distance, String instruction) {
+		currentInstruction$ttsNavi(distance, instruction);
+			String formatedDistance = getFormatedDistance(distance);
+			if (!formatedDistance.contains(\"miles\"))
+				formatedDistance = formatedDistance.replace(\"m\", \"meters\").replace(\"k\", \"kilo\").replace(\"yd\", \"yards\");
+			final String dest = formatedDistance;
+			final String inst = instruction;
+			
+			double distcheck = Math.pow(getCurrentSpeed(),2) / 20;
+			if (!prevInst.equals(inst) && distance < distcheck) {
+				
+				new Thread(new Runnable() {
+
+					public void run() {
+						try {
+							naviApp.voice.getDefaultAudioPlayer().cancel();
+						} catch (InstantiationException e) {
+							e.printStackTrace();
+						}
+						naviApp.voice.getOutputQueue().removeAll();
+						naviApp.voice.speak(\"In \" + dest + \": \" + inst);
+					}
+					
+				}).start();
+				prevInst = inst;
+			}
+			}
+", "ttsNavi", true);
+	}
+	

@@ -40,6 +40,11 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>eu.hyvar.context.contextValidity.resource.hyvalidityformula.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>de.tu_bs.cs.isf.deltaj.resource.deltaj.nature</nature>
@@ -49,5 +54,6 @@
 		<nature>eu.hyvar.feature.constraint.resource.hyconstraints.nature</nature>
 		<nature>eu.hyvar.context.resource.hycontextinformation.nature</nature>
 		<nature>org.emftext.language.java.resource.java.nature</nature>
+		<nature>eu.hyvar.context.contextValidity.resource.hyvalidityformula.nature</nature>
 	</natures>
 </projectDescription>

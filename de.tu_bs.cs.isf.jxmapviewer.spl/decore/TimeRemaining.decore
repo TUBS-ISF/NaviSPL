@@ -1,0 +1,151 @@
+ configuration delta "TimeRemaining"
+	dialect <http://www.emftext.org/java>
+		requires <Navigation.decore>, <TravelTimeInfo.decore>, <RouteDistance.decore>, <Time.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>, <de/tu_bs/cs/isf/navi/NaviSimulationThread.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.text.SimpleDateFormat");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.text.DateFormat");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.text.ParseException");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "java.util.Date");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JPanel remainingTimePanel = new javax.swing.JPanel();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JLabel remainingTimeLabel = new javax.swing.JLabel();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JLabel elapsedTravelTimeLabel = new javax.swing.JLabel();
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private javax.swing.JLabel estimatedArrivalTimeLabel = new javax.swing.JLabel();
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$TimeRemaining();
+			
+			remainingTimePanel.setLayout(new java.awt.GridBagLayout());
+			java.awt.GridBagConstraints bagCon = new java.awt.GridBagConstraints();
+			
+			JLabel remainingTimeDescriptionLabel = new JLabel(\"Remaining Travel Time: \");
+			remainingTimeLabel.setText(\"00:00\");
+			
+			JLabel elapsedTravelTimeDescriptionLabel = new JLabel(\"Travel Time passed: \");
+			elapsedTravelTimeLabel.setText(\"00:00\");
+			
+			JLabel estimatedArrivalTimeDescriptionLabel = new JLabel(\"Estimated Arrival Time: \");
+			estimatedArrivalTimeLabel.setText(\"00:00\");
+			
+			bagCon.fill = 1;
+			bagCon.gridx = 0;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			remainingTimePanel.add(remainingTimeDescriptionLabel, bagCon);
+			bagCon.fill = 1;
+			bagCon.gridx = 1;
+			bagCon.gridy = 0;
+			bagCon.weightx = 1;
+			remainingTimePanel.add(remainingTimeLabel, bagCon);
+			bagCon.fill = 1;
+			bagCon.gridx = 0;
+			bagCon.gridy = 1;
+			bagCon.weightx = 1;			
+			remainingTimePanel.add(elapsedTravelTimeDescriptionLabel, bagCon);
+			bagCon.fill = 1;
+			bagCon.gridx = 1;
+			bagCon.gridy = 1;
+			bagCon.weightx = 1;
+			remainingTimePanel.add(elapsedTravelTimeLabel, bagCon);
+			bagCon.fill = 1;
+			bagCon.gridx = 0;
+			bagCon.gridy = 2;
+			bagCon.weightx = 1;
+			remainingTimePanel.add(estimatedArrivalTimeDescriptionLabel, bagCon);
+			bagCon.fill = 1;
+			bagCon.gridx = 1;
+			bagCon.gridy = 2;
+			bagCon.weightx = 1;
+			remainingTimePanel.add(estimatedArrivalTimeLabel, bagCon);
+			
+			menuPanelList.put(\"Remaining Travel Time\", remainingTimePanel);
+	}
+", "TimeRemaining", true);
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.paintRoute()>, "private void paintRoute() {
+		paintRoute$TimeRemaining();
+			
+			calcRemainingTravelTime();
+		}
+", "TimeRemaining", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void calcRemainingTravelTime() {
+			new Thread(new Runnable() {
+				public void run() {
+					while (naviSim == null) {
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+						}
+					}
+	
+					while (naviSim.stillDriving()) {
+						double speed = naviSim.getCurrentSpeed();
+						double distanceTravelled = naviSim.getDistanceTravelled();
+						double distanceOverall = routingInformation.getRouteDistance();
+						double remainingDistance = distanceOverall - distanceTravelled;
+						double remainingTime = Math.ceil(remainingDistance / (speed / 3.6));
+	
+						String formatedTime = formatTime((int) remainingTime);
+	
+						if (speed == 0) {
+							remainingTimeLabel.setText(durLabel.getText());
+						} else {
+							remainingTimeLabel.setText(formatedTime);
+						}
+	
+						long routeStartTime = naviSim.getRouteStartTime();
+						long currentTravelTime = System.currentTimeMillis() - routeStartTime;
+						elapsedTravelTimeLabel.setText(formatTime((int) Math.ceil(currentTravelTime / 1000)));
+	
+						String currentTime = getTime(GPSselect.getLat(), GPSselect.getLon());
+						
+						DateFormat formatter;
+						SimpleDateFormat dateFormat;
+						if (currentTime.contains(\"PM\") || currentTime.contains(\"AM\")) {
+							formatter = new SimpleDateFormat(\"KK:mm\");
+							dateFormat = new SimpleDateFormat(\"KK:mm\");
+						} else {
+							formatter = new SimpleDateFormat(\"HH:mm\");
+							dateFormat = new SimpleDateFormat(\"HH:mm\");
+						}
+						
+						try {
+							Date date = formatter.parse(currentTime);
+							
+							if (speed == 0) {
+								String estimatedDuration = durLabel.getText();
+								String[] estimatedDurationSplit = estimatedDuration.split(\":\");
+								if(estimatedDurationSplit.length != 2)
+									continue;
+								int estimatedDurationSeconds = Integer.parseInt(estimatedDurationSplit[0]) * 60 * 60 + Integer.parseInt(estimatedDurationSplit[1]) * 60;
+								date.setTime((long) (date.getTime() + estimatedDurationSeconds * 1000));
+							} else {
+								date.setTime((long) (date.getTime() + remainingTime * 1000));
+							}
+							
+							if (currentTime.contains(\"AM\")) {
+								estimatedArrivalTimeLabel.setText(dateFormat.format(date) + \" AM\");
+							} else if (currentTime.contains(\"PM\")) {
+								estimatedArrivalTimeLabel.setText(dateFormat.format(date) + \" PM\");
+							} else {
+								estimatedArrivalTimeLabel.setText(dateFormat.format(date));
+							}
+						} catch (ParseException e) {
+							e.printStackTrace();
+						}
+	
+						try {
+							Thread.sleep(3000);
+						} catch (InterruptedException e) {
+						}
+					}
+				}
+	
+			}).start();
+		}
+");
+	addModifier(<method:de.tu_bs.cs.isf.navi.NaviSimulationThread.stillDriving()>, "public");
+	}
+	

@@ -1,0 +1,71 @@
+ configuration delta "RouteDistance"
+	dialect <http://www.emftext.org/java>
+		requires <Routing.decore>, <Navigation.decore>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>, <de/tu_bs/cs/isf/navi/routing/RoutingCalculator.java>, <de/tu_bs/cs/isf/navi/routing/RoutingInformation.java>, <de/tu_bs/cs/isf/navi/NaviSimulationThread.java>
+		{
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BorderFactory");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.BoxLayout");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "javax.swing.JPanel distancePanel = new javax.swing.JPanel();
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+		addMenu$RouteDistance();
+			addRouteDistance();
+	}
+", "RouteDistance", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "public javax.swing.JPanel addRouteDistance(){
+			
+			final JLabel entireLabel = new JLabel(\"\");
+		
+			distancePanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+		
+			BoxLayout boxLayout = new BoxLayout(distancePanel, BoxLayout.Y_AXIS);
+			
+			distancePanel.setLayout(boxLayout);
+			distancePanel.add(entireLabel);
+		
+			menuPanelList.put(\"Route Distance\", distancePanel);
+		
+			new Thread(new Runnable() {
+	
+				public void run() {
+					while (Boolean.TRUE) {
+						if (naviSim != null) {
+						    writeDistance(distancePanel);
+						}
+						try {
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			}).start();
+		return distancePanel;
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private void writeDistance(javax.swing.JPanel panel){
+			((JLabel) (panel.getComponent(panel.getComponentCount() - 1)))
+							.setText(\"Route Distance: \" + naviSim.getFormatedDistance(routingInformation.getRouteDistance()));
+		}
+");
+	addClassifierImport(<class:de.tu_bs.cs.isf.navi.routing.RoutingCalculator>, "org.json.JSONObject");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.routing.RoutingCalculator.interpretJSONString(String)>, "private void interpretJSONString(String output) throws JSONException {
+		interpretJSONString$RouteDistance(output);
+			JSONObject summary = (JSONObject) routes.get(\"summary\");
+			double routeDistance = (Double) summary.get(\"distance\");
+			route.setRouteDistance(routeDistance);
+			}
+", "RouteDistance", true);
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "private double routeDistance;
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public void setRouteDistance(double input) {
+			this.routeDistance = input;
+		}
+");
+	addMember(<class:de.tu_bs.cs.isf.navi.routing.RoutingInformation>, "public double getRouteDistance() {
+			return this.routeDistance;
+		}
+");
+	addModifier(<method:de.tu_bs.cs.isf.navi.NaviSimulationThread.getFormatedDistance(double)>, "public");
+	}
+	

@@ -1,0 +1,61 @@
+ configuration delta "Information"
+	dialect <http://www.emftext.org/java>
+		creates <de/tu_bs/cs/isf/navi/information/InformationPanel.java>
+		modifies <../src-core/de/tu_bs/cs/isf/navi/NaviApp.java>
+		{
+	addMember(<class:de.tu_bs.cs.isf.navi.NaviApp>, "private de.tu_bs.cs.isf.navi.information.InformationPanel infoPanel = new de.tu_bs.cs.isf.navi.information.InformationPanel();
+");
+	modifyStatementListContainer(<method:de.tu_bs.cs.isf.navi.NaviApp.addMenu()>, "public void addMenu() {
+			menuPanelList.put(\"Info\", infoPanel);
+		addMenu$Information();
+	}
+", "Information", true);
+	addClassifier(<resource:de/tu_bs/cs/isf/navi/information/InformationPanel.java>, "package de.tu_bs.cs.isf.navi.information;
+
+		import java.awt.GridBagConstraints;
+		import java.awt.GridBagLayout;
+
+		import javax.swing.JPanel;
+
+		public class InformationPanel extends JPanel {
+
+			private GridBagConstraints constraints;
+			private GridBagLayout gridLayout;
+
+			public InformationPanel() {
+				setGridLayout(new GridBagLayout());
+				setConstraints(new GridBagConstraints());
+				this.setLayout(getGridLayout());
+				getConstraints().fill = 2;
+				getConstraints().gridx = 0;
+				getConstraints().gridy = -1;
+				getConstraints().weightx = 1;
+				getConstraints().gridheight = 1;
+				getConstraints().gridwidth = 1;
+				getConstraints().weighty = 0;
+			}
+
+			public void addInformationFeature(javax.swing.JComponent feature) {
+				getConstraints().gridy++;
+				this.add(feature, getConstraints());
+			}
+
+			public GridBagConstraints getConstraints() {
+				return constraints;
+			}
+
+			public void setConstraints(GridBagConstraints constraints) {
+				this.constraints = constraints;
+			}
+
+			public GridBagLayout getGridLayout() {
+				return gridLayout;
+			}
+
+			public void setGridLayout(GridBagLayout gridLayout) {
+				this.gridLayout = gridLayout;
+			}
+	
+		}");
+	}
+	
