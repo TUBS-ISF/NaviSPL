@@ -1,0 +1,21 @@
+feature model <NavigationSystem.tfm>
+
+LocationImages -> !Orientation [2017/09/18T10:26:22 - eternity]
+RouteHistory -> Routecalculation [2017/09/19T00:00:00 - eternity]
+FavoriteRoute -> Routecalculation [2017/09/21T13:42:20 - eternity]
+Navigation -> Routecalculation [2017/09/19T13:00:00 - eternity]
+
+Truck -> Wind [2017/09/21 - eternity]
+Pedestrian -> StandardZoom [2017/09/21 - eternity]
+
+SuggestionFav -> Favorites [2017/09/22 - eternity]
+SuggestionHistory -> History [2017/09/22 - eternity]
+
+InfoGroup -> Time || Weather || TravelTime [2017/09/22 - 2017/09/25]
+InfoGroup -> Time || Weather || TravelTime || RouteDistance [2017/09/25 - eternity]
+
+TTSNavi -> Navigation [2017/09/25 - eternity]
+
+TravelTime -> Routecalculation [2017/09/26 - eternity]
+RemainingTravelTime -> Navigation [2017/09/26 - eternity]
+RemainingTravelTime -> Time [2017/09/22 - eternity]
