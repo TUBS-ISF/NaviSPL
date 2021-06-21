@@ -23,6 +23,7 @@ import org.openstreetmap.gui.jmapviewer.interfaces.TileLoaderListener;
  */
 public class OsmTileLoader implements TileLoader {
     private static final ThreadPoolExecutor jobDispatcher = (ThreadPoolExecutor) Executors.newFixedThreadPool(8);
+	private static final String USER_AGENT = "JMapViewer/1.0";
 
     private final class OsmTileJob implements TileJob {
         private final Tile tile;
@@ -121,6 +122,8 @@ public class OsmTileLoader implements TileLoader {
         URL url;
         url = new URL(tile.getUrl());
         URLConnection urlConn = url.openConnection();
+        urlConn.setRequestProperty("User-Agent", USER_AGENT);
+		
         if (urlConn instanceof HttpURLConnection) {
             prepareHttpUrlConnection((HttpURLConnection) urlConn);
         }
