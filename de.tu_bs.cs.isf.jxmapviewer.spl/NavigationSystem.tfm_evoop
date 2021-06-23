@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="ASCII"?>
+<operation:DwEvolutionOperationModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:operation="http://www.darwinspl.de/feature/operation/2.0">
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_b59edbe8-fdbd-4ca2-9f1b-c9a5a2edb893" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+    <featureAddOperation id="_74ff2f5b-9389-4e6b-88cb-a027b5eff97f" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+      <parent href="NavigationSystem.tfm#_0b467fa2-480c-4a71-aca3-4ec82e659cdd"/>
+      <groupToAddTo href="NavigationSystem.tfm#_e1375de2-bf25-4ba5-93b3-36de9af9a732"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_b9ee8fde-47d7-4dca-8a7a-2cb9772365c5" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newNameString="Map" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_1425de54-3449-4be5-beff-c761385e8915" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_b459fbdf-4e4c-476b-816e-efd72aa29fa5"/>
+    <detachOperation id="_e73a70cc-190a-4a1b-8bf7-c7b635689d2d" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_b459fbdf-4e4c-476b-816e-efd72aa29fa5"/>
+    </detachOperation>
+    <addOperation id="_353064bc-577b-4c9f-ba14-ab704cd73ed8" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_b459fbdf-4e4c-476b-816e-efd72aa29fa5"/>
+      <parent href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+      <groupCreateOperation id="_18a8d5ca-97da-4dab-b962-8bec83543883" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+        <groupAddOperation id="_0c8462d7-eca2-434e-ae13-af6bc23b73f7" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+          <parentFeature href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_c04353e4-6943-43fb-bf1a-3ba7a6ae4121" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_ba01cbec-0216-48e5-a6cf-1c742d716f1d" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_eb064775-ba22-4774-97df-9ef64e49b41f"/>
+    <detachOperation id="_bfc89190-b616-4ae9-86e2-cb82fe7827e9" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_eb064775-ba22-4774-97df-9ef64e49b41f"/>
+    </detachOperation>
+    <addOperation id="_38ce28a1-eee6-48e9-8ff3-db7a8a602d9f" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_eb064775-ba22-4774-97df-9ef64e49b41f"/>
+      <parent href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+      <groupToAddTo href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureTypeChangeOperation" id="_7358fad2-fbd8-4acb-a517-8f7ac2ac3a1d" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newFeatureTypeEnum="MANDATORY">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_99c95a05-062a-46a1-b043-af2286b004e1" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+    <featureAddOperation id="_9061fb96-a710-4b3a-847f-effb4603344b" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <parent href="NavigationSystem.tfm#_0b467fa2-480c-4a71-aca3-4ec82e659cdd"/>
+      <groupToAddTo href="NavigationSystem.tfm#_e1375de2-bf25-4ba5-93b3-36de9af9a732"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_f5be951b-7508-44eb-b587-fca2639cdd8c" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newNameString="Route" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_8b7981af-a257-4edc-b1e9-b5df6518518d" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+    <detachOperation id="_75024c25-a40c-4f4f-bfe1-c5044de2c376" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+    </detachOperation>
+    <addOperation id="_de143843-0f42-4130-93e4-eb528023454f" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+      <parent href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <groupCreateOperation id="_24265a80-bb20-4f3d-8717-df14940d2790" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+        <groupAddOperation id="_ce21ebbe-cdbd-4583-a750-a56370fa06d9" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+          <parentFeature href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_5a0fa8fc-dd04-48a4-b7b7-f352a4c6655a" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_9ebb588f-e5a5-4375-8fd0-1ca0f5e38697" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9fb86370-750c-45de-9640-29fb47e951c5"/>
+    <detachOperation id="_a3434b2d-6a66-434b-b9d4-70ba2af7d903" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9fb86370-750c-45de-9640-29fb47e951c5"/>
+    </detachOperation>
+    <addOperation id="_0289d182-51d9-461c-90ce-a47b2fd366e1" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9fb86370-750c-45de-9640-29fb47e951c5"/>
+      <parent href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <groupToAddTo href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_96f6d2ac-11b6-4e40-a3dd-c7777d52de1e" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+    <featureAddOperation id="_620606ed-b830-43ff-bfa5-b75642733791" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <parent href="NavigationSystem.tfm#_0b467fa2-480c-4a71-aca3-4ec82e659cdd"/>
+      <groupToAddTo href="NavigationSystem.tfm#_e1375de2-bf25-4ba5-93b3-36de9af9a732"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_ad8c2227-2d0d-4054-87cd-738f44f16227" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newNameString="Information" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_5c19ef60-ab55-4f28-ac16-bf95cfdb30bd" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_b3d5aae0-3a3b-43ac-bdfc-a1c45523958f"/>
+    <featureAddOperation id="_353768ea-ff97-4a64-95ac-b87d79775cef" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_b3d5aae0-3a3b-43ac-bdfc-a1c45523958f"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupCreateOperation id="_8909d715-9f02-49a8-92e7-462edb6e29f7" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+        <groupAddOperation id="_8b2c4309-e560-4012-b7e4-f2c54d33ab6f" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+          <parentFeature href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_e9a75585-695c-4266-a86f-f0c085ce6ca5" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_f2dc3565-02aa-460b-8417-15f59f256151" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newNameString="LocationImages" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_b3d5aae0-3a3b-43ac-bdfc-a1c45523958f"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_a7ff16dc-d57f-451e-aa81-af8cdbfda2ee" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0f6d4003-3bfd-4943-af3f-e05141c1e942"/>
+    <featureAddOperation id="_95cdaa7d-1e30-4dd0-ae0d-9fca95190c95" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_0f6d4003-3bfd-4943-af3f-e05141c1e942"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_e77eb9f5-01c0-4547-be01-6ae43e847999" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newNameString="POI" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0f6d4003-3bfd-4943-af3f-e05141c1e942"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_032591e7-5240-4c0d-8c22-bae1927cc544" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0a1b962b-f6c4-49d1-897c-cbd14821ec7f"/>
+    <featureAddOperation id="_ba6bc369-97e1-488f-9b11-fcaba830432c" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_0a1b962b-f6c4-49d1-897c-cbd14821ec7f"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_fa07a2b1-8b09-41a5-9679-3716d53dadb8" operationDate="2017-09-11T13:42:00.000+0200" contributor="windo7088%40someone.com" newNameString="Weather" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0a1b962b-f6c4-49d1-897c-cbd14821ec7f"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_4f215ba6-766d-4707-bdca-37f5d5a34d6a" operationDate="2017-09-12T12:00:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="OR">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_5371cdf9-f14b-4b84-b5ec-afc0438043f1" operationDate="2017-09-12T12:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+    <featureAddOperation id="_f30c4a20-9f73-4924-bd62-3ca645f4e1c9" operationDate="2017-09-12T12:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_1057e950-ea71-4ac8-8acd-01f41e69ed29" operationDate="2017-09-12T12:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_2064f3e9-3963-4c41-92f2-80dd4eb05501" operationDate="2017-09-12T12:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Time" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_1d0a4e90-b612-4c84-8784-a1c394e1d629" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+    <featureAddOperation id="_92a183e0-24c4-4055-82ee-1bdc0f12bb8a" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+      <parent href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <groupToAddTo href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_490eca81-c522-4df5-b73b-590c783f2b67" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com" newNameString="History" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_c62889a7-e249-42f6-9beb-33b248b486c5" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+    <featureAddOperation id="_f82a7371-3ae0-4dbf-ba0b-c634317e9469" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_68e21940-73ac-4d05-b180-2430b00cec82" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_ea36ec0e-2629-4605-8c25-67aff1799aff" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com" newNameString="Speedlimit" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_b8f9a9d2-16da-4d01-89c2-91ee9e9295e0" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+    <featureAddOperation id="_a778a084-57a9-4d9c-a09c-966955b17d06" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_488c624a-c749-4772-b679-faf2892e3983" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_1d506838-2c5f-42fb-972d-150d8683586b" operationDate="2017-09-14T12:56:00.000+0200" contributor="windo7088%40someone.com" newNameString="Carpooling" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_548f44ad-bc38-4881-a4ed-1179208e7af7" operationDate="2017-09-15T09:09:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_b3d5aae0-3a3b-43ac-bdfc-a1c45523958f"/>
+    <detachOperation id="_8280dfdf-2021-4f6b-9e0c-8ebe7fc307d7" operationDate="2017-09-15T09:09:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_b3d5aae0-3a3b-43ac-bdfc-a1c45523958f"/>
+    </detachOperation>
+    <addOperation id="_f42eea4d-7fde-433e-ac04-879e920b2d3e" operationDate="2017-09-15T09:09:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_b3d5aae0-3a3b-43ac-bdfc-a1c45523958f"/>
+      <parent href="NavigationSystem.tfm#_0f6d4003-3bfd-4943-af3f-e05141c1e942"/>
+      <groupCreateOperation id="_fcc6913f-5527-41a3-bc37-43d7b5586641" operationDate="2017-09-15T09:09:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_489fd2ce-d3f3-4ae8-ab0e-add7225ec7e0"/>
+        <groupAddOperation id="_168caeaf-471a-4f3c-b468-5fbb252e7033" operationDate="2017-09-15T09:09:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_489fd2ce-d3f3-4ae8-ab0e-add7225ec7e0"/>
+          <parentFeature href="NavigationSystem.tfm#_0f6d4003-3bfd-4943-af3f-e05141c1e942"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_edc05fca-c9b4-47cd-8cb9-ab7fe7c19bec" operationDate="2017-09-15T09:09:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_489fd2ce-d3f3-4ae8-ab0e-add7225ec7e0"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_489fd2ce-d3f3-4ae8-ab0e-add7225ec7e0"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_d003d0b8-8ca7-4986-8549-dee14d913625" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="OR">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_1c0ffbb7-0d55-4281-96e3-e9db31985916" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_244d4a92-ff18-4e91-8973-8f280a179be8"/>
+    <featureAddOperation id="_aa2f2f36-db03-4f6b-9765-dccb77d2bc4d" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_244d4a92-ff18-4e91-8973-8f280a179be8"/>
+      <parent href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+      <groupCreateOperation id="_6bdbd046-f6b0-493d-9f57-ba2f720359fc" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+        <groupAddOperation id="_71687801-7747-42ff-9b7b-476de91cc9b9" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+          <parentFeature href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_80425bd9-6ed7-4fb8-b0c0-ecefad6667b4" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_2fb0a987-f34e-4b99-838a-f1678df958cc" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com" newNameString="None" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_244d4a92-ff18-4e91-8973-8f280a179be8"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_cb24ccff-ab0b-48fa-8f43-57b5b16be4d7" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1193c0c9-c4b4-4404-8c01-91a4e12a6e1b"/>
+    <featureAddOperation id="_8089d481-05a7-4395-97e2-9ea0c3c8a928" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_1193c0c9-c4b4-4404-8c01-91a4e12a6e1b"/>
+      <parent href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+      <groupToAddTo href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_e1876312-aaa3-47a5-8c55-6f283d248a09" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com" newNameString="112" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1193c0c9-c4b4-4404-8c01-91a4e12a6e1b"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_3c6a9735-a584-4762-9ff2-e3f307bfd266" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9963bb7a-022d-4b66-b881-16c1c2be607e"/>
+    <featureAddOperation id="_23907db7-70ef-4158-bb03-9dcc9c6b17f4" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9963bb7a-022d-4b66-b881-16c1c2be607e"/>
+      <parent href="NavigationSystem.tfm#_2418b2e3-7140-4bc6-bc0d-70f2d380538c"/>
+      <groupToAddTo href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_c91758e6-babd-4789-aca7-95696418b3ea" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com" newNameString="130" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9963bb7a-022d-4b66-b881-16c1c2be607e"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_ef98a0e3-056c-4a4a-94d0-b3d90a55a0f0" operationDate="2017-09-18T10:26:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="ALTERNATIVE">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_9dd2be29-58ba-46f0-9142-e91c7be6a1e7"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_715ef0d0-27f7-4996-93fb-e21f5fe8a001" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+    <featureAddOperation id="_ffb7520c-d3a2-4cb8-97f0-622c493d6d95" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+      <parent href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+      <groupCreateOperation id="_32d0f512-b878-4076-aaab-d8343baa810e" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+        <groupAddOperation id="_405b765c-bdf0-4087-ba6f-575ca9033a3d" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+          <parentFeature href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_6242a558-1839-4682-9ebe-df8c16e25e61" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_13933ec7-389a-4ebb-9581-533536d24963" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="Navigation" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_04db1c8d-e512-4fe2-8fac-c24d2d0bdc32" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+    <featureAddOperation id="_ee721898-7ca1-453f-a3d0-0adc7f0b021f" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <parent href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+      <groupToAddTo href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_49e610e3-2ff5-41c6-8606-f04d2443e9b3" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="RouteDistance" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_6062f79c-4f7b-4ada-83ce-3d05cdde0fb2" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_a8b5b31b-a80c-4c3b-a066-3e3e0ccb4bf7"/>
+    <featureAddOperation id="_7439aaf2-4170-48c1-939c-0b8004ce3e12" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_a8b5b31b-a80c-4c3b-a066-3e3e0ccb4bf7"/>
+      <parent href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <groupCreateOperation id="_e2ea7406-646b-48e9-915d-9a090e0f7596" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_a4845e69-19c4-4590-bbeb-f3f2b7635f2c"/>
+        <groupAddOperation id="_0d399278-1e12-497f-8280-295b567ecbcf" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_a4845e69-19c4-4590-bbeb-f3f2b7635f2c"/>
+          <parentFeature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_b5f2140f-a032-445e-8d67-5e7cc8f133ee" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_a4845e69-19c4-4590-bbeb-f3f2b7635f2c"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_a4845e69-19c4-4590-bbeb-f3f2b7635f2c"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_d24c5e71-859a-4a22-8a16-f382ddd4f428" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="RemainingDistance" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_a8b5b31b-a80c-4c3b-a066-3e3e0ccb4bf7"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_5def6d20-36da-4ec3-b92e-2ccfb9b86ffc" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+    <featureAddOperation id="_1acf1f38-72e0-48af-994e-0ea301f44d6e" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      <parent href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <groupToAddTo href="NavigationSystem.tfm#_a4845e69-19c4-4590-bbeb-f3f2b7635f2c"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_4ca7f21d-e130-40ee-b511-d4e66716d0f6" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="TravelTime" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_fc95f55a-2d33-4f6b-9f71-b21a2dda9f2d" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1e6e705b-2890-4cef-9059-9ae9c8222c66"/>
+    <featureAddOperation id="_25602624-f2c5-4a88-b8cb-65ac4e8e048c" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_1e6e705b-2890-4cef-9059-9ae9c8222c66"/>
+      <parent href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      <groupCreateOperation id="_3a382035-2bd4-4b67-914d-4a843ba88a7c" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_0f559b60-2364-4c1a-907e-65e549617f19"/>
+        <groupAddOperation id="_34ddca9f-6086-47b9-9b96-aeb426b91983" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_0f559b60-2364-4c1a-907e-65e549617f19"/>
+          <parentFeature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_b3e0e289-b41c-4359-87e3-6fe9cfad0d62" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_0f559b60-2364-4c1a-907e-65e549617f19"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_0f559b60-2364-4c1a-907e-65e549617f19"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_8556f852-2156-4f53-a1d2-88f083890d69" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="RemainingTravelTime" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1e6e705b-2890-4cef-9059-9ae9c8222c66"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_7ef98cd1-f604-420f-a3cf-b69ce568b497" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+    <featureAddOperation id="_2f8a24fd-f97a-493f-9043-35480cf1c4ec" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+      <parent href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <groupToAddTo href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+      <consequentFeatureTypeChangeOperation id="_ea97cfaf-896b-438d-bab9-507e88ae0f0a" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_6bb6c3bd-cfec-4c28-b483-9c544bba3ced" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="Suggestions" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_d3086148-4b32-49ea-9290-097b451f9303" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9ae02f1b-fece-498e-aedf-5a3ab8c8a53a"/>
+    <featureAddOperation id="_77bdb1a6-3ecb-4d35-88e2-d74ea5f2b2df" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9ae02f1b-fece-498e-aedf-5a3ab8c8a53a"/>
+      <parent href="NavigationSystem.tfm#_0a1b962b-f6c4-49d1-897c-cbd14821ec7f"/>
+      <groupCreateOperation id="_a890f1a2-af68-48fa-b1c0-457aebcde0c2" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_e41bf3fb-108d-4fc6-a915-03769ac2642c"/>
+        <groupAddOperation id="_423c3ebd-9e35-4adb-be2d-28e7a7ca6730" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_e41bf3fb-108d-4fc6-a915-03769ac2642c"/>
+          <parentFeature href="NavigationSystem.tfm#_0a1b962b-f6c4-49d1-897c-cbd14821ec7f"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_981fd7fe-7b2d-4d3c-b847-e060c8fe000f" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_e41bf3fb-108d-4fc6-a915-03769ac2642c"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_e41bf3fb-108d-4fc6-a915-03769ac2642c"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_d6650aa0-0734-4bda-ba02-fc0828832bbf" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="Wind" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9ae02f1b-fece-498e-aedf-5a3ab8c8a53a"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_e1660013-170f-4dcf-9c3e-3172acdc7927" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="sNone" oldNameString="None">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_244d4a92-ff18-4e91-8973-8f280a179be8"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_446f19be-fbd9-4f8d-b4d6-3d35541e507d" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="s112" oldNameString="112">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1193c0c9-c4b4-4404-8c01-91a4e12a6e1b"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_af6bef50-5055-4068-ad40-7da4845342a0" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="s130" oldNameString="130">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9963bb7a-022d-4b66-b881-16c1c2be607e"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_201b2e8d-af3b-46ba-a4f4-baa1bc8d4e57" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1dc968d8-b013-48cc-852b-5fb1c6bbccc5"/>
+    <featureAddOperation id="_c8ee02d7-775f-40e5-ba78-59bade30c0d3" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_1dc968d8-b013-48cc-852b-5fb1c6bbccc5"/>
+      <parent href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+      <groupCreateOperation id="_0ec928ef-748b-4e96-b6ba-7014a484f563" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_45af5b82-56b4-4b5a-b196-5a004600d98a"/>
+        <groupAddOperation id="_fba0136e-a254-4ec0-9385-d78b5018941b" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_45af5b82-56b4-4b5a-b196-5a004600d98a"/>
+          <parentFeature href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_db16ac79-975f-4bbe-9e1f-49538bc72fbd" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_45af5b82-56b4-4b5a-b196-5a004600d98a"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_45af5b82-56b4-4b5a-b196-5a004600d98a"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_3e9d3c77-9ca9-4fd6-835e-bf2ad74a9970" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="H12" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1dc968d8-b013-48cc-852b-5fb1c6bbccc5"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_d04ba827-d6d3-4264-b627-74981e20dd26" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_5fb57347-233d-4835-be11-7a37fbbe961e"/>
+    <featureAddOperation id="_eb374e8b-15e8-447a-aabf-5e3f622eeff4" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_5fb57347-233d-4835-be11-7a37fbbe961e"/>
+      <parent href="NavigationSystem.tfm#_31708bb4-0eb3-41fb-bf18-47672078a9fb"/>
+      <groupToAddTo href="NavigationSystem.tfm#_45af5b82-56b4-4b5a-b196-5a004600d98a"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_5211e22d-3735-47f0-9cc2-5ec355f80f14" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newNameString="H24" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_5fb57347-233d-4835-be11-7a37fbbe961e"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_2f801746-a055-460d-8db4-950114340a1e" operationDate="2017-09-18T13:32:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="ALTERNATIVE">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_45af5b82-56b4-4b5a-b196-5a004600d98a"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_81beda21-6ba7-4d14-910e-953ce71314e3" operationDate="2017-09-19T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_247b9b85-ea14-4d34-920e-cf7884e10341"/>
+    <featureAddOperation id="_67570dd4-a0a1-4792-9624-bc340c68647a" operationDate="2017-09-19T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_247b9b85-ea14-4d34-920e-cf7884e10341"/>
+      <parent href="NavigationSystem.tfm#_0f6d4003-3bfd-4943-af3f-e05141c1e942"/>
+      <groupToAddTo href="NavigationSystem.tfm#_489fd2ce-d3f3-4ae8-ab0e-add7225ec7e0"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_7b5a0734-3c55-4bbe-8df2-3fc6a412ff82" operationDate="2017-09-19T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Wikipedia" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_247b9b85-ea14-4d34-920e-cf7884e10341"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_499e4a28-e064-4581-b291-62d1433c3200" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_e27c4e25-bce3-4d5a-80fb-260b6a1cd464"/>
+    <featureAddOperation id="_2f571019-f20b-4124-b349-bb17789346db" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_e27c4e25-bce3-4d5a-80fb-260b6a1cd464"/>
+      <parent href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+      <groupToAddTo href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_dc447235-d2eb-40f6-98f3-5bf6aef2300f" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="StandardZoom" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_e27c4e25-bce3-4d5a-80fb-260b6a1cd464"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_be960d26-a920-469e-a76b-6fba937d7194" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+    <detachOperation id="_785d2cc4-4233-4eb5-88ee-1ee657e2d230" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+    </detachOperation>
+    <addOperation id="_41d95ba1-5f8d-4112-a706-b78a2fe202e3" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+      <parent href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <groupToAddTo href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+      <consequentFeatureTypeChangeOperation id="_f6996dce-f7a3-45d7-be53-e22dc79e81d0" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+      </consequentFeatureTypeChangeOperation>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_9606c82f-534c-4e89-85a2-321029b149ec" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+    <detachOperation id="_a9f718bd-8a91-4737-9aea-2dd477a39329" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <consequentGroupOperation id="_5e0d8874-7b53-4d18-92e6-f120c2062ed2" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+        <detachOperation id="_e9f1baea-4dda-4b55-b28b-ed965832853a" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_90ebb4e2-3736-47bb-831a-4c4e000fd569"/>
+        </detachOperation>
+      </consequentGroupOperation>
+    </detachOperation>
+    <addOperation id="_61c2e40c-77f8-422c-8a4b-6d6f8dfa8b2c" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <parent href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+      <groupCreateOperation id="_3dab1fa7-6775-414a-91cd-19196836c427" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_b8e2edcd-f33b-4709-9255-d33be25acb18"/>
+        <groupAddOperation id="_eb921617-913d-4d65-afde-d511a495becb" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_b8e2edcd-f33b-4709-9255-d33be25acb18"/>
+          <parentFeature href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_dc4dc039-f375-4442-afbe-104b87c1525b" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_b8e2edcd-f33b-4709-9255-d33be25acb18"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_b8e2edcd-f33b-4709-9255-d33be25acb18"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_8652e831-f3f3-4b84-a40f-685535c4bad7" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9d986247-750a-4d5d-be0d-90d2c8d19b65"/>
+    <featureAddOperation id="_88a03851-652b-4568-b894-6cc142c16b2d" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9d986247-750a-4d5d-be0d-90d2c8d19b65"/>
+      <parent href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+      <groupCreateOperation id="_d689a93d-ef00-417d-95e6-4c2701f789af" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+        <groupAddOperation id="_e8d105fd-6e89-452a-848f-8865319d93c5" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+          <parentFeature href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_d25c8876-41e3-4c4a-a710-1779949630ea" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_5f54adf0-0ec3-4592-8106-66ffae798a70" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Pedestrian" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9d986247-750a-4d5d-be0d-90d2c8d19b65"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_aea5837b-8893-47c4-b527-5c2f1b5a4f92" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_f830ea31-b787-4887-a2dd-8fb995f8e5c1"/>
+    <featureAddOperation id="_d13eb003-b560-456d-a955-3bce6e11c056" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_f830ea31-b787-4887-a2dd-8fb995f8e5c1"/>
+      <parent href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+      <groupToAddTo href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_530a5b17-936c-4096-95cb-5ce19c82fbcc" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Car" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_f830ea31-b787-4887-a2dd-8fb995f8e5c1"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_bdf7fede-9211-46a0-8e47-87e5a99652a3" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="ALTERNATIVE">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_59845576-9c39-452c-bac4-901d7e11733d" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0f35d7f6-ac68-4dc4-a14f-8467ee19f83a"/>
+    <featureAddOperation id="_2e72bedf-9d9d-4e38-8ddc-7e4a7f137ed6" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_0f35d7f6-ac68-4dc4-a14f-8467ee19f83a"/>
+      <parent href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+      <groupCreateOperation id="_39141d6c-a609-45b2-b5b4-f11f622cdeb7" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_d34ee3c6-df0b-4fa0-b6c7-184d4c78d81f"/>
+        <groupAddOperation id="_a9e110e2-4697-4e72-82a5-ed4ce0f42e41" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_d34ee3c6-df0b-4fa0-b6c7-184d4c78d81f"/>
+          <parentFeature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_889ead75-712e-4e19-9e31-0e3eaa71f66a" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_d34ee3c6-df0b-4fa0-b6c7-184d4c78d81f"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_d34ee3c6-df0b-4fa0-b6c7-184d4c78d81f"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_49f35e89-006b-4f01-ba49-1f7fdb3720d3" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="RouteHistory" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0f35d7f6-ac68-4dc4-a14f-8467ee19f83a"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_afbf6b99-5978-4791-8fcb-6942a9ed853b" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_36c1be5f-b80e-49ce-8369-0fbbe6d456d1"/>
+    <featureAddOperation id="_e56b825b-9e2c-4593-ad9a-e580e68abedf" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_36c1be5f-b80e-49ce-8369-0fbbe6d456d1"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_f6c30a5b-d967-4576-b616-ea8f7099723a" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_36c1be5f-b80e-49ce-8369-0fbbe6d456d1"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_09aab589-8c67-462a-946a-8bffeceddd95" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="BusStops" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_36c1be5f-b80e-49ce-8369-0fbbe6d456d1"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_e19f7943-2ca4-4b9b-9c25-36619995af98" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0f683342-d8ba-4f18-8fd1-3e3960ca1d4a"/>
+    <featureAddOperation id="_aeb5fab1-5413-44f6-a1dc-01c0fa79f6b7" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_0f683342-d8ba-4f18-8fd1-3e3960ca1d4a"/>
+      <parent href="NavigationSystem.tfm#_0b467fa2-480c-4a71-aca3-4ec82e659cdd"/>
+      <groupToAddTo href="NavigationSystem.tfm#_e1375de2-bf25-4ba5-93b3-36de9af9a732"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_f00d4b71-95ae-406a-aca0-1971150b9cb1" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Services" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_0f683342-d8ba-4f18-8fd1-3e3960ca1d4a"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_65216f5a-3090-4ba9-83b8-b5e7f54cf553" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+    <detachOperation id="_24da8b1f-b816-47d3-a84d-98774a7acac8" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+    </detachOperation>
+    <addOperation id="_2981b2dc-d29b-4041-9129-f53c3c5052b8" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_f4256212-4c78-4b3f-928b-f62861cbb4a7"/>
+      <parent href="NavigationSystem.tfm#_0f683342-d8ba-4f18-8fd1-3e3960ca1d4a"/>
+      <groupCreateOperation id="_4a18bc56-ed4c-4f27-befc-4a5a1d852fc8" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_194ef9b1-0ef5-4fce-ae4b-b25c89940fa4"/>
+        <groupAddOperation id="_09b52532-613b-4ca9-9f91-00fe8fc2dee9" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_194ef9b1-0ef5-4fce-ae4b-b25c89940fa4"/>
+          <parentFeature href="NavigationSystem.tfm#_0f683342-d8ba-4f18-8fd1-3e3960ca1d4a"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_da813d59-cdb3-4f11-96bb-71f0070986b9" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_194ef9b1-0ef5-4fce-ae4b-b25c89940fa4"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_194ef9b1-0ef5-4fce-ae4b-b25c89940fa4"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_bbbbc0f8-bf4a-4d05-9dae-2c73eee7afde" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_aa498cd1-542a-4651-bce6-fd41f982d7ff"/>
+    <featureAddOperation id="_0e11adea-fb18-4001-abf4-f1ccf876ae24" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_aa498cd1-542a-4651-bce6-fd41f982d7ff"/>
+      <parent href="NavigationSystem.tfm#_0f683342-d8ba-4f18-8fd1-3e3960ca1d4a"/>
+      <groupToAddTo href="NavigationSystem.tfm#_194ef9b1-0ef5-4fce-ae4b-b25c89940fa4"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_d548d21f-43b8-4c11-b984-966baffd2106" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Taxi" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_aa498cd1-542a-4651-bce6-fd41f982d7ff"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_10290ff5-dfc1-4ea2-9235-003c9e85c06a" operationDate="2017-09-19T13:00:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="OR">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_194ef9b1-0ef5-4fce-ae4b-b25c89940fa4"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_bed997f1-3ec6-4c2a-a3b0-ae2793b36570" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+    <detachOperation id="_319c9ee4-8f8b-4048-817a-66489eea9afc" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+    </detachOperation>
+    <addOperation id="_940082ee-51d8-49e5-ae98-bab44a39f22a" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_a9a168a4-78e4-4e69-8436-d5dca3705be8"/>
+      <parent href="NavigationSystem.tfm#_5f3a315a-aad3-4d30-937c-5db18204ed60"/>
+      <groupToAddTo href="NavigationSystem.tfm#_17dfcfbb-a12f-4e7f-a623-3efd89f6b497"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_04bed3a1-5f4f-4f66-b593-0e43ffcf21f8" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_c4fd2b3e-3a9f-4d67-93f7-1a42a8474158"/>
+    <featureAddOperation id="_119e8606-e6eb-4548-b109-56a8ce924c62" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_c4fd2b3e-3a9f-4d67-93f7-1a42a8474158"/>
+      <parent href="NavigationSystem.tfm#_9fb86370-750c-45de-9640-29fb47e951c5"/>
+      <groupCreateOperation id="_e9630081-bb5c-4c41-9202-bddd57dba3ff" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_f50d3d6f-fb87-40f1-8423-f5867158e56b"/>
+        <groupAddOperation id="_74273294-fee4-4b31-8af5-68c52a8892e6" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_f50d3d6f-fb87-40f1-8423-f5867158e56b"/>
+          <parentFeature href="NavigationSystem.tfm#_9fb86370-750c-45de-9640-29fb47e951c5"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_a1cdd4c1-1de4-4162-b18f-19708f12a793" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_f50d3d6f-fb87-40f1-8423-f5867158e56b"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_f50d3d6f-fb87-40f1-8423-f5867158e56b"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_61028278-433f-444f-ab78-2a223cec2231" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="FavoriteRoute" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_c4fd2b3e-3a9f-4d67-93f7-1a42a8474158"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_02da2b21-422b-4f6e-b8ea-0b99e613a94d" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_68ec298b-4123-4a79-9910-eb683132dbfc"/>
+    <featureAddOperation id="_aadcfe61-fffb-4be6-9e2a-aaa9907b7cbc" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_68ec298b-4123-4a79-9910-eb683132dbfc"/>
+      <parent href="NavigationSystem.tfm#_6d8fbc70-e647-4b90-a16e-e9fd801da9fb"/>
+      <groupToAddTo href="NavigationSystem.tfm#_386638ec-a44a-40d2-a2f6-4bd9ec557aba"/>
+      <consequentFeatureTypeChangeOperation id="_7d236bf4-8e25-4c92-b300-6df48cd00885" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_68ec298b-4123-4a79-9910-eb683132dbfc"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_2e5fa6e1-e740-4496-881d-780dfe7af7a3" operationDate="2017-09-20T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Truck" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_68ec298b-4123-4a79-9910-eb683132dbfc"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_88e9780a-feda-4598-a4be-bbac8047245b" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+    <detachOperation id="_f328ece0-a349-4ecb-9fe3-37844b6cfcd8" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+    </detachOperation>
+    <addOperation id="_5044b1b1-4e6e-40d5-9e7c-8d08b9a691c1" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      <parent href="NavigationSystem.tfm#_9d4ecd2b-605b-4486-99c3-69a6cc0e89ad"/>
+      <groupToAddTo href="NavigationSystem.tfm#_b8e2edcd-f33b-4709-9255-d33be25acb18"/>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_1f6e3e6d-856f-4d45-8693-0f61a1949d25" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_59146388-2e9f-4e74-9a46-438053e6db46"/>
+    <featureAddOperation id="_f9a354c6-3e50-4beb-b30c-c0545a31d093" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_59146388-2e9f-4e74-9a46-438053e6db46"/>
+      <parent href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      <groupToAddTo href="NavigationSystem.tfm#_0f559b60-2364-4c1a-907e-65e549617f19"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_f865fd43-b79f-4770-afec-efd3d873e05e" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="ArrivalTime" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_59146388-2e9f-4e74-9a46-438053e6db46"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_aa515b72-df63-4dfb-9171-064f49e446b6" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9b804149-02f3-4e2b-b340-207142d1f20f"/>
+    <featureAddOperation id="_a8a4d42b-0d0e-454a-99ed-c09c08a92401" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_9b804149-02f3-4e2b-b340-207142d1f20f"/>
+      <parent href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      <groupToAddTo href="NavigationSystem.tfm#_0f559b60-2364-4c1a-907e-65e549617f19"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_904c162c-3bb5-4dc1-b34f-d8c0f65b4b60" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="DepartureTime" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9b804149-02f3-4e2b-b340-207142d1f20f"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_df06f92f-d4c9-45a2-b119-cc2136fb1cf3" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="SpeedlimitDE" oldNameString="sNone">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_244d4a92-ff18-4e91-8973-8f280a179be8"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_32aaaa5c-3baf-429b-af1f-f989965090b5" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="SpeedlimitUK" oldNameString="s112">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1193c0c9-c4b4-4404-8c01-91a4e12a6e1b"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_268502d0-4d34-4586-9dce-2408f94c4062" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="SpeedlimitFR" oldNameString="s130">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_9963bb7a-022d-4b66-b881-16c1c2be607e"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_9a94e5a0-b7d3-4df8-8660-a859a1a72a51" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+    <detachOperation id="_3e933ec2-d860-4538-a7c2-8413837a77c6" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+    </detachOperation>
+    <addOperation id="_bea0a47d-522b-4267-aa0e-46f7dd85a655" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_58c7c2a4-46a5-4ade-82c0-85e497b06c8b" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+      </consequentFeatureTypeChangeOperation>
+    </addOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_6b3e7d23-2a81-4c65-9cdb-55fbefd8ea4f" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_060f458c-15b4-4844-b18e-92d3e2b4f8fd"/>
+    <featureAddOperation id="_65e49752-65ae-401d-a896-fe50e3a214ca" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_060f458c-15b4-4844-b18e-92d3e2b4f8fd"/>
+      <parent href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+      <groupCreateOperation id="_eaa1a7dd-f05c-4aa8-89e1-60151d0578e4" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_c79be2d1-db78-430a-93a6-e4f26946a0eb"/>
+        <groupAddOperation id="_7ebf5afb-0aaf-4883-8102-de92ba5a5dbc" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_c79be2d1-db78-430a-93a6-e4f26946a0eb"/>
+          <parentFeature href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_38d0e283-7331-4d37-bcb4-d9e4ce08f7ee" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_c79be2d1-db78-430a-93a6-e4f26946a0eb"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_c79be2d1-db78-430a-93a6-e4f26946a0eb"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_b2942e9f-4216-4a41-b002-c1f1da92a3c5" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="SuggestionFav" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_060f458c-15b4-4844-b18e-92d3e2b4f8fd"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_32881d35-4d5e-440e-aa88-3cceca52b4c0" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1b123fe2-2ecd-4615-80a3-3024d0cf5bed"/>
+    <featureAddOperation id="_01b55571-358a-48d1-89e4-584b937c13ec" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_1b123fe2-2ecd-4615-80a3-3024d0cf5bed"/>
+      <parent href="NavigationSystem.tfm#_89d3f959-c958-4294-bca4-44a312c9f251"/>
+      <groupToAddTo href="NavigationSystem.tfm#_c79be2d1-db78-430a-93a6-e4f26946a0eb"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_2c9cc1b7-bf2e-497e-9205-582dd6cd38cf" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="SuggestionHistory" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1b123fe2-2ecd-4615-80a3-3024d0cf5bed"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_a3f5331d-a62b-4a57-8e21-ee80be0a8856" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="OR">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_c79be2d1-db78-430a-93a6-e4f26946a0eb"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_9357ffea-d432-4bc2-8e31-68c423d8f54d" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1e5a40b5-768b-4a55-a7cf-1e2c7293acfc"/>
+    <featureAddOperation id="_364cfb3e-9047-4108-9bcd-7b6a95bb3215" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_1e5a40b5-768b-4a55-a7cf-1e2c7293acfc"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_c65a4f8f-b161-4df0-baf2-9b98439ab3ac" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_1e5a40b5-768b-4a55-a7cf-1e2c7293acfc"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_d9631ba2-21ca-41a4-b439-948d6380a800" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="InfoGroup" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1e5a40b5-768b-4a55-a7cf-1e2c7293acfc"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_5a8fc29d-c83d-4ea4-a29e-0cf1a0906bdb" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1bb49fc9-a59b-41e9-9a44-d982045747a9"/>
+    <featureAddOperation id="_2b82c1eb-88d5-43ca-97a0-1181042ee798" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_1bb49fc9-a59b-41e9-9a44-d982045747a9"/>
+      <parent href="NavigationSystem.tfm#_39e247ce-309d-43b1-a2a9-2098269367c0"/>
+      <groupToAddTo href="NavigationSystem.tfm#_d734d057-507d-4127-a0b7-74735e195dd9"/>
+      <consequentFeatureTypeChangeOperation id="_465cde77-49e0-4024-b657-655923c12b83" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_1bb49fc9-a59b-41e9-9a44-d982045747a9"/>
+      </consequentFeatureTypeChangeOperation>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_aa42c544-b5a6-4b65-a838-46b2f526f75c" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="TextToSpeech" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_1bb49fc9-a59b-41e9-9a44-d982045747a9"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_481f3eb6-0dc9-4ee4-90fc-c1a13e8a2037" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_76ceb0d8-60c5-45d1-b3e4-8229cf6d6137"/>
+    <featureAddOperation id="_d799fd2c-c91d-4acc-8b08-b6a66c480d2f" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_76ceb0d8-60c5-45d1-b3e4-8229cf6d6137"/>
+      <parent href="NavigationSystem.tfm#_1bb49fc9-a59b-41e9-9a44-d982045747a9"/>
+      <groupCreateOperation id="_ec006a80-b307-4f68-9117-5282ce4b4486" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_ab195ead-466e-4abf-b930-95abb3907302"/>
+        <groupAddOperation id="_073ae775-0b08-482f-8e83-02d3117438de" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_ab195ead-466e-4abf-b930-95abb3907302"/>
+          <parentFeature href="NavigationSystem.tfm#_1bb49fc9-a59b-41e9-9a44-d982045747a9"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_2df96459-cd75-4158-9bf7-1ca3b1313edb" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_ab195ead-466e-4abf-b930-95abb3907302"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_ab195ead-466e-4abf-b930-95abb3907302"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_571d5133-071d-4909-a7b6-935288175338" operationDate="2017-09-22T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="TTSNavi" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_76ceb0d8-60c5-45d1-b3e4-8229cf6d6137"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_199e88b9-f708-4a01-bf43-181387a2814e" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_57d1336f-db62-45a0-ab61-eb6aaa67b161"/>
+    <featureAddOperation id="_30d8b44c-df66-4bc2-9432-f11cccd62405" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com" forceCreateParentGroup="true">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_57d1336f-db62-45a0-ab61-eb6aaa67b161"/>
+      <parent href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <groupCreateOperation id="_a0e6596e-91b9-4165-9da8-dda8d8947e9d" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+        <groupAddOperation id="_a9329772-fac4-4892-bd4e-7df92db3f798" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+          <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+          <group href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+          <parentFeature href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+        </groupAddOperation>
+      </groupCreateOperation>
+      <groupTypeChangeOperation id="_ad644ad1-6f6b-4fcf-8dcb-82947135945b" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <group href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+      </groupTypeChangeOperation>
+      <groupToAddTo href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_20ac5dca-5cff-4442-9ee0-458ee63e5228" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Kilometer" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_57d1336f-db62-45a0-ab61-eb6aaa67b161"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureCreateOperation" id="_6f8054a7-df39-47f5-bb7a-258913516b9a" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_fa331b1b-635f-4dda-a8d6-71c2272b70e7"/>
+    <featureAddOperation id="_259546c3-77a2-4614-9a92-2d5fcb07d4ef" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_fa331b1b-635f-4dda-a8d6-71c2272b70e7"/>
+      <parent href="NavigationSystem.tfm#_352dd792-11e7-4d9f-b996-a5ab7a740745"/>
+      <groupToAddTo href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+    </featureAddOperation>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureRenameOperation" id="_ed9b3648-034d-4dbd-a22c-6faeb20a42a3" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com" newNameString="Mile" oldNameString="NewFeature1">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_fa331b1b-635f-4dda-a8d6-71c2272b70e7"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_2c89d136-f91d-49d8-9bd5-101a4ab7d08c" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="OR">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwGroupTypeChangeOperation" id="_7cab930d-d1d5-4094-8b49-754a138a8f38" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com" newGroupTypeEnum="ALTERNATIVE">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <group href="NavigationSystem.tfm#_425cf9b7-feb8-4e7a-a1c5-ca48f32a5c74"/>
+  </evolutionOperations>
+  <evolutionOperations xsi:type="operation:DwFeatureMoveOperation" id="_0a3455f6-508f-42e5-9ede-75038fbc40a5" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+    <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+    <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+    <detachOperation id="_0b720efc-22e6-426e-b872-a8c623f945bf" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+    </detachOperation>
+    <addOperation id="_b8dcb0bb-08ae-4ee5-8d89-09818ec69e74" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+      <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+      <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      <parent href="NavigationSystem.tfm#_6be1aef0-236a-4827-ba1e-244442187b35"/>
+      <groupToAddTo href="NavigationSystem.tfm#_4d956225-bbab-4ea0-86c9-6e76c486d3aa"/>
+      <consequentFeatureTypeChangeOperation id="_8a78be0c-9efc-4fec-b077-93fac19eaac4" operationDate="2017-09-25T00:00:00.000+0200" contributor="windo7088%40someone.com">
+        <featureModel href="NavigationSystem.tfm#_e7cf9866-535e-4a97-a031-c4a6ae984260"/>
+        <feature href="NavigationSystem.tfm#_2317a56c-fbb9-4a02-b64c-0e8f07920f42"/>
+      </consequentFeatureTypeChangeOperation>
+    </addOperation>
+  </evolutionOperations>
+  <contributors id="windo7088%40someone.com" name="windo"/>
+</operation:DwEvolutionOperationModel>
