@@ -5,8 +5,8 @@ This SPL was realized with the Eclipse plugins **[DarwinSPL](https://gitlab.com/
 You can set up Eclipse with the resp. plugins via either one of the 2 following approaches
 
 * *easy installation*: Download a [ready-to-use Eclipse 2012-12 installation](https://github.com/TUBS-ISF/ProjectSPLDevelopment/releases/tag/ready-to-use) with DarwinSPL and DeltaJava preconfigured, including a workspace that contains the NavigationSPL
-  * Download [Windows 64-bit version](https://github.com/TUBS-ISF/ProjectSPLDevelopment/releases/download/ready-to-use/eclipse-darwinspl-deltaj-navigationspl.zip)
-  * Download [Linux 64-bit version](https://github.com/TUBS-ISF/ProjectSPLDevelopment/releases/download/ready-to-use/eclipse-darwinspl-deltaj-navigationspl.tar.gz)
+  * Download [Windows 64-bit version](https://github.com/TUBS-ISF/ProjectSPLDevelopment/releases/download/ready-to-use/eclipse-deltaj-darwinspl-navigationspl-win64.zip)
+  * Download [Linux 64-bit version](https://github.com/TUBS-ISF/ProjectSPLDevelopment/releases/download/ready-to-use/eclipse-deltaj-darwinspl-navigationspl-linux.tar.gz)
 
 * *flexible installation*: Manually set up an Eclipse runtime of your choice (latest tested and working version: [Eclipse 2020-12](https://www.eclipse.org/downloads/packages/release/2020-12/r/eclipse-modeling-tools)) from the plugins' Eclipse update sites (the **order matters**!):
   * install DeltaJava from its update site: https://deltajava.org/update/
