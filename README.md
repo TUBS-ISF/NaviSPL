@@ -24,7 +24,18 @@ You can set up Eclipse with the resp. plugins via either one of the 2 following 
 * statistics : some statistics we collected
 
 ## How to Generate Variants
-* TBA
+* Start eclipse (with DarwinSPL and DeltaJava) with the preconfigured workspace containing the NaviSPL (optimally the ready-to-use version provided in this repo)
+* Open the file **NavigationSystem.tfm**
+* Activate the **Configuration Mode** button
+* Create desired configuration by selecting features (you first have to select a feature with a single click and then perform a double-click - sorry for the clunky implementation)
+* Ensure that the seelcted configuration is valid using the **Check Configuration Validity** button
+* Click **Derive Variant** button
+* Select the mapping model **NavigationSystem.dwmapping** in the same folder as the Feature Model using the **Select a mapping model** button
+* Select the **DarwinSPL DeltaJava Variant Deriver** variant deriver in the variant deriver drop-down menu
+* Select a target folder for the variant to be generated using the **Select variant target folder** button (optimally select the src folder containing the variant project so that all libraries etc are correctly copied and it can be directly executed through eclipse (relative path to the NaviSPL project = **../de.tu_bs.cs.isf.jxmapviewer.spl.variant/src**))
+* Click **Finish**
+* If everything went correctly, a notification should appear saying that the variant has been successfully generated.
+* You should be able to run the variant by running the generated **NaviApp.java**
 
 ## Publications
 * Coming (hopefully) soon
