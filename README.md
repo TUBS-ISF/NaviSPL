@@ -15,7 +15,7 @@ You can set up Eclipse with the resp. plugins via either one of the 2 following 
   * install DarwinSPL from its update site: https://www.isf.cs.tu-bs.de/data/darwinspl/update/
     * please make sure to install the "*DarwinSPL Variant Generation Plugin for DeltaJava Delta Modules*"!
 
-**IMPORTANT NOTE**: DeltaJava is known to be compatible only with Java versions up to Java 1.8! Using a newer version and changing the compilation mode to 1.8 does not help, it requires to install the JDK 1.8 and configure Eclipse accordingly! Additionally, DeltaJava only works with Eclipse up to version 2020-12 (Find instructions on how to do so on the [DeltaJava homepage](https://deltajava.org/#installation_prepacked) under "Legacy Warning")
+**IMPORTANT NOTE**: DeltaJava is known to be compatible only with Java versions up to Java 1.8! Using a newer version and changing the compilation mode to 1.8 does not help, it requires to install the JDK 1.8 and configure Eclipse accordingly. Additionally, DeltaJava is only compatible with Eclipse versions up to version 2020-12 (find detailed information and instructions on the [DeltaJava homepage](https://deltajava.org/#installation_prepacked))
 
 ## Content
 * Tutorial : Slides and accompanying material we used in a 2-days introductory workshop with the project participants
