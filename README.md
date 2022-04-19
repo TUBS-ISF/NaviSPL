@@ -38,4 +38,4 @@ You can set up Eclipse with the resp. plugins via either one of the 2 following 
 * You should be able to run the variant by running the generated **NaviApp.java**
 
 ## Publications
-* Coming (hopefully) soon
+* Nieke, M., Hoff, A., Schaefer, I., & Seidl, C. (2022, February). Experiences with Constructing and Evolving a Software Product Line with Delta-Oriented Programming. In *Proceedings of the 16th International Working Conference on Variability Modelling of Software-Intensive Systems* (pp. 1-9), [[Download PDF](https://pure.itu.dk/portal/files/86606380/DeltaJava_Teamprojekt_Paper.pdf)]
